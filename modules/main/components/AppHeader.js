@@ -206,11 +206,6 @@ function AppHeader(props) {
   //Меню APP--Випадаючийсписок
   const AppMenuList = (
     <>
-      <Link href="/[lang]/post_comments" as={`/${locale}/post_comments`}>
-        <MenuItem component="a" onClick={handleAppMenuClose}>
-          post_comments
-        </MenuItem>
-      </Link>
       <Link href="/[lang]/psql-users" as={`/${locale}/psql-users`}>
         <MenuItem component="a" onClick={handleAppMenuClose}>
           (pSQL)fetch-Користувачі-таблиця(проста)
