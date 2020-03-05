@@ -335,19 +335,19 @@ export default function Users(props) {
   //Вилучення записів(кнопка)
   const onDelete = async () => {
     const rowsSelected = rows.filter(row => isSelected(row.id)); //Масив відмічених записів)
-    console.log("users-tabl-fetch.js/onDelete/rowsSelected=", rowsSelected);
+    // console.log("users-tabl-fetch.js/onDelete/rowsSelected=", rowsSelected);
     try {
       //await забезпечує синхронність(почерговість) в асинхронному запиті
       await rowsDelete(rowsSelected); //Самевилучення відмічених звписів(rowsSelected-масив відмічених записів)
       await setSelected([]); //Знімаємо відмітку з усіх записів
       await onRefresh(); //Оновлення даних таблиці
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
   //Вилучення записів(запит)
   const rowsDelete = async rows => {
-    console.log("psql-users-table-fetch.js/rowDelete/row=", rows);
+    // console.log("psql-users-table-fetch.js/rowDelete/row=", rows);
     const url = "http://localhost:3000/api/psql-users"; //вибрати все-працює
     const options = {
       method: "DELETE",
@@ -411,13 +411,13 @@ export default function Users(props) {
       // console.log("row=", row);
       const rows1 = [...rows]; //копіюємо масив
       rows1.push(...row); //добавляємо в кінець масиву
-      console.log("***psql-users-table-fetch.js/rowAdd/rows1: ", rows1);
+      // console.log("***psql-users-table-fetch.js/rowAdd/rows1: ", rows1);
       setRows(rows1);
       alert("Запис успішно добавленo");
     } else {
       const err = await response.json(); //повертає тіло відповіді json
       alert(`Запис не добавлено! ${err.message} / ${err.stack}`);
-      console.log(`+++psql-...-fetch.js/ ${err.message} / ${err.stack} `);
+      // console.log(`+++psql-...-fetch.js/ ${err.message} / ${err.stack} `);
     }
   };
 
@@ -439,7 +439,7 @@ export default function Users(props) {
       await rowEditQuery(newRow, rowsid); //Самевилучення відмічених звписів(rowsSelected-масив відмічених записів)
       // await onRefresh(); //Оновлення даних таблиці
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -463,14 +463,14 @@ export default function Users(props) {
       // если HTTP-статус в диапазоне 200-299
       const resEdit = await response.json(); //повертає тіло відповіді json
       alert(`Змінено ${resEdit} записів`);
-      console.log(`psql-...-fetch.js/Змінено ${resEdit} записів`);
+      // console.log(`psql-...-fetch.js/Змінено ${resEdit} записів`);
       editRowsInTable(newRow, rowsid); //Зміна значень відмічених записів в таблиці
     } else {
       const err = await response.json(); //повертає тіло відповіді json
       alert(`Помилка зміни записів! ${err.message} / ${err.stack}`);
-      console.log(
-        `+++psql-...-fetch.js/UPDATE/ ${err.message} / ${err.stack} `
-      );
+      // console.log(
+      //   `+++psql-...-fetch.js/UPDATE/ ${err.message} / ${err.stack} `
+      // );
     }
   };
 
@@ -480,7 +480,7 @@ export default function Users(props) {
 
   function handleDialogClose() {
     setDialogOpen(false);
-    console.log("handleDialogClose()/setDialogOpen= ", dialogOpen);
+    // console.log("handleDialogClose()/setDialogOpen= ", dialogOpen);
   }
   //** */
 

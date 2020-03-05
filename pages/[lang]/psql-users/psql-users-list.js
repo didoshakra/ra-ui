@@ -35,15 +35,15 @@ const Users = props => {
   const [usersList, setUsersList] = React.useState(props.usersList);
   //Зміна Checkbox
   const onCheck = (checked, idx) => {
-    console.log("Users.js/onCheck/checked= ", checked + "/idx=", idx);
+    // console.log("Users.js/onCheck/checked= ", checked + "/idx=", idx);
     let itemList = usersList; //сторюємо початковий (state)масив до змін
     itemList[idx].checked = !itemList[idx].checked; //вносимо зміни в конкретний вибраний запис по індексу масиву
     setUsersList(itemList); //обновлюємр (state)масив
-    console.log(
-      "Users.js/onCheck/usersList=",
-      usersList + "/itemList=",
-      itemList
-    );
+    // console.log(
+    //   "Users.js/onCheck/usersList=",
+    //   usersList + "/itemList=",
+    //   itemList
+    // );
   };
 
   return (
@@ -107,19 +107,19 @@ Users.getInitialProps = async function() {
     // якщо HTTP-статус в диапазоне 200-299
     // const data = await res.text(); //повертає тіло відповіді текст\api/test
     let data = await res.json(); //повертає тіло відповіді json
-    console.log(
-      `Pages/psql-users/index.js/getInitialProps/Users. Count: ${data.length}`
-    );
-    console.log(
-      "Pages/psql-users/index.js/getInitialProps/response/data=",
-      data
-    );
+    // console.log(
+    //   `Pages/psql-users/index.js/getInitialProps/Users. Count: ${data.length}`
+    // );
+    // console.log(
+    //   "Pages/psql-users/index.js/getInitialProps/response/data=",
+    //   data
+    // );
     return {
       usersList: data
       // shows: data.map(entry => entry.show)//PostBatmanList
     };
   } else {
-    console.log(`Pages/psql-users/index.js/Помилка HTTP: ${res.status}`);
+    // console.log(`Pages/psql-users/index.js/Помилка HTTP: ${res.status}`);
     return { usersList };
   }
 };

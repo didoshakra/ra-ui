@@ -18,7 +18,7 @@ class MyApp extends App {
   }
   render() {
     const { Component, pageProps } = this.props;
-    console.log("+++ 1/_app.js/render");
+    // console.log("+++ 1/_app.js/render");
     return (
       // <LocaleProvider lang={locale}>
       <LocaleProvider>

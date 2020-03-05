@@ -9,7 +9,7 @@ import React, { createContext, useReducer } from "react";
 const reducer = (state, action) => {
   switch (action.type) {
     case "LANGUAGE":
-      console.log("***store/reducer/action=", action);
+      // console.log("***store/reducer/action=", action);
       return { ...state, language: action.payload };
     case "INCREASE":
       return { ...state, count: state.count + 1 };

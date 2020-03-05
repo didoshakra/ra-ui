@@ -18,10 +18,10 @@ export const LocaleProvider = ({ children }) => {
 
   React.useEffect(() => {
     const localSetting = localStorage.getItem("locale"); //інформація про останнє локале
-    console.log(
-      "+++3/ LocaleContext.js/useEffect/localStorage.locale=",
-      localSetting
-    );
+    // console.log(
+    //   "+++3/ LocaleContext.js/useEffect/localStorage.locale=",
+    //   localSetting
+    // );
     //localStorage.getItem("locale")-останнє локале у браузері(localStorage)
     if (locale !== localStorage.getItem("locale")) {
       // console.log("+++4/ LocaContext.js/usEf/locStor.setItem/locale=", locale);
@@ -45,13 +45,13 @@ export const LocaleProvider = ({ children }) => {
     ) {
       setLocale(query.lang);
     }
-    console.log(
-      "+++ 4/ getInitialLocale.js/useEffect2/query.lang=",
-      query.lang
-    );
+    // console.log(
+    //   "+++ 4/ getInitialLocale.js/useEffect2/query.lang=",
+    //   query.lang
+    // );
   }, [query.lang, locale]); // виконується тільки при зміні query.lang або locale
 
-  console.log("!!!+++5/ LocaleContext.js/locale=", locale);
+  // console.log("!!!+++5/ LocaleContext.js/locale=", locale);
   return (
     <LocaleContext.Provider value={{ locale, setLocale }}>
       {children}

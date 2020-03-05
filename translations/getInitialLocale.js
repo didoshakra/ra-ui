@@ -5,7 +5,7 @@ import { isLocale } from "./helpes";
 export function getInitialLocale() {
   //localStorage-це локальне сховище браузера
   const localSetting = localStorage.getItem("locale"); //інформація про останнє локале
-  console.log("==== getInitialLocale.js/localSetting=", localSetting);
+  // console.log("==== getInitialLocale.js/localSetting=", localSetting);
   //!!!localSetting-!!!-означає що змінна не визначени== "undefined"
   if (localSetting !== "undefined" && isLocale(localSetting)) {
     return localSetting;

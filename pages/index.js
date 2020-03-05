@@ -6,7 +6,7 @@ import { getInitialLocale } from "../translations/getInitialLocale";
 const Index = () => {
   React.useEffect(() => {
     const locale = getInitialLocale();
-    console.log("*** 1/ pages/index.js/useEffect/glocale=", locale);
+    // console.log("*** 1/ pages/index.js/useEffect/glocale=", locale);
     window.location.replace(`/${locale}`);
     // window.location.replace(`/${getInitialLocale()}`);
   });
