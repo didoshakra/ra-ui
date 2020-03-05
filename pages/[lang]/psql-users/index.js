@@ -33,7 +33,7 @@ import FilterListIcon from "@material-ui/icons/FilterList";
 import Popover from "@material-ui/core/Popover";
 import fetch from "isomorphic-fetch";
 
-import UsersForm from "./users_form";
+// import UsersForm from "./users_form";
 import AppFrame from "../../../modules/main/components/AppFrame";
 
 function desc(a, b, orderBy) {
@@ -589,12 +589,12 @@ export default function Users(props) {
           }}
         >
           {/*UsersForm. */}
-          <UsersForm
+          {/* <UsersForm
             rowAdd={rowAdd} //Ф-ція для добавлення запису
             rowEdit={rowEdit} //Ф-ція для коригування запису
             isAdd={isAdd} // Чи це добавлення чи коригування
             defaultValue={defaultValue} //Значення полів вибраного рядка
-          />
+          /> */}
         </Popover>
       </div>
     </AppFrame>

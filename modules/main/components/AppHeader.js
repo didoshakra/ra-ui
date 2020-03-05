@@ -148,7 +148,7 @@ function AppHeader(props) {
     <div>
       <Avatar
         alt="Remy Sharp"
-        src="/static/images/avatar/1.jpg"
+        src="/avatar/1.jpg"
         className={classes.authAvatar}
       />
     </div>
@@ -246,7 +246,7 @@ function AppHeader(props) {
               <Avatar
                 className={classes.avatar}
                 alt="Remy Sharp"
-                src="/static/images/avatar/SunRa48.png"
+                src="/images/SunRa48.png"
               />
             </IconButton>
           </Link>

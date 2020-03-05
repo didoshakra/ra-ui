@@ -60,7 +60,7 @@ function Footer(props) {
           {/* <IconButton> // Іконка буде як кнопка*/}
           <img
             // src={githubIcon}
-            src="/static/images/social/github-retina.png"
+            src="/social/github-retina.png"
             className={(classes.leftIcon, classes.iconSmall)}
             alt="github"
           />
@@ -90,7 +90,7 @@ function Footer(props) {
         >
           <img
             // src={facebookIcon}
-            src="/static/images/social/facebook-f-64-grow.png"
+            src="/social/facebook-f-64-grow.png"
             className={(classes.leftIcon, classes.iconSmall)}
             alt="facebook"
           />
@@ -107,7 +107,7 @@ function Footer(props) {
         >
           <img
             // src={twitterIcon}
-            src="/static/images/social/twitter-retina.png"
+            src="/social/twitter-retina.png"
             className={(classes.leftIcon, classes.iconSmall)}
             alt="twitter"
           />

@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
     flex: "1 0 100%",
     maxHeight: "480px" //Висота
     //rr background
-    // backgroundImage: 'url("/static/images/SunMan.jpg")',
+    // backgroundImage: 'url("/images/SunMan.jpg")',
     // height: '100vh',
     // backgroundPosition: 'center',
     // backgroundRepeat: 'no-repeat',
@@ -106,21 +106,13 @@ export default function HomePage() {
       <div className={classes.root}>
         <div className={classes.hero}>
           <Container maxWidth="md" className={classes.content}>
-            <img
-              // src="/static/images/material-ui-logo.svg"
-              // src="/static/images/SunRa48.png"
-              // src="/static/images/SunRa.png"
-              // src="/img/SunMan.jpg"
-              src="/static/images/SunMan.jpg"
-              // alt="Material-UI Logo"
-              className={classes.logo}
-            />
+            <img src="/images/SunMan.jpg" alt="Logo" className={classes.logo} />
             <div>
               <Typography
                 variant="h3"
                 component="h1"
                 color="inherit"
-                gutterBottom
+                gutterBottom 
                 className={classes.title}
               >
                 {t("home_Welcome")}👋

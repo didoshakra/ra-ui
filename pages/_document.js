@@ -18,18 +18,11 @@ export default class MyDocument extends Document {
           {/*(взято з MUIv.4.5.1)
             manifest.json надає метадані, для Android.  See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
           */}
-          <link rel="manifest" href="/static/manifest.json" />
           {/* iOS Icon(взято з MUIv.4.5.1) */}
-          <link
-            rel="apple-touch-icon"
-            sizes="180x180"
-            href="/static/icons/180x180.png"
-          />
           {/* PWA primary color (взято з MUIv.4.5.1)*/}
           <meta name="theme-color" content={themeColor} />
           {/*було в scelet */}
-          <link rel="shortcut icon" href="/static/favicon.ico" />
-          {/* <link rel="shortcut icon" href="/favicon.ico" /> */}
+          <link rel="shortcut icon" href="/favicon.ico" />
 
           {/* //  шрифти material-ui та шрифтів Roboto(може бути в _APP.js) */}
           <link

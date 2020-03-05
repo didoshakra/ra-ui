@@ -12,20 +12,6 @@ import Avatar from "@material-ui/core/Avatar";
 import AppFrame from "../../../modules/main/components/AppFrame";
 import useTranslation from "../../../translations/useTranslation";
 
-// import BlogHelmet from "../../components/JD/JD_BlogHelmet";
-// import MarkdownRenderer from "../../components/JD/JD_markdown_renderer";
-// import { MY_NAME } from "../../docs/AppConstants"; //ЦІ рядки повинні бути інакше буде помилка
-/* eslint-disable */
-// import aboutMe from "!json-loader!front-matter-loader!./aboutMe.md";
-// import aboutSite from "!json-loader!front-matter-loader!./aboutSite.md"; //ЦІ рядки повинні бути інакше буде помилка
-/* eslint-enable */
-
-// import logoMyFamily from '/static/images/avatar/Family3.jpeg';
-// import logoMyFriands from '/static/images/avatar/friends1.jpg';
-// import logoMyHobbi from '/static/images/avatar/hobbi3.jpeg';
-// import logoMyPortfolio from '/static/images/avatar/portfolio1-1.jpeg';
-// import MyFriends from "./MyFriends";
-
 const MY_NAME = "Roman Didoshak";
 
 const contentStyles = theme => ({
@@ -38,7 +24,7 @@ const contentStyles = theme => ({
   circleContainer: {
     width: "100%",
     paddingBottom: "100%",
-    backgroundImage: `url("/static/images/meRA.jpg")`,
+    backgroundImage: `url("/images/meRA.jpg")`,
     backgroundSize: "cover",
     borderRadius: "50%",
     overflow: "hidden"
@@ -149,10 +135,7 @@ const AboutMe = props => {
                     color="primary"
                     variant="outlined"
                     avatar={
-                      <Avatar
-                        alt="MyFamily"
-                        src="/static/images/avatar/Family3.jpeg"
-                      />
+                      <Avatar alt="MyFamily" src="/avatar/Family3.jpeg" />
                     }
                     label={t("aboutMe_famіly")}
                     // label="Сім'я"
@@ -166,10 +149,7 @@ const AboutMe = props => {
                     color="primary"
                     variant="outlined"
                     avatar={
-                      <Avatar
-                        alt="MyFriands"
-                        src="/static/images/avatar/friends1.jpg"
-                      />
+                      <Avatar alt="MyFriands" src="/avatar/friends1.jpg" />
                     }
                     label={t("aboutMe_friends")}
                     // label="Друзі"
@@ -182,12 +162,7 @@ const AboutMe = props => {
                     className={classes.chip}
                     color="primary"
                     variant="outlined"
-                    avatar={
-                      <Avatar
-                        alt="MyHobbi"
-                        src="/static/images/avatar/hobbi3.jpeg"
-                      />
-                    }
+                    avatar={<Avatar alt="MyHobbi" src="/avatar/hobbi3.jpeg" />}
                     label={t("aboutMe_hobbies")}
                     // label="Хоббі"
                     component="a"
@@ -202,7 +177,7 @@ const AboutMe = props => {
                     avatar={
                       <Avatar
                         alt="MyPortfolio"
-                        src="/static/images/avatar/portfolio1-1.jpeg"
+                        src="/avatar/portfolio1-1.jpeg"
                       />
                     }
                     label={t("aboutMe_Portfolio")}

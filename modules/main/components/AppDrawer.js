@@ -191,7 +191,7 @@ function AppDrawer(props) {
       >
         <ListItemIcon>
           <img
-            src="/static/images/social/github-retina.png"
+            src="/social/github-retina.png"
             className={classes.listIcon}
             alt="github"
           />
@@ -225,7 +225,7 @@ function AppDrawer(props) {
       >
         <ListItemIcon>
           <img
-            src="/static/images/social/facebook-f-64-grow.png"
+            src="/social/facebook-f-64-grow.png"
             className={classes.listIcon}
             alt="facebook"
           />
@@ -244,7 +244,7 @@ function AppDrawer(props) {
       >
         <ListItemIcon>
           <img
-            src="/static/images/social/twitter-retina.png"
+            src="/social/twitter-retina.png"
             className={classes.listIcon}
             alt="twitter"
           />
