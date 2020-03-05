@@ -1,6 +1,6 @@
 //pages/post_batman.js
 import fetch from "isomorphic-unfetch";
-import AppFrame from "../../components/main/AppFrame";
+import AppFrame from "../../../modules/main/components/AppFrame";
 
 const Post = props => (
   <AppFrame>
