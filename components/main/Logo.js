@@ -4,7 +4,7 @@ import { useContext } from "react";
 import useTranslation from "../../translations/useTranslation";
 import { ComponentContext } from "../../context/ComponentContext";
 // import DrawerButton from "../Navigation/DrawerBootton";
-import Drawer from "../Navigation/Drawer";
+import Drawer from "../navigation/Drawer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faBars } from "@fortawesome/free-solid-svg-icons";
 
