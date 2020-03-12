@@ -1,27 +1,11 @@
+//fajka/https://medium.com/swlh/how-to-build-a-multilingual-website-in-next-js-2924eeb462bc
+//config.js
 export const defaultLocale = "en";
 
-export const locales = ["en", "uk", "pl"];
-// export const locales = ["en", "fr", "pl"];
+export const locales = ["uk", "en", "pl"];
 
-// export const languageNames = {
-//   en: "English",
-//   fr: "français",
-//   pl: "polski",
-//   uk: "Українська"
-// };
-
-// Valid languages to use in production
-export const LANGUAGES_LABEL = [
-  {
-    code: "en",
-    text: "English"
-  },
-  {
-    code: "uk",
-    text: "Українська"
-  },
-  {
-    code: "pl",
-    text: "Polska"
-  }
-]
+export const languageNames = {
+  uk: "Українська",
+  en: "English",
+  pl: "Polski"
+};

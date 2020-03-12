@@ -5,11 +5,14 @@ import { getInitialLocale } from "../translations/getInitialLocale";
 
 const Index = () => {
   React.useEffect(() => {
-    const locale = getInitialLocale();
-    // console.log("*** 1/ pages/index.js/useEffect/glocale=", locale);
-    window.location.replace(`/${locale}`);
+    console.log("=*=* 1 pages/index.js/useEffect/");
+    const glocale = getInitialLocale();
+    console.log("=*=* 2 pages/index.js/useEffect/glocale=", glocale);
+    window.location.replace(`/${glocale}`);
     // window.location.replace(`/${getInitialLocale()}`);
   });
+
+
   return (
     <Head>
       <meta name="robots" content="noindex, nofollow" />

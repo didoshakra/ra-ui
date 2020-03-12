@@ -1,85 +1,41 @@
-//_document.js/MuiScelet+ Muiv4.5.1
-import React from "react";
-import Document, { Head, Main, NextScript } from "next/document";
-import { ServerStyleSheets } from "@material-ui/core/styles";
-import { themeColor } from "../modules/main/components/ThemeContext";
+//_document.js
+// import Document, { Head, Main, NextScript } from "next/document";
+import Document, { Html, Head, Main, NextScript } from "next/document";
+
+//Для створенння метатег всередині голови є компонент Head та спеціальний файл _document.js,
+//в якому ми можемо налаштувати загальний html кожнлї сторінки(який надається один раз лише на стороні сервера).
+//Ми змінимо його так, щоб він включав фавікон, оновив файл сторінки
 
 export default class MyDocument extends Document {
+  static async getInitialProps(ctx) {
+    const initialProps = await Document.getInitialProps(ctx);
+    return { ...initialProps };
+  }
+
   render() {
     return (
-      <html lang="en">
+      <Html lang="en">
         <Head>
-          <meta charSet="utf-8" />
-          {/* Використовуйте мінімальний масштаб \u003d 1, щоб увімкнути растерізацію GPU. */}
+          <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+          {/* Для відео */}
+          <link
+            href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,600,600i"
+            rel="stylesheet"
+          />
+          {/* Для використання Animate.css */}
+          <link href="css/animate.min.css" rel="stylesheet" />
+          {/* //https://www.youtube.com/watch?v=GfsqFaiaK3A */}
           <meta
             name="viewport"
-            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
+            content="initial-scale=1.0, width=device-width"
           />
-          {/*(взято з MUIv.4.5.1)
-            manifest.json надає метадані, для Android.  See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
-          */}
-          {/* iOS Icon(взято з MUIv.4.5.1) */}
-          {/* PWA primary color (взято з MUIv.4.5.1)*/}
-          <meta name="theme-color" content={themeColor} />
-          {/*було в scelet */}
-          <link rel="shortcut icon" href="/favicon.ico" />
-
-          {/* //  шрифти material-ui та шрифтів Roboto(може бути в _APP.js) */}
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-          />
+          <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         </Head>
         <body>
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }
-
-MyDocument.getInitialProps = async ctx => {
-  // Resolution order
-  //
-  // On the server:
-  // 1. app.getInitialProps
-  // 2. page.getInitialProps
-  // 3. document.getInitialProps
-  // 4. app.render
-  // 5. page.render
-  // 6. document.render
-  //
-  // On the server with error:
-  // 1. document.getInitialProps
-  // 2. app.render
-  // 3. page.render
-  // 4. document.render
-  //
-  // On the client
-  // 1. app.getInitialProps
-  // 2. page.getInitialProps
-  // 3. app.render
-  // 4. page.render
-
-  // Render app and page and get the context of the page with collected side effects.
-  //Візуалізує додаток та сторінку та отримує контекст сторінки зі зібраними побічними ефектами.
-  const sheets = new ServerStyleSheets();
-  const originalRenderPage = ctx.renderPage;
-
-  ctx.renderPage = () =>
-    originalRenderPage({
-      enhanceApp: App => props => sheets.collect(<App {...props} />)
-    });
-
-  const initialProps = await Document.getInitialProps(ctx);
-
-  return {
-    ...initialProps,
-    // Фрагмент стилів відображається після закінчення візуалізації програми та сторінки.
-    styles: [
-      ...React.Children.toArray(initialProps.styles),
-      sheets.getStyleElement()
-    ]
-  };
-};

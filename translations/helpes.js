@@ -1,3 +1,5 @@
+//fajka/https://medium.com/swlh/how-to-build-a-multilingual-website-in-next-js-2924eeb462bc
+//helpes.js
 import { locales } from "./config";
 
 //Провіряє чи є в списку локалів(locales) передана

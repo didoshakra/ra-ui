@@ -1,163 +1,106 @@
-//Index.js(Home) / Muiv4.5.1
-import React from "react";
+//Homepage/hover
+import { useContext } from "react";
 import Link from "next/link";
-import Head from "next/head";
-import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import Container from "@material-ui/core/Container";
-
-import AppFrame from "../../modules/main/components/AppFrame";
+import Layout from "../../components/main/Layout";
 import useTranslation from "../../translations/useTranslation";
+import { ComponentContext } from "../../context/ComponentContext";
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flex: "1 0 100%",
-    maxHeight: "480px" //Висота
-    //rr background
-    // backgroundImage: 'url("/images/SunMan.jpg")',
-    // height: '100vh',
-    // backgroundPosition: 'center',
-    // backgroundRepeat: 'no-repeat',
-    // backgroundSize: 'cover',
-    // backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  },
-  // drawer: {
-  //   width: 0
-  // },
-  hero: {
-    paddingTop: 44,
-    color: theme.palette.primary.main
-  },
-  content: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    textAlign: "center",
-    paddingTop: theme.spacing(10),
-    paddingBottom: theme.spacing(10),
-    [theme.breakpoints.up("md")]: {
-      paddingTop: theme.spacing(10),
-      paddingBottom: theme.spacing(20),
-      flexDirection: "row",
-      alignItems: "flex-start",
-      textAlign: "left"
-    }
-  },
-  title: {
-    marginLeft: -12,
-    whiteSpace: "nowrap",
-    letterSpacing: ".7rem",
-    textIndent: ".7rem",
-    fontWeight: theme.typography.fontWeightLight,
-    // fontSize: 28,
-    // fontFamily: "Times New Roman",
-    fontWeight: "bold",
-    fontStyle: "italic",
-    [theme.breakpoints.only("xs")]: {
-      fontSize: 28
-      // fontFamily: "Times New Roman",
-      // fontWeight: "bold",
-      // fontStyle: "italic"
-    }
-  },
-  logo: {
-    flexShrink: 0,
-    width: 120,
-    height: 120,
-    marginBottom: theme.spacing(2),
-    [theme.breakpoints.up("md")]: {
-      marginRight: theme.spacing(8),
-      width: 220,
-      height: 200
-    }
-  },
-  button: {
-    marginTop: theme.spacing(4)
-  },
-  social: {
-    padding: theme.spacing(2, 0),
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    minHeight: 21,
-    boxSizing: "content-box",
-    "& span": {
-      display: "flex",
-      marginRight: theme.spacing(1)
-    },
-    "& a": {
-      color: theme.palette.background.paper
-    }
-  }
-}));
-
-export default function HomePage() {
+const Homepage = () => {
   const { locale, t } = useTranslation();
-  const classes = useStyles();
-
+  const { state } = useContext(ComponentContext);
+  const theme = state.theme;
   return (
-    // <AppFrame classes={{ drawer: classes.drawer }}>
-    <AppFrame>
-      <Head>
-        <title>{t("header-titleSite")}</title>
-        {/* <title>Ra-test</title> */}
-      </Head>
-      <div className={classes.root}>
-        <div className={classes.hero}>
-          <Container maxWidth="md" className={classes.content}>
-            <img src="/images/SunMan.jpg" alt="Logo" className={classes.logo} />
-            <div>
-              <Typography
-                variant="h3"
-                component="h1"
-                color="inherit"
-                gutterBottom 
-                className={classes.title}
-              >
-                {t("home_Welcome")}👋
-                {/* {"Вітаю на сайті RA"} */}
-              </Typography>
-              <Typography variant="h5" component="h2" color="inherit">
-                {/* Це домашня сторінка тестового сайту, який знаходиться на початку
-                розробки */}
-                {t("home_aboutPage")}
-              </Typography>
-              <Typography variant="h5" component="h2" color="inherit">
-                {/* Дякую за увагу ! */}
-                {t("home_thankYou")}
-              </Typography>
-              <Link href="/[lang]/about-me" as={`/${locale}/about-me`}>
-                <Button
-                  component="a"
-                  className={classes.button}
-                  variant="outlined"
-                  color="primary"
-                >
-                  {t("home_buttonAboutMe")}
-                </Button>
-              </Link>
-            </div>
-          </Container>
+    // <Layout title="Home">
+    <Layout title={t("pageHome_title")} description={t("pageHome_description")}>
+      <div className="cover">
+        <div className="hello">
+          <img src="/SunMan.jpg" className="logo" alt="Logo" />
+          <h1>{t("pageHome_Welcome")}👋</h1>
+          {/* <h3>{t("pageHome_aboutPage")}</h3> */}
+          <Link href="/[lang]/about" as={`/${locale}/about`}>
+            <a className="view-more">{t("pageHome_buttonAboutMe")}</a>
+          </Link>
         </div>
-        {/* <div className={classes.social}>
-          <a
-            className="github-button"
-            href="https://github.com/mui-org/material-ui"
-            data-icon="octicon-star"
-            data-show-count="true"
-          >
-            Star
-          </a>
-          <a
-            className="twitter-follow-button"
-            href="https://twitter.com/@materialui"
-            data-show-screen-name="false"
-          >
-            Follow
-          </a>
-        </div> */}
       </div>
-    </AppFrame>
+
+      <style jsx>{`
+        .cover {
+          position: relative;
+          min-height: 600px;
+          // background: transparent url(/cover.jpg) no-repeat center center;
+          // background: transparent url(/sunrise-over-planet-earth-in.jpg) no-repeat
+          // background: transparent url(/photo/Karpaty.jpg) no-repeat
+          //background: transparent url(/photo/karpaty-morning1.jpg) no-repeat
+          background: transparent url(/photo/Everest.jpg) no-repeat
+            //background: transparent url(/photo/karpaty-morning.jpg) no-repeat
+            // background: transparent url(/photo/bananu-alkogol.jpg) no-repeat
+            //background: transparent url(/photo/bananu-alkogol-obr.jpg) no-repeat
+            center center;
+          background-size: cover; //Масштабирует изображение с сохранением пропорций так, чтобы его ширина или высота равнялась ширине или высоте блока.
+          word-wrap: break-word; //Перенос строк добавляется автоматически, чтобы слово поместилось в заданную ширину блока.
+          //transition: transform 0.4s ease-in;
+          transition: transform 0.4s;
+        }
+        .cover:hover {
+          transform: scale(1.1);
+          cursor: pointer; //рука
+        }
+        .hello {
+          position: absolute;
+          top: 30px;
+          left: 50px;
+          max-width: 500px;
+          // height: 300px;
+          padding: 10px;
+          // margin: 5 px;
+          background: ${theme.colors.background};
+          color: ${theme.colors.text};
+          font-family: ${theme.fontFamily.sansSerif};
+          // background: #3f3f3f;
+        }
+        .hello h1 {
+          // margin: 0 0 10px 0;
+          line-height: 0.01;
+        }
+        .hello h3 {
+          line-height: inherit;
+          line-height: 0.01;
+        }
+        a.view-more {
+          text-transform: uppercase;
+          font-size: 16px;
+        }
+        .latest-work {
+          text-align: center;
+          // padding: 30px 0;
+          padding: 10px 0;
+          // margin-bottom: 60px;
+          margin-bottom: 20px;
+        }
+        .logo {
+          display: block; //Блок стремится расшириться на всю доступную ширину. Можно указать ширину и высоту явно
+          //display: flex; //Блок стремится расшириться на всю доступную ширину. Можно указать ширину и высоту явно
+          //margin-left: 30px; //відступи зправа
+          //max-width: 350px;
+          top: 10px; //відступ
+        }
+
+        @media (max-width: 480px) {
+          .hello {
+            left: 30px;
+            right: 30px;
+            font-size: 18px;
+            padding: 10px;
+            /*word-wrap: break-word;  Перенос слів */
+          }
+          h1 {
+            font-size: 28px;
+            word-wrap: break-word; /* Перенос слів */
+          }
+        }
+      `}</style>
+    </Layout>
   );
-}
+};
+
+export default Homepage;

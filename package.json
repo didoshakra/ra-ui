@@ -1,43 +1,33 @@
 {
-  "name": "with-redux",
+  "name": "magstan",
   "version": "1.0.0",
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start -p $PORT"
+  },
+  "engines": {
+    "node": "10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/didoshakra/magstan.git"
   },
   "dependencies": {
-    "@material-ui/core": "^4.8.1",
-    "@material-ui/docs": "^4.0.0-beta.0",
-    "@material-ui/icons": "^4.5.1",
-    "@material-ui/styles": "^4.6.0",
-    "axios": "^0.19.0",
-    "deepmerge": "^4.2.2",
-    "formik": "^2.0.6",
-    "formik-material-ui": "^1.0.0",
-    "isomorphic-fetch": "^2.2.1",
-    "isomorphic-unfetch": "^3.0.0",
-    "markdown-to-jsx": "^6.10.3",
-    "match-sorter": "^4.0.2",
-    "material-table": "^1.54.1",
-    "mui-datatables": "^2.13.3",
-    "namor": "^2.0.2",
-    "next": "^9.2.2",
-    "node-sass": "^4.13.0",
-    "pg": "^7.14.0",
-    "raw-loader": "^3.1.0",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
-    "react-helmet": "^5.2.1",
-    "react-markdown": "^4.2.2",
-    "react-number-format": "^4.3.1",
-    "react-redux": "^7.1.0",
-    "react-table": "^7.0.0-rc.9",
-    "redux": "^4.0.4",
-    "redux-devtools-extension": "^2.13.8",
-    "redux-thunk": "^2.3.0",
-    "styled-components": "^4.4.1",
-    "yup": "^0.27.0"
+    "@fortawesome/fontawesome-svg-core": "^1.2.27",
+    "@fortawesome/free-brands-svg-icons": "^5.12.1",
+    "@fortawesome/free-regular-svg-icons": "^5.12.1",
+    "@fortawesome/free-solid-svg-icons": "^5.12.1",
+    "@fortawesome/react-fontawesome": "^0.1.8",
+    "@zeit/next-css": "^1.0.1",
+    "google-map-react": "^1.1.6",
+    "google-maps-react": "^2.0.2",
+    "next": "latest",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-google-maps": "^9.4.5",
+    "recompose": "^0.30.0"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {}
 }

@@ -1,4 +1,5 @@
-//A�-��� �Ơ ��Ԡ���, ��� ���� �Њ� 뷢��, ��з 먢-㠽� Ҡ� ������ � ب���� ��.
+//fajka/https://medium.com/swlh/how-to-build-a-multilingual-website-in-next-js-2924eeb462bc
+//getInitialLocale.js
 import { defaultLocale } from "./config";
 import { isLocale } from "./helpes";
 
