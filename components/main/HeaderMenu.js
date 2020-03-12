@@ -1,5 +1,5 @@
 //Праве меню з написами і їконками/змінюється при зменшенні
-//Два селекти-на мову і тему
+//Два селекти-на мову і темуw
 import React, { useContext } from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
