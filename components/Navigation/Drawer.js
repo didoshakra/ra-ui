@@ -1,6 +1,6 @@
 //MenuToggle.js //https://coursehunter.net/course/reactjs-s-nulya-do-profi
 import React from "react";
-import Backdrop from "../UI/Backdrop";
+import Backdrop from "../ui/Backdrop";
 
 const links = [1, 2, 3];
 
