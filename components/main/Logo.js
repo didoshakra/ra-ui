@@ -29,10 +29,11 @@ const Logo = () => {
       </a>
       {/* <DrawerButton drawerOpen={drawerOpen} drawerOnClick={drawerOnClick} /> */}
       <Link href="/[lang]" as={`/${locale}`}>
-        <a title={t("logo_logoTitle")}>
-          {/* <img src="/icons/SunRa.png" alt="Logo" /> */}
-          <img src="/icons/SunRa48.png" alert="logo" />
-        </a>
+        <img
+          title={t("logo_logoTitle")}
+          src="/icons/SunRa48.png"
+          alert="logo"
+        />
       </Link>
       <Link href="/[lang]" as={`/${locale}`}>
         <a title={t("logo_logoTitle")} className="text">
@@ -45,14 +46,12 @@ const Logo = () => {
         .logo {
           margin: 0;
           padding: 0;
-          /* margin: 5px 0 0; */
           display: flex;
-          max-width: 400px;
-          /*justify-content: flex-start; /* Вирівнювання елементів по головній осі(x) вліво по замовчуванню */
+         // max-width: 400px;
           align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
         }
         .logo img {
-          //padding-top: 5px;
+          margin-left: 5px; //Відступ від кожного елемента зліва
           width: 40px;
           height: 40px;
         }

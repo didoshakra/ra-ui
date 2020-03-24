@@ -89,7 +89,7 @@ const LocaleSwitcher = props => {
       .select {
         color: ${theme.colors.text};
         font-family: ${theme.fontFamily.sansSerif};
-        background: ${theme.colors.background1};`}
+        background: ${theme.colors.background};`}
       </style>
     </select>
   );

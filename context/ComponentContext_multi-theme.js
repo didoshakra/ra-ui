@@ -2,7 +2,7 @@
 //Зроблено на базі nexst_context_app + два блоги нижче
 //https://codeguida.com/post/1818
 //https://blog.logrocket.com/use-hooks-and-context-not-react-and-redux/
-//Тільки 2-і теми(themeTypeLight)
+//Більше ніж 2-і теми
 
 // AdminContext.js
 import React, { createContext, useReducer } from "react";
@@ -18,13 +18,11 @@ const reducer = (state, action) => {
       return { ...state, locale: action.payload };
     case "THEME":
       if (action.payload === "light") {
-        // return { ...state, theme: themeLith, themeType: "light" };
-        return { ...state, theme: themeLith, themeTypeLight: true };
+        return { ...state, theme: themeLith, themeType: "light" };
       } else if (action.payload === "dark") {
-        // return { ...state, theme: themeDark, themeType: "dark" };
-        return { ...state, theme: themeDark, themeTypeLight: false };
-        // } else {
-        //   return { ...state, theme: themeOther, themeType: "other" };
+        return { ...state, theme: themeDark, themeType: "dark" };
+      } else {
+        return { ...state, theme: themeOther, themeType: "other" };
       }
     default:
       throw new Error(`Unknown action: ${action.type}`);
@@ -34,8 +32,7 @@ const reducer = (state, action) => {
 const initialState = {
   locale: "en",
   theme: themeLith,
-  // themeType: "light"
-  themeTypeLight: true
+  themeType: "light"
 };
 
 export const ComponentContext = createContext(initialState);

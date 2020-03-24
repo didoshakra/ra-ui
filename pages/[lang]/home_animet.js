@@ -13,26 +13,38 @@ const Homepage = () => {
     // <Layout title="Home">
     <Layout title={t("pageHome_title")} description={t("pageHome_description")}>
       <div className="cover">
-        <div className="hello">
-          <img src="/SunMan.jpg" className="logo" alt="Logo" />
+        <div className="rrr">
+          <div className="hello">
+            <img src="/SunMan.jpg" className="logo" alt="Logo" />
+          </div>
+          <div className="welcom">
+            <h1>{t("pageHome_Welcome")}</h1>
+            <h2 className="hand">👋</h2>
+          </div>
+          <Link href="/[lang]/about" as={`/${locale}/about`}>
+            <a className="view-more">{t("pageHome_buttonAboutMe")}</a>
+          </Link>
         </div>
-        <div className="welcom">
-          <h1>{t("pageHome_Welcome")}</h1>
-          <h2 className="hand">👋</h2>
-        </div>
-        <Link href="/[lang]/about" as={`/${locale}/about`}>
-          <a className="view-more">{t("pageHome_buttonAboutMe")}</a>
-        </Link>
       </div>
 
       <style jsx>{`
+        .rrr {
+          z-index: 9;
+          padding: 0;
+          margin: 0;
+          position: fixed;
+          overflow: hidden; //Обрізає все що виходить за межі елементу
+          min-height: 600px;
+          width: 100%;
+          opacity: 0.8;
+        }
         .cover {
           /*z-index: -100; //Якщо ставити то :hover не працює???*/
           position: relative;
           overflow: hidden; //Обрізає все що виходить за межі елементу
           padding-top: 10%; //Поле зверху до тексту
           min-height: 600px;
-          max-width: 1280px;
+          width: 100%;
           // background: transparent url(/cover.jpg) no-repeat center center;
           // background: transparent url(/sunrise-over-planet-earth-in.jpg) no-repeat
           // background: transparent url(/photo/Karpaty.jpg) no-repeat
@@ -51,7 +63,8 @@ const Homepage = () => {
           animation-fill-mode: forwards; //Залишається в кінцевому стані
         }
         .hello {
-          position: absolute;
+          //position: absolute;
+          position: fixed;
           top: 30px;
           left: 50px;
           max-width: 500px;

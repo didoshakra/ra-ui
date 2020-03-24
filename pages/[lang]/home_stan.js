@@ -12,7 +12,9 @@ const images = [
   "/promotions/14.jpg",
   "/promotions/13.jpg",
   "/promotions/12.jpg",
-  "/promotions/11.jpg"
+  "/promotions/11.jpg",
+  "/promotions/10.jpg",
+  "/promotions/9.jpg"
 ];
 
 const Homepage = () => {

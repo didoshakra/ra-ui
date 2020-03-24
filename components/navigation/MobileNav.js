@@ -46,6 +46,7 @@ const MobileNav = props => {
       <div className="mobile-nav__title">{t("mobileNav_title")}</div>
       <ul ref={wrapperRef} className="mobile-nav__list">
         <li className="mobile-nav__item">
+          вввввввввввввв
           <Link href="/[lang]" as={`/${locale}`}>
             <a className="mobile-nav__link">{t("mobileNav_itemHome")}</a>
           </Link>

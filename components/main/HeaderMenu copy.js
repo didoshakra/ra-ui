@@ -1,6 +1,6 @@
 //Праве меню з написами і їконками/змінюється при зменшенні
-//Селектор мови/Дві теми-іконки(themeTypeLight)
-
+//Два селекти-на мову і тему
+//До випадаючого меню
 import React, { useContext } from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -19,26 +19,30 @@ import myDropdown from "../navigation/myDropdown";
 const HeaderMenu = () => {
   const { locale, t } = useTranslation();
   const { state, dispatch } = useContext(ComponentContext);
-  const { theme, themeTypeLight } = state;
+  // const theme = state.theme;
+  const { theme, themeType } = state;
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+  const [themeMenuOpen, setThemeMenuOpen] = React.useState(false);
   const [langMenuOpen, setLangMenuOpen] = React.useState(false);
-  // const [myDropdownOpen, setMyDropdownOpen] = React.useState(true);
+  const [myDropdownOpen, setMyDropdownOpen] = React.useState(true);
 
   const langMenuToggle = () => {
     setLangMenuOpen(!langMenuOpen);
   };
 
-  // const myDropdownToggle = () => {
-  //   setMyDropdownOpen(!myDropdown);
-  // };
+  const myDropdownToggle = () => {
+    setMyDropdownOpen(!myDropdown);
+  };
 
   //Використаємо старі змінні для 2-х тем setThemeMenuOpen='true'-theme: light
   const themeMenuToggle = () => {
     var newTheme = "light";
-    if (themeTypeLight) {
+    // if (!themeMenuOpen) {
+    if (themeType === "light") {
       newTheme = "dark";
     }
-    // console.log("HeaderMenu.js/newTheme=", newTheme);
+    console.log("HeaderMenu.js/newTheme=", newTheme);
+    setThemeMenuOpen(!themeMenuOpen);
     dispatch({ type: "THEME", payload: newTheme }); //Змінюємо state.theme
   };
 
@@ -119,7 +123,7 @@ const HeaderMenu = () => {
           title={t("headerMenu_iconTitleTheme")}
           onClick={themeMenuToggle}
         >
-          {themeTypeLight ? (
+          {themeMenuOpen ? (
             <FontAwesomeIcon icon={faSun} />
           ) : (
             <FontAwesomeIcon icon={faMoon} />
@@ -147,7 +151,7 @@ const HeaderMenu = () => {
           title={t("headerMenu_iconTitleTheme")}
           onClick={themeMenuToggle}
         >
-          {themeTypeLight ? (
+          {themeMenuOpen ? (
             <FontAwesomeIcon icon={faSun} />
           ) : (
             <FontAwesomeIcon icon={faMoon} />
@@ -177,7 +181,7 @@ const HeaderMenu = () => {
           padding: 0;
           display: flex;
           justify-content: flex-end; /* Вирівнювання елементів по головній осі(x) вправо */
-          align-items: center; /* Вирівнювання елементів по перетину осі(y) центр*/
+          /*align-items: center; /* Вирівнювання елементів по перетину осі(y) центр??? Коли забрав то вирівняло */
         }
         /* Условие для экранов с шириной от 0 до 1200px */
         @media (max-width: 1200px) {
