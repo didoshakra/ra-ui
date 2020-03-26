@@ -151,7 +151,7 @@ const HeaderMenu = () => {
         }
         /* Для екранів з шириною  0 до 1200px */
 
-        /*@media (max-width: 1200px) {*/
+        //@media (max-width: 1200px) {
         @media (max-width: 960px) {
           /*iPad<960px*/
           .nav {
