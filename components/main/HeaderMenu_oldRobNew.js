@@ -1,48 +1,39 @@
 //Праве меню з написами і їконками/змінюється при зменшенні
-//Два селекти-на мову і тему
-//До випадаючого меню
+//Селектор мови/Дві теми-іконки(themeTypeLight)
+//Після розділення на HeaderMenu+HeaderSeting
+
 import React, { useContext } from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faList,
-  faMoon,
-  faSun,
-  faGlobe
-} from "@fortawesome/free-solid-svg-icons";
-import LocaleSwitcher from "./LocaleSwitcher";
+import { faList } from "@fortawesome/free-solid-svg-icons";
 import useTranslation from "../../translations/useTranslation";
 import { ComponentContext } from "../../context/ComponentContext";
 import MobileNav from "../navigation/MobileNav";
-import myDropdown from "../navigation/myDropdown";
+// import myDropdown from "../navigation/myDropdown";
 
 const HeaderMenu = () => {
   const { locale, t } = useTranslation();
   const { state, dispatch } = useContext(ComponentContext);
-  // const theme = state.theme;
-  const { theme, themeType } = state;
+  const { theme, themeTypeLight } = state;
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
-  const [themeMenuOpen, setThemeMenuOpen] = React.useState(false);
   const [langMenuOpen, setLangMenuOpen] = React.useState(false);
-  const [myDropdownOpen, setMyDropdownOpen] = React.useState(true);
+  // const [myDropdownOpen, setMyDropdownOpen] = React.useState(true);
 
   const langMenuToggle = () => {
     setLangMenuOpen(!langMenuOpen);
   };
 
-  const myDropdownToggle = () => {
-    setMyDropdownOpen(!myDropdown);
-  };
+  // const myDropdownToggle = () => {
+  //   setMyDropdownOpen(!myDropdown);
+  // };
 
   //Використаємо старі змінні для 2-х тем setThemeMenuOpen='true'-theme: light
   const themeMenuToggle = () => {
     var newTheme = "light";
-    // if (!themeMenuOpen) {
-    if (themeType === "light") {
+    if (themeTypeLight) {
       newTheme = "dark";
     }
-    console.log("HeaderMenu.js/newTheme=", newTheme);
-    setThemeMenuOpen(!themeMenuOpen);
+    // console.log("HeaderMenu.js/newTheme=", newTheme);
     dispatch({ type: "THEME", payload: newTheme }); //Змінюємо state.theme
   };
 
@@ -117,57 +108,18 @@ const HeaderMenu = () => {
             </li>
           </ul>
         </li>
-        {/* іконка теми */}
-        <i
-          className="nav__item"
-          title={t("headerMenu_iconTitleTheme")}
-          onClick={themeMenuToggle}
-        >
-          {themeMenuOpen ? (
-            <FontAwesomeIcon icon={faSun} />
-          ) : (
-            <FontAwesomeIcon icon={faMoon} />
-          )}
-        </i>
-        {/* іконка мови */}
-        <i className="nav__item" title={t("headerMenu_iconTitleLanguage")}>
-          <FontAwesomeIcon icon={faGlobe} onClick={langMenuToggle} />
-        </i>
       </ul>
-      {/* Мобіцльна навігація*/}
+      {/* Мобільна навігація*/}
       <div className="menu-icon">
-        {/* іконк мобільного меню/гамбургер/ */}
+        {/* іконка мобільного меню/faList/ */}
         <i
           className="icon"
           onClick={() => mobileMenuToggle(mobileMenuOpen ? false : true)}
           title={t("headerMenu_iconTitleNavMenu")}
         >
-          {/* <FontAwesomeIcon icon={faBars} /> */}
           <FontAwesomeIcon icon={faList} />
         </i>
-        {/* іконка теми */}
-        <i
-          className="icon"
-          title={t("headerMenu_iconTitleTheme")}
-          onClick={themeMenuToggle}
-        >
-          {themeMenuOpen ? (
-            <FontAwesomeIcon icon={faSun} />
-          ) : (
-            <FontAwesomeIcon icon={faMoon} />
-          )}
-        </i>
-        {/* іконка мови */}
-        <i className="icon">
-          <FontAwesomeIcon
-            icon={faGlobe}
-            title={t("headerMenu_iconTitleLanguage")}
-            onClick={langMenuToggle}
-          />
-        </i>
       </div>
-      {/* випадаючий список мови-select */}
-      {langMenuOpen ? <LocaleSwitcher langMenuToggle={langMenuToggle} /> : ""}
       {/* Список мобильної навігації */}
       <MobileNav
         mobileMenuOpen={mobileMenuOpen}
@@ -181,7 +133,7 @@ const HeaderMenu = () => {
           padding: 0;
           display: flex;
           justify-content: flex-end; /* Вирівнювання елементів по головній осі(x) вправо */
-          /*align-items: center; /* Вирівнювання елементів по перетину осі(y) центр??? Коли забрав то вирівняло */
+          align-items: center; /* Вирівнювання елементів по перетину осі(y) центр*/
         }
         /* Условие для экранов с шириной от 0 до 1200px */
         @media (max-width: 1200px) {
@@ -192,13 +144,13 @@ const HeaderMenu = () => {
 
         .nav__item {
           margin-right: 20px; //відступи зправа
-          margin: 10px;
+          //margin: 10px;
           padding: 0px;
         }
 
-        //last-child останній елемент
+        /*last-child останній елемент*/
         .nav__item:last-child {
-          margin-right: 10px; //відступи зправа
+          margin-right: 5px; //відступи зправа
         }
 
         /* --------------- Mobile navigation button ----------- */

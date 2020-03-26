@@ -61,7 +61,9 @@ const Layout = ({ children, title, description }) => {
           text-rendering: optimizeLegibility;
         }
         a {
-          color: #1b789e;
+          /*color: #fff;*/
+          color: #e47328;
+          margin-right: 10px;
           text-decoration: none;
         }
 

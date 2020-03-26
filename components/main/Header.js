@@ -1,9 +1,10 @@
 //Header.js
 import { useContext, useEffect } from "react";
 
-import Logo from "./Logo";
+import HeaderLogo from "./HeaderLogo";
 import { ComponentContext } from "../../context/ComponentContext";
 import HeaderMenu from "./HeaderMenu";
+import HeaderSeting from "./HeaderSeting";
 
 // import DrawerButton from "./Navigation/DrawerBootton";
 // import Drawer from "./Navigation/Drawer";
@@ -62,12 +63,18 @@ const Header = () => {
       {/* <Drawer drawerOpen={drawerOpen} drawerOnClick={drawerOnClick} />
       <DrawerButton drawerOpen={drawerOpen} drawerOnClick={drawerOnClick} /> */}
       <div className="header-wrapper">
-        <Logo />
-        <HeaderMenu />
+        <HeaderLogo />
+        <div className="header-menu">
+          {/* Навігація */}
+          <HeaderMenu />
+          {/* іконки теми+мови */}
+          <HeaderSeting />
+        </div>
       </div>
 
       <style jsx>{`
         .header-fixed {
+          /* Для того щоб сховати */
           position: fixed;
           top: ${headerOpen ? "0" : "-60px"};
           height: 60px;
@@ -76,11 +83,17 @@ const Header = () => {
           z-index: 100;
         }
         .header-wrapper {
-          /*padding: 10px; /*Відступ зверху*/
-          max-height: 60px;
+          /*padding: 10px; /*Поля*/
+          //max-height: 60px;
+          height: 60px;
           display: flex;
-          justify-content: space-between; /*Вирівнювання вправо*/
-          align-items: center;
+          justify-content: space-between; /*по-X Вирівнювання вліво-вправо*/
+          align-items: center; /* по Y */
+        }
+        .header-menu {
+          display: flex;
+          justify-content: space-end; /*по-X Вирівнювання вправо*/
+          align-items: center; /* по Y */
         }
       `}</style>
       <style jsx>{`

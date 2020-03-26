@@ -8,7 +8,7 @@ import Drawer from "../navigation/Drawer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faBars } from "@fortawesome/free-solid-svg-icons";
 
-const Logo = () => {
+const HeaderLogo = () => {
   const { state } = useContext(ComponentContext);
   const theme = state.theme;
   const { locale, t } = useTranslation();
@@ -64,6 +64,7 @@ const Logo = () => {
         }
 
         @media (max-width: 600px) {
+          /*mobile<600px*/
           .text {
             display: none;
           }
@@ -72,4 +73,4 @@ const Logo = () => {
     </div>
   );
 };
-export default Logo;
+export default HeaderLogo;

@@ -44,8 +44,17 @@ const MobileNav = props => {
         <FontAwesomeIcon icon={faChevronRight} />
       </i>
       <div className="mobile-nav__title">{t("mobileNav_title")}</div>
-      <ul ref={wrapperRef}>
-        {props.renderLinks()}
+      <ul ref={wrapperRef} className="mobile-nav__list">
+        <li className="mobile-nav__item">
+          <Link href="/[lang]" as={`/${locale}`}>
+            <a className="mobile-nav__link">{t("mobileNav_itemHome")}</a>
+          </Link>
+        </li>
+        <li className="mobile-nav__item">
+          <Link href="/[lang]/about" as={`/${locale}/about`}>
+            <a className="mobile-nav__link">{t("mobileNav_itemAboutME")}</a>
+          </Link>
+        </li>
       </ul>
       <style jsx>{`
       /* ----------------- Мобліна навігація ----------------- */
@@ -56,24 +65,21 @@ const MobileNav = props => {
   position: fixed;
   top: 0px;
   /*display:  ${props.mobileMenuOpen ? "block" : "none"};*/
+  /*display: block;*/
   /* height: 100%; */
-  height: 300px;
+  height: 500px;
   width: 350px;
   right: -350px;
   padding: 10px 50px;
   border-radius: 10px;
-  //border-radius: 50px 0 0 50px;
-  list-style-type: none; /**Отменяет маркеры для списка. */
+  /* border-radius: 50px 0 0 50px; */
   background:${theme.colors.backgroundHeadMenu};
+  /*background:${theme.colors.backgroundMenu};*/
   transform: ${props.mobileMenuOpen ? "translateX(-100%)" : "translateX(0px)"};
    /*transform: ${
      props.mobileMenuOpen ? "translateX(-360px)" : "translateX(0px)"
    };*/
   transition: transform 0.4s ease-in;
-}
-
-.mobile-nav ul{
-  padding:  0;
 }
 
 /* При зменшенні екрану якщо не виключена кнопка щоб не показувало-не обовязково*/
@@ -95,7 +101,28 @@ const MobileNav = props => {
   color: #f6d142;
 }
 
+.mobile-nav__list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-nav__item {
+  margin-bottom: 30px;
+}
+
+.mobile-nav__link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 22px;
+}
+
+.mobile-nav__link:hover {
+  color: #ffd600;
+}
 /*Для iphone 5*/
+
  @media (max-width: 600px) {
   .mobile-nav {
     width: 320px;

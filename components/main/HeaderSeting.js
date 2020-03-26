@@ -1,0 +1,75 @@
+//HeaderSeting //Селектор мови і теми
+
+import React, { useContext } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMoon, faSun, faGlobe } from "@fortawesome/free-solid-svg-icons";
+import useTranslation from "../../translations/useTranslation";
+import { ComponentContext } from "../../context/ComponentContext";
+import LocaleSwitcher from "./LocaleSwitcher";
+
+const HeaderSeting = () => {
+  const { t } = useTranslation();
+  const { state, dispatch } = useContext(ComponentContext);
+  const { theme, themeTypeLight } = state;
+  const [langMenuOpen, setLangMenuOpen] = React.useState(false);
+
+  const langMenuToggle = () => {
+    setLangMenuOpen(!langMenuOpen);
+  };
+
+  const themeMenuToggle = () => {
+    var newTheme = "light";
+    if (themeTypeLight) {
+      newTheme = "dark";
+    }
+    // console.log("HeaderMenu.js/newTheme=", newTheme);
+    dispatch({ type: "THEME", payload: newTheme }); //Змінюємо state.theme
+  };
+
+  return (
+    <ul className="menu-icon">
+      {/* іконка теми */}
+      <li
+        className="icon"
+        title={t("headerMenu_iconTitleTheme")}
+        onClick={themeMenuToggle}
+      >
+        {themeTypeLight ? (
+          <FontAwesomeIcon icon={faSun} />
+        ) : (
+          <FontAwesomeIcon icon={faMoon} />
+        )}
+      </li>
+      {/* іконка мови */}
+      <li className="icon">
+        <FontAwesomeIcon
+          icon={faGlobe}
+          title={t("headerMenu_iconTitleLanguage")}
+          onClick={langMenuToggle}
+        />
+      </li>
+      {/* випадаючий список мови-select */}
+      {langMenuOpen ? <LocaleSwitcher langMenuToggle={langMenuToggle} /> : ""}
+      <style jsx>{`
+        .menu-icon {
+          margin: 0;
+          padding: 0;
+          display: flex;
+          justify-content: flex-end; /* Вирівнювання елементів по головній осі(x) вправо */
+          align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
+          list-style-type: none; /**Отменяет маркеры для списка. */
+        }
+        .icon {
+          padding: 0px;
+          margin-right: 5px; //відступи зправа
+          align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
+          /**/
+          color: ${theme.colors.textHead};
+          background: ${theme.colors.backgroundHead};
+        }
+      `}</style>
+    </ul>
+  );
+};
+
+export default HeaderSeting;
