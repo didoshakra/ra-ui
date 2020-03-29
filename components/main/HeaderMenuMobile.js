@@ -7,7 +7,7 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import useTranslation from "../../translations/useTranslation";
 import { ComponentContext } from "../../context/ComponentContext";
 
-const MobileNav = props => {
+const HeaderMenuMobile = props => {
   const { state } = useContext(ComponentContext);
   const theme = state.theme;
   const wrapperRef = useRef(null); //Для клацання поза обєктом
@@ -44,9 +44,7 @@ const MobileNav = props => {
         <FontAwesomeIcon icon={faChevronRight} />
       </i>
       <div className="mobile-nav__title">{t("mobileNav_title")}</div>
-      <ul ref={wrapperRef}>
-        {props.renderLinks()}
-      </ul>
+      <ul ref={wrapperRef}>{props.renderLinks()}</ul>
       <style jsx>{`
       /* ----------------- Мобліна навігація ----------------- */
 
@@ -60,8 +58,8 @@ const MobileNav = props => {
   height: 300px;
   width: 350px;
   right: -350px;
-  padding: 10px 50px;
-  border-radius: 10px;
+  padding: 0 0 50px 0;
+  border-radius: 5px;
   //border-radius: 50px 0 0 50px;
   list-style-type: none; /**Отменяет маркеры для списка. */
   background:${theme.colors.backgroundHeadMenu};
@@ -76,15 +74,15 @@ const MobileNav = props => {
   padding:  0;
 }
 
-/* При зменшенні екрану якщо не виключена кнопка щоб не показувало-не обовязково*/
+//При зменшенні екрану якщо не виключена кнопка щоб не показувало-не обовязково*/
 @media (min-width: 1199px) {
   .mobile-nav {
        display: none; /* Не показує мобільне меню на екранах>1199px */
   }
 }
-.mobile-nav .icon {
-  /* align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
-  color: #fff;
+.icon {
+  //align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
+  //color: ${theme.colors.textHead};
   //margin: 5px;
   padding: 0px;
 }
@@ -93,6 +91,10 @@ const MobileNav = props => {
   font-weight: 800;
   margin-bottom: 30px;
   color: #f6d142;
+}
+
+.icon:hover {
+  color: ${theme.colors.textHeadHover};
 }
 
 /*Для iphone 5*/
@@ -106,4 +108,4 @@ const MobileNav = props => {
   );
 };
 
-export default MobileNav;
+export default HeaderMenuMobile;

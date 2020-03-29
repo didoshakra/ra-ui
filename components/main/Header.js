@@ -5,6 +5,7 @@ import HeaderLogo from "./HeaderLogo";
 import { ComponentContext } from "../../context/ComponentContext";
 import HeaderMenu from "./HeaderMenu";
 import HeaderSeting from "./HeaderSeting";
+import HeaderAppMenu from "./HeaderAppMenu";
 
 // import DrawerButton from "./Navigation/DrawerBootton";
 // import Drawer from "./Navigation/Drawer";
@@ -67,6 +68,8 @@ const Header = () => {
         <div className="header-menu">
           {/* Навігація */}
           <HeaderMenu />
+          {/* App меню*/}
+          <HeaderAppMenu />
           {/* іконки теми+мови */}
           <HeaderSeting />
         </div>

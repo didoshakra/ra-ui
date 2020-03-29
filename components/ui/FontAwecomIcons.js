@@ -1,5 +1,6 @@
 //FontAwecomIcons.js
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; //fontawesome
+//fas-
 import {
   faList,
   faChevronRight,
@@ -11,34 +12,48 @@ import {
   faCoffee,
   faThumbsUp,
   faBars,
-  faUser
+  faUser,
+  faGripHorizontal,
+  faTh
 } from "@fortawesome/free-solid-svg-icons";
-import { faTwitter, faFacebook } from "@fortawesome/free-brands-svg-icons";
+//fab-
+import {
+  faApple,
+  faTwitter,
+  faFacebook
+} from "@fortawesome/free-brands-svg-icons";
 // import { faCoffee } from "@fortawesome/free-regular-svg-icons";
 
 const FontAwecomIcons = () => {
   return (
-    <div className="FontAwecomIcons">
+    <div className="font-awecom-icons">
       {/* <div> */}
-      <i>
+      {/* free-solid-svg-icons */}
+      <p>
         <FontAwesomeIcon icon={faList} />
-        faList
-      </i>
-      <i>
-        <FontAwesomeIcon icon={faChevronRight} />
-      </i>
-      <i>
-        <FontAwesomeIcon icon={faChevronLeft} />
-      </i>
-      <i>
-        <FontAwesomeIcon icon={faCog} />
-      </i>
-      <i>
-        <FontAwesomeIcon icon={faSun} />
-      </i>
-      <i>
-        <FontAwesomeIcon icon={faGlobe} />
-      </i>
+        *solid*/faList
+      </p>
+      <p>
+        <FontAwesomeIcon icon={faChevronRight} />faChevronRight
+      </p>
+      <p>
+        <FontAwesomeIcon icon={faChevronLeft} />faChevronLeft
+      </p>
+      <p>
+        <FontAwesomeIcon icon={faCog} />faCog
+      </p>
+      <p>
+        <FontAwesomeIcon icon={faSun} />faSun
+      </p>
+      <p>
+        <FontAwesomeIcon icon={faGlobe} />faGlobe
+      </p>
+      {/* <p>
+        <FontAwesomeIcon icon={faBuromobelexperte} />
+      </p> */}
+      <p>
+        <FontAwesomeIcon icon={faGripHorizontal} />
+      </p>
       <p>
         <FontAwesomeIcon icon={faCoffee} /> faCoffee
       </p>
@@ -55,22 +70,35 @@ const FontAwecomIcons = () => {
         <FontAwesomeIcon icon={faUser} /> faUser
       </p>
       <p>
+        <FontAwesomeIcon icon={faTh} /> faTh
+      </p>
+      {/* free-brands-svg-icons */}
+      <p>
+        <FontAwesomeIcon icon={faApple} />
+        *brands*/faApple
+      </p>
+
+      <p>
         <FontAwesomeIcon icon={faTwitter} /> faTwitter
       </p>
       <p>
         <FontAwesomeIcon icon={faFacebook} /> faFacebook
       </p>
+
       <style jsx>{`
         //Статичні стилі
-        .FontAwecomIcons {
+        .font-awecom-icons {
           display: flex;
+         //flex-wrap: wrap;
+         flex-flow: row wrap; //В рядок + переносити */
           text-align: center;
+          max-width: 1000%;
           // margin-top: 10px;
           // margin: 10px;
           // padding: 20px 30px;
           // bottom: 20px;
         }
-        .FontAwecomIcons p {
+        .font-awecom-icons p {
           margin: 10px;
           // padding: 20px 30px;
         }

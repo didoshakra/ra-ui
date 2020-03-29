@@ -1,15 +1,20 @@
 //Праве меню з написами і їконками/змінюється при зменшенні
 //Селектор мови/Дві теми-іконки(themeTypeLight)
-//Після розділення на HeaderMenu+HeaderSeting
 
 import React, { useContext } from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faList } from "@fortawesome/free-solid-svg-icons";
+import {
+  faList,
+  faMoon,
+  faSun,
+  faGlobe
+} from "@fortawesome/free-solid-svg-icons";
+import LocaleSwitcher from "./LocaleSwitcher";
 import useTranslation from "../../translations/useTranslation";
 import { ComponentContext } from "../../context/ComponentContext";
-import MobileNav from "../navigation/MobileNav";
-// import myDropdown from "../navigation/myDropdown";
+import HeaderMenuMobile from "./HeaderMenuMobile";
+import myDropdown from "../navigation/myDropdown";
 
 const HeaderMenu = () => {
   const { locale, t } = useTranslation();
@@ -108,20 +113,59 @@ const HeaderMenu = () => {
             </li>
           </ul>
         </li>
+        {/* іконка теми */}
+        <i
+          className="nav__item"
+          title={t("headerMenu_iconTitleTheme")}
+          onClick={themeMenuToggle}
+        >
+          {themeTypeLight ? (
+            <FontAwesomeIcon icon={faSun} />
+          ) : (
+            <FontAwesomeIcon icon={faMoon} />
+          )}
+        </i>
+        {/* іконка мови */}
+        <i className="nav__item" title={t("headerMenu_iconTitleLanguage")}>
+          <FontAwesomeIcon icon={faGlobe} onClick={langMenuToggle} />
+        </i>
       </ul>
-      {/* Мобільна навігація*/}
+      {/* Мобіцльна навігація*/}
       <div className="menu-icon">
-        {/* іконка мобільного меню/faList/ */}
+        {/* іконк мобільного меню/гамбургер/ */}
         <i
           className="icon"
           onClick={() => mobileMenuToggle(mobileMenuOpen ? false : true)}
           title={t("headerMenu_iconTitleNavMenu")}
         >
+          {/* <FontAwesomeIcon icon={faBars} /> */}
           <FontAwesomeIcon icon={faList} />
         </i>
+        {/* іконка теми */}
+        <i
+          className="icon"
+          title={t("headerMenu_iconTitleTheme")}
+          onClick={themeMenuToggle}
+        >
+          {themeTypeLight ? (
+            <FontAwesomeIcon icon={faSun} />
+          ) : (
+            <FontAwesomeIcon icon={faMoon} />
+          )}
+        </i>
+        {/* іконка мови */}
+        <i className="icon">
+          <FontAwesomeIcon
+            icon={faGlobe}
+            title={t("headerMenu_iconTitleLanguage")}
+            onClick={langMenuToggle}
+          />
+        </i>
       </div>
-      {/* Список мобильної навігації */}
-      <MobileNav
+      {/* випадаючий список мови-select */}
+      {/* {langMenuOpen ? <LocaleSwitcher langMenuToggle={langMenuToggle} /> : ""} */}
+      {/* Мобільне меню що появляється */}
+      <HeaderMenuMobile
         mobileMenuOpen={mobileMenuOpen}
         mobileMenuToggle={mobileMenuToggle}
       />

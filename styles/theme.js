@@ -26,6 +26,8 @@ export const themeDark = {
     // text: "#333",
     text: "#fff", //білий
     textHead: "#fff", //білий// background1: "#000", //чорний
+    textHeadHover: "rgba(52,144,246,1)",
+    textBackgroundHeadHover: "rgba(62,107,156,1)",
     // background: "#3f3f3f", //чорний grey[100] grey[900]
     // backgroundHead: "rgba(63,63,31,1)",
     // backgroundHeadMenu: "rgba(63,63,31,0.9)",
@@ -63,6 +65,9 @@ export const themeLith = {
     text: "#060214",
     //textHead: "#333", //чорний
     textHead: "#fff", //білий
+    textHeadHover: "#e47328",
+    //textBackgroundHeadHover: "#0d8ecf",
+    textBackgroundHeadHover: "rgba(20,92,173,1)",
     backgroundHead: "rgba(21,103,179,1)",
     backgroundHeadMenu: "rgba(21,103,179,0.9)",
     //background: "rgba(220,234,244,1)",

@@ -17,7 +17,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { ComponentContext } from "../../context/ComponentContext";
 import useTranslation from "../../translations/useTranslation";
-// import FontAwecomIcons from "../UI/FontAwecomIcons";
+import FontAwecomIcons from "../UI/FontAwecomIcons";
 
 const Layout = ({ children, title, description }) => {
   const { t } = useTranslation();
@@ -42,7 +42,6 @@ const Layout = ({ children, title, description }) => {
 
       <div className="content-wrapper">
         {/* <FontAwecomIcons /> */}
-
         {children}
       </div>
       <Footer />

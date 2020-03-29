@@ -1,51 +1,24 @@
-//Праве меню з написами і їконками/змінюється при зменшенні
-//Селектор мови/Дві теми-іконки(themeTypeLight)
+//HeaderMenu.js//Селектор мови+Дві теми-іконки(themeTypeLight)
+//Після розділення на HeaderMenu+HeaderSeting
+//список меню з масиву links
 
 import React, { useContext } from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faList,
-  faMoon,
-  faSun,
-  faGlobe
-} from "@fortawesome/free-solid-svg-icons";
-import LocaleSwitcher from "./LocaleSwitcher";
+import { faList } from "@fortawesome/free-solid-svg-icons";
 import useTranslation from "../../translations/useTranslation";
 import { ComponentContext } from "../../context/ComponentContext";
-import MobileNav from "../navigation/MobileNav";
-import myDropdown from "../navigation/myDropdown";
-// import HeaderSeting from "./HeaderSeting"
+import HeaderMenuMobile from "./HeaderMenuMobile";
 
 const HeaderMenu = () => {
   const { locale, t } = useTranslation();
-  const { state, dispatch } = useContext(ComponentContext);
-  const { theme, themeTypeLight } = state;
+  const { state } = useContext(ComponentContext);
+  const { theme } = state;
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
-  const [langMenuOpen, setLangMenuOpen] = React.useState(false);
-  // const [myDropdownOpen, setMyDropdownOpen] = React.useState(true);
-
-  const langMenuToggle = () => {
-    setLangMenuOpen(!langMenuOpen);
-  };
-
-  // const myDropdownToggle = () => {
-  //   setMyDropdownOpen(!myDropdown);
-  // };
-
-  //Використаємо старі змінні для 2-х тем setThemeMenuOpen='true'-theme: light
-  const themeMenuToggle = () => {
-    var newTheme = "light";
-    if (themeTypeLight) {
-      newTheme = "dark";
-    }
-    // console.log("HeaderMenu.js/newTheme=", newTheme);
-    dispatch({ type: "THEME", payload: newTheme }); //Змінюємо state.theme
-  };
 
   const mobileMenuToggle = arg => {
     setMobileMenuOpen(arg);
-    console.log("Menu.js/mobileMenuOpen2/arg =", arg);
+    // console.log("Menu.js/mobileMenuOpen2/arg =", arg);
   };
 
   const links = [
@@ -68,16 +41,15 @@ const HeaderMenu = () => {
     {
       a: "home_stan",
       link: "/home_stan"
+    },
+    {
+      a: t("headerMenu_iconTitleAboutME"),
+      link: "/about"
     }
-    // {
-    //   a: t("headerMenu_iconTitleAboutME"),
-    //   link: "/about"
-    // }
   ];
 
   const renderLinks = () => {
     return links.map((item, index) => {
-      console.log("item.link", item.link);
       return (
         <li className="nav__item" key={index}>
           <Link href={`/[lang]${item.link}`} as={`/${locale}${item.link}`}>
@@ -94,10 +66,9 @@ const HeaderMenu = () => {
       {/* для десктопа */}
       <ul className="nav">{renderLinks()}</ul>
       {/* Мобільна навігація*/}
-      <div className="menu-icon">
+      <div className="icon">
         {/* іконка мобільного меню/faList/ */}
         <i
-          className="icon"
           onClick={() => mobileMenuToggle(mobileMenuOpen ? false : true)}
           title={t("headerMenu_iconTitleNavMenu")}
         >
@@ -105,69 +76,75 @@ const HeaderMenu = () => {
         </i>
       </div>
       {/* Список мобильної навігації */}
-      <MobileNav
+      <HeaderMenuMobile
         mobileMenuOpen={mobileMenuOpen}
         mobileMenuToggle={mobileMenuToggle}
         renderLinks={renderLinks}
       />
       <style jsx global>{`
         .nav__item {
-          margin-right: 20px; //відступи зправа
+          //margin-right: 20px; //відступи зправа
           //margin: 10px;
-          padding: 0px;
+          //padding: 10px;
           list-style-type: none; /**Отменяет маркеры для списка. */
+          //
         }
 
         /*last-child останній елемент*/
-        .nav__item:last-child {
+        /*.nav__item:last-child {
           margin-right: 5px; //відступи зправа
-        }
+        }*/
         /*a {*/
         .nav__item-a {
           margin: 0;
+          padding: 10px 10px;
           color: ${theme.colors.textHead};
-          background: ${theme.colors.backgroundHead};
+          //background: ${theme.colors.backgroundHead};
           font-family: ${theme.fontFamily.serif};
           font-size: 18px; //Рукавичка
-          font-weight: 100; //шрубина
+          font-weight: 100; //грубина
         }
 
         .nav__item-a:hover {
-          color: rgba(238, 136, 49, 1);
+          color: ${theme.colors.textHeadHover};
+          background: ${theme.colors.textBackgroundHeadHover};
         }
       `}</style>
       <style jsx>{`
         .nav {
-          margin: 0;
-          padding: 0;
+          //margin: 0;
+          //padding: 0;
           display: flex;
           justify-content: flex-end; /* Вирівнювання елементів по головній осі(x) вправо */
           align-items: center; /* Вирівнювання елементів по перетину осі(y) центр*/
         }
         /* --- Mobile navigation icon -- */
-        .menu-icon {
+        .icon {
           display: none;
           //z-index: 19;
         }
+        .icon :hover {
+          color: ${theme.colors.textHeadHover};
+          background: ${theme.colors.textBackgroundHeadHover};
+        }
         /* Для екранів з шириною  0 до 1200px */
-
         //@media (max-width: 1200px) {
         @media (max-width: 960px) {
           /*iPad<960px*/
           .nav {
-            display: none; /*Временно удаляет элемент из документа */
+            display: none; /*не показує */
           }
-          .menu-icon {
-            display: flex;
-            justify-content: flex-end; /* Вирівнювання елементів по головній осі(x) вправо */
-            align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
-          }
+
           .icon {
-            padding: 0px;
-            margin-right: 5px; //відступи зправа
+            //margin-left: 10px; //Відступ від кожного елемента зліва
+            display: flex;
             align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
+            justify-content: center; /* Вирівнювання елементів по головній осі(x) вправо */
             color: ${theme.colors.textHead};
             background: ${theme.colors.backgroundHead};
+            border-radius: 45px; /* Радіус*/
+            width: 45px;
+            height: 45px;
           }
         }
       `}</style>

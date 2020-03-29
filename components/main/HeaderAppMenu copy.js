@@ -1,49 +1,28 @@
-//HeaderSeting //Селектор мови і теми
+//HeaderAppMenu.js
 
 import React, { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMoon, faSun, faGlobe } from "@fortawesome/free-solid-svg-icons";
+import { faTh } from "@fortawesome/free-solid-svg-icons";
 import useTranslation from "../../translations/useTranslation";
 import { ComponentContext } from "../../context/ComponentContext";
 import LocaleSwitcher from "./LocaleSwitcher";
 
-const HeaderSeting = () => {
+const HeaderAppMenu = () => {
   const { t } = useTranslation();
   const { state, dispatch } = useContext(ComponentContext);
-  const { theme, themeTypeLight } = state;
+  const { theme } = state;
   const [langMenuOpen, setLangMenuOpen] = React.useState(false);
 
   const langMenuToggle = () => {
     setLangMenuOpen(!langMenuOpen);
   };
 
-  const themeMenuToggle = () => {
-    var newTheme = "light";
-    if (themeTypeLight) {
-      newTheme = "dark";
-    }
-    // console.log("HeaderMenu.js/newTheme=", newTheme);
-    dispatch({ type: "THEME", payload: newTheme }); //Змінюємо state.theme
-  };
-
   return (
     <ul className="menu-icon">
-      {/* іконка теми */}
-      <li
-        className="icon"
-        title={t("headerMenu_iconTitleTheme")}
-        onClick={themeMenuToggle}
-      >
-        {themeTypeLight ? (
-          <FontAwesomeIcon icon={faSun} />
-        ) : (
-          <FontAwesomeIcon icon={faMoon} />
-        )}
-      </li>
-      {/* іконка мови */}
+      {/* іконка App */}
       <li className="icon">
         <FontAwesomeIcon
-          icon={faGlobe}
+          icon={faTh}
           title={t("headerMenu_iconTitleLanguage")}
           onClick={langMenuToggle}
         />
@@ -60,24 +39,19 @@ const HeaderSeting = () => {
           list-style-type: none; /**Отменяет маркеры для списка. */
         }
         .icon {
-          //margin-left: 10px; //Відступ від кожного елемента зліва
-          display: flex;
+          padding: 0px;
+          margin-right: 5px; //відступи зправа
           align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
-          justify-content: center; /* Вирівнювання елементів по головній осі(x) вправо */
+          /**/
           color: ${theme.colors.textHead};
           background: ${theme.colors.backgroundHead};
-          border-radius: 45px; /* Радіус*/
-          width: 45px;
-          height: 45px;
         }
         .icon:hover {
           color: ${theme.colors.textHeadHover};
-          background: ${theme.colors.textBackgroundHeadHover};
-          //cursor: pointer;
         }
       `}</style>
     </ul>
   );
 };
 
-export default HeaderSeting;
+export default HeaderAppMenu;

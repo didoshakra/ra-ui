@@ -2,16 +2,21 @@
 //useTranslation.js
 import { useContext } from "react";
 import { ComponentContext } from "../context/ComponentContext";
-import translations from "./translations";
+// import translations from "./translations";
 import { defaultLocale } from "./config";
+import mapTranslations from "./mapTranslations";
 
 export default function useTranslation() {
   // const { locale } = useContext(LocaleContext);
   const { state } = useContext(ComponentContext);
   const locale = state.locale;
-  // const locale1 = "uk";
-
   // console.log("000/ useTranslation.js/locale=", locale);
+  //Визначення файлу перекладу
+  const req = require.context("./translation_api", false, /.*\.js$/);
+  // console.log("useTranslation.js/req=", req);
+  const api = "./ra_ui.js";
+  const translations = mapTranslations(req, api).default;
+  // console.log("useTranslation.js/trans=", translations);
 
   function t(key) {
     // const locale = "uk";
