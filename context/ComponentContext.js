@@ -13,6 +13,9 @@ import { themeDark, themeLith, themeOther } from "../styles/theme";
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case "APP":
+      // console.log("***store/reducer/action=", action);
+      return { ...state, app: action.payload };
     case "LOCALE":
       // console.log("***store/reducer/action=", action);
       return { ...state, locale: action.payload };
@@ -35,7 +38,8 @@ const initialState = {
   locale: "en",
   theme: themeLith,
   // themeType: "light"
-  themeTypeLight: true
+  themeTypeLight: true,
+  app: "ra"
 };
 
 export const ComponentContext = createContext(initialState);

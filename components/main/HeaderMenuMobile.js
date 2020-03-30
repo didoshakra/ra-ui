@@ -1,7 +1,7 @@
 //MenuToggle.js //https://coursehunter.net/course/reactjs-s-nulya-do-profi
 //Виїжджаюче меню зправа по гамбургеру
 import React, { useContext, useRef, useEffect } from "react";
-import Link from "next/link";
+// import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import useTranslation from "../../translations/useTranslation";
@@ -10,16 +10,18 @@ import { ComponentContext } from "../../context/ComponentContext";
 const HeaderMenuMobile = props => {
   const { state } = useContext(ComponentContext);
   const theme = state.theme;
+  const { t } = useTranslation();
+
+  //Для клацання поза обєктом
+  //Добавити в контрольований об'єкт-(ref={wrapperRef})- (<ul ref={wrapperRef}... )
   const wrapperRef = useRef(null); //Для клацання поза обєктом
   useOutsideAlerter(wrapperRef); //Для клацання поза обєктом
-  const { locale, t } = useTranslation();
-
   function useOutsideAlerter(ref) {
     //*** Для клацання поза елементом Решение с React ^ 16.8 с использованием хуков
     function handleClickOutside(event) {
       if (ref.current && !ref.current.contains(event.target)) {
         //Якщо поза елементом
-        // alert("Ти клацнув поза мною!");
+        //alert("Ти клацнув поза мною!");
         if (props.mobileMenuOpen) {
           props.mobileMenuToggle(false); //Закриваєм меню
         }
@@ -44,21 +46,21 @@ const HeaderMenuMobile = props => {
         <FontAwesomeIcon icon={faChevronRight} />
       </i>
       <div className="mobile-nav__title">{t("mobileNav_title")}</div>
-      <ul ref={wrapperRef}>{props.renderLinks()}</ul>
+      <ul ref={wrapperRef}>{props.renderMenu()}</ul>
       <style jsx>{`
       /* ----------------- Мобліна навігація ----------------- */
 
 .mobile-nav {
-  /*z-index: 9;*/
+  z-index: 9;
   /*position: absolute;*//*на мобілках видно мені коли переміститись вправо*стрілка)*/
   position: fixed;
   top: 0px;
   /*display:  ${props.mobileMenuOpen ? "block" : "none"};*/
   /* height: 100%; */
-  height: 300px;
+  min-height: 200px;
   width: 350px;
   right: -350px;
-  padding: 0 0 50px 0;
+  padding: 10px 0 10px 0;
   border-radius: 5px;
   //border-radius: 50px 0 0 50px;
   list-style-type: none; /**Отменяет маркеры для списка. */
@@ -72,6 +74,7 @@ const HeaderMenuMobile = props => {
 
 .mobile-nav ul{
   padding:  0;
+  margin:
 }
 
 //При зменшенні екрану якщо не виключена кнопка щоб не показувало-не обовязково*/
@@ -80,12 +83,14 @@ const HeaderMenuMobile = props => {
        display: none; /* Не показує мобільне меню на екранах>1199px */
   }
 }
+
 .icon {
   //align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
-  //color: ${theme.colors.textHead};
-  //margin: 5px;
-  padding: 0px;
+  margin: 10px;
+  //padding: 10px;
+  color: ${theme.colors.textHead};
 }
+
 .mobile-nav__title {
   font-size: 28px;
   font-weight: 800;

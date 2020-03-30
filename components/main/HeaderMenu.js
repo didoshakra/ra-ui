@@ -1,6 +1,6 @@
 //HeaderMenu.js//Селектор мови+Дві теми-іконки(themeTypeLight)
 //Після розділення на HeaderMenu+HeaderSeting
-//список меню з масиву links
+//список меню з масиву menu
 
 import React, { useContext } from "react";
 import Link from "next/link";
@@ -21,7 +21,7 @@ const HeaderMenu = () => {
     // console.log("Menu.js/mobileMenuOpen2/arg =", arg);
   };
 
-  const links = [
+  const menu = [
     {
       a: "home_hoer",
       link: "/"
@@ -48,8 +48,8 @@ const HeaderMenu = () => {
     }
   ];
 
-  const renderLinks = () => {
-    return links.map((item, index) => {
+  const renderMenu = () => {
+    return menu.map((item, index) => {
       return (
         <li className="nav__item" key={index}>
           <Link href={`/[lang]${item.link}`} as={`/${locale}${item.link}`}>
@@ -64,7 +64,7 @@ const HeaderMenu = () => {
     // Навігація
     <React.Fragment>
       {/* для десктопа */}
-      <ul className="nav">{renderLinks()}</ul>
+      <ul className="nav">{renderMenu()}</ul>
       {/* Мобільна навігація*/}
       <div className="icon">
         {/* іконка мобільного меню/faList/ */}
@@ -79,35 +79,28 @@ const HeaderMenu = () => {
       <HeaderMenuMobile
         mobileMenuOpen={mobileMenuOpen}
         mobileMenuToggle={mobileMenuToggle}
-        renderLinks={renderLinks}
+        renderMenu={renderMenu}
       />
       <style jsx global>{`
         .nav__item {
-          //margin-right: 20px; //відступи зправа
-          //margin: 10px;
-          //padding: 10px;
-          list-style-type: none; /**Отменяет маркеры для списка. */
-          //
-        }
-
-        /*last-child останній елемент*/
-        /*.nav__item:last-child {
-          margin-right: 5px; //відступи зправа
-        }*/
-        /*a {*/
-        .nav__item-a {
-          margin: 0;
-          padding: 10px 10px;
-          color: ${theme.colors.textHead};
+          margin: 0px;
+          padding: 5px 10px;//Щоб зробити заокруглення
           //background: ${theme.colors.backgroundHead};
           font-family: ${theme.fontFamily.serif};
           font-size: 18px; //Рукавичка
           font-weight: 100; //грубина
+          list-style-type: none; /**Отменяет маркеры для списка. */
         }
 
+        .nav__item:hover {
+          background: ${theme.colors.textBackgroundHeadHover};
+        }
+
+        .nav__item-a {
+          color: ${theme.colors.textHead};
+        }
         .nav__item-a:hover {
           color: ${theme.colors.textHeadHover};
-          background: ${theme.colors.textBackgroundHeadHover};
         }
       `}</style>
       <style jsx>{`
