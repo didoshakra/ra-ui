@@ -11,11 +11,11 @@ const HeaderSeting = () => {
   const { t } = useTranslation();
   const { state, dispatch } = useContext(ComponentContext);
   const { theme, themeTypeLight } = state;
-  // const [langMenuOpen, setLangMenuOpen] = React.useState(false);
+  const [langMenuOpen, setLangMenuOpen] = React.useState(false);
 
-  // const langMenuToggle = () => {
-  //   setLangMenuOpen(!langMenuOpen);
-  // };
+  const langMenuToggle = () => {
+    setLangMenuOpen(!langMenuOpen);
+  };
 
   const themeMenuToggle = () => {
     var newTheme = "light";
@@ -41,16 +41,15 @@ const HeaderSeting = () => {
         )}
       </li>
       {/* іконка мови */}
-      {/* <li className="icon">
+      <li className="icon">
         <FontAwesomeIcon
           icon={faGlobe}
           title={t("headerMenu_iconTitleLanguage")}
           onClick={langMenuToggle}
         />
-      </li> */}
+      </li>
       {/* випадаючий список мови-select */}
-      {/* {langMenuOpen ? <LocaleSwitcher langMenuToggle={langMenuToggle} /> : ""} */}
-      <LocaleSwitcher />
+      {langMenuOpen ? <LocaleSwitcher langMenuToggle={langMenuToggle} /> : ""}
       <style jsx>{`
         .menu-icon {
           margin: 0;

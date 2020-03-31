@@ -45,8 +45,44 @@ const Layout = ({ children, title, description }) => {
         {children}
       </div>
       <Footer />
-
       <style jsx global>{`
+        //Глобальні стилі для елементів headerMenu
+        .g-nav__item {
+          margin: 0px;
+          padding: 5px 10px;//Щоб зробити заокруглення
+          //background: ${theme.colors.backgroundHead};
+          font-family: ${theme.fontFamily.serif};
+          font-size: 18px; //Рукавичка
+          font-weight: 100; //грубина
+          list-style-type: none; /**Отменяет маркеры для списка. */
+        }
+
+        .g-nav__item:hover {
+          background: ${theme.colors.textBackgroundHeadHover};
+        }
+
+        .g-nav__item-a {
+          color: ${theme.colors.textHead};
+        }
+        .g-nav__item-a:hover {
+          color: ${theme.colors.textHeadHover};
+        }
+        .g-nav__item__active {
+          margin: 0;
+          padding: 5px 10px;
+          display: block;
+          //text-decoration: none;
+          font-family: ${theme.fontFamily.serif};
+          font-size: 18px; //Рукавичка
+          font-weight: 100; //грубина
+          color: ${theme.colors.textHead};
+          //
+          background: red;
+          color: white;
+        }
+      `}</style>
+      <style jsx global>{`
+        //global Next.js
         *,
         *::before,
         *::after {
@@ -92,23 +128,22 @@ const Layout = ({ children, title, description }) => {
         img {
           max-width: 100%;
         }
-
+      `}</style>
+      <style jsx global>{`
+        //Для динамічних стилів окремо
+        body {
+          background: ${theme.colors.background};
+          color: ${theme.colors.text};
+          font-family: ${theme.fontFamily.sansSerif};
+        }
+      `}</style>
+      <style jsx>{`
         /* Layout */
         .content-wrapper {
           margin-top: 50px; /*Щоб контент не заїжджав під шапку*/
           min-height: 600px;
           text-align: center;
-          //margin: 0px "auto";
-          //margin: 0px;
-          //padding: 0px 10px;
           padding: 0px;
-        }
-      `}</style>
-      <style jsx global>{`
-        body {
-          background: ${theme.colors.background};
-          color: ${theme.colors.text};
-          font-family: ${theme.fontFamily.sansSerif};
         }
       `}</style>
     </div>

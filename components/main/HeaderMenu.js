@@ -51,9 +51,9 @@ const HeaderMenu = () => {
   const renderMenu = () => {
     return menu.map((item, index) => {
       return (
-        <li className="nav__item" key={index}>
+        <li className="g-nav__item" key={index}>
           <Link href={`/[lang]${item.link}`} as={`/${locale}${item.link}`}>
-            <a className="nav__item-a">{item.a}</a>
+            <a className="g-nav__item-a">{item.a}</a>
           </Link>
         </li>
       );
@@ -81,28 +81,7 @@ const HeaderMenu = () => {
         mobileMenuToggle={mobileMenuToggle}
         renderMenu={renderMenu}
       />
-      <style jsx global>{`
-        .nav__item {
-          margin: 0px;
-          padding: 5px 10px;//Щоб зробити заокруглення
-          //background: ${theme.colors.backgroundHead};
-          font-family: ${theme.fontFamily.serif};
-          font-size: 18px; //Рукавичка
-          font-weight: 100; //грубина
-          list-style-type: none; /**Отменяет маркеры для списка. */
-        }
 
-        .nav__item:hover {
-          background: ${theme.colors.textBackgroundHeadHover};
-        }
-
-        .nav__item-a {
-          color: ${theme.colors.textHead};
-        }
-        .nav__item-a:hover {
-          color: ${theme.colors.textHeadHover};
-        }
-      `}</style>
       <style jsx>{`
         .nav {
           //margin: 0;

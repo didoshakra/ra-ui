@@ -12,39 +12,34 @@ const HeaderAppMenu = () => {
   const { state, dispatch } = useContext(ComponentContext);
   const { theme, app } = state;
   const [appMenuOpen, setAppMenuOpen] = React.useState(false);
-  // const [app, setApp] = React.useState("home_video");
 
-  const appMenuToggle = () => {
-    setAppMenuOpen(!appMenuOpen);
-  };
-
-  //Для клацання поза обєктом
-  //Добавити в контрольований об'єкт-(ref={wrapperRef})- (<ul ref={wrapperRef}... )
-  const wrapperRef = useRef(null); //Для клацання поза обєктом
-  useOutsideAlerter(wrapperRef); //Для клацання поза обєктом
-  function useOutsideAlerter(ref) {
-    // console.log("HeaderAppMenu.JS/useOutsideAlerter(ref)");
-    //*** Для клацання поза елементом Решение с React ^ 16.8 с использованием хуков
-    function handleClickOutside(event) {
-      if (ref.current && !ref.current.contains(event.target)) {
-        //Якщо поза елементом
-        //alert("Ти клацнув поза мною!");
-        if (appMenuOpen) {
-          setAppMenuOpen(false); //Закриваєм меню
-        }
-      }
-    }
-    useEffect(() => {
-      // Додаєм(привязуєм) прослуховувач події
-      document.addEventListener("mousedown", handleClickOutside);
-      document.addEventListener("scroll", handleClickOutside); //Для скролу
-      return () => {
-        // Від’єднайте слухача події під час очищення
-        document.removeEventListener("mousedown", handleClickOutside);
-        document.removeEventListener("scroll", handleClickOutside);
-      };
-    });
-  }
+  // //Для клацання поза обєктом
+  // //Добавити в контрольований об'єкт-(ref={wrapperRef})- (<ul ref={wrapperRef}... )
+  // const wrapperRef = useRef(null); //Для клацання поза обєктом
+  // useOutsideAlerter(wrapperRef); //Для клацання поза обєктом
+  // function useOutsideAlerter(ref) {
+  //   // console.log("HeaderAppMenu.JS/useOutsideAlerter(ref)");
+  //   //*** Для клацання поза елементом Решение с React ^ 16.8 с использованием хуков
+  //   function handleClickOutside(event) {
+  //     if (ref.current && !ref.current.contains(event.target)) {
+  //       //Якщо поза елементом
+  //       //alert("Ти клацнув поза мною!");
+  //       if (appMenuOpen) {
+  //         setAppMenuOpen(false); //Закриваєм меню
+  //       }
+  //     }
+  //   }
+  //   useEffect(() => {
+  //     // Додаєм(привязуєм) прослуховувач події
+  //     document.addEventListener("mousedown", handleClickOutside);
+  //     document.addEventListener("scroll", handleClickOutside); //Для скролу
+  //     return () => {
+  //       // Від’єднайте слухача події під час очищення
+  //       document.removeEventListener("mousedown", handleClickOutside);
+  //       document.removeEventListener("scroll", handleClickOutside);
+  //     };
+  //   });
+  // }
 
   const menu = [
     {
@@ -72,13 +67,13 @@ const HeaderAppMenu = () => {
       link: "/about"
     }
   ];
+  const appMenuToggle = () => {
+    setAppMenuOpen(!appMenuOpen);
+  };
   const appSelectToggle = e => {
-    // console.log("AppMenu.js/appSelectToggle/e.target.dataset.index=",
     //   e.currentTarget.dataset.index // !!! не e.target, а e.currentTarget
-    // );
-    // setApp(menu[e.currentTarget.dataset.index+1].a);
-    const i = e.currentTarget.dataset.index;
-    const newApp = menu[i].a;
+    // const i = e.currentTarget.dataset.index;
+    const newApp = menu[e.currentTarget.dataset.index].a;
     // setApp(newApp);
     console.log("AppMenu.js/appSelectToggle/newApp=", newApp);
     dispatch({ type: "APP", payload: newApp }); //Змінюємо state.theme
@@ -88,11 +83,11 @@ const HeaderAppMenu = () => {
       return (
         <li
           data-index={index} //data-ХХ->Для передачі даних в e.currentTarget.dataset.XX
-          className={item.a === app ? "nav__item__active" : "nav__item"}
+          className={item.a === app ? "g-nav__item__active" : "g-nav__item"}
           onClick={appSelectToggle}
         >
           <Link href={`/[lang]${item.link}`} as={`/${locale}${item.link}`}>
-            <a className="nav__item-a">{item.a}</a>
+            <a className="g-nav__item-a">{item.a}</a>
           </Link>
         </li>
       );
@@ -100,7 +95,8 @@ const HeaderAppMenu = () => {
   };
 
   return (
-    <div ref={wrapperRef} className="menu-icon">
+    // <div ref={wrapperRef} className="menu-icon">
+    <div className="menu-icon">
       {/* іконка App */}
       <a className="icon">
         <FontAwesomeIcon
@@ -110,36 +106,7 @@ const HeaderAppMenu = () => {
         />
       </a>
       <ul className="dropdown-content">{renderMenu()}</ul>
-      <style jsx global>{`
-        .nav__item {
-          margin: 0;
-          padding: 5px10px;
-          display: block;
-          text-decoration: none;
-          font-family: ${theme.fontFamily.serif};
-          font-size: 18px; //Рукавичка
-          font-weight: 100; //грубина
-          color: ${theme.colors.textHead};
-        }
 
-        .nav__item:hover {
-          color: ${theme.colors.textHeadHover};
-          background: ${theme.colors.textBackgroundHeadHover};
-        }
-        .nav__item__active {
-          margin: 0;
-          padding: 5px 10px;
-          display: block;
-          //text-decoration: none;
-          font-family: ${theme.fontFamily.serif};
-          font-size: 18px; //Рукавичка
-          font-weight: 100; //грубина
-          color: ${theme.colors.textHead};
-          //
-          background: red;
-          color: white;
-        }
-      `}</style>
       <style jsx>{`
         .menu-icon {
           margin: 0;
@@ -185,22 +152,6 @@ const HeaderAppMenu = () => {
           background: ${theme.colors.backgroundHeadMenu};
 
         }*/
-       /*.dropdown-content {
-          //плавно проявляється (opacity 0.5s)
-          padding: 0;
-          margin: 0;
-          right: 0px;
-          min-width: 100px;
-          overflow: auto; //якщо не поміщається
-          border-radius: 3px;
-          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-          position: absolute;
-         opacity: ${appMenuOpen ? "1" : "0"};
-         transition: opacity 0.5s linear;
-          //visibility: ${appMenuOpen ? "visible" : "hidden"};
-          //transition:  visibility 0s, opacity 0.5s linear;
-          background: ${theme.colors.backgroundHeadMenu};
-        }*/
         .dropdown-content {
           //плавно виїжджає
           border-radius: 0 0 5px 5px;
@@ -214,9 +165,9 @@ const HeaderAppMenu = () => {
           box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
           position: absolute;
           transform: ${appMenuOpen ? "translateY(100%)" : "translateY(0px)"};
-         transition: transform 0.5s linear;
-         z-index: -1;
-         background: ${theme.colors.backgroundHeadMenu};
+          transition: transform 0.5s linear;
+          z-index: -1;
+          background: ${theme.colors.backgroundHeadMenu};
         }
       `}</style>
     </div>

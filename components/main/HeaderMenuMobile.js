@@ -47,67 +47,66 @@ const HeaderMenuMobile = props => {
       </i>
       <div className="mobile-nav__title">{t("mobileNav_title")}</div>
       <ul ref={wrapperRef}>{props.renderMenu()}</ul>
+
       <style jsx>{`
-      /* ----------------- Мобліна навігація ----------------- */
+        .mobile-nav {
+          z-index: 9;
+          /*position: absolute;*//*на мобілках видно мені коли переміститись вправо*стрілка)*/
+          position: fixed;
+          top: 0px;
+          /*display:  ${props.mobileMenuOpen ? "block" : "none"};*/
+          /* height: 100%; */
+          min-height: 200px;
+          width: 350px;
+          right: -350px;
+          padding: 10px 0 10px 0;
+          border-radius: 5px;
+          //border-radius: 50px 0 0 50px;
+          list-style-type: none; /**Отменяет маркеры для списка. */
+          background:${theme.colors.backgroundHeadMenu};
+          transform: ${
+            props.mobileMenuOpen ? "translateX(-100%)" : "translateX(0px)"
+          };
+          /*transform: ${
+            props.mobileMenuOpen ? "translateX(-360px)" : "translateX(0px)"
+          };*/
+          transition: transform 0.4s ease-in;
+        }
 
-.mobile-nav {
-  z-index: 9;
-  /*position: absolute;*//*на мобілках видно мені коли переміститись вправо*стрілка)*/
-  position: fixed;
-  top: 0px;
-  /*display:  ${props.mobileMenuOpen ? "block" : "none"};*/
-  /* height: 100%; */
-  min-height: 200px;
-  width: 350px;
-  right: -350px;
-  padding: 10px 0 10px 0;
-  border-radius: 5px;
-  //border-radius: 50px 0 0 50px;
-  list-style-type: none; /**Отменяет маркеры для списка. */
-  background:${theme.colors.backgroundHeadMenu};
-  transform: ${props.mobileMenuOpen ? "translateX(-100%)" : "translateX(0px)"};
-   /*transform: ${
-     props.mobileMenuOpen ? "translateX(-360px)" : "translateX(0px)"
-   };*/
-  transition: transform 0.4s ease-in;
-}
+        .mobile-nav ul{
+          padding:  0;//треба
+          margin:0;//треба
+        }
 
-.mobile-nav ul{
-  padding:  0;
-  margin:
-}
+        //При зменшенні екрану якщо не виключена кнопка щоб не показувало-не обовязково*/
+        @media (min-width: 1199px) {
+          .mobile-nav {
+              display: none; /* Не показує мобільне меню на екранах>1199px */
+          }
+        }
+        .icon {
+          //align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
+          margin: 10px;
+          //padding: 10px;
+          color: ${theme.colors.textHead};
+        }
+        .mobile-nav__title {
+          font-size: 28px;
+          font-weight: 800;
+          margin-bottom: 30px;
+          color: #f6d142;
+        }
 
-//При зменшенні екрану якщо не виключена кнопка щоб не показувало-не обовязково*/
-@media (min-width: 1199px) {
-  .mobile-nav {
-       display: none; /* Не показує мобільне меню на екранах>1199px */
-  }
-}
+        .icon:hover {
+          color: ${theme.colors.textHeadHover};
+        }
 
-.icon {
-  //align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
-  margin: 10px;
-  //padding: 10px;
-  color: ${theme.colors.textHead};
-}
-
-.mobile-nav__title {
-  font-size: 28px;
-  font-weight: 800;
-  margin-bottom: 30px;
-  color: #f6d142;
-}
-
-.icon:hover {
-  color: ${theme.colors.textHeadHover};
-}
-
-/*Для iphone 5*/
- @media (max-width: 600px) {
-  .mobile-nav {
-    width: 320px;
-    right: -320px;
-}
+        /*Для iphone 5*/
+        @media (max-width: 600px) {
+          .mobile-nav {
+            width: 320px;
+            right: -320px;
+        }
       `}</style>
     </div>
   );
