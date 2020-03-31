@@ -1,4 +1,4 @@
-//HeaderSeting //Селектор мови і теми
+//HeaderSeting //Зміна мови і теми
 
 import React, { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -28,7 +28,7 @@ const HeaderSeting = () => {
 
   return (
     <ul className="menu-icon">
-      {/* іконка теми */}
+      {/* іконка зміни теми */}
       <li
         className="icon"
         title={t("headerMenu_iconTitleTheme")}
@@ -40,17 +40,10 @@ const HeaderSeting = () => {
           <FontAwesomeIcon icon={faMoon} />
         )}
       </li>
-      {/* іконка мови */}
-      {/* <li className="icon">
-        <FontAwesomeIcon
-          icon={faGlobe}
-          title={t("headerMenu_iconTitleLanguage")}
-          onClick={langMenuToggle}
-        />
-      </li> */}
-      {/* випадаючий список мови-select */}
-      {/* {langMenuOpen ? <LocaleSwitcher langMenuToggle={langMenuToggle} /> : ""} */}
+
+      {/* іконка+випадаючий список мови-select */}
       <LocaleSwitcher />
+
       <style jsx>{`
         .menu-icon {
           margin: 0;

@@ -4,23 +4,23 @@ import { useContext } from "react";
 import useTranslation from "../../translations/useTranslation";
 import { ComponentContext } from "../../context/ComponentContext";
 // import DrawerButton from "../Navigation/DrawerBootton";
-import Drawer from "../navigation/Drawer";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes, faBars } from "@fortawesome/free-solid-svg-icons";
+import HeaderDrawer from "./HeaderDrawer";
 
 const HeaderLogo = () => {
   const { state } = useContext(ComponentContext);
   const theme = state.theme;
   const { locale, t } = useTranslation();
   const [drawerOpen, setDrawerOpen] = React.useState(false);
-  const drawerOnClick = () => {
-    setDrawerOpen(!drawerOpen);
-  };
+
+  // const drawerOnClick = () => {
+  //   setDrawerOpen(!drawerOpen);
+  // };
 
   return (
     <div className="logo">
-      <div className="icon">
-        {/* Іконка гамбургер лівого виїздного меню */}
+      <HeaderDrawer />
+      {/* <div className="icon">
+        //Іконка гамбургер лівого виїздного меню
         <i onClick={drawerOnClick}>
           {drawerOpen ? (
             <FontAwesomeIcon icon={faTimes} />
@@ -28,7 +28,7 @@ const HeaderLogo = () => {
             <FontAwesomeIcon icon={faBars} />
           )}
         </i>
-      </div>
+      </div> */}
       {/* <DrawerButton drawerOpen={drawerOpen} drawerOnClick={drawerOnClick} /> */}
       <div className="icon">
         <Link href="/[lang]" as={`/${locale}`}>
@@ -45,7 +45,7 @@ const HeaderLogo = () => {
         </a>
       </Link>
       {/* Саме ліве виїздне меню */}
-      <Drawer drawerOpen={drawerOpen} drawerOnClick={drawerOnClick} />
+      {/* <Drawer drawerOpen={drawerOpen} drawerOnClick={drawerOnClick} /> */}
       <style jsx>{`
         .logo {
           margin: 0;
