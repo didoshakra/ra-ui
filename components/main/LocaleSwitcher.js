@@ -17,11 +17,13 @@ const LocaleSwitcher = () => {
 
   const langMenuToggle = () => {
     setLangMenuOpen(!langMenuOpen);
+    // console.log("langMenuToggle/langMenuOpen=", langMenuOpen);
   };
   //React.useCallback!!!???
   const handleLocaleChange = React.useCallback(
     e => {
-      langMenuToggle(); //Закриває меню
+      setLangMenuOpen(false); //Закриваєм меню
+      //langMenuToggle(); //Закриває меню
       const newLocale = e.currentTarget.dataset.index;
       // console.log("LocaleSwitcher.js/newLocale=", newLocale);
       const regex = new RegExp(`^/(${locales.join("|")})`);
@@ -43,7 +45,10 @@ const LocaleSwitcher = () => {
       if (ref.current && !ref.current.contains(event.target)) {
         //Якщо поза елементом
         // alert("Ти клацнув поза мною!");
-        langMenuToggle(); //Закриваєм меню
+        // langMenuToggle(); //Погано-спрацьвує від іншого обєкту
+        if (langMenuOpen) {
+          setLangMenuOpen(false); //Закриваєм меню
+        }
       }
     }
     useEffect(() => {
@@ -83,7 +88,7 @@ const LocaleSwitcher = () => {
           onClick={langMenuToggle}
         />
       </a>
-      <ul className="dropdown-content1">{renderMenu()}</ul>
+      <ul className="dropdown-content">{renderMenu()}</ul>
       <style jsx>{`
         .menu-icon {
           margin: 0;
@@ -110,7 +115,7 @@ const LocaleSwitcher = () => {
           background: ${theme.colors.textBackgroundHeadHover};
           //cursor: pointer;
         }
-        /*.dropdown-content1 {
+        .dropdown-content {
           //плавно проявляється (opacity 0.5s)
           padding: 0;
           margin: 0;
@@ -123,22 +128,22 @@ const LocaleSwitcher = () => {
           opacity: ${langMenuOpen ? "1" : "0"};
           transition: opacity 0.5s linear;
           background: ${theme.colors.backgroundHeadMenu};
-        }*/
-        .dropdown-content {
+        }
+        /*.dropdown-content {
           //плавно виїжджає
           border-radius: 0 0 5px 5px;
           padding: 0 0 5px 0;//Щоб зробити заокруглення (border-radius)
           margin: 0;
           right: 0px;
           min-width: 100px;
-          top: -200px;
+          top: -80px;
           box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
           position: absolute;
           transform: ${langMenuOpen ? "translateY(100%)" : "translateY(0px)"};
           transition: transform 0.5s linear;
           z-index: -1;
           background: ${theme.colors.backgroundHeadMenu};
-        }
+        }*/
       `}</style>
     </div>
   );

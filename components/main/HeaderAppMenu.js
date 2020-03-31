@@ -13,33 +13,33 @@ const HeaderAppMenu = () => {
   const { theme, app } = state;
   const [appMenuOpen, setAppMenuOpen] = React.useState(false);
 
-  // //Для клацання поза обєктом
-  // //Добавити в контрольований об'єкт-(ref={wrapperRef})- (<ul ref={wrapperRef}... )
-  // const wrapperRef = useRef(null); //Для клацання поза обєктом
-  // useOutsideAlerter(wrapperRef); //Для клацання поза обєктом
-  // function useOutsideAlerter(ref) {
-  //   // console.log("HeaderAppMenu.JS/useOutsideAlerter(ref)");
-  //   //*** Для клацання поза елементом Решение с React ^ 16.8 с использованием хуков
-  //   function handleClickOutside(event) {
-  //     if (ref.current && !ref.current.contains(event.target)) {
-  //       //Якщо поза елементом
-  //       //alert("Ти клацнув поза мною!");
-  //       if (appMenuOpen) {
-  //         setAppMenuOpen(false); //Закриваєм меню
-  //       }
-  //     }
-  //   }
-  //   useEffect(() => {
-  //     // Додаєм(привязуєм) прослуховувач події
-  //     document.addEventListener("mousedown", handleClickOutside);
-  //     document.addEventListener("scroll", handleClickOutside); //Для скролу
-  //     return () => {
-  //       // Від’єднайте слухача події під час очищення
-  //       document.removeEventListener("mousedown", handleClickOutside);
-  //       document.removeEventListener("scroll", handleClickOutside);
-  //     };
-  //   });
-  // }
+  //Для клацання поза обєктом
+  //Добавити в контрольований об'єкт-(ref={wrapperRef})- (<ul ref={wrapperRef}... )
+  const wrapperRef = useRef(null); //Для клацання поза обєктом
+  useOutsideAlerter(wrapperRef); //Для клацання поза обєктом
+  function useOutsideAlerter(ref) {
+    // console.log("HeaderAppMenu.JS/useOutsideAlerter(ref)");
+    //*** Для клацання поза елементом Решение с React ^ 16.8 с использованием хуков
+    function handleClickOutside(event) {
+      if (ref.current && !ref.current.contains(event.target)) {
+        //Якщо поза елементом
+        //alert("Ти клацнув поза мною!");
+        if (appMenuOpen) {
+          setAppMenuOpen(false); //Закриваєм меню
+        }
+      }
+    }
+    useEffect(() => {
+      // Додаєм(привязуєм) прослуховувач події
+      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("scroll", handleClickOutside); //Для скролу
+      return () => {
+        // Від’єднайте слухача події під час очищення
+        document.removeEventListener("mousedown", handleClickOutside);
+        document.removeEventListener("scroll", handleClickOutside);
+      };
+    });
+  }
 
   const menu = [
     {
@@ -69,8 +69,11 @@ const HeaderAppMenu = () => {
   ];
   const appMenuToggle = () => {
     setAppMenuOpen(!appMenuOpen);
+    // console.log("appMenuToggle/appMenuOpen=", appMenuOpen);
   };
   const appSelectToggle = e => {
+    appMenuToggle(); //Закриваєм меню
+    //setAppMenuOpen(false); //Закриваєм меню
     //   e.currentTarget.dataset.index // !!! не e.target, а e.currentTarget
     // const i = e.currentTarget.dataset.index;
     const newApp = menu[e.currentTarget.dataset.index].a;
@@ -78,6 +81,7 @@ const HeaderAppMenu = () => {
     console.log("AppMenu.js/appSelectToggle/newApp=", newApp);
     dispatch({ type: "APP", payload: newApp }); //Змінюємо state.theme
   };
+
   const renderMenu = () => {
     return menu.map((item, index) => {
       return (
@@ -95,8 +99,7 @@ const HeaderAppMenu = () => {
   };
 
   return (
-    // <div ref={wrapperRef} className="menu-icon">
-    <div className="menu-icon">
+    <div ref={wrapperRef} className="menu-icon">
       {/* іконка App */}
       <a className="icon">
         <FontAwesomeIcon

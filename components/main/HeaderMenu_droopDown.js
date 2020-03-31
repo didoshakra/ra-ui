@@ -45,7 +45,7 @@ const HeaderMenu = () => {
   const mobileMenuToggle = arg => {
     setMobileMenuOpen(arg);
     // setMobileMenuOpen(!mobileMenuOpen);
-    console.log("Menu.js/mobileMenuOpen2/arg =", arg);
+    // console.log("Menu.js/mobileMenuOpen2/arg =", arg);
   };
 
   return (
