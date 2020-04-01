@@ -36,8 +36,8 @@ const Gallery = ({ images }) => {
           //background: rgb(223, 222, 222);
           //box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
           //box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
-          box-shadow: ${theme.colors.boxShadowPaper};
-          background: ${theme.colors.backgroundPaper};
+          box-shadow: ${theme.colors.paperBoxShadow};
+          background: ${theme.colors.paperBackground};
         }
         //iPad
         @media (max-width: 960px) {

@@ -24,26 +24,33 @@ export const themeDark = {
     // success: "#d4edda",
     //
     // text: "#333",
+
     text: "#fff", //білий
-    textHead: "#fff", //білий// background1: "#000", //чорний
-    textHeadHover: "rgba(52,144,246,1)",
-    textBackgroundHeadHover: "rgba(62,107,156,1)",
-    // background: "#3f3f3f", //чорний grey[100] grey[900]
-    // backgroundHead: "rgba(63,63,31,1)",
-    // backgroundHeadMenu: "rgba(63,63,31,0.9)",
-    // boxShadowPaper: "#3f3f3f",
-    // backgroundPaper: "rgba(63,63,31,1)"
-    background: "rgba(65,69,69,1)", //чорний grey[100] grey[900]
-    backgroundHead: "rgba(23,25,25,1)",
-    backgroundHeadMenu: "rgba(23,25,25,0.9)",
-    backgroundPaper: "rgba(65,69,69,1)",
-    boxShadowPaper: "2px 2px 2px rgba(0, 0, 0, 0.5)",
-    // backgroundPaperHead: "rgba(23,25,25,0.7)",
-    backgroundPaperHead: "rgba(64,61,51,1)",
-    boxShadowPaperHead: "2px 2px 2px rgba(23,25,25,0.9)",
-    //backgroundCard: "rgb(223, 222, 222)",
-    backgroundCard: "rgba(64,61,51,0.6)",
-    boxShadowCard: "2px 2px 2px rgba(23,25,25,0.9)"
+    background: "rgba(65,69,69,1)", //чорний
+
+    headBackground: "rgba(23,25,25,1)",
+    headText: "#fff", //білий// background1: "#000", //чорний
+    headTextHover: "rgba(65,69,69,1)",
+    headTextBackgroundHover: "#fff", //білий
+    //headTextHover: "rgba(52,144,246,1)",
+    //headTextBackgroundHover: "rgba(62,107,156,1)",
+
+    headIcon: "#fff", //білий
+    headIconHover: "rgba(23,25,25,1)",
+    headIconBackgroundHover: "#fff", //білий
+
+    headMenuBackground: "rgba(23,25,25,0.9)",
+    headMenuBackgroundActive: "#f6d142",
+    headMenuBackgroundGorizActive: "red",
+
+    paperBackground: "rgba(65,69,69,1)",
+    paperBoxShadow: "2px 2px 2px rgba(0, 0, 0, 0.5)",
+    paperHeadBackground: "rgba(64,61,51,1)",
+    paperHeadBoxShadow: "2px 2px 2px rgba(23,25,25,0.9)",
+
+    //cardBackground: "rgb(223, 222, 222)",
+    cardBackground: "rgba(64,61,51,0.6)",
+    cardBoxShadow: "2px 2px 2px rgba(23,25,25,0.9)"
   }
 };
 
@@ -62,45 +69,35 @@ export const themeLith = {
     //   border: "#ddd",
     //   warning: "#fff3cd",
     //   success: "#d4edda",
+
     text: "#060214",
-    //textHead: "#333", //чорний
-    textHead: "#fff", //білий
-    textHeadHover: "#e47328",
-    //textBackgroundHeadHover: "#0d8ecf",
-    textBackgroundHeadHover: "rgba(20,92,173,1)",
-    backgroundHead: "rgba(21,103,179,1)",
-    backgroundHeadMenu: "rgba(21,103,179,0.9)",
     //background: "rgba(220,234,244,1)",
     background: "rgb(223, 222, 222)", //Основа
-    backgroundPaper: "rgb(223, 222, 222)",
-    boxShadowPaper: "2px 2px 2px rgba(0, 0, 0, 0.6)",
-    //backgroundCard: "rgb(223, 222, 222)",
-    backgroundCard: "rgba(187,190,190,0.5)",
-    boxShadowCard: "2px 2px 2px rgba(0, 0, 0, 0.6)",
-    backgroundPaperHead: "rgba(187,190,190,1)",
-    boxShadowPaperHead: "2px 2px 2px rgba(0, 0, 0, 0.6)"
-  }
-};
-export const themeOther = {
-  fontFamily: {
-    sansSerif:
-      '-apple-system, BlinkMacSystemFont, Roboto, "Segoe UI","Fira Sans", Avenir, "Helvetica Neue", "Lucida Grande", sans-serif',
-    mono: "Menlo, Monaco, monospace"
-    //   font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI",
-    //     "Fira Sans", Avenir, "Helvetica Neue", "Lucida Grande", sans-serif;
-    //   text-rendering: optimizeLegibility;
-  },
-  colors: {
-    text: "#333",
-    // text: "#121212",
-    link: "#1eaaf1",
-    linkHover: "#0d8ecf",
-    border: "#ddd",
-    warning: "#fff3cd",
-    success: "#d4edda",
-    background: "#f8f",
-    background1: "#f88",
-    // background1: "#333",
-    color: "#354545"
+
+    headBackground: "rgba(21,103,179,1)",
+    headText: "#fff", //білий
+    headTextHover: "rgba(21,103,179,1)",
+    headTextBackgroundHover: "#fff", //білий
+    //headText: "#333", //чорний
+    //headTextHover: "#e47328",
+    //headTextBackgroundHover: "#0d8ecf",
+    //headTextBackgroundHover: "rgba(20,92,173,1)",
+
+    headIcon: "#fff", //білий
+    headIconHover: "rgba(21,103,179,1)",
+    headIconBackgroundHover: "#fff", //білий
+
+    headMenuBackground: "rgba(21,103,179,0.9)",
+    headMenuBackgroundActive: "#f6d142",
+    headMenuBackgroundGorizActive: "red",
+
+    paperBackground: "rgb(223, 222, 222)",
+    paperBoxShadow: "2px 2px 2px rgba(0, 0, 0, 0.6)",
+    paperHeadBackground: "rgba(187,190,190,1)",
+    paperHeadBoxShadow: "2px 2px 2px rgba(0, 0, 0, 0.6)",
+
+    //cardBackground: "rgb(223, 222, 222)",
+    cardBackground: "rgba(187,190,190,0.5)",
+    cardBoxShadow: "2px 2px 2px rgba(0, 0, 0, 0.6)"
   }
 };

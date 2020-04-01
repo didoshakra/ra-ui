@@ -130,8 +130,8 @@ const Homepage = () => {
           padding-bottom: 20px;
           padding: 20px; //Внутріщні відступи Paper
           border-radius: 15px;
-          background: ${theme.colors.backgroundPaper};
-          box-shadow: ${theme.colors.boxShadowPaper};
+          background: ${theme.colors.paperBackground};
+          box-shadow: ${theme.colors.paperBoxShadow};
           //box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
           //background: #eee;
         }
@@ -139,10 +139,10 @@ const Homepage = () => {
           text-align: center;
           border-radius: 15px;
           padding: 5px;
-          color: ${theme.colors.textHead};
+          color: ${theme.colors.headText};
           font-family: ${theme.fontFamily.serif};
-          background: ${theme.colors.backgroundPaperHead};
-          box-shadow: ${theme.colors.boxShadowPaperHead};
+          background: ${theme.colors.paperHeadBackground};
+          box-shadow: ${theme.colors.paperHeadBoxShadow};
         }
       `}</style>
     </Layout>

@@ -19,17 +19,6 @@ const HeaderLogo = () => {
   return (
     <div className="logo">
       <HeaderDrawer />
-      {/* <div className="icon">
-        //Іконка гамбургер лівого виїздного меню
-        <i onClick={drawerOnClick}>
-          {drawerOpen ? (
-            <FontAwesomeIcon icon={faTimes} />
-          ) : (
-            <FontAwesomeIcon icon={faBars} />
-          )}
-        </i>
-      </div> */}
-      {/* <DrawerButton drawerOpen={drawerOpen} drawerOnClick={drawerOnClick} /> */}
       <div className="icon">
         <Link href="/[lang]" as={`/${locale}`}>
           <img
@@ -57,29 +46,29 @@ const HeaderLogo = () => {
         }
 
         .text {
-          padding: 5px 10px;
-          //margin: 0;
+          padding: 0px 10px;
           //margin-left: 10px; //Відступ від кожного елемента зліва
           font-weight: 600;
           font-family: ${theme.fontFamily.sansSerif};
-          background: ${theme.colors.backgroundHead};
-          color: ${theme.colors.textHead};
+          text-decoration: none;
+          color: ${theme.colors.headText};
+          background: ${theme.colors.headBackground};
         }
         .icon {
           //margin-left: 10px; //Відступ від кожного елемента зліва
           display: flex;
           align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
           justify-content: center; /* Вирівнювання елементів по головній осі(x) вправо */
-          color: ${theme.colors.textHead};
-          background: ${theme.colors.backgroundHead};
+          color: ${theme.colors.icontHead};
+          background: ${theme.colors.headBackground};
           border-radius: 45px; /* Радіус*/
           width: 45px;
           height: 45px;
         }
         .icon:hover,
         .text:hover {
-          color: ${theme.colors.textHeadHover};
-          background: ${theme.colors.textBackgroundHeadHover};
+          color: ${theme.colors.headIconHover};
+          background: ${theme.colors.headIconBackgroundHover};
           cursor: pointer;
         }
         .icon img {

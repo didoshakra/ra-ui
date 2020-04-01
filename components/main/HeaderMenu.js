@@ -51,9 +51,10 @@ const HeaderMenu = () => {
   const renderMenu = () => {
     return menu.map((item, index) => {
       return (
-        <li className="g-nav__item" key={index}>
+        <li className="g-nav__item-goriz" key={index}>
           <Link href={`/[lang]${item.link}`} as={`/${locale}${item.link}`}>
-            <a className="g-nav__item-a">{item.a}</a>
+            {/* <p className="g-nav__item-a">{item.a}</p> */}
+            <p>{item.a}</p>
           </Link>
         </li>
       );
@@ -79,7 +80,8 @@ const HeaderMenu = () => {
       <HeaderMenuMobile
         mobileMenuOpen={mobileMenuOpen}
         mobileMenuToggle={mobileMenuToggle}
-        renderMenu={renderMenu}
+        // renderMenu={renderMenu}
+        menu={menu}
       />
 
       <style jsx>{`
@@ -90,14 +92,18 @@ const HeaderMenu = () => {
           justify-content: flex-end; /* Вирівнювання елементів по головній осі(x) вправо */
           align-items: center; /* Вирівнювання елементів по перетину осі(y) центр*/
         }
+        .nav p {
+          border-bottom: 2px solid red; /* Параметры линии внизу */
+        }
         /* --- Mobile navigation icon -- */
         .icon {
           display: none;
           //z-index: 19;
         }
         .icon :hover {
-          color: ${theme.colors.textHeadHover};
-          background: ${theme.colors.textBackgroundHeadHover};
+          color: ${theme.colors.headIconHover};
+          background: ${theme.colors.headIconBackgroundHover};
+          cursor: pointer;
         }
         /* Для екранів з шириною  0 до 1200px */
         //@media (max-width: 1200px) {
@@ -108,15 +114,17 @@ const HeaderMenu = () => {
           }
 
           .icon {
-            //margin-left: 10px; //Відступ від кожного елемента зліва
+            margin-right: 5px; //Відступ від кожного елемента зліва
             display: flex;
             align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
             justify-content: center; /* Вирівнювання елементів по головній осі(x) вправо */
-            color: ${theme.colors.textHead};
-            background: ${theme.colors.backgroundHead};
-            border-radius: 45px; /* Радіус*/
-            width: 45px;
-            height: 45px;
+            color: ${theme.colors.headIcon};
+            background: ${theme.colors.headBackground};
+            border: 2px solid ${theme.colors.headIcon}; /* Параметры границы */
+            //border-radius: 45px; /* Радіус*/
+            border-radius: 36px; /* Радіус*/
+            width: 36px;
+            height: 36px;
           }
         }
       `}</style>

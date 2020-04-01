@@ -46,26 +46,27 @@ const Layout = ({ children, title, description }) => {
       </div>
       <Footer />
       <style jsx global>{`
-        //Глобальні стилі для елементів headerMenu
-        .g-nav__item {
-          margin: 0px;
+        //RA-Глобальні стилі для елементів headerMenu
+        .g-nav__item,.g-nav__item-goriz {
+          margin: 0;
+          padding: 0; //Щоб зробити заокруглення
           padding: 5px 10px;//Щоб зробити заокруглення
-          //background: ${theme.colors.backgroundHead};
-          font-family: ${theme.fontFamily.serif};
           font-size: 18px; //Рукавичка
           font-weight: 100; //грубина
+          font-family: ${theme.fontFamily.serif};
           list-style-type: none; /**Отменяет маркеры для списка. */
+          text-decoration: none;
+          color: ${theme.colors.headText};
+          background: ${theme.colors.headBackground};
         }
-
-        .g-nav__item:hover {
-          background: ${theme.colors.textBackgroundHeadHover};
+        .g-nav__item:hover, .g-nav__item__active:hover {
+          color: ${theme.colors.headTextHover};
+          background: ${theme.colors.headTextBackgroundHover};
+          cursor: pointer;
         }
-
-        .g-nav__item-a {
-          color: ${theme.colors.textHead};
-        }
-        .g-nav__item-a:hover {
-          color: ${theme.colors.textHeadHover};
+        .g-nav__item-goriz:hover {
+          border-bottom: 4px solid ${theme.colors.headMenuBackgroundGorizActive}; /* Параметры линии внизу */
+          cursor: pointer;
         }
         .g-nav__item__active {
           margin: 0;
@@ -75,11 +76,30 @@ const Layout = ({ children, title, description }) => {
           font-family: ${theme.fontFamily.serif};
           font-size: 18px; //Рукавичка
           font-weight: 100; //грубина
-          color: ${theme.colors.textHead};
-          //
-          background: red;
-          color: white;
+          color: ${theme.colors.headTextHover};
+          background:${theme.colors.headMenuBackgroundActive};
         }
+
+        li {
+          margin: 0;
+          padding: 0; //Щоб зробити заокруглення
+          list-style-type: none; //Відміна маркерів
+        }
+        /*/При наведенні на .g-nav__item міняються .g-nav__item-a
+        .g-nav__item:hover ~ .g-nav__item-a{
+          background: ${theme.colors.headTextBackgroundHover};
+          color: ${theme.colors.headTextHover};
+        }*/
+        /*.g-nav__item-a {
+          padding: 5px 10px; //Щоб зробити заокруглення
+          color: ${theme.colors.headText};
+          background: ${theme.colors.headBackground};
+        }*/
+        /*.g-nav__item-a:hover {
+          color: ${theme.colors.headTextHover};
+          background: ${theme.colors.headTextBackgroundHover};
+        }*/
+
       `}</style>
       <style jsx global>{`
         //global Next.js
@@ -94,17 +114,6 @@ const Layout = ({ children, title, description }) => {
           line-height: 1.7;
           font-weight: 400;
           text-rendering: optimizeLegibility;
-        }
-        a {
-          /*color: #fff;*/
-          color: #e47328;
-          margin-right: 10px;
-          text-decoration: none;
-        }
-
-        a:hover {
-          /*color: #166281;*/
-          color: #d3a40b;
         }
 
         h1,
@@ -122,7 +131,9 @@ const Layout = ({ children, title, description }) => {
         }
 
         p {
-          margin: 0 0 10px;
+          // margin: 0 0 10px;
+          margin: 0;
+          padding: 0;
         }
 
         img {

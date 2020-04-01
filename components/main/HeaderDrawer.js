@@ -76,14 +76,10 @@ const HeaderDrawer = () => {
   const renderMenu = () => {
     return menu.map((item, index) => {
       return (
-        <li
-          data-index={index} //data-ХХ->Для передачі даних в e.currentTarget.dataset.XX
-          // className={item.a === app ? "g-nav__item__active" : "g-nav__item"}
-          className="g-nav__item"
-          // onClick={appSelectToggle}
-        >
+        <li className="g-nav__item">
           <Link href={`/[lang]${item.link}`} as={`/${locale}${item.link}`}>
-            <a className="g-nav__item-a">{item.a}</a>
+            {/* <a className="g-nav__item-a">{item.a}</a> */}
+            <p>{item.a}</p>
           </Link>
         </li>
       );
@@ -119,20 +115,22 @@ const HeaderDrawer = () => {
         }
         .icon {
           margin: 0;
-          //margin-left: 10px; //Відступ від кожного елемента зліва
+          margin-left: 10px; //Відступ від кожного елемента зліва
           display: flex;
           align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
           justify-content: center; /* Вирівнювання елементів по головній осі(x) вправо */
-          color: ${theme.colors.textHead};
-          background: ${theme.colors.backgroundHead};
-          border-radius: 45px; /* Радіус*/
-          width: 45px;
-          height: 45px;
+          color: ${theme.colors.headIcon};
+          background: ${theme.colors.headBackground};
+          //border: 2px solid ${theme.colors.headIcon}; /* Параметры границы */
+          //border-radius: 45px; /* Радіус*/
+          border-radius: 36px; /* Радіус*/
+          width: 36px;
+          height: 36px;
         }
         .icon:hover {
-          color: ${theme.colors.textHeadHover};
-          background: ${theme.colors.textBackgroundHeadHover};
-          //cursor: pointer;
+          color: ${theme.colors.headIconHover};
+          background: ${theme.colors.headIconBackgroundHover};
+          cursor: pointer;
         }
         //
         /*.dropdown-content {
@@ -147,7 +145,7 @@ const HeaderDrawer = () => {
           box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
           position: absolute;
           //z-index: 1;
-          background: ${theme.colors.backgroundHeadMenu};
+          background: ${theme.colors.headMenuBackground};
 
         }*/
         /*.dropdown-content {
@@ -167,7 +165,7 @@ const HeaderDrawer = () => {
           };
           transition: transform 0.5s linear;
           z-index: -1;
-          background: ${theme.colors.backgroundHeadMenu};
+          background: ${theme.colors.headMenuBackground};
         }*/
         .dropdown-content {
           //плавно збільшується зверху зліва-> вниз вправо
@@ -185,7 +183,7 @@ const HeaderDrawer = () => {
           //transition: width 2s, height 2s linear;
           transition: width 2s, height 2s;
           z-index: -1;
-          background: ${theme.colors.backgroundHeadMenu};
+          background: ${theme.colors.headMenuBackground};
         }
         }
       `}</style>

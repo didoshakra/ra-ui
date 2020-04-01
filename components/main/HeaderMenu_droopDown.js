@@ -221,8 +221,8 @@ const HeaderMenu = () => {
         }
         .nav a,
         i {
-          color: ${theme.colors.textHead};
-          background: ${theme.colors.backgroundHead};
+          color: ${theme.colors.headText};
+          background: ${theme.colors.headBackground};
           font-family: ${theme.fontFamily.serif};
           //font-family: Blogger Sans; //Рукавичка
           font-size: 18px; //Рукавичка

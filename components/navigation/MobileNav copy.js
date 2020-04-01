@@ -73,7 +73,7 @@ const MobileNav = props => {
   padding: 10px 50px;
   border-radius: 10px;
   /* border-radius: 50px 0 0 50px; */
-  background:${theme.colors.backgroundHeadMenu};
+  background:${theme.colors.headMenuBackground};
   /*background:${theme.colors.backgroundMenu};*/
   transform: ${props.mobileMenuOpen ? "translateX(-100%)" : "translateX(0px)"};
    /*transform: ${

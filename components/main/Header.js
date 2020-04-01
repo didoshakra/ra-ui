@@ -101,7 +101,7 @@ const Header = () => {
       `}</style>
       <style jsx>{`
       .header-wrapper {
-        background: ${theme.colors.backgroundHead};`}</style>
+        background: ${theme.colors.headBackground};`}</style>
     </div>
   );
 };

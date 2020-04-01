@@ -54,20 +54,22 @@ const HeaderSeting = () => {
           list-style-type: none; /**Отменяет маркеры для списка. */
         }
         .icon {
-          //margin-left: 10px; //Відступ від кожного елемента зліва
+          margin-right: 5px; //Відступ від кожного елемента зліва
           display: flex;
           align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
           justify-content: center; /* Вирівнювання елементів по головній осі(x) вправо */
-          color: ${theme.colors.textHead};
-          background: ${theme.colors.backgroundHead};
-          border-radius: 45px; /* Радіус*/
-          width: 45px;
-          height: 45px;
+          color: ${theme.colors.headIcon};
+          background: ${theme.colors.headBackground};
+          border: 2px solid ${theme.colors.headIcon}; /* Параметры границы */
+          //border-radius: 45px; /* Радіус*/
+          border-radius: 36px; /* Радіус*/
+          width: 36px;
+          height: 36px;
         }
         .icon:hover {
-          color: ${theme.colors.textHeadHover};
-          background: ${theme.colors.textBackgroundHeadHover};
-          //cursor: pointer;
+          color: ${theme.colors.headIconHover};
+          background: ${theme.colors.headIconBackgroundHover};
+          cursor: pointer;
         }
       `}</style>
     </ul>

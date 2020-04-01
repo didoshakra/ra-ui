@@ -64,15 +64,15 @@ const HeaderSeting = () => {
           display: flex;
           align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
           justify-content: center; /* Вирівнювання елементів по головній осі(x) вправо */
-          color: ${theme.colors.textHead};
-          background: ${theme.colors.backgroundHead};
+          color: ${theme.colors.headText};
+          background: ${theme.colors.headBackground};
           border-radius: 45px; /* Радіус*/
           width: 45px;
           height: 45px;
         }
         .icon:hover {
-          color: ${theme.colors.textHeadHover};
-          background: ${theme.colors.textBackgroundHeadHover};
+          color: ${theme.colors.headTextHover};
+          background: ${theme.colors.headTextBackgroundHover};
           //cursor: pointer;
         }
       `}</style>

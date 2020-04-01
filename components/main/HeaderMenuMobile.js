@@ -1,6 +1,7 @@
 //MenuToggle.js //https://coursehunter.net/course/reactjs-s-nulya-do-profi
 //Виїжджаюче меню зправа по гамбургеру
 import React, { useContext, useRef, useEffect } from "react";
+import Link from "next/link";
 // import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
@@ -8,9 +9,10 @@ import useTranslation from "../../translations/useTranslation";
 import { ComponentContext } from "../../context/ComponentContext";
 
 const HeaderMenuMobile = props => {
+  // const { menu } = props;
   const { state } = useContext(ComponentContext);
   const theme = state.theme;
-  const { t } = useTranslation();
+  const { locale, t } = useTranslation();
 
   //Для клацання поза обєктом
   //Добавити в контрольований об'єкт-(ref={wrapperRef})- (<ul ref={wrapperRef}... )
@@ -38,6 +40,18 @@ const HeaderMenuMobile = props => {
       };
     });
   }
+  const renderMenu = () => {
+    return props.menu.map((item, index) => {
+      return (
+        <li className="g-nav__item" key={index}>
+          <Link href={`/[lang]${item.link}`} as={`/${locale}${item.link}`}>
+            {/* <p className="g-nav__item-a">{item.a}</p> */}
+            <p>{item.a}</p>
+          </Link>
+        </li>
+      );
+    });
+  };
 
   return (
     //  Мобільна навігація
@@ -46,7 +60,8 @@ const HeaderMenuMobile = props => {
         <FontAwesomeIcon icon={faChevronRight} />
       </i>
       <div className="mobile-nav__title">{t("mobileNav_title")}</div>
-      <ul ref={wrapperRef}>{props.renderMenu()}</ul>
+      {/* <ul ref={wrapperRef}>{props.renderMenu()}</ul> */}
+      <ul ref={wrapperRef}>{renderMenu()}</ul>
 
       <style jsx>{`
         .mobile-nav {
@@ -63,7 +78,7 @@ const HeaderMenuMobile = props => {
           border-radius: 5px;
           //border-radius: 50px 0 0 50px;
           list-style-type: none; /**Отменяет маркеры для списка. */
-          background:${theme.colors.backgroundHeadMenu};
+          background:${theme.colors.headMenuBackground};
           transform: ${
             props.mobileMenuOpen ? "translateX(-100%)" : "translateX(0px)"
           };
@@ -88,7 +103,7 @@ const HeaderMenuMobile = props => {
           //align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
           margin: 10px;
           //padding: 10px;
-          color: ${theme.colors.textHead};
+          color: ${theme.colors.headText};
         }
         .mobile-nav__title {
           font-size: 28px;
@@ -98,7 +113,7 @@ const HeaderMenuMobile = props => {
         }
 
         .icon:hover {
-          color: ${theme.colors.textHeadHover};
+          color: ${theme.colors.headTextHover};
         }
 
         /*Для iphone 5*/
