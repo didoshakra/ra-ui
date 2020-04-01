@@ -165,7 +165,7 @@ const HeaderAppMenu = () => {
           margin: 0;
           right: 0px;
           min-width: 100px;
-          top: -200px;
+          top: -210px;
           //max-height: : 150px;
           //overflow: auto; //якщо не поміщається
           box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
