@@ -7,7 +7,7 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import useTranslation from "../../translations/useTranslation";
 import { ComponentContext } from "../../context/ComponentContext";
 
-const MobileNav = props => {
+const MobileNav = (props) => {
   const { state } = useContext(ComponentContext);
   const theme = state.theme;
   const wrapperRef = useRef(null); //Для клацання поза обєктом

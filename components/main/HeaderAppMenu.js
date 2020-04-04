@@ -44,34 +44,34 @@ const HeaderAppMenu = () => {
   const menu = [
     {
       a: "home_hoer",
-      link: "/"
+      link: "/",
     },
     {
       a: "home_video",
-      link: "/home_video"
+      link: "/home_video",
     },
     {
       a: "home_animet",
-      link: "/home_animet"
+      link: "/home_animet",
     },
     {
       a: "home_MUI",
-      link: "/home_MUI"
+      link: "/home_MUI",
     },
     {
       a: "home_stan",
-      link: "/home_stan"
+      link: "/home_stan",
     },
     {
       a: t("headerMenu_iconTitleAboutME"),
-      link: "/about"
-    }
+      link: "/about",
+    },
   ];
   const appMenuToggle = () => {
     setAppMenuOpen(!appMenuOpen);
     // console.log("appMenuToggle/appMenuOpen=", appMenuOpen);
   };
-  const appSelectToggle = e => {
+  const appSelectToggle = (e) => {
     appMenuToggle(); //Закриваєм меню
     //setAppMenuOpen(false); //Закриваєм меню
     //   e.currentTarget.dataset.index // !!! не e.target, а e.currentTarget
@@ -87,11 +87,15 @@ const HeaderAppMenu = () => {
       return (
         <li
           data-index={index} //data-ХХ->Для передачі даних в e.currentTarget.dataset.XX
-          className={item.a === app ? "g-nav__item__active" : "g-nav__item"}
+          className={
+            item.a === app
+              ? "headerAppMenu_nav-item__active"
+              : "headerAppMenu__nav-item"
+          }
           onClick={appSelectToggle}
         >
           <Link href={`/[lang]${item.link}`} as={`/${locale}${item.link}`}>
-            {/* <a className="g-nav__item-a">{item.a}</a> */}
+            {/* <a className="HeaderAppMenu__nav-item-a">{item.a}</a> */}
             <p>{item.a}</p>
           </Link>
         </li>
@@ -100,19 +104,50 @@ const HeaderAppMenu = () => {
   };
 
   return (
-    <div ref={wrapperRef} className="menu-icon">
+    <div ref={wrapperRef} className="headerAppMenu__menu-icon">
       {/* іконка App */}
-      <a className="icon">
+      <a className="headerAppMenu__icon">
         <FontAwesomeIcon
           icon={faTh}
           title={t("headerMenu_iconTitleApp")}
           onClick={appMenuToggle}
         />
       </a>
-      <ul className="dropdown-content">{renderMenu()}</ul>
+      <ul className="headerAppMenu__dropdown-content">{renderMenu()}</ul>
 
+      <style jsx global>{`
+        //RA-Глобальні стилі для елементів headerMenu
+        .headerAppMenu__nav-item {
+          margin: 0;
+          padding: 0; //Щоб зробити заокруглення
+          padding: 5px 10px; //Щоб зробити заокруглення
+          font-size: 18px; //Рукавичка
+          font-weight: 100; //грубина
+          font-family: ${theme.fontFamily.serif};
+          list-style-type: none; /**Отменяет маркеры для списка. */
+          text-decoration: none;
+          color: ${theme.colors.headText};
+          background: ${theme.colors.headBackground};
+        }
+        .headerAppMenu__nav-item:hover,
+        .headerAppMenu__nav-item__active:hover {
+          color: ${theme.colors.headTextHover};
+          background: ${theme.colors.headTextBackgroundHover};
+        }
+        .headerAppMenu__nav-item__active {
+          margin: 0;
+          padding: 5px 10px;
+          display: block;
+          //text-decoration: none;
+          font-family: ${theme.fontFamily.serif};
+          font-size: 18px; //Рукавичка
+          font-weight: 100; //грубина
+          color: ${theme.colors.headTextHover};
+          background: ${theme.colors.headMenuBackgroundActive};
+        }
+      `}</style>
       <style jsx>{`
-        .menu-icon {
+        .headerAppMenu__menu-icon {
           margin: 0;
           padding: 0;
           //display: flex;
@@ -123,7 +158,7 @@ const HeaderAppMenu = () => {
           position: relative;
           display: inline-block;
         }
-        .icon {
+        .headerAppMenu__icon {
           margin: 0;
           margin-right: 5px; //Відступ від кожного елемента зліва
           display: flex;
@@ -137,7 +172,7 @@ const HeaderAppMenu = () => {
           width: 36px;
           height: 36px;
         }
-        .icon:hover {
+        .headerAppMenu__icon:hover {
           color: ${theme.colors.headIconHover};
           background: ${theme.colors.headIconBackgroundHover};
           cursor: pointer;
@@ -158,18 +193,20 @@ const HeaderAppMenu = () => {
           background: ${theme.colors.headMenuBackground};
 
         }*/
-        .dropdown-content {
+        .headerAppMenu__dropdown-content {
           //плавно виїжджає
-          border-radius: 0 0 5px 5px;
-          padding: 0 0 5px 0;//Щоб зробити заокруглення (border-radius)
+          position: absolute;
+          display: block; //Блок по ширині контенту
+          float: left; //Блок по ширині контентуleft:-110px;//працює лівий край від  лівого краю об'єкту
+          top: -200px;
+          left:-20px;
+          padding: 0;
           margin: 0;
-          right: 0px;
-          min-width: 100px;
-          top: -210px;
+         //min-width: 100px;
           //max-height: : 150px;
           //overflow: auto; //якщо не поміщається
           box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-          position: absolute;
+          border-radius: 0 0 5px 5px;
           transform: ${appMenuOpen ? "translateY(100%)" : "translateY(0px)"};
           transition: transform 0.5s linear;
           z-index: -1;

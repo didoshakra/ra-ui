@@ -8,7 +8,7 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import useTranslation from "../../translations/useTranslation";
 import { ComponentContext } from "../../context/ComponentContext";
 
-const HeaderMenuMobile = props => {
+const HeaderMenuMobile = (props) => {
   // const { menu } = props;
   const { state } = useContext(ComponentContext);
   const theme = state.theme;
@@ -43,7 +43,7 @@ const HeaderMenuMobile = props => {
   const renderMenu = () => {
     return props.menu.map((item, index) => {
       return (
-        <li className="g-nav__item" key={index}>
+        <li className="headerMenuMobile__nav-item" key={index}>
           <Link href={`/[lang]${item.link}`} as={`/${locale}${item.link}`}>
             {/* <p className="g-nav__item-a">{item.a}</p> */}
             <p>{item.a}</p>
@@ -55,16 +55,34 @@ const HeaderMenuMobile = props => {
 
   return (
     //  Мобільна навігація
-    <div className="mobile-nav">
-      <i className="icon" onClick={() => props.mobileMenuToggle(false)}>
+    <div className="headerMenuMobile__nav">
+      <i
+        className="headerMenuMobile__nav-icon"
+        onClick={() => props.mobileMenuToggle(false)}
+      >
         <FontAwesomeIcon icon={faChevronRight} />
       </i>
-      <div className="mobile-nav__title">{t("mobileNav_title")}</div>
+      <div className="headerMenuMobile__nav-title">{t("mobileNav_title")}</div>
       {/* <ul ref={wrapperRef}>{props.renderMenu()}</ul> */}
       <ul ref={wrapperRef}>{renderMenu()}</ul>
 
+      <style jsx global>{`
+        .headerMenuMobile__nav-item {
+          margin: 0;
+          padding: 0; //Щоб зробити заокруглення
+          padding: 5px 10px; //Щоб зробити заокруглення
+          font-size: 18px; //Рукавичка
+          font-weight: 100; //грубина
+          font-family: ${theme.fontFamily.serif};
+          list-style-type: none; /**Отменяет маркеры для списка. */
+          text-decoration: none;
+          color: ${theme.colors.headText};
+          background: ${theme.colors.headBackground};
+        }
+      `}</style>
+
       <style jsx>{`
-        .mobile-nav {
+        .headerMenuMobile__nav {
           z-index: 9;
           /*position: absolute;*//*на мобілках видно мені коли переміститись вправо*стрілка)*/
           position: fixed;
@@ -88,24 +106,25 @@ const HeaderMenuMobile = props => {
           transition: transform 0.4s ease-in;
         }
 
-        .mobile-nav ul{
+        .headerMenuMobile__nav ul{
           padding:  0;//треба
           margin:0;//треба
         }
 
         //При зменшенні екрану якщо не виключена кнопка щоб не показувало-не обовязково*/
         @media (min-width: 1199px) {
-          .mobile-nav {
+          .HeaderMenuMobile__nav {
               display: none; /* Не показує мобільне меню на екранах>1199px */
           }
         }
-        .icon {
+        .headerMenuMobile__nav-icon {
           //align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
           margin: 10px;
           //padding: 10px;
-          color: ${theme.colors.headText};
+          //color: ${theme.colors.headIcon};
+           color: ${theme.colors.headText};
         }
-        .mobile-nav__title {
+        .headerMenuMobile__nav-title {
           font-size: 28px;
           font-weight: 800;
           margin-bottom: 30px;
@@ -118,7 +137,7 @@ const HeaderMenuMobile = props => {
 
         /*Для iphone 5*/
         @media (max-width: 600px) {
-          .mobile-nav {
+          .headerMenuMobile__nav {
             width: 320px;
             right: -320px;
         }

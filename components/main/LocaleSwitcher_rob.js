@@ -1,7 +1,5 @@
 //LocaleSwitcher.js
-//Cвоє меню <select>+localesList.map((item, index)-список з мсиву
-//Іконка і випадаючий список разом
-
+//Використовую своє меню як <select>
 import React, { useContext, useRef, useEffect } from "react";
 import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -23,12 +21,12 @@ const LocaleSwitcher = () => {
   };
   //React.useCallback!!!???
   const handleLocaleChange = React.useCallback(
-    (e) => {
+    e => {
       setLangMenuOpen(false); //Закриваєм меню
       //langMenuToggle(); //Закриває меню
-      const newLocale = localesList[e.currentTarget.dataset.index].loc;
-      // const newLocale = e.currentTarget.dataset.index;
-      // console.log("LocaleSwitcher.js/newLocale=", newLocale);
+
+      const newLocale = e.currentTarget.dataset.index;
+      console.log("LocaleSwitcher.js/newLocale=", newLocale);
       const regex = new RegExp(`^/(${locales.join("|")})`);
       router.push(
         router.pathname,
@@ -65,37 +63,17 @@ const LocaleSwitcher = () => {
       };
     });
   }
-  const localesList = [
-    {
-      loc: "uk",
-      name: "Українська",
-      flag: "/flags/flag_ukraine-20.jpg",
-    },
-    {
-      loc: "en",
-      name: "English",
-      flag: "/flags/flag_usa-20.jpg",
-    },
-    {
-      loc: "pl",
-      name: "Polski",
-      flag: "/flags/flag_poland-20.jpg",
-    },
-  ];
+
   const renderMenu = () => {
-    return localesList.map((item, index) => {
-      // return locales.map((item) => {
+    // return locales.map((item, index) => {
+    return locales.map(item => {
       return (
         <li
-          data-index={index} //data-ХХ->Для передачі даних в e.currentTarget.dataset.XX
-          // data-index={item} //data-ХХ->Для передачі даних в e.currentTarget.dataset.XX
+          data-index={item} //data-ХХ->Для передачі даних в e.currentTarget.dataset.XX
           className={item === locale ? "g-nav__item__active" : "g-nav__item"}
           onClick={handleLocaleChange}
         >
-          {/* <p>{item}</p> */}
-          <a className="ls--items">{item.loc}</a>
-          <img className="ls--items" src={item.flag} alert="flag" />
-          <a className="ls--items">{item.name}</a>
+          <p>{item}</p>
         </li>
       );
     });
@@ -103,7 +81,7 @@ const LocaleSwitcher = () => {
 
   return (
     <div ref={wrapperRef} className="menu-icon">
-      {/* іконка App */}
+      {/* іконка мови */}
       <a className="icon">
         <FontAwesomeIcon
           icon={faGlobe}
@@ -142,16 +120,11 @@ const LocaleSwitcher = () => {
         }
         .dropdown-content {
           //плавно проявляється (opacity 0.5s)
-          position: absolute;
-          display: block; //+Блок по ширині контенту
-          float: left; //+Блок по ширині контентуleft:-110px;//працює лівий край від  лівого краю об'єкту
           padding: 0;
           margin: 0;
-          //width: 150px;
-          //top:50px;//+Працює
-          left:-110px;//+Працює
-          //min-width: 100px;
-          //overflow: auto; //якщо не поміщається
+          right: 0px;
+          min-width: 100px;
+          overflow: auto; //якщо не поміщається
           border-radius: 3px;
           box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
           position: absolute;

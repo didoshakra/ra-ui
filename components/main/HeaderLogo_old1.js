@@ -17,9 +17,9 @@ const HeaderLogo = () => {
   // };
 
   return (
-    <div className="headerLogo__logo">
+    <div className="logo">
       <HeaderDrawer />
-      <div className="headerLogo__icon">
+      <div className="icon">
         <Link href="/[lang]" as={`/${locale}`}>
           <img
             title={t("logo_logoTitle")}
@@ -29,14 +29,14 @@ const HeaderLogo = () => {
         </Link>
       </div>
       <Link href="/[lang]" as={`/${locale}`}>
-        <a title={t("logo_logoTitle")} className="headerLogo__text">
+        <a title={t("logo_logoTitle")} className="text">
           {t("logo_siteName")}
         </a>
       </Link>
       {/* Саме ліве виїздне меню */}
       {/* <Drawer drawerOpen={drawerOpen} drawerOnClick={drawerOnClick} /> */}
       <style jsx>{`
-        .headerLogo__logo {
+        .logo {
           margin: 0;
           padding: 0;
           display: flex;
@@ -45,7 +45,7 @@ const HeaderLogo = () => {
           align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
         }
 
-        .headerLogo__text {
+        .text {
           padding: 0px 10px;
           //margin-left: 10px; //Відступ від кожного елемента зліва
           font-weight: 600;
@@ -54,7 +54,7 @@ const HeaderLogo = () => {
           color: ${theme.colors.headText};
           background: ${theme.colors.headBackground};
         }
-        .headerLogo__icon {
+        .icon {
           //margin-left: 10px; //Відступ від кожного елемента зліва
           display: flex;
           align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
@@ -65,13 +65,13 @@ const HeaderLogo = () => {
           width: 45px;
           height: 45px;
         }
-        .headerLogo__icon:hover,
-        .headerLogo__text:hover {
-          color: ${theme.colors.headIconHover};
-          background: ${theme.colors.headIconBackgroundHover};
+        .icon:hover,
+        .text:hover {
+          color: ${theme.colors.headTextHover};
+          background: ${theme.colors.headTextBackgroundHover};
           cursor: pointer;
         }
-        .headerLogo__icon img {
+        .icon img {
           //margin: 0;
           //padding: 0;
           width: 35px;

@@ -11,6 +11,11 @@ const HeaderSeting = () => {
   const { t } = useTranslation();
   const { state, dispatch } = useContext(ComponentContext);
   const { theme, themeTypeLight } = state;
+  // const [langMenuOpen, setLangMenuOpen] = React.useState(false);
+
+  // const langMenuToggle = () => {
+  //   setLangMenuOpen(!langMenuOpen);
+  // };
 
   const themeMenuToggle = () => {
     var newTheme = "light";
@@ -22,21 +27,16 @@ const HeaderSeting = () => {
   };
 
   return (
-    <div className="menu-icon">
-      <ul className="g-nav__item">
-        {/* іконка зміни теми */}
-        <li
-          className="icon"
-          title={t("headerMenu_iconTitleTheme")}
-          onClick={themeMenuToggle}
-        >
-          {themeTypeLight ? (
-            <FontAwesomeIcon icon={faSun} />
-          ) : (
-            <FontAwesomeIcon icon={faMoon} />
-          )}
-        </li>
-      </ul>
+    <ul className="menu-icon">
+      {/* іконка зміни теми */}
+      <li
+        className="icon"
+        title={t("headerMenu_iconTitleTheme")}
+        onClick={themeMenuToggle}
+      >
+        <FontAwesomeIcon icon={themeTypeLight ? faSun : faMoon} />
+      </li>
+
       {/* іконка+випадаючий список мови-select */}
       <LocaleSwitcher />
 
@@ -65,10 +65,10 @@ const HeaderSeting = () => {
         .icon:hover {
           color: ${theme.colors.headIconHover};
           background: ${theme.colors.headIconBackgroundHover};
-          //cursor: pointer;
+          cursor: pointer;
         }
       `}</style>
-    </div>
+    </ul>
   );
 };
 

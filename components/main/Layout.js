@@ -40,17 +40,18 @@ const Layout = ({ children, title, description }) => {
       </Head>
       <Header />
 
-      <div className="content-wrapper">
+      <div className="loyout__content-wrapper">
         {/* <FontAwecomIcons /> */}
         {children}
       </div>
       <Footer />
       <style jsx global>{`
         //RA-Глобальні стилі для елементів headerMenu
-        .g-nav__item,.g-nav__item-goriz {
+        .g-nav__item,
+        .g-nav__item-goriz {
           margin: 0;
           padding: 0; //Щоб зробити заокруглення
-          padding: 5px 10px;//Щоб зробити заокруглення
+          padding: 5px 10px; //Щоб зробити заокруглення
           font-size: 18px; //Рукавичка
           font-weight: 100; //грубина
           font-family: ${theme.fontFamily.serif};
@@ -59,14 +60,13 @@ const Layout = ({ children, title, description }) => {
           color: ${theme.colors.headText};
           background: ${theme.colors.headBackground};
         }
-        .g-nav__item:hover, .g-nav__item__active:hover {
+        .g-nav__item:hover,
+        .g-nav__item__active:hover {
           color: ${theme.colors.headTextHover};
           background: ${theme.colors.headTextBackgroundHover};
-          cursor: pointer;
         }
         .g-nav__item-goriz:hover {
           border-bottom: 4px solid ${theme.colors.headMenuBackgroundGorizActive}; /* Параметры линии внизу */
-          cursor: pointer;
         }
         .g-nav__item__active {
           margin: 0;
@@ -77,7 +77,7 @@ const Layout = ({ children, title, description }) => {
           font-size: 18px; //Рукавичка
           font-weight: 100; //грубина
           color: ${theme.colors.headTextHover};
-          background:${theme.colors.headMenuBackgroundActive};
+          background: ${theme.colors.headMenuBackgroundActive};
         }
 
         li {
@@ -85,21 +85,6 @@ const Layout = ({ children, title, description }) => {
           padding: 0; //Щоб зробити заокруглення
           list-style-type: none; //Відміна маркерів
         }
-        /*/При наведенні на .g-nav__item міняються .g-nav__item-a
-        .g-nav__item:hover ~ .g-nav__item-a{
-          background: ${theme.colors.headTextBackgroundHover};
-          color: ${theme.colors.headTextHover};
-        }*/
-        /*.g-nav__item-a {
-          padding: 5px 10px; //Щоб зробити заокруглення
-          color: ${theme.colors.headText};
-          background: ${theme.colors.headBackground};
-        }*/
-        /*.g-nav__item-a:hover {
-          color: ${theme.colors.headTextHover};
-          background: ${theme.colors.headTextBackgroundHover};
-        }*/
-
       `}</style>
       <style jsx global>{`
         //global Next.js
@@ -150,8 +135,8 @@ const Layout = ({ children, title, description }) => {
       `}</style>
       <style jsx>{`
         /* Layout */
-        .content-wrapper {
-          margin-top: 50px; /*Щоб контент не заїжджав під шапку*/
+        .loyout__content-wrapper {
+          margin-top: 64px; /*Щоб контент не заїжджав під шапку*/
           min-height: 600px;
           text-align: center;
           padding: 0px;

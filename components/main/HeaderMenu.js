@@ -1,5 +1,7 @@
-//HeaderMenu.js//Селектор мови+Дві теми-іконки(themeTypeLight)
-//Після розділення на HeaderMenu+HeaderSeting
+//HeaderMenu.js //Після розділення на HeaderMenu+HeaderSeting
+//Горизонтальне меню що згортається в іконку яка викликає
+//HeaderMenuMobile-випадаюче меню
+
 //список меню з масиву menu
 
 import React, { useContext } from "react";
@@ -16,7 +18,7 @@ const HeaderMenu = () => {
   const { theme } = state;
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
-  const mobileMenuToggle = arg => {
+  const mobileMenuToggle = (arg) => {
     setMobileMenuOpen(arg);
     // console.log("Menu.js/mobileMenuOpen2/arg =", arg);
   };
@@ -24,28 +26,28 @@ const HeaderMenu = () => {
   const menu = [
     {
       a: "home_hoer",
-      link: "/"
+      link: "/",
     },
     {
       a: "home_video",
-      link: "/home_video"
+      link: "/home_video",
     },
     {
       a: "home_animet",
-      link: "/home_animet"
+      link: "/home_animet",
     },
     {
       a: "home_MUI",
-      link: "/home_MUI"
+      link: "/home_MUI",
     },
     {
       a: "home_stan",
-      link: "/home_stan"
+      link: "/home_stan",
     },
     {
       a: t("headerMenu_iconTitleAboutME"),
-      link: "/about"
-    }
+      link: "/about",
+    },
   ];
 
   const renderMenu = () => {
@@ -63,7 +65,7 @@ const HeaderMenu = () => {
 
   return (
     // Навігація
-    <React.Fragment>
+    <div className="heade-menu">
       {/* для десктопа */}
       <ul className="nav">{renderMenu()}</ul>
       {/* Мобільна навігація*/}
@@ -84,10 +86,31 @@ const HeaderMenu = () => {
         menu={menu}
       />
 
+      <style jsx global>{`
+        .g-nav__item-goriz {
+          margin: 0;
+          padding: 0; //Щоб зробити заокруглення
+          padding: 5px 10px; //Щоб зробити заокруглення
+          font-size: 18px; //Рукавичка
+          font-weight: 100; //грубина
+          font-family: ${theme.fontFamily.serif};
+          list-style-type: none; /**Отменяет маркеры для списка. */
+          text-decoration: none;
+          color: ${theme.colors.headText};
+          background: ${theme.colors.headBackground};
+        }
+      `}</style>
       <style jsx>{`
+        .heade-menu {
+          display: flex;
+          margin: 0;
+          padding: 0;
+          height: 64px;
+          align-items: center; /* Вирівнювання елементів по перетину осі(y) центр*/
+        }
         .nav {
-          //margin: 0;
-          //padding: 0;
+          margin: 0;
+          padding: 0;
           display: flex;
           justify-content: flex-end; /* Вирівнювання елементів по головній осі(x) вправо */
           align-items: center; /* Вирівнювання елементів по перетину осі(y) центр*/
@@ -100,7 +123,7 @@ const HeaderMenu = () => {
           display: none;
           //z-index: 19;
         }
-        .icon :hover {
+        .icon:hover {
           color: ${theme.colors.headIconHover};
           background: ${theme.colors.headIconBackgroundHover};
           cursor: pointer;
@@ -114,21 +137,21 @@ const HeaderMenu = () => {
           }
 
           .icon {
-            margin-right: 5px; //Відступ від кожного елемента зліва
-            display: flex;
-            align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
-            justify-content: center; /* Вирівнювання елементів по головній осі(x) вправо */
-            color: ${theme.colors.headIcon};
-            background: ${theme.colors.headBackground};
-            border: 2px solid ${theme.colors.headIcon}; /* Параметры границы */
-            //border-radius: 45px; /* Радіус*/
-            border-radius: 36px; /* Радіус*/
-            width: 36px;
-            height: 36px;
-          }
+          margin: 0;
+          margin-right: 5px; //Відступ від кожного елемента зліва
+          display: flex;
+          align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
+          justify-content: center; /* Вирівнювання елементів по головній осі(x) вправо */
+          color: ${theme.colors.headIcon};
+          background: ${theme.colors.headBackground};
+          border: 2px solid ${theme.colors.headIcon}; /* Параметры границы */
+          //border-radius: 45px; /* Радіус*/
+          border-radius: 36px; /* Радіус*/
+          width: 36px;
+          height: 36px;
         }
       `}</style>
-    </React.Fragment>
+    </div>
   );
 };
 

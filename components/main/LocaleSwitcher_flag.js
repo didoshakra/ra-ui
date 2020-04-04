@@ -1,7 +1,5 @@
 //LocaleSwitcher.js
-//Cвоє меню <select>+localesList.map((item, index)-список з мсиву
-//Іконка і випадаючий список разом
-
+//Використовую своє меню як <select>
 import React, { useContext, useRef, useEffect } from "react";
 import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,6 +7,7 @@ import { faGlobe } from "@fortawesome/free-solid-svg-icons";
 import { locales, languageNames } from "../../translations/config";
 import { ComponentContext } from "../../context/ComponentContext";
 import useTranslation from "../../translations/useTranslation";
+import Index from "./../../pages/index";
 
 const LocaleSwitcher = () => {
   const router = useRouter();
@@ -26,9 +25,9 @@ const LocaleSwitcher = () => {
     (e) => {
       setLangMenuOpen(false); //Закриваєм меню
       //langMenuToggle(); //Закриває меню
-      const newLocale = localesList[e.currentTarget.dataset.index].loc;
       // const newLocale = e.currentTarget.dataset.index;
-      // console.log("LocaleSwitcher.js/newLocale=", newLocale);
+      const newLocale = localesList[e.currentTarget.dataset.index].loc;
+      console.log("LocaleSwitcher.js/newLocale=", newLocale);
       const regex = new RegExp(`^/(${locales.join("|")})`);
       router.push(
         router.pathname,
@@ -65,6 +64,7 @@ const LocaleSwitcher = () => {
       };
     });
   }
+
   const localesList = [
     {
       loc: "uk",
@@ -82,17 +82,18 @@ const LocaleSwitcher = () => {
       flag: "/flags/flag_poland-20.jpg",
     },
   ];
+
   const renderMenu = () => {
+    // return locales.map((item, index) => {
     return localesList.map((item, index) => {
-      // return locales.map((item) => {
       return (
         <li
           data-index={index} //data-ХХ->Для передачі даних в e.currentTarget.dataset.XX
-          // data-index={item} //data-ХХ->Для передачі даних в e.currentTarget.dataset.XX
-          className={item === locale ? "g-nav__item__active" : "g-nav__item"}
+          className={
+            item.loc === locale ? "g-nav__item__active" : "g-nav__item"
+          }
           onClick={handleLocaleChange}
         >
-          {/* <p>{item}</p> */}
           <a className="ls--items">{item.loc}</a>
           <img className="ls--items" src={item.flag} alert="flag" />
           <a className="ls--items">{item.name}</a>
@@ -112,14 +113,22 @@ const LocaleSwitcher = () => {
         />
       </a>
       <ul className="dropdown-content">{renderMenu()}</ul>
+
+      <style jsx global>{`
+        .ls--items {
+          margin-left: 10px;
+          //padding: 10px;
+          align-items: center; //Y Вирівнювання
+        }
+      `}</style>
       <style jsx>{`
         .menu-icon {
           margin: 0;
           padding: 0;
-          align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
+          елементів по перетину осі(y) центр */
           list-style-type: none; /**Отменяет маркеры для списка. */
           position: relative;
-          display: inline-block;
+          //display: inline-block; //Блок стане широкий як найширший контент
         }
         .icon {
           margin: 0;
@@ -143,20 +152,20 @@ const LocaleSwitcher = () => {
         .dropdown-content {
           //плавно проявляється (opacity 0.5s)
           position: absolute;
-          display: block; //+Блок по ширині контенту
-          float: left; //+Блок по ширині контентуleft:-110px;//працює лівий край від  лівого краю об'єкту
+          display: block; //Блок по ширині контенту
+          float: left; //Блок по ширині контенту
           padding: 0;
           margin: 0;
-          //width: 150px;
-          //top:50px;//+Працює
-          left:-110px;//+Працює
-          //min-width: 100px;
-          //overflow: auto; //якщо не поміщається
+         left: 110px;
+          //min-width: 200px;
+          overflow: auto; //якщо не поміщається
           border-radius: 3px;
           box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
           position: absolute;
+          display: : ${langMenuOpen ? "block" : "none"};
           opacity: ${langMenuOpen ? "1" : "0"};
-          transition: opacity 0.5s linear;
+          z-Index: ${langMenuOpen ? "1" : "-2"};
+          transition: z-Index 0s,display 0s, opacity 0.5s linear;
           background: ${theme.colors.headMenuBackground};
         }
         /*.dropdown-content {

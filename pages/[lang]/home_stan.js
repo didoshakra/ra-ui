@@ -14,7 +14,7 @@ const images = [
   "/promotions/12.jpg",
   "/promotions/11.jpg",
   "/promotions/10.jpg",
-  "/promotions/9.jpg"
+  "/promotions/9.jpg",
 ];
 
 const Homepage = () => {
@@ -131,7 +131,7 @@ const Homepage = () => {
           padding: 20px; //Внутріщні відступи Paper
           border-radius: 15px;
           background: ${theme.colors.paperBackground};
-          box-shadow: ${theme.colors.paperBoxShadow};
+          box-shadow: ${theme.colors.paperBoxShadowr};
           //box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
           //background: #eee;
         }
@@ -142,7 +142,7 @@ const Homepage = () => {
           color: ${theme.colors.headText};
           font-family: ${theme.fontFamily.serif};
           background: ${theme.colors.paperHeadBackground};
-          box-shadow: ${theme.colors.paperHeadBoxShadow};
+          box-shadow: ${theme.colors.paperHeadBoxShadowr};
         }
       `}</style>
     </Layout>

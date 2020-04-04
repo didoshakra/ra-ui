@@ -76,7 +76,7 @@ const HeaderDrawer = () => {
   const renderMenu = () => {
     return menu.map((item, index) => {
       return (
-        <li className="headerDrawer__nav-item">
+        <li className="g-nav__item">
           <Link href={`/[lang]${item.link}`} as={`/${locale}${item.link}`}>
             {/* <a className="g-nav__item-a">{item.a}</a> */}
             <p>{item.a}</p>
@@ -87,10 +87,10 @@ const HeaderDrawer = () => {
   };
 
   return (
-    <div ref={wrapperRef} className="headerDrawer__menu-icon">
+    <div ref={wrapperRef} className="menu-icon">
       {/* іконка App */}
       <a
-        className="headerDrawer__icon"
+        className="icon"
         title={t("headerMenu_iconTitleDrawer")}
         onClick={drawerMenuToggle}
       >
@@ -100,26 +100,9 @@ const HeaderDrawer = () => {
           <FontAwesomeIcon icon={faBars} />
         )}
       </a>
-      <ul className="headerDrawer__dropdown-content">{renderMenu()}</ul>
-      <style jsx global>
-        {`
-          //RA-Глобальні стилі для елементів headerMenu
-          .headerDrawer__nav-item {
-            margin: 0;
-            padding: 0; //Щоб зробити заокруглення
-            padding: 5px 10px; //Щоб зробити заокруглення
-            font-size: 18px; //Рукавичка
-            font-weight: 100; //грубина
-            font-family: ${theme.fontFamily.serif};
-            list-style-type: none; /**Отменяет маркеры для списка. */
-            text-decoration: none;
-            color: ${theme.colors.headText};
-            background: ${theme.colors.headBackground};
-          }
-        `}
-      </style>
+      <ul className="dropdown-content">{renderMenu()}</ul>
       <style jsx>{`
-        .headerDrawer__menu-icon {
+        .menu-icon {
           margin: 0;
           padding: 0;
           //display: flex;
@@ -130,24 +113,24 @@ const HeaderDrawer = () => {
           position: relative;
           display: inline-block;
         }
-        .headerDrawer__icon {
+        .icon {
           margin: 0;
           margin-left: 10px; //Відступ від кожного елемента зліва
           display: flex;
           align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
           justify-content: center; /* Вирівнювання елементів по головній осі(x) вправо */
-          color: ${theme.colors.headIcon};
+          color: ${theme.colors.iconHead};
           background: ${theme.colors.headBackground};
-          //border: 2px solid ${theme.colors.headIcon}; /* Параметры границы */
+          //border: 2px solid ${theme.colors.iconHead}; /* Параметры границы */
           //border-radius: 45px; /* Радіус*/
           border-radius: 36px; /* Радіус*/
           width: 36px;
           height: 36px;
         }
-        .headerDrawer__icon:hover {
-          color: ${theme.colors.headIconHover};
-          background: ${theme.colors.headIconBackgroundHover};
-          cursor: pointer;
+        .icon:hover {
+          color: ${theme.colors.headTextHover};
+          background: ${theme.colors.headTextBackgroundHover};
+          //cursor: pointer;
         }
         //
         /*.dropdown-content {
@@ -184,7 +167,7 @@ const HeaderDrawer = () => {
           z-index: -1;
           background: ${theme.colors.headMenuBackground};
         }*/
-        .headerDrawer__dropdown-content {
+        .dropdown-content {
           //плавно збільшується зверху зліва-> вниз вправо
           position: absolute;
           overflow: hidden; //Обрізаєм все, що не влізає в область */
@@ -201,6 +184,7 @@ const HeaderDrawer = () => {
           transition: width 2s, height 2s;
           z-index: -1;
           background: ${theme.colors.headMenuBackground};
+        }
         }
       `}</style>
     </div>

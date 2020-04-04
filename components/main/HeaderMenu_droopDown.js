@@ -8,7 +8,7 @@ import {
   faList,
   faMoon,
   faSun,
-  faGlobe
+  faGlobe,
 } from "@fortawesome/free-solid-svg-icons";
 import LocaleSwitcher from "./LocaleSwitcher";
 import useTranslation from "../../translations/useTranslation";
@@ -42,7 +42,7 @@ const HeaderMenu = () => {
     dispatch({ type: "THEME", payload: newTheme }); //Змінюємо state.theme
   };
 
-  const mobileMenuToggle = arg => {
+  const mobileMenuToggle = (arg) => {
     setMobileMenuOpen(arg);
     // setMobileMenuOpen(!mobileMenuOpen);
     // console.log("Menu.js/mobileMenuOpen2/arg =", arg);

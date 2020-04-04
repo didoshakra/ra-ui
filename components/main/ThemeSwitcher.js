@@ -1,11 +1,10 @@
-//HeaderSeting //Зміна мови і теми
+//ThemeSwitcher.js //Зміна теми
 
 import React, { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMoon, faSun, faGlobe } from "@fortawesome/free-solid-svg-icons";
+import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import useTranslation from "../../translations/useTranslation";
 import { ComponentContext } from "../../context/ComponentContext";
-import LocaleSwitcher from "./LocaleSwitcher";
 
 const HeaderSeting = () => {
   const { t } = useTranslation();
@@ -22,23 +21,15 @@ const HeaderSeting = () => {
   };
 
   return (
-    <div className="menu-icon">
-      <ul className="g-nav__item">
-        {/* іконка зміни теми */}
-        <li
-          className="icon"
-          title={t("headerMenu_iconTitleTheme")}
-          onClick={themeMenuToggle}
-        >
-          {themeTypeLight ? (
-            <FontAwesomeIcon icon={faSun} />
-          ) : (
-            <FontAwesomeIcon icon={faMoon} />
-          )}
-        </li>
-      </ul>
-      {/* іконка+випадаючий список мови-select */}
-      <LocaleSwitcher />
+    <ul className="menu-icon">
+      {/* іконка зміни теми */}
+      <li
+        className="icon"
+        title={t("headerMenu_iconTitleTheme")}
+        onClick={themeMenuToggle}
+      >
+        <FontAwesomeIcon icon={themeTypeLight ? faSun : faMoon} />
+      </li>
 
       <style jsx>{`
         .menu-icon {
@@ -65,10 +56,10 @@ const HeaderSeting = () => {
         .icon:hover {
           color: ${theme.colors.headIconHover};
           background: ${theme.colors.headIconBackgroundHover};
-          //cursor: pointer;
+          cursor: pointer;
         }
       `}</style>
-    </div>
+    </ul>
   );
 };
 

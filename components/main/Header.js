@@ -6,6 +6,8 @@ import { ComponentContext } from "../../context/ComponentContext";
 import HeaderMenu from "./HeaderMenu";
 import HeaderSeting from "./HeaderSeting";
 import HeaderAppMenu from "./HeaderAppMenu";
+import ThemeSwitcher from "./ThemeSwitcher";
+import LocaleSwitcher from "./LocaleSwitcher";
 
 // import DrawerButton from "./Navigation/DrawerBootton";
 // import Drawer from "./Navigation/Drawer";
@@ -60,47 +62,51 @@ const Header = () => {
   });
 
   return (
-    <div className="header-fixed">
+    <div className="header__fixed">
       {/* <Drawer drawerOpen={drawerOpen} drawerOnClick={drawerOnClick} />
       <DrawerButton drawerOpen={drawerOpen} drawerOnClick={drawerOnClick} /> */}
-      <div className="header-wrapper">
+      <div className="header__wrapper">
         <HeaderLogo />
-        <div className="header-menu">
+        <div className="header__menu">
           {/* Навігація */}
           <HeaderMenu />
           {/* App меню*/}
           <HeaderAppMenu />
+          {/* іконки теми */}
+          <ThemeSwitcher />
+          {/* іконки Мови */}
+          <LocaleSwitcher />
           {/* іконки теми+мови */}
-          <HeaderSeting />
+          {/* <HeaderSeting /> */}
         </div>
       </div>
 
       <style jsx>{`
-        .header-fixed {
+        .header__fixed {
           /* Для того щоб сховати */
           position: fixed;
-          top: ${headerOpen ? "0" : "-60px"};
-          height: 60px;
+          top: ${headerOpen ? "0" : "-64px"};
+          height: 64px;
           width: 100%;
           transition: top 0.4s ease-in;
           z-index: 100;
         }
-        .header-wrapper {
+        .header__wrapper {
           /*padding: 10px; /*Поля*/
           //max-height: 60px;
-          height: 60px;
+          height: 64px;
           display: flex;
           justify-content: space-between; /*по-X Вирівнювання вліво-вправо*/
           align-items: center; /* по Y */
         }
-        .header-menu {
+        .header__menu {
           display: flex;
           justify-content: space-end; /*по-X Вирівнювання вправо*/
           align-items: center; /* по Y */
         }
       `}</style>
       <style jsx>{`
-      .header-wrapper {
+      .header__wrapper {
         background: ${theme.colors.headBackground};`}</style>
     </div>
   );

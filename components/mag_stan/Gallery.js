@@ -8,7 +8,7 @@ const Gallery = ({ images }) => {
   return (
     <div className="gallery">
       {/* <div class="paper"> */}
-      {images.map(image => {
+      {images.map((image) => {
         return (
           <div className="image" key={image}>
             <img src={image} alt="img" />
@@ -36,7 +36,7 @@ const Gallery = ({ images }) => {
           //background: rgb(223, 222, 222);
           //box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
           //box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
-          box-shadow: ${theme.colors.paperBoxShadow};
+          box-shadow: ${theme.colors.paperBoxShadowr};
           background: ${theme.colors.paperBackground};
         }
         //iPad
