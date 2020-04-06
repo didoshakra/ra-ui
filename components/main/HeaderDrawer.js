@@ -76,7 +76,7 @@ const HeaderDrawer = () => {
   const renderMenu = () => {
     return menu.map((item, index) => {
       return (
-        <li className="headerDrawer__nav-item">
+        <li className="headerDrawer__item">
           <Link href={`/[lang]${item.link}`} as={`/${locale}${item.link}`}>
             {/* <a className="g-nav__item-a">{item.a}</a> */}
             <p>{item.a}</p>
@@ -87,7 +87,7 @@ const HeaderDrawer = () => {
   };
 
   return (
-    <div ref={wrapperRef} className="headerDrawer__menu-icon">
+    <div ref={wrapperRef} className="headerDrawer">
       {/* іконка App */}
       <a
         className="headerDrawer__icon"
@@ -100,11 +100,11 @@ const HeaderDrawer = () => {
           <FontAwesomeIcon icon={faBars} />
         )}
       </a>
-      <ul className="headerDrawer__dropdown-content">{renderMenu()}</ul>
+      <ul className="headerDrawer__dropdown">{renderMenu()}</ul>
       <style jsx global>
         {`
           //RA-Глобальні стилі для елементів headerMenu
-          .headerDrawer__nav-item {
+          .headerDrawer__item {
             margin: 0;
             padding: 0; //Щоб зробити заокруглення
             padding: 5px 10px; //Щоб зробити заокруглення
@@ -116,10 +116,14 @@ const HeaderDrawer = () => {
             color: ${theme.colors.headText};
             background: ${theme.colors.headBackground};
           }
+          .headerDrawer__item:hover {
+            color: ${theme.colors.headTextHover};
+            background: ${theme.colors.headTextBackgroundHover};
+          }
         `}
       </style>
       <style jsx>{`
-        .headerDrawer__menu-icon {
+        .headerDrawer {
           margin: 0;
           padding: 0;
           //display: flex;
@@ -150,7 +154,7 @@ const HeaderDrawer = () => {
           cursor: pointer;
         }
         //
-        /*.dropdown-content {
+        /*headerDrawer--menu__dropdown--content {
           //показується раптово
           padding: 0;
           margin: 0;
@@ -165,7 +169,7 @@ const HeaderDrawer = () => {
           background: ${theme.colors.headMenuBackground};
 
         }*/
-        /*.dropdown-content {
+        /*headerDrawer--menu__dropdown--content {
           //плавно виїжджає зверху зліва-> вниз вправо
           border: 0 0 5px 5px;
           border-radius: 0 0 5px 5px;
@@ -184,7 +188,7 @@ const HeaderDrawer = () => {
           z-index: -1;
           background: ${theme.colors.headMenuBackground};
         }*/
-        .headerDrawer__dropdown-content {
+        .headerDrawer__dropdown {
           //плавно збільшується зверху зліва-> вниз вправо
           position: absolute;
           overflow: hidden; //Обрізаєм все, що не влізає в область */
@@ -198,7 +202,7 @@ const HeaderDrawer = () => {
           height: ${drawerMenuOpen ? "250px" : "0px"};
           box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
           //transition: width 2s, height 2s linear;
-          transition: width 2s, height 2s;
+          transition: width 1s, height 1s;
           z-index: -1;
           background: ${theme.colors.headMenuBackground};
         }

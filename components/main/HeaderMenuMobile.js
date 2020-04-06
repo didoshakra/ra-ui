@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import useTranslation from "../../translations/useTranslation";
 import { ComponentContext } from "../../context/ComponentContext";
+import Index from "./../../pages/index";
 
 const HeaderMenuMobile = (props) => {
   // const { menu } = props;
@@ -43,7 +44,7 @@ const HeaderMenuMobile = (props) => {
   const renderMenu = () => {
     return props.menu.map((item, index) => {
       return (
-        <li className="headerMenuMobile__nav-item" key={index}>
+        <li className="headerMenuMobile__dropdown__item" key={index}>
           <Link href={`/[lang]${item.link}`} as={`/${locale}${item.link}`}>
             {/* <p className="g-nav__item-a">{item.a}</p> */}
             <p>{item.a}</p>
@@ -55,19 +56,21 @@ const HeaderMenuMobile = (props) => {
 
   return (
     //  Мобільна навігація
-    <div className="headerMenuMobile__nav">
-      <i
-        className="headerMenuMobile__nav-icon"
-        onClick={() => props.mobileMenuToggle(false)}
-      >
-        <FontAwesomeIcon icon={faChevronRight} />
-      </i>
-      <div className="headerMenuMobile__nav-title">{t("mobileNav_title")}</div>
+    <div className="headerMenuMobile">
+      <a className="headerMenuMobile__icon">
+        <FontAwesomeIcon
+          icon={faChevronRight}
+          onClick={() => props.mobileMenuToggle(false)}
+        />
+      </a>
+      <div className="headerMenuMobile__title">{t("mobileNav_title")}</div>
       {/* <ul ref={wrapperRef}>{props.renderMenu()}</ul> */}
-      <ul ref={wrapperRef}>{renderMenu()}</ul>
+      <ul className="headerMenuMobile__dropdown" ref={wrapperRef}>
+        {renderMenu()}
+      </ul>
 
       <style jsx global>{`
-        .headerMenuMobile__nav-item {
+        .headerMenuMobile__dropdown__item {
           margin: 0;
           padding: 0; //Щоб зробити заокруглення
           padding: 5px 10px; //Щоб зробити заокруглення
@@ -79,10 +82,16 @@ const HeaderMenuMobile = (props) => {
           color: ${theme.colors.headText};
           background: ${theme.colors.headBackground};
         }
+
+        .headerMenuMobile__dropdown__item:hover {
+          color: ${theme.colors.headTextHover};
+          background: ${theme.colors.headTextBackgroundHover};
+          cursor: pointer;
+        }
       `}</style>
 
       <style jsx>{`
-        .headerMenuMobile__nav {
+        .headerMenuMobile {
           z-index: 9;
           /*position: absolute;*//*на мобілках видно мені коли переміститись вправо*стрілка)*/
           position: fixed;
@@ -105,39 +114,46 @@ const HeaderMenuMobile = (props) => {
           };*/
           transition: transform 0.4s ease-in;
         }
-
-        .headerMenuMobile__nav ul{
+        .headerMenuMobile__icon {
+          margin: 0;
+          margin-left: 10px; //Відступ від кожного елемента зліва
+          display: flex;
+          align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
+          justify-content: center; /* Вирівнювання елементів по головній осі(x) вправо */
+          color: ${theme.colors.headIcon};
+          background: ${theme.colors.headBackground};
+          border: 2px solid ${theme.colors.headIcon}; /* Параметры границы */
+          border-radius: 36px; /* Радіус*/
+          width: 36px;
+          height: 36px;
+        }
+        .headerMenuMobile__icon:hover {
+          //color: #f6d142;
+          color: ${theme.colors.headIconHover};
+          background: ${theme.colors.headIconBackgroundHover};
+          cursor: pointer;
+        }
+        .headerMenuMobile__title {
+          font-size: 28px;
+          font-weight: 800;
+          //margin-bottom: 30px;
+          //padding: 0px 0px 0px 10px;
+          margin: 30px 10px;
+          color: #f6d142;
+        }
+        .headerMenuMobile__dropdown{
           padding:  0;//треба
           margin:0;//треба
         }
-
-        //При зменшенні екрану якщо не виключена кнопка щоб не показувало-не обовязково*/
-        @media (min-width: 1199px) {
-          .HeaderMenuMobile__nav {
-              display: none; /* Не показує мобільне меню на екранах>1199px */
+         //При зменшенні екрану якщо не виключена кнопка щоб не показувало-не обовязково*/
+        /*@media (min-width: 959px) {
+          .headerMenuMobile {
+              display: none; // Не показує мобільне меню на екранах>1199px
           }
-        }
-        .headerMenuMobile__nav-icon {
-          //align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
-          margin: 10px;
-          //padding: 10px;
-          //color: ${theme.colors.headIcon};
-           color: ${theme.colors.headText};
-        }
-        .headerMenuMobile__nav-title {
-          font-size: 28px;
-          font-weight: 800;
-          margin-bottom: 30px;
-          color: #f6d142;
-        }
-
-        .icon:hover {
-          color: ${theme.colors.headTextHover};
-        }
-
-        /*Для iphone 5*/
+        }*/
+        //Для iphone 5
         @media (max-width: 600px) {
-          .headerMenuMobile__nav {
+          .headerMenuMobile {
             width: 320px;
             right: -320px;
         }

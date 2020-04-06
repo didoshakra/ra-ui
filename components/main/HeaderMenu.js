@@ -53,7 +53,7 @@ const HeaderMenu = () => {
   const renderMenu = () => {
     return menu.map((item, index) => {
       return (
-        <li className="g-nav__item-goriz" key={index}>
+        <li className="headerMenu__menu__item--goriz" key={index}>
           <Link href={`/[lang]${item.link}`} as={`/${locale}${item.link}`}>
             {/* <p className="g-nav__item-a">{item.a}</p> */}
             <p>{item.a}</p>
@@ -65,11 +65,11 @@ const HeaderMenu = () => {
 
   return (
     // Навігація
-    <div className="heade-menu">
+    <div className="headerMenu">
       {/* для десктопа */}
-      <ul className="nav">{renderMenu()}</ul>
+      <ul className="headerMenu__menu">{renderMenu()}</ul>
       {/* Мобільна навігація*/}
-      <div className="icon">
+      <div className="headerMenu__menu__icon">
         {/* іконка мобільного меню/faList/ */}
         <i
           onClick={() => mobileMenuToggle(mobileMenuOpen ? false : true)}
@@ -87,7 +87,7 @@ const HeaderMenu = () => {
       />
 
       <style jsx global>{`
-        .g-nav__item-goriz {
+        .headerMenu__menu__item--goriz {
           margin: 0;
           padding: 0; //Щоб зробити заокруглення
           padding: 5px 10px; //Щоб зробити заокруглення
@@ -99,31 +99,32 @@ const HeaderMenu = () => {
           color: ${theme.colors.headText};
           background: ${theme.colors.headBackground};
         }
+        .headerMenu__menu__item--goriz:hover {
+          border-bottom: 4px solid ${theme.colors.headMenuBackgroundGorizActive}; /* Параметры линии внизу */
+        }
       `}</style>
+
       <style jsx>{`
-        .heade-menu {
+        .headerMenu {
           display: flex;
           margin: 0;
           padding: 0;
           height: 64px;
           align-items: center; /* Вирівнювання елементів по перетину осі(y) центр*/
         }
-        .nav {
+        .headerMenu__menu {
           margin: 0;
           padding: 0;
           display: flex;
           justify-content: flex-end; /* Вирівнювання елементів по головній осі(x) вправо */
           align-items: center; /* Вирівнювання елементів по перетину осі(y) центр*/
         }
-        .nav p {
-          border-bottom: 2px solid red; /* Параметры линии внизу */
-        }
         /* --- Mobile navigation icon -- */
-        .icon {
+        .headerMenu__menu__icon {
           display: none;
           //z-index: 19;
         }
-        .icon:hover {
+        .headerMenu__menu__icon:hover {
           color: ${theme.colors.headIconHover};
           background: ${theme.colors.headIconBackgroundHover};
           cursor: pointer;
@@ -132,11 +133,11 @@ const HeaderMenu = () => {
         //@media (max-width: 1200px) {
         @media (max-width: 960px) {
           /*iPad<960px*/
-          .nav {
+          .headerMenu__menu {
             display: none; /*не показує */
           }
 
-          .icon {
+          .headerMenu__menu__icon {
           margin: 0;
           margin-right: 5px; //Відступ від кожного елемента зліва
           display: flex;

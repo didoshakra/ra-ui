@@ -1,30 +1,23 @@
-//LocaleSwitcher.js
-//Cвоє меню <select>+localesList.map((item, index)-список з мсиву
-//Іконка і випадаючий список разом
+//LocaleSwitcherDroop.js
+//Саме випадаюче меню мови
 
 import React, { useContext, useRef, useEffect } from "react";
 import { useRouter } from "next/router";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGlobe } from "@fortawesome/free-solid-svg-icons";
 import { locales, languageNames } from "../../translations/config";
 import { ComponentContext } from "../../context/ComponentContext";
 import useTranslation from "../../translations/useTranslation";
 
-const LocaleSwitcher = () => {
+const LocaleSwitcherDroop = (props) => {
   const router = useRouter();
   const { t } = useTranslation();
   const { state } = useContext(ComponentContext);
   const { theme, locale } = state;
-  const [langMenuOpen, setLangMenuOpen] = React.useState(false);
+  console.log("LocaleSwitcherDroop/props.langMenuOpen=", props.langMenuOpen);
 
-  const langMenuToggle = () => {
-    setLangMenuOpen(!langMenuOpen);
-    // console.log("langMenuToggle/langMenuOpen=", langMenuOpen);
-  };
   //React.useCallback!!!???
   const handleLocaleChange = React.useCallback(
     (e) => {
-      setLangMenuOpen(false); //Закриваєм меню
+      props.setLangMenuOpen(false); //Закриваєм меню
       //langMenuToggle(); //Закриває меню
       const newLocale = localesList[e.currentTarget.dataset.index].loc;
       // const newLocale = e.currentTarget.dataset.index;
@@ -47,10 +40,10 @@ const LocaleSwitcher = () => {
     function handleClickOutside(event) {
       if (ref.current && !ref.current.contains(event.target)) {
         //Якщо поза елементом
-        // alert("Ти клацнув поза мною!");
+        //alert("Ти клацнув поза мною!");
         // langMenuToggle(); //Погано-спрацьвує від іншого обєкту
-        if (langMenuOpen) {
-          setLangMenuOpen(false); //Закриваєм меню
+        if (props.langMenuOpen) {
+          props.setLangMenuOpen(false); //Закриваєм меню
         }
       }
     }
@@ -88,95 +81,93 @@ const LocaleSwitcher = () => {
       return (
         <li
           data-index={index} //data-ХХ->Для передачі даних в e.currentTarget.dataset.XX
-          // data-index={item} //data-ХХ->Для передачі даних в e.currentTarget.dataset.XX
-          className={item === locale ? "g-nav__item__active" : "g-nav__item"}
+          className={
+            item.loc === locale
+              ? "localeSwitcherDroop__item--active"
+              : "localeSwitcherDroop__item"
+          }
           onClick={handleLocaleChange}
         >
-          {/* <p>{item}</p> */}
-          <a className="ls--items">{item.loc}</a>
-          <img className="ls--items" src={item.flag} alert="flag" />
-          <a className="ls--items">{item.name}</a>
+          <a className="localeSwitcherDroop__item-a">{item.loc}</a>
+          <img
+            className="localeSwitcherDroop__item-a"
+            src={item.flag}
+            alert="flag"
+          />
+          <a className="localeSwitcherDroop__item-a">{item.name}</a>
         </li>
       );
     });
   };
 
   return (
-    <div ref={wrapperRef} className="menu-icon">
-      {/* іконка App */}
-      <a className="icon">
-        <FontAwesomeIcon
-          icon={faGlobe}
-          title={t("headerMenu_iconTitleLanguage")}
-          onClick={langMenuToggle}
-        />
-      </a>
-      <ul className="dropdown-content">{renderMenu()}</ul>
-      <style jsx>{`
-        .menu-icon {
+    <div ref={wrapperRef} className="localeSwitcherDroop">
+      <ul className="localeSwitcherDroop">{renderMenu()}</ul>
+      <style jsx global>{`
+        //RA-Глобальні стилі для елементів headerMenu
+        .localeSwitcherDroop__item {
           margin: 0;
-          padding: 0;
-          align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
+          padding: 0; //Щоб зробити заокруглення
+          padding: 5px 10px; //Щоб зробити заокруглення
+          font-size: 18px; //Рукавичка
+          font-weight: 100; //грубина
+          font-family: ${theme.fontFamily.serif};
           list-style-type: none; /**Отменяет маркеры для списка. */
-          position: relative;
-          display: inline-block;
-        }
-        .icon {
-          margin: 0;
-          margin-right: 5px; //Відступ від кожного елемента зліва
-          display: flex;
-          align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
-          justify-content: center; /* Вирівнювання елементів по головній осі(x) вправо */
-          color: ${theme.colors.headIcon};
+          text-decoration: none;
+          color: ${theme.colors.headText};
           background: ${theme.colors.headBackground};
-          border: 2px solid ${theme.colors.headIcon}; /* Параметры границы */
-          //border-radius: 45px; /* Радіус*/
-          border-radius: 36px; /* Радіус*/
-          width: 36px;
-          height: 36px;
         }
-        .icon:hover {
-          color: ${theme.colors.headIconHover};
-          background: ${theme.colors.headIconBackgroundHover};
+        .localeSwitcherDroop__item:hover,
+        .localeSwitcheDroopr__item--active:hover {
+          color: ${theme.colors.headTextHover};
+          background: ${theme.colors.headTextBackgroundHover};
           cursor: pointer;
         }
-        .dropdown-content {
+        .localeSwitcherDroop__item--active {
+          margin: 0;
+          padding: 5px 10px;
+          display: block;
+          //text-decoration: none;
+          font-family: ${theme.fontFamily.serif};
+          font-size: 18px; //Рукавичка
+          font-weight: 100; //грубина
+          color: ${theme.colors.headTextHover};
+          background: ${theme.colors.headMenuBackgroundActive};
+        }
+        .localeSwitcherDroop__item-a {
+          margin-left: 5px;
+      `}</style>
+      <style jsx>{`
+        .localeSwitcherDroop {
+          position: relative;
+          //display: inline-block;
+          margin: 0;
+          padding: 0;
+          //align-items: center; /* Вирівнювання елементів по (y) */
+          list-style-type: none; /*маркери для списка. */
+        }
+        .localeSwitcherDroop {
           //плавно проявляється (opacity 0.5s)
           position: absolute;
           display: block; //+Блок по ширині контенту
           float: left; //+Блок по ширині контентуleft:-110px;//працює лівий край від  лівого краю об'єкту
           padding: 0;
           margin: 0;
-          //width: 150px;
-          //top:50px;//+Працює
-          left:-110px;//+Працює
+          width: 150px;
+          //top: 10px; //+Працює
+          left: -70px; //+Працює
           //min-width: 100px;
           //overflow: auto; //якщо не поміщається
           border-radius: 3px;
           box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-          position: absolute;
-          opacity: ${langMenuOpen ? "1" : "0"};
-          transition: opacity 0.5s linear;
+          opacity: ${props.langMenuOpen ? "1" : "0"};
+          z-index: ${props.langMenuOpen ? "1" : "-2"};
+          transition: z-index 0.5s, opacity 0.5s linear;
           background: ${theme.colors.headMenuBackground};
         }
-        /*.dropdown-content {
-          //плавно виїжджає
-          border-radius: 0 0 5px 5px;
-          padding: 0 0 5px 0;//Щоб зробити заокруглення (border-radius)
-          margin: 0;
-          right: 0px;
-          min-width: 100px;
-          top: -80px;
-          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-          position: absolute;
-          transform: ${langMenuOpen ? "translateY(100%)" : "translateY(0px)"};
-          transition: transform 0.5s linear;
-          z-index: -1;
-          background: ${theme.colors.headMenuBackground};
-        }*/
       `}</style>
     </div>
   );
 };
 
-export default LocaleSwitcher;
+export default LocaleSwitcherDroop;

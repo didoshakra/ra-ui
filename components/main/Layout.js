@@ -45,47 +45,7 @@ const Layout = ({ children, title, description }) => {
         {children}
       </div>
       <Footer />
-      <style jsx global>{`
-        //RA-Глобальні стилі для елементів headerMenu
-        .g-nav__item,
-        .g-nav__item-goriz {
-          margin: 0;
-          padding: 0; //Щоб зробити заокруглення
-          padding: 5px 10px; //Щоб зробити заокруглення
-          font-size: 18px; //Рукавичка
-          font-weight: 100; //грубина
-          font-family: ${theme.fontFamily.serif};
-          list-style-type: none; /**Отменяет маркеры для списка. */
-          text-decoration: none;
-          color: ${theme.colors.headText};
-          background: ${theme.colors.headBackground};
-        }
-        .g-nav__item:hover,
-        .g-nav__item__active:hover {
-          color: ${theme.colors.headTextHover};
-          background: ${theme.colors.headTextBackgroundHover};
-        }
-        .g-nav__item-goriz:hover {
-          border-bottom: 4px solid ${theme.colors.headMenuBackgroundGorizActive}; /* Параметры линии внизу */
-        }
-        .g-nav__item__active {
-          margin: 0;
-          padding: 5px 10px;
-          display: block;
-          //text-decoration: none;
-          font-family: ${theme.fontFamily.serif};
-          font-size: 18px; //Рукавичка
-          font-weight: 100; //грубина
-          color: ${theme.colors.headTextHover};
-          background: ${theme.colors.headMenuBackgroundActive};
-        }
 
-        li {
-          margin: 0;
-          padding: 0; //Щоб зробити заокруглення
-          list-style-type: none; //Відміна маркерів
-        }
-      `}</style>
       <style jsx global>{`
         //global Next.js
         *,

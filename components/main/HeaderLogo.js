@@ -17,7 +17,7 @@ const HeaderLogo = () => {
   // };
 
   return (
-    <div className="headerLogo__logo">
+    <div className="headerLogo">
       <HeaderDrawer />
       <div className="headerLogo__icon">
         <Link href="/[lang]" as={`/${locale}`}>
@@ -36,7 +36,7 @@ const HeaderLogo = () => {
       {/* Саме ліве виїздне меню */}
       {/* <Drawer drawerOpen={drawerOpen} drawerOnClick={drawerOnClick} /> */}
       <style jsx>{`
-        .headerLogo__logo {
+        .headerLogo {
           margin: 0;
           padding: 0;
           display: flex;
@@ -79,7 +79,7 @@ const HeaderLogo = () => {
         }
         @media (max-width: 600px) {
           /*mobile<600px*/
-          .text {
+          .headerLogo__text {
             display: none;
           }
         }

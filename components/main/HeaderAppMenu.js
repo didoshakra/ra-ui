@@ -89,8 +89,8 @@ const HeaderAppMenu = () => {
           data-index={index} //data-ХХ->Для передачі даних в e.currentTarget.dataset.XX
           className={
             item.a === app
-              ? "headerAppMenu_nav-item__active"
-              : "headerAppMenu__nav-item"
+              ? "headerAppMenu__dropdown__item--active"
+              : "headerAppMenu__dropdown__item"
           }
           onClick={appSelectToggle}
         >
@@ -104,20 +104,16 @@ const HeaderAppMenu = () => {
   };
 
   return (
-    <div ref={wrapperRef} className="headerAppMenu__menu-icon">
+    <div ref={wrapperRef} className="headerAppMenu" onClick={appMenuToggle}>
       {/* іконка App */}
       <a className="headerAppMenu__icon">
-        <FontAwesomeIcon
-          icon={faTh}
-          title={t("headerMenu_iconTitleApp")}
-          onClick={appMenuToggle}
-        />
+        <FontAwesomeIcon icon={faTh} title={t("headerMenu_iconTitleApp")} />
       </a>
-      <ul className="headerAppMenu__dropdown-content">{renderMenu()}</ul>
+      <ul className="headerAppMenu__dropdown">{renderMenu()}</ul>
 
       <style jsx global>{`
         //RA-Глобальні стилі для елементів headerMenu
-        .headerAppMenu__nav-item {
+        .headerAppMenu__dropdown__item {
           margin: 0;
           padding: 0; //Щоб зробити заокруглення
           padding: 5px 10px; //Щоб зробити заокруглення
@@ -129,12 +125,13 @@ const HeaderAppMenu = () => {
           color: ${theme.colors.headText};
           background: ${theme.colors.headBackground};
         }
-        .headerAppMenu__nav-item:hover,
-        .headerAppMenu__nav-item__active:hover {
+        .headerAppMenu__dropdown__item:hover,
+        .headerAppMenu__dropdown__item--active:hover {
           color: ${theme.colors.headTextHover};
           background: ${theme.colors.headTextBackgroundHover};
+          cursor: pointer;
         }
-        .headerAppMenu__nav-item__active {
+        .headerAppMenu__dropdown__item--active {
           margin: 0;
           padding: 5px 10px;
           display: block;
@@ -147,7 +144,7 @@ const HeaderAppMenu = () => {
         }
       `}</style>
       <style jsx>{`
-        .headerAppMenu__menu-icon {
+        .headerAppMenu {
           margin: 0;
           padding: 0;
           //display: flex;
@@ -167,7 +164,6 @@ const HeaderAppMenu = () => {
           color: ${theme.colors.headIcon};
           background: ${theme.colors.headBackground};
           border: 2px solid ${theme.colors.headIcon}; /* Параметры границы */
-          //border-radius: 45px; /* Радіус*/
           border-radius: 36px; /* Радіус*/
           width: 36px;
           height: 36px;
@@ -193,7 +189,7 @@ const HeaderAppMenu = () => {
           background: ${theme.colors.headMenuBackground};
 
         }*/
-        .headerAppMenu__dropdown-content {
+        .headerAppMenu__dropdown {
           //плавно виїжджає
           position: absolute;
           display: block; //Блок по ширині контенту

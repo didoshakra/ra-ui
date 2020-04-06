@@ -1,73 +1,61 @@
 //HeaderSeting //Зміна мови і теми
 
-import React, { useContext } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMoon, faSun, faGlobe } from "@fortawesome/free-solid-svg-icons";
-import useTranslation from "../../translations/useTranslation";
+import { useContext } from "react";
 import { ComponentContext } from "../../context/ComponentContext";
-import LocaleSwitcher from "./LocaleSwitcher";
+import HeaderSetingMobile from "./HeaderSetingMobile";
+import HeaderAppMenu from "./HeaderAppMenu";
+import ThemeSwitcher from "./ThemeSwitcher";
+import LocaleSwitcherIcon from "./LocaleSwitcherIcon";
 
 const HeaderSeting = () => {
-  const { t } = useTranslation();
-  const { state, dispatch } = useContext(ComponentContext);
-  const { theme, themeTypeLight } = state;
-
-  const themeMenuToggle = () => {
-    var newTheme = "light";
-    if (themeTypeLight) {
-      newTheme = "dark";
-    }
-    // console.log("HeaderMenu.js/newTheme=", newTheme);
-    dispatch({ type: "THEME", payload: newTheme }); //Змінюємо state.theme
-  };
+  const { state } = useContext(ComponentContext);
+  const theme = state.theme;
+  // const [drawerOpen, setDrawerOpen] = React.useState(false);
 
   return (
-    <div className="menu-icon">
-      <ul className="g-nav__item">
-        {/* іконка зміни теми */}
-        <li
-          className="icon"
-          title={t("headerMenu_iconTitleTheme")}
-          onClick={themeMenuToggle}
-        >
-          {themeTypeLight ? (
-            <FontAwesomeIcon icon={faSun} />
-          ) : (
-            <FontAwesomeIcon icon={faMoon} />
-          )}
-        </li>
-      </ul>
-      {/* іконка+випадаючий список мови-select */}
-      <LocaleSwitcher />
+    <div className="headerSeting">
+      <div className="headerSeting_larg">
+        {/* App меню*/}
+        <HeaderAppMenu />
+        {/* тема */}
+        <ThemeSwitcher />
+        {/* Мова */}
+        <LocaleSwitcherIcon />
+      </div>
+      <div className="headerSeting__mobile">
+        {/* іконки теми+мови */}
+        <HeaderSetingMobile />
+      </div>
 
-      <style jsx>{`
-        .menu-icon {
-          margin: 0;
-          padding: 0;
-          display: flex;
-          justify-content: flex-end; /* Вирівнювання елементів по головній осі(x) вправо */
-          align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
-          list-style-type: none; /**Отменяет маркеры для списка. */
-        }
-        .icon {
-          margin-right: 5px; //Відступ від кожного елемента зліва
-          display: flex;
-          align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
-          justify-content: center; /* Вирівнювання елементів по головній осі(x) вправо */
-          color: ${theme.colors.headIcon};
-          background: ${theme.colors.headBackground};
-          border: 2px solid ${theme.colors.headIcon}; /* Параметры границы */
-          //border-radius: 45px; /* Радіус*/
-          border-radius: 36px; /* Радіус*/
-          width: 36px;
-          height: 36px;
-        }
-        .icon:hover {
-          color: ${theme.colors.headIconHover};
-          background: ${theme.colors.headIconBackgroundHover};
-          //cursor: pointer;
-        }
-      `}</style>
+      <style jsx>
+        {`
+          .headerSeting {
+            /*padding: 10px; /*Поля*/
+            height: 64px;
+            display: flex;
+            justify-content: space-between; /*по-X Вирівнювання вліво-вправо*/
+            align-items: center; /* по Y */
+            background: ${theme.colors.headBackground};
+          }
+          .headerSeting_larg {
+            display: flex;
+          }
+          /* --- Mobile navigation icon -- */
+          .headerSeting__mobile {
+            display: none;
+            //z-index: 19;
+          }
+          @media (max-width: 960px) {
+            /*iPad<960px*/
+            .headerSeting_larg {
+              display: none; /*не показує */
+            }
+            .headerSeting__mobile {
+              display: flex;
+            }
+          }
+        `}
+      </style>
     </div>
   );
 };

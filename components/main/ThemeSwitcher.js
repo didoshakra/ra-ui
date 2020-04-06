@@ -6,7 +6,7 @@ import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import useTranslation from "../../translations/useTranslation";
 import { ComponentContext } from "../../context/ComponentContext";
 
-const HeaderSeting = () => {
+const ThemeSwitche = () => {
   const { t } = useTranslation();
   const { state, dispatch } = useContext(ComponentContext);
   const { theme, themeTypeLight } = state;
@@ -21,18 +21,18 @@ const HeaderSeting = () => {
   };
 
   return (
-    <ul className="menu-icon">
+    <div className="themeSwitche">
       {/* іконка зміни теми */}
-      <li
-        className="icon"
+      <a
+        className="themeSwitcher__icon"
         title={t("headerMenu_iconTitleTheme")}
         onClick={themeMenuToggle}
       >
         <FontAwesomeIcon icon={themeTypeLight ? faSun : faMoon} />
-      </li>
+      </a>
 
       <style jsx>{`
-        .menu-icon {
+        .themeSwitcher {
           margin: 0;
           padding: 0;
           display: flex;
@@ -40,7 +40,7 @@ const HeaderSeting = () => {
           align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
           list-style-type: none; /**Отменяет маркеры для списка. */
         }
-        .icon {
+        .themeSwitcher__icon {
           margin-right: 5px; //Відступ від кожного елемента зліва
           display: flex;
           align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
@@ -53,14 +53,14 @@ const HeaderSeting = () => {
           width: 36px;
           height: 36px;
         }
-        .icon:hover {
+        .themeSwitcher__icon:hover {
           color: ${theme.colors.headIconHover};
           background: ${theme.colors.headIconBackgroundHover};
           cursor: pointer;
         }
       `}</style>
-    </ul>
+    </div>
   );
 };
 
-export default HeaderSeting;
+export default ThemeSwitche;

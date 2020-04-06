@@ -5,13 +5,6 @@ import HeaderLogo from "./HeaderLogo";
 import { ComponentContext } from "../../context/ComponentContext";
 import HeaderMenu from "./HeaderMenu";
 import HeaderSeting from "./HeaderSeting";
-import HeaderAppMenu from "./HeaderAppMenu";
-import ThemeSwitcher from "./ThemeSwitcher";
-import LocaleSwitcher from "./LocaleSwitcher";
-
-// import DrawerButton from "./Navigation/DrawerBootton";
-// import Drawer from "./Navigation/Drawer";
-// import { faColumns } from "@fortawesome/free-solid-svg-icons";
 
 var lastScrollTop = 0;
 var scrolUP = false;
@@ -62,28 +55,22 @@ const Header = () => {
   });
 
   return (
-    <div className="header__fixed">
+    <div className="header">
       {/* <Drawer drawerOpen={drawerOpen} drawerOnClick={drawerOnClick} />
       <DrawerButton drawerOpen={drawerOpen} drawerOnClick={drawerOnClick} /> */}
       <div className="header__wrapper">
         <HeaderLogo />
-        <div className="header__menu">
+        <div className="header__wrapper__menu">
           {/* Навігація */}
           <HeaderMenu />
-          {/* App меню*/}
-          <HeaderAppMenu />
-          {/* іконки теми */}
-          <ThemeSwitcher />
-          {/* іконки Мови */}
-          <LocaleSwitcher />
-          {/* іконки теми+мови */}
-          {/* <HeaderSeting /> */}
+          {/* Налаштування(App,Теми,Мови)*/}
+          <HeaderSeting />
         </div>
       </div>
 
       <style jsx>{`
-        .header__fixed {
-          /* Для того щоб сховати */
+        .header {
+          /* Для того щоб плавно сховати шапку*/
           position: fixed;
           top: ${headerOpen ? "0" : "-64px"};
           height: 64px;
@@ -99,7 +86,7 @@ const Header = () => {
           justify-content: space-between; /*по-X Вирівнювання вліво-вправо*/
           align-items: center; /* по Y */
         }
-        .header__menu {
+        .header__wrapper__menu {
           display: flex;
           justify-content: space-end; /*по-X Вирівнювання вправо*/
           align-items: center; /* по Y */
