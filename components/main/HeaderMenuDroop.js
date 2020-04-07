@@ -1,4 +1,4 @@
-//MenuToggle.js //https://coursehunter.net/course/reactjs-s-nulya-do-profi
+//HeaderMenuDroop.js //https://coursehunter.net/course/reactjs-s-nulya-do-profi
 //Виїжджаюче меню зправа по гамбургеру
 import React, { useContext, useRef, useEffect } from "react";
 import Link from "next/link";
@@ -7,9 +7,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import useTranslation from "../../translations/useTranslation";
 import { ComponentContext } from "../../context/ComponentContext";
-import Index from "./../../pages/index";
+import Index from "../../pages/index";
 
-const HeaderMenuMobile = (props) => {
+const HeaderMenuDroop = (props) => {
   // const { menu } = props;
   const { state } = useContext(ComponentContext);
   const theme = state.theme;
@@ -44,7 +44,7 @@ const HeaderMenuMobile = (props) => {
   const renderMenu = () => {
     return props.menu.map((item, index) => {
       return (
-        <li className="headerMenuMobile__dropdown__item" key={index}>
+        <li className="headerMenuDroop__dropdown__item" key={index}>
           <Link href={`/[lang]${item.link}`} as={`/${locale}${item.link}`}>
             {/* <p className="g-nav__item-a">{item.a}</p> */}
             <p>{item.a}</p>
@@ -56,21 +56,21 @@ const HeaderMenuMobile = (props) => {
 
   return (
     //  Мобільна навігація
-    <div className="headerMenuMobile">
-      <a className="headerMenuMobile__icon">
+    <div className="headerMenuDroop">
+      <a className="headerMenuDroop__icon">
         <FontAwesomeIcon
           icon={faChevronRight}
           onClick={() => props.mobileMenuToggle(false)}
         />
       </a>
-      <div className="headerMenuMobile__title">{t("mobileNav_title")}</div>
+      <div className="headerMenuDroop__title">{t("mobileNav_title")}</div>
       {/* <ul ref={wrapperRef}>{props.renderMenu()}</ul> */}
-      <ul className="headerMenuMobile__dropdown" ref={wrapperRef}>
+      <ul className="headerMenuDroop__dropdown" ref={wrapperRef}>
         {renderMenu()}
       </ul>
 
       <style jsx global>{`
-        .headerMenuMobile__dropdown__item {
+        .headerMenuDroop__dropdown__item {
           margin: 0;
           padding: 0; //Щоб зробити заокруглення
           padding: 5px 10px; //Щоб зробити заокруглення
@@ -83,7 +83,7 @@ const HeaderMenuMobile = (props) => {
           background: ${theme.colors.headBackground};
         }
 
-        .headerMenuMobile__dropdown__item:hover {
+        .headerMenuDroop__dropdown__item:hover {
           color: ${theme.colors.headTextHover};
           background: ${theme.colors.headTextBackgroundHover};
           cursor: pointer;
@@ -91,7 +91,7 @@ const HeaderMenuMobile = (props) => {
       `}</style>
 
       <style jsx>{`
-        .headerMenuMobile {
+        .headerMenuDroop {
           z-index: 9;
           /*position: absolute;*//*на мобілках видно мені коли переміститись вправо*стрілка)*/
           position: fixed;
@@ -114,7 +114,7 @@ const HeaderMenuMobile = (props) => {
           };*/
           transition: transform 0.4s ease-in;
         }
-        .headerMenuMobile__icon {
+        .headerMenuDroop__icon {
           margin: 0;
           margin-left: 10px; //Відступ від кожного елемента зліва
           display: flex;
@@ -122,18 +122,21 @@ const HeaderMenuMobile = (props) => {
           justify-content: center; /* Вирівнювання елементів по головній осі(x) вправо */
           color: ${theme.colors.headIcon};
           background: ${theme.colors.headBackground};
-          border: 2px solid ${theme.colors.headIcon}; /* Параметры границы */
-          border-radius: 36px; /* Радіус*/
+          //border: 2px solid ${theme.colors.headIcon}; /* Параметры границы */
+          border: ${theme.colors.headIconBorderWidht}
+            ${theme.colors.headIconBorderStyle} ${
+        theme.colors.headIcon
+      }; /* Параметры границы */border-radius: 36px; /* Радіус*/
           width: 36px;
           height: 36px;
         }
-        .headerMenuMobile__icon:hover {
+        .headerMenuDroop__icon:hover {
           //color: #f6d142;
           color: ${theme.colors.headIconHover};
           background: ${theme.colors.headIconBackgroundHover};
           cursor: pointer;
         }
-        .headerMenuMobile__title {
+        .headerMenuDroop__title {
           font-size: 28px;
           font-weight: 800;
           //margin-bottom: 30px;
@@ -141,19 +144,19 @@ const HeaderMenuMobile = (props) => {
           margin: 30px 10px;
           color: #f6d142;
         }
-        .headerMenuMobile__dropdown{
+        .headerMenuDroop__dropdown{
           padding:  0;//треба
           margin:0;//треба
         }
          //При зменшенні екрану якщо не виключена кнопка щоб не показувало-не обовязково*/
         /*@media (min-width: 959px) {
-          .headerMenuMobile {
+          .headerMenuDroop {
               display: none; // Не показує мобільне меню на екранах>1199px
           }
         }*/
         //Для iphone 5
         @media (max-width: 600px) {
-          .headerMenuMobile {
+          .headerMenuDroop {
             width: 320px;
             right: -320px;
         }
@@ -162,4 +165,4 @@ const HeaderMenuMobile = (props) => {
   );
 };
 
-export default HeaderMenuMobile;
+export default HeaderMenuDroop;

@@ -144,6 +144,9 @@ const HeaderDrawer = () => {
           background: ${theme.colors.headBackground};
           //border: 2px solid ${theme.colors.headIcon}; /* Параметры границы */
           //border-radius: 45px; /* Радіус*/
+          border: ${theme.colors.headIconBorderWidht} ${
+        theme.colors.headIconBorderStyle
+      } ${theme.colors.headIcon}; /* Параметры границы */
           border-radius: 36px; /* Радіус*/
           width: 36px;
           height: 36px;

@@ -1,13 +1,14 @@
-//HeaderAppMenu.js
+//AppMenu.js//Іконка+випадаюче меню
+//Не використовую (використовую AppMenuIcon+AppMenuDroop)
 
 import React, { useContext, useRef, useEffect } from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTh } from "@fortawesome/free-solid-svg-icons";
-import useTranslation from "../../translations/useTranslation";
 import { ComponentContext } from "../../context/ComponentContext";
+import useTranslation from "../../translations/useTranslation";
 
-const HeaderAppMenu = () => {
+const AppMenu = () => {
   const { locale, t } = useTranslation();
   const { state, dispatch } = useContext(ComponentContext);
   const { theme, app } = state;
@@ -18,7 +19,7 @@ const HeaderAppMenu = () => {
   const wrapperRef = useRef(null); //Для клацання поза обєктом
   useOutsideAlerter(wrapperRef); //Для клацання поза обєктом
   function useOutsideAlerter(ref) {
-    // console.log("HeaderAppMenu.JS/useOutsideAlerter(ref)");
+    // console.log("AppMenu.JS/useOutsideAlerter(ref)");
     //*** Для клацання поза елементом Решение с React ^ 16.8 с использованием хуков
     function handleClickOutside(event) {
       if (ref.current && !ref.current.contains(event.target)) {
@@ -71,6 +72,7 @@ const HeaderAppMenu = () => {
     setAppMenuOpen(!appMenuOpen);
     // console.log("appMenuToggle/appMenuOpen=", appMenuOpen);
   };
+
   const appSelectToggle = (e) => {
     appMenuToggle(); //Закриваєм меню
     //setAppMenuOpen(false); //Закриваєм меню
@@ -89,13 +91,13 @@ const HeaderAppMenu = () => {
           data-index={index} //data-ХХ->Для передачі даних в e.currentTarget.dataset.XX
           className={
             item.a === app
-              ? "headerAppMenu__dropdown__item--active"
-              : "headerAppMenu__dropdown__item"
+              ? "appMenu__dropdown__item--active"
+              : "appMenu__dropdown__item"
           }
           onClick={appSelectToggle}
         >
           <Link href={`/[lang]${item.link}`} as={`/${locale}${item.link}`}>
-            {/* <a className="HeaderAppMenu__nav-item-a">{item.a}</a> */}
+            {/* <a className="appMenu__nav-item-a">{item.a}</a> */}
             <p>{item.a}</p>
           </Link>
         </li>
@@ -104,16 +106,16 @@ const HeaderAppMenu = () => {
   };
 
   return (
-    <div ref={wrapperRef} className="headerAppMenu" onClick={appMenuToggle}>
+    <div ref={wrapperRef} className="appMenu" onClick={appMenuToggle}>
       {/* іконка App */}
-      <a className="headerAppMenu__icon">
+      <a className="appMenu__icon">
         <FontAwesomeIcon icon={faTh} title={t("headerMenu_iconTitleApp")} />
       </a>
-      <ul className="headerAppMenu__dropdown">{renderMenu()}</ul>
+      <ul className="appMenu__dropdown">{renderMenu()}</ul>
 
       <style jsx global>{`
         //RA-Глобальні стилі для елементів headerMenu
-        .headerAppMenu__dropdown__item {
+        .appMenu__dropdown__item {
           margin: 0;
           padding: 0; //Щоб зробити заокруглення
           padding: 5px 10px; //Щоб зробити заокруглення
@@ -125,13 +127,13 @@ const HeaderAppMenu = () => {
           color: ${theme.colors.headText};
           background: ${theme.colors.headBackground};
         }
-        .headerAppMenu__dropdown__item:hover,
-        .headerAppMenu__dropdown__item--active:hover {
+        .appMenu__dropdown__item:hover,
+        .appMenu__dropdown__item--active:hover {
           color: ${theme.colors.headTextHover};
           background: ${theme.colors.headTextBackgroundHover};
           cursor: pointer;
         }
-        .headerAppMenu__dropdown__item--active {
+        .appMenu__dropdown__item--active {
           margin: 0;
           padding: 5px 10px;
           display: block;
@@ -144,7 +146,7 @@ const HeaderAppMenu = () => {
         }
       `}</style>
       <style jsx>{`
-        .headerAppMenu {
+        .appMenu {
           margin: 0;
           padding: 0;
           //display: flex;
@@ -155,7 +157,7 @@ const HeaderAppMenu = () => {
           position: relative;
           display: inline-block;
         }
-        .headerAppMenu__icon {
+        .appMenu__icon {
           margin: 0;
           margin-right: 5px; //Відступ від кожного елемента зліва
           display: flex;
@@ -163,12 +165,15 @@ const HeaderAppMenu = () => {
           justify-content: center; /* Вирівнювання елементів по головній осі(x) вправо */
           color: ${theme.colors.headIcon};
           background: ${theme.colors.headBackground};
-          border: 2px solid ${theme.colors.headIcon}; /* Параметры границы */
+          //border: 2px solid ${theme.colors.headIcon}; /* Параметры границы */
+          border: ${theme.colors.headIconBorderWidht} ${
+        theme.colors.headIconBorderStyle
+      } ${theme.colors.headIcon}; /* Параметры границы */
           border-radius: 36px; /* Радіус*/
           width: 36px;
           height: 36px;
         }
-        .headerAppMenu__icon:hover {
+        .appMenu__icon:hover {
           color: ${theme.colors.headIconHover};
           background: ${theme.colors.headIconBackgroundHover};
           cursor: pointer;
@@ -189,7 +194,7 @@ const HeaderAppMenu = () => {
           background: ${theme.colors.headMenuBackground};
 
         }*/
-        .headerAppMenu__dropdown {
+        .appMenu__dropdown {
           //плавно виїжджає
           position: absolute;
           display: block; //Блок по ширині контенту
@@ -213,4 +218,4 @@ const HeaderAppMenu = () => {
   );
 };
 
-export default HeaderAppMenu;
+export default AppMenu;

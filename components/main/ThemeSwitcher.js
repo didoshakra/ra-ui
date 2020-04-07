@@ -47,7 +47,8 @@ const ThemeSwitche = () => {
           justify-content: center; /* Вирівнювання елементів по головній осі(x) вправо */
           color: ${theme.colors.headIcon};
           background: ${theme.colors.headBackground};
-          border: 2px solid ${theme.colors.headIcon}; /* Параметры границы */
+          //border: 2px solid ${theme.colors.headIcon}; /* Параметры границы */
+          border: ${theme.colors.headIconBorderWidht} ${theme.colors.headIconBorderStyle} ${theme.colors.headIcon}; /* Параметры границы */
           //border-radius: 45px; /* Радіус*/
           border-radius: 36px; /* Радіус*/
           width: 36px;

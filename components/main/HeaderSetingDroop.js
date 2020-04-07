@@ -1,4 +1,4 @@
-//HeaderSetingMobile.js
+//HeaderSetingDroop.js
 //Випадаюче шестерня меню без  menuList
 
 import React, { useContext, useRef, useEffect } from "react";
@@ -12,10 +12,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { ComponentContext } from "../../context/ComponentContext";
 import useTranslation from "../../translations/useTranslation";
-// import HeaderAppMenu from "./HeaderAppMenu";
+import AppMenuDroop from "./AppMenuDroop";
 import LocaleSwitcherDroop from "./LocaleSwitcherDroop";
 
-const HeaderSetingMobile = () => {
+const HeaderSetingDroop = () => {
   const { t } = useTranslation();
   const { state, dispatch } = useContext(ComponentContext);
   const { theme, themeTypeLight } = state;
@@ -38,6 +38,9 @@ const HeaderSetingMobile = () => {
         if (langMenuOpen) {
           setLangMenuOpen(false); //Закриваєм меню Lang
         }
+        if (appMenuOpen) {
+          setAppMenuOpen(false); //Закриваєм меню App
+        }
       }
     }
     useEffect(() => {
@@ -57,6 +60,9 @@ const HeaderSetingMobile = () => {
     if (langMenuOpen) {
       setLangMenuOpen(false); //Закриваєм меню Lang
     }
+    if (appMenuOpen) {
+      setAppMenuOpen(false); //Закриваєм меню App
+    }
     // console.log("setingMenuToggle/setingMenuOpen=", setingMenuOpen);
   };
 
@@ -67,62 +73,81 @@ const HeaderSetingMobile = () => {
     }
     // console.log("HeaderMenu.js/newTheme=", newTheme);
     dispatch({ type: "THEME", payload: newTheme }); //Змінюємо state.theme
+    //
+    if (langMenuOpen) {
+      setLangMenuOpen(false); //Закриваєм меню Lang
+    }
+    if (appMenuOpen) {
+      setAppMenuOpen(false); //Закриваєм меню App
+    }
   };
 
   const langMenuOpenToggle = () => {
     setLangMenuOpen(!langMenuOpen);
-    // console.log("HeaderSetingMobile.js/langMenuOpenTagle=", appMenuOpen);
+    // console.log("HeaderSetingDroop.js/langMenuOpenTagle=", appMenuOpen);
+    if (appMenuOpen) {
+      setAppMenuOpen(false); //Закриваєм меню App
+    }
   };
 
   const appMenuToggle = () => {
     setAppMenuOpen(!appMenuOpen);
-    console.log("appMenuToggle/appMenuOpen=", appMenuOpen);
+    // console.log("appMenuToggle/appMenuOpen=", appMenuOpen);
+    if (langMenuOpen) {
+      setLangMenuOpen(false); //Закриваєм меню Lang
+    }
   };
 
   return (
-    <div ref={wrapperRef} className="headerSetingMobile">
+    <div ref={wrapperRef} className="headerSetingDroop">
       {/* іконка seting*/}
-      <a className="headerSetingMobile__icon" onClick={setingMenuToggle}>
+      <a className="headerSetingDroop__icon" onClick={setingMenuToggle}>
         <FontAwesomeIcon icon={faCog} title={t("headerMenu_iconTitleSeting")} />
       </a>
       {/* App меню*/}
       {/* {appMenuOpen ? <HeaderAppMenu /> : ""} */}
       {/* список головного меню */}
-      <ul className="headerSetingMobile__dropdown">
+      <ul className="headerSetingDroop__dropdown">
         <li
-          className="headerSetingMobile__dropdown__item"
-          onClick={appMenuToggle}
-        >
-          <FontAwesomeIcon icon={faTh} />
-          <a className="headerSetingMobile__dropdown__item__a">Додатки</a>
-        </li>
-        <li
-          className="headerSetingMobile__dropdown__item"
+          className="headerSetingDroop__dropdown__item"
           onClick={themeMenuToggle}
         >
           <FontAwesomeIcon icon={themeTypeLight ? faSun : faMoon} />
-          <a className="headerSetingMobile__dropdown__item__a">Теми</a>
+          <a className="headerSetingDroop__dropdown__item__a">Теми</a>
         </li>
         <li
-          className="headerSetingMobile__dropdown__item"
+          className="headerSetingDroop__dropdown__item"
           onClick={langMenuOpenToggle}
         >
-          <FontAwesomeIcon icon={faGlobe} />
+          {/* Від цього об'єкту відразовуються відступи в випадаючих меню */}
           <LocaleSwitcherDroop
             langMenuOpen={langMenuOpen}
             setLangMenuOpen={setLangMenuOpen}
           />
-          <a className="headerSetingMobile__dropdown__item__a">Мови</a>
+          <FontAwesomeIcon icon={faGlobe} />
+          <a className="headerSetingDroop__dropdown__item__a">Мови</a>
+        </li>
+        <li
+          className="headerSetingDroop__dropdown__item"
+          onClick={appMenuToggle}
+        >
+          {/* Від цього об'єкту відразовуються відступи в випадаючих меню */}
+          <AppMenuDroop
+            appMenuOpen={appMenuOpen}
+            setAppMenuOpen={setAppMenuOpen}
+          />
+          <FontAwesomeIcon icon={faTh} />
+          <a className="headerSetingDroop__dropdown__item__a">Додатки</a>
         </li>
       </ul>
       <style jsx>{`
-        .headerSetingMobile {
+        .headerSetingDroop {
           position: relative;
           //display: inline-block;
           margin: 0;
           padding: 0;
         }
-        .headerSetingMobile__icon {
+        .headerSetingDroop__icon {
           margin: 0;
           margin-right: 5px; //Відступ від кожного елемента зліва
           display: flex;
@@ -130,26 +155,29 @@ const HeaderSetingMobile = () => {
           justify-content: center; /* Вирівнювання елементів по головній осі(x) вправо */
           color: ${theme.colors.headIcon};
           background: ${theme.colors.headBackground};
-          border: 2px solid ${theme.colors.headIcon}; /* Параметры границы */
-          //border-radius: 45px; /* Радіус*/
+          //border: 2px solid ${theme.colors.headIcon}; /* Параметры границы */
+          border: ${theme.colors.headIconBorderWidht}
+            ${theme.colors.headIconBorderStyle} ${
+        theme.colors.headIcon
+      }; /* Параметры границы *///border-radius: 45px; /* Радіус*/
           border-radius: 36px; /* Радіус*/
           width: 36px;
           height: 36px;
         }
-        .headerSetingMobile__icon:hover {
+        .headerSetingDroop__icon:hover {
           color: ${theme.colors.headIconHover};
           background: ${theme.colors.headIconBackgroundHover};
           cursor: pointer;
         }
-        .headerSetingMobile__dropdown {
+        .headerSetingDroop__dropdown {
           //плавно проявляється (opacity 0.5s)
           position: absolute;
-          display: block; //+Блок по ширині контенту
-          float: left; //+Блок по ширині контентуleft:-110px;//працює лівий край від  лівого краю об'єкту
+          display: block; //+float: leftБлок по ширині контенту
+          float: left; //+display: blockБлок по ширині контентуleft:-110px;//працює лівий край від  лівого краю об'єкту
           padding: 0;
           margin: 0;
           width: 150px;
-          //top: 20px; //+Працює
+          top: 50px; //+Працює
           //bottom: -20px;
           left: -110px; //+Працює
           //min-width: 100px;
@@ -157,13 +185,14 @@ const HeaderSetingMobile = () => {
           border-radius: 3px;
           box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
           opacity: ${setingMenuOpen ? "1" : "0"};
-          z-index: ${setingMenuOpen ? "1" : "-2"};
+          // z-index: ${setingMenuOpen ? "-1" : "-2"};
+          z-index: -1;
           transition: z-index 0.5s, opacity 0.5s linear;
           background: ${theme.colors.headMenuBackground};
         }
       `}</style>
       <style jsx>{`
-        .headerSetingMobile__dropdown__item {
+        .headerSetingDroop__dropdown__item {
           display: flex;
           //position: relative;
           margin: 0;
@@ -178,12 +207,12 @@ const HeaderSetingMobile = () => {
           color: ${theme.colors.headText};
           background: ${theme.colors.headBackground};
         }
-        .headerSetingMobile__dropdown__item:hover {
+        .headerSetingDroop__dropdown__item:hover {
           color: ${theme.colors.headTextHover};
           background: ${theme.colors.headTextBackgroundHover};
           cursor: pointer;
         }
-        .headerSetingMobile__dropdown__item__a {
+        .headerSetingDroop__dropdown__item__a {
           margin-left: 10px;
           padding: 0;
           align-items: center; //Y Вирівнювання
@@ -193,4 +222,4 @@ const HeaderSetingMobile = () => {
   );
 };
 
-export default HeaderSetingMobile;
+export default HeaderSetingDroop;

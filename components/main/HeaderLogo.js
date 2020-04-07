@@ -61,6 +61,7 @@ const HeaderLogo = () => {
           justify-content: center; /* Вирівнювання елементів по головній осі(x) вправо */
           color: ${theme.colors.icontHead};
           background: ${theme.colors.headBackground};
+
           border-radius: 45px; /* Радіус*/
           width: 45px;
           height: 45px;

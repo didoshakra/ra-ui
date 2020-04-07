@@ -1,82 +1,83 @@
-//LocaleSwitcherDroop.js
+//appMenuDroop.js
 //Саме випадаюче меню мови
 
 import React, { useContext, useRef, useEffect } from "react";
-import { useRouter } from "next/router";
-import { locales } from "../../translations/config";
+import Link from "next/link";
 import { ComponentContext } from "../../context/ComponentContext";
 import useTranslation from "../../translations/useTranslation";
 
-const LocaleSwitcherDroop = (props) => {
-  const router = useRouter();
-  const { t } = useTranslation();
-  const { state } = useContext(ComponentContext);
-  const { theme, locale } = state;
-  console.log("LocaleSwitcherDroop/props.langMenuOpen=", props.langMenuOpen);
+const appMenuDroop = (props) => {
+  const { locale, t } = useTranslation();
+  const { state, dispatch } = useContext(ComponentContext);
+  const { theme, app } = state;
 
-  //Зміна locfle/ React.useCallback!!!???
-  const handleLocaleChange = React.useCallback(
-    (e) => {
-      props.setLangMenuOpen(false); //Закриваєм меню
-      //langMenuToggle(); //Закриває меню
-      const newLocale = localesList[e.currentTarget.dataset.index].loc;
-      // console.log("LocaleSwitcher.js/newLocale=", newLocale);
-      const regex = new RegExp(`^/(${locales.join("|")})`);
-      router.push(
-        router.pathname,
-        router.asPath.replace(regex, `/${newLocale}`)
-      );
-    },
-    [router]
-  );
+  // console.log("appMenuDroop/props.appMenuOpen=", props.appMenuOpen);
 
-  const localesList = [
+  const menu = [
     {
-      loc: "uk",
-      name: "Українська",
-      flag: "/flags/flag_ukraine-20.jpg",
+      a: "ra",
+      link: "/ra",
     },
     {
-      loc: "en",
-      name: "English",
-      flag: "/flags/flag_usa-20.jpg",
+      a: "home_hoer",
+      link: "/",
     },
     {
-      loc: "pl",
-      name: "Polski",
-      flag: "/flags/flag_poland-20.jpg",
+      a: "home_video",
+      link: "/home_video",
+    },
+    {
+      a: "home_animet",
+      link: "/home_animet",
+    },
+    {
+      a: "home_MUI",
+      link: "/home_MUI",
+    },
+    {
+      a: "home_stan",
+      link: "/home_stan",
+    },
+    {
+      a: t("headerMenu_iconTitleAboutME"),
+      link: "/about",
     },
   ];
+
   const renderMenu = () => {
-    return localesList.map((item, index) => {
+    return menu.map((item, index) => {
       return (
         <li
           data-index={index} //data-ХХ->Для передачі даних в e.currentTarget.dataset.XX
           className={
-            item.loc === locale
-              ? "localeSwitcherDroop__menu__item--active"
-              : "localeSwitcherDroop__menu__item"
+            item.a === app
+              ? "appMenuDroop__menu__item--active"
+              : "appMenuDroop__menu__item"
           }
-          onClick={handleLocaleChange}
+          onClick={appSelectToggle}
         >
-          <a className="localeSwitcherDroop__menu__item-a">{item.loc}</a>
-          <img
-            className="localeSwitcherDroop__menu__item-a"
-            src={item.flag}
-            alert="flag"
-          />
-          <a className="localeSwitcherDroop__menu__item-a">{item.name}</a>
+          <Link href={`/[lang]${item.link}`} as={`/${locale}${item.link}`}>
+            {/* <a className="HeaderAppMenu__nav-item-a">{item.a}</a> */}
+            <p>{item.a}</p>
+          </Link>
         </li>
       );
     });
   };
 
+  const appSelectToggle = (e) => {
+    props.setAppMenuOpen(false);
+    const newApp = menu[e.currentTarget.dataset.index].a;
+    // console.log("AppMenu.js/appSelectToggle/newApp=", newApp);
+    dispatch({ type: "APP", payload: newApp }); //Змінюємо state.theme
+  };
+
   return (
-    <div className="localeSwitcherDroop">
-      <ul className="localeSwitcherDroop__menu">{renderMenu()}</ul>
+    <div className="appMenuDroop">
+      <ul className="appMenuDroop__menu">{renderMenu()}</ul>
+
       <style jsx global>{`
-        //RA-Глобальні стилі для елементів headerMenu
-        .localeSwitcherDroop__menu__item {
+        .appMenuDroop__menu__item {
           margin: 0;
           padding: 0; //Щоб зробити заокруглення
           padding: 5px 10px; //Щоб зробити заокруглення
@@ -88,13 +89,13 @@ const LocaleSwitcherDroop = (props) => {
           color: ${theme.colors.headText};
           background: ${theme.colors.headBackground};
         }
-        .localeSwitcherDroop__menu__item:hover,
-        .localeSwitcherDroop__menu__item--active:hover {
+        .appMenuDroop__menu__item:hover,
+        .appMenuDroop__menu__item--active:hover {
           color: ${theme.colors.headTextHover};
           background: ${theme.colors.headTextBackgroundHover};
           cursor: pointer;
         }
-        .localeSwitcherDroop__menu__item--active {
+        .appMenuDroop__menu__item--active {
           margin: 0;
           padding: 5px 10px;
           display: block;
@@ -105,16 +106,16 @@ const LocaleSwitcherDroop = (props) => {
           color: ${theme.colors.headTextHover};
           background: ${theme.colors.headMenuBackgroundActive};
         }
-        .localeSwitcherDroop__menu__item-a {
+        .appMenuDroop__menu__item-a {
           margin-left: 5px;
       `}</style>
       <style jsx>{`
-        .localeSwitcherDroop {
+        .appMenuDroop {
           position: relative;
           margin: 0;
           padding: 0;
         }
-        .localeSwitcherDroop__menu {
+        .appMenuDroop__menu {
           //плавно проявляється (opacity 0.5s)
           position: absolute; //Щоб працювали(top,bottom,left,right) материнський блок обовязково = position: relative;
           display: inline-block; //-(сам)Блок по ширині контенту
@@ -122,7 +123,7 @@ const LocaleSwitcherDroop = (props) => {
           //float: left; //+(з display: block)Блок по ширині контенту
           padding: 0;
           margin: 0;
-          min-width: 180px; //якщо не працює display: inline-block(переносить слова)
+          //min-width: 150px;//якщо не працює display: inline-block(переносить слова)
           //bottom: -220px; //Від нижнього краю обох об'єктів()((+)вверх,(-)вниз)
           top: -0px; //Від верхнього краю обох об'єктів((+)вниз,(-)вверх)
           right: 0px; //Від правого краю обох об'єктів((+)вліво,(-)впрво/лівий край:(-)виходить за материнський блок (+)не виходить поки дозволяє розмір(включається перенос в стовбець не зважаючи на display: inline-block)
@@ -130,14 +131,35 @@ const LocaleSwitcherDroop = (props) => {
           //overflow: visible; //якщо не поміщається(відображається/auto-полоса прокрутки)
           border-radius: 5px;
           box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-          opacity: ${props.langMenuOpen ? "1" : "0"};
-          z-index: ${props.langMenuOpen ? "1" : "-2"};
+          opacity: ${props.appMenuOpen ? "1" : "0"};
+          z-index: ${props.appMenuOpen ? "1" : "-2"};
           transition: z-index 0.5s, opacity 0.5s linear;
           background: ${theme.colors.headMenuBackground};
         }
+        /*.appMenuDroop__menu {
+          //плавно виїжджає
+          position: absolute;
+          display: block; //Блок по ширині контенту
+          float: left; //Блок по ширині контентуleft:-110px;//працює лівий край від  лівого краю об'єкту
+          top: -250px;
+          left:-20px;
+          padding: 0;
+          margin: 0;
+         //min-width: 100px;
+          //max-height: : 150px;
+          //overflow: auto; //якщо не поміщається
+          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+          border-radius: 0 0 5px 5px;
+          transform: ${
+            props.appMenuOpen ? "translateY(100%)" : "translateY(0px)"
+          };
+          transition: transform 0.5s linear;
+          z-index: -1;
+          background: ${theme.colors.headMenuBackground};
+        }*/
       `}</style>
     </div>
   );
 };
 
-export default LocaleSwitcherDroop;
+export default appMenuDroop;

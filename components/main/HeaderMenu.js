@@ -1,6 +1,6 @@
 //HeaderMenu.js //Після розділення на HeaderMenu+HeaderSeting
 //Горизонтальне меню що згортається в іконку яка викликає
-//HeaderMenuMobile-випадаюче меню
+//HeaderMenuDroop-випадаюче меню
 
 //список меню з масиву menu
 
@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faList } from "@fortawesome/free-solid-svg-icons";
 import useTranslation from "../../translations/useTranslation";
 import { ComponentContext } from "../../context/ComponentContext";
-import HeaderMenuMobile from "./HeaderMenuMobile";
+import HeaderMenuDroop from "./HeaderMenuDroop";
 
 const HeaderMenu = () => {
   const { locale, t } = useTranslation();
@@ -79,7 +79,7 @@ const HeaderMenu = () => {
         </i>
       </div>
       {/* Список мобильної навігації */}
-      <HeaderMenuMobile
+      <HeaderMenuDroop
         mobileMenuOpen={mobileMenuOpen}
         mobileMenuToggle={mobileMenuToggle}
         // renderMenu={renderMenu}
@@ -145,8 +145,9 @@ const HeaderMenu = () => {
           justify-content: center; /* Вирівнювання елементів по головній осі(x) вправо */
           color: ${theme.colors.headIcon};
           background: ${theme.colors.headBackground};
-          border: 2px solid ${theme.colors.headIcon}; /* Параметры границы */
-          //border-radius: 45px; /* Радіус*/
+          //border: 2px solid ${theme.colors.headIcon}; /* Параметры границы */
+          border: ${theme.colors.headIconBorderWidht}
+            ${theme.colors.headIconBorderStyle} ${theme.colors.headIcon}; /* Параметры границы */ //border-radius: 45px; /* Радіус*/
           border-radius: 36px; /* Радіус*/
           width: 36px;
           height: 36px;

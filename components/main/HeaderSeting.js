@@ -1,11 +1,14 @@
-//HeaderSeting //Зміна мови і теми
+//HeaderSeting
+//Зміна мови і теми+ App меню
 
 import { useContext } from "react";
 import { ComponentContext } from "../../context/ComponentContext";
-import HeaderSetingMobile from "./HeaderSetingMobile";
-import HeaderAppMenu from "./HeaderAppMenu";
+import HeaderSetingDroop from "./HeaderSetingDroop";
+import AppMenuIcon from "./AppMenuIcon";
+import AppMenu from "./AppMenu";
 import ThemeSwitcher from "./ThemeSwitcher";
 import LocaleSwitcherIcon from "./LocaleSwitcherIcon";
+import LocaleSwitcher from "./LocaleSwitcher";
 
 const HeaderSeting = () => {
   const { state } = useContext(ComponentContext);
@@ -14,17 +17,21 @@ const HeaderSeting = () => {
 
   return (
     <div className="headerSeting">
+      {/* Іконки головного меню Seting */}
       <div className="headerSeting_larg">
-        {/* App меню*/}
-        <HeaderAppMenu />
+        {/* App меню */}
+        <AppMenuIcon />
+        {/* <AppMenu /> */}
         {/* тема */}
         <ThemeSwitcher />
         {/* Мова */}
         <LocaleSwitcherIcon />
+        {/* <LocaleSwitcher /> */}
       </div>
+
+      {/* Випадаюче меню Seting(мобільне) */}
       <div className="headerSeting__mobile">
-        {/* іконки теми+мови */}
-        <HeaderSetingMobile />
+        <HeaderSetingDroop />
       </div>
 
       <style jsx>

@@ -1,18 +1,18 @@
-//LocaleSwitcherIcon.js //
+//AppMenuIcon.js //
 //Іконка мови окремо (випадаючий список викликається)
 
 import React, { useContext, useRef, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGlobe } from "@fortawesome/free-solid-svg-icons";
+import { faTh } from "@fortawesome/free-solid-svg-icons";
 import { ComponentContext } from "../../context/ComponentContext";
 import useTranslation from "../../translations/useTranslation";
-import LocaleSwitcherDroop from "./LocaleSwitcherDroop";
+import AppMenuDroop from "./AppMenuDroop";
 
-const LocaleSwitcherIcon = () => {
+const AppMenuIcon = () => {
   const { t } = useTranslation();
   const { state } = useContext(ComponentContext);
   const { theme } = state;
-  const [langMenuOpen, setLangMenuOpen] = React.useState(false);
+  const [appMenuOpen, setAppMenuOpen] = React.useState(false);
 
   //***Для клацання поза обєктом
   const wrapperRef = useRef(null); //Для клацання поза обєктом
@@ -23,9 +23,9 @@ const LocaleSwitcherIcon = () => {
       if (ref.current && !ref.current.contains(event.target)) {
         //Якщо поза елементом
         //alert("Ти клацнув поза мною!");
-        // langMenuToggle(); //Погано-спрацьвує від іншого обєкту
-        if (langMenuOpen) {
-          setLangMenuOpen(false); //Закриваєм меню
+        // appMenuToggle(); //Погано-спрацьвує від іншого обєкту
+        if (appMenuOpen) {
+          setAppMenuOpen(false); //Закриваєм меню
         }
       }
     }
@@ -41,30 +41,25 @@ const LocaleSwitcherIcon = () => {
     });
   }
 
-  const langMenuOpenToggle = () => {
-    // if (!langMenuOpen) {
-    setLangMenuOpen(!langMenuOpen);
+  const appMenuOpenToggle = () => {
+    // if (!appMenuOpen) {
+    setAppMenuOpen(!appMenuOpen);
     // }
-    // console.log("langMenuToggle/langMenuOpen=", langMenuOpen);
+    // console.log("appMenuToggle/appMenuOpen=", appMenuOpen);
   };
 
   return (
-    <div ref={wrapperRef} className="localeSwitcherIcon">
-      {/* <div className="localeSwitcherIcon"> */}
+    <div ref={wrapperRef} className="appMenuIcon">
+      {/* <div className="appMenuIcon"> */}
       {/* іконка */}
-      <a className="localeSwitcherIcon__icon" onClick={langMenuOpenToggle}>
-        <FontAwesomeIcon
-          icon={faGlobe}
-          title={t("headerMenu_iconTitleLanguage")}
-        />
+      <a className="appMenuIcon__icon" onClick={appMenuOpenToggle}>
+        <FontAwesomeIcon icon={faTh} title={t("headerMenu_iconTitleappuage")} />
       </a>
       {/* Випадаюче меню */}
-      <LocaleSwitcherDroop
-        langMenuOpen={langMenuOpen}
-        setLangMenuOpen={setLangMenuOpen}
-      />
+      <AppMenuDroop appMenuOpen={appMenuOpen} setAppMenuOpen={setAppMenuOpen} />
+
       <style jsx>{`
-        .localeSwitcherIcon {
+        .appMenuIcon {
           position: relative;
           //position: absolute;
           margin: 0;
@@ -72,7 +67,7 @@ const LocaleSwitcherIcon = () => {
           //align-items: center; /* Вирівнювання елементів по (y) */
           list-style-type: none; /*маркери для списка. */
         }
-        .localeSwitcherIcon__icon {
+        .appMenuIcon__icon {
           margin: 0;
           margin-right: 5px; //Відступ від кожного елемента зліва
           display: flex;
@@ -87,7 +82,7 @@ const LocaleSwitcherIcon = () => {
           width: 36px;
           height: 36px;
         }
-        .localeSwitcherIcon__icon:hover {
+        .appMenuIcon__icon:hover {
           color: ${theme.colors.headIconHover};
           background: ${theme.colors.headIconBackgroundHover};
           cursor: pointer;
@@ -97,4 +92,4 @@ const LocaleSwitcherIcon = () => {
   );
 };
 
-export default LocaleSwitcherIcon;
+export default AppMenuIcon;
