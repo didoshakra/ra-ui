@@ -2,11 +2,11 @@
 //
 import { useContext } from "react";
 import Link from "next/link";
-import Layout from "../../components/main/Layout";
-import Gallery from "../../components/mag_stan/Gallery";
+import Layout from "../../../components/main/Layout";
+import Gallery from "../../../components/mag_stan/Gallery";
 // import theme from "../../styles/theme";
-import useTranslation from "../../translations/useTranslation";
-import { ComponentContext } from "../../context/ComponentContext";
+import useTranslation from "../../../translations/useTranslation";
+import { ComponentContext } from "../../../context/ComponentContext";
 
 const images = [
   "/promotions/14.jpg",

@@ -1,36 +1,33 @@
-//logo.js
+//HeaderLogo.js
+
 import Link from "next/link";
 import { useContext } from "react";
 import useTranslation from "../../translations/useTranslation";
 import { ComponentContext } from "../../context/ComponentContext";
-// import DrawerButton from "../Navigation/DrawerBootton";
 import Drawer from "./Drawer";
 
 const HeaderLogo = () => {
   const { state } = useContext(ComponentContext);
   const theme = state.theme;
   const { locale, t } = useTranslation();
-  const [drawerOpen, setDrawerOpen] = React.useState(false);
-
-  // const drawerOnClick = () => {
-  //   setDrawerOpen(!drawerOpen);
-  // };
 
   return (
     <div className="headerLogo">
+      {/* <HeaderDrawer /> */}
       <Drawer />
       <div className="headerLogo__icon">
         <Link href="/[lang]" as={`/${locale}`}>
           <img
             title={t("logo_logoTitle")}
-            src="/icons/SunRa48.png"
+            src="/icons/StanLogo-80.jpg"
             alert="logo"
           />
         </Link>
       </div>
       <Link href="/[lang]" as={`/${locale}`}>
         <a title={t("logo_logoTitle")} className="headerLogo__text">
-          {t("logo_siteName")}
+          mag_stan
+          {/* {t("logo_siteName")} */}
         </a>
       </Link>
       {/* Саме ліве виїздне меню */}

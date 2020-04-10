@@ -4,16 +4,13 @@
 //https://codeguida.com/post/1818
 //https://blog.logrocket.com/use-hooks-and-context-not-react-and-redux/
 //Тільки 2-і теми(themeTypeLight)
+//до вибору APP
 
 import React, { createContext, useReducer } from "react";
 import { useRouter } from "next/router";
 
 import { isLocale } from "../translations/helpes";
 import { themeDark, themeLith } from "../styles/theme";
-// import { themeDark1, themeLith1 } from "../styles/DynamicAppTheme";
-
-// console.log("ComponentContext.js/themeDark1", themeDark1);
-// console.log("ComponentContext.js/themeLith1", themeLith1);
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -25,8 +22,10 @@ const reducer = (state, action) => {
       return { ...state, locale: action.payload };
     case "THEME":
       if (action.payload === "light") {
+        // return { ...state, theme: themeLith, themeType: "light" };
         return { ...state, theme: themeLith, themeTypeLight: true };
       } else if (action.payload === "dark") {
+        // return { ...state, theme: themeDark, themeType: "dark" };
         return { ...state, theme: themeDark, themeTypeLight: false };
         // } else {
         //   return { ...state, theme: themeOther, themeType: "other" };
@@ -39,6 +38,7 @@ const reducer = (state, action) => {
 const initialState = {
   locale: "en",
   theme: themeLith,
+  // themeType: "light"
   themeTypeLight: true,
   app: "ra_ui",
 };
@@ -91,7 +91,9 @@ export const ThemeProvider = ({ children }) => {
   }, [query.lang, state.locale]); // виконується тільки при зміні query.lang або locale
 
   // console.log("!!!+++5/ LComponentContext.js/state.locale=", state.locale);
+
   //************************ */
+
   return (
     <ComponentContext.Provider value={{ state, dispatch }}>
       {/* {props.children} */}

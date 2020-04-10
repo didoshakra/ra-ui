@@ -1,4 +1,5 @@
-//ThemeSwitcher.js //Зміна теми
+//ThemeSwitcher.js //Зміна теми(шконка+зміна теми)
+//Використовую
 
 import React, { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,10 +8,12 @@ import useTranslation from "../../translations/useTranslation";
 import { ComponentContext } from "../../context/ComponentContext";
 
 const ThemeSwitche = () => {
-  const { t } = useTranslation();
+  const { t, themeDark1, themeLith1 } = useTranslation();
   const { state, dispatch } = useContext(ComponentContext);
   const { theme, themeTypeLight } = state;
 
+  // console.log("ThemeSwitcher.js/themeDark1", themeDark1);
+  // console.log("ThemeSwitcher.js/themeLith1", themeLith1);
   const themeMenuToggle = () => {
     var newTheme = "light";
     if (themeTypeLight) {

@@ -1,13 +1,13 @@
 //LocaleSwitcher.js
 //Cвоє меню <select>+localesList.map((item, index)-список з мсиву
 //Іконка і випадаючий список разом
-//Не використовую. Використовую  LocaleSwitcherIcon з LocaleSwitcherDroop
+//!!!Не використовую. Використовую  LocaleSwitcherIcon з LocaleSwitcherDroop
 
 import React, { useContext, useRef, useEffect } from "react";
 import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGlobe } from "@fortawesome/free-solid-svg-icons";
-import { locales, languageNames } from "../../translations/config";
+import { locales, localesList } from "../../translations/config";
 import { ComponentContext } from "../../context/ComponentContext";
 import useTranslation from "../../translations/useTranslation";
 
@@ -66,23 +66,24 @@ const LocaleSwitcher = () => {
       };
     });
   }
-  const localesList = [
-    {
-      loc: "uk",
-      name: "Українська",
-      flag: "/flags/flag_ukraine-20.jpg",
-    },
-    {
-      loc: "en",
-      name: "English",
-      flag: "/flags/flag_usa-20.jpg",
-    },
-    {
-      loc: "pl",
-      name: "Polski",
-      flag: "/flags/flag_poland-20.jpg",
-    },
-  ];
+  // const localesList = [
+  //   {
+  //     loc: "uk",
+  //     name: "Українська",
+  //     flag: "/flags/flag_ukraine-20.jpg",
+  //   },
+  //   {
+  //     loc: "en",
+  //     name: "English",
+  //     flag: "/flags/flag_usa-20.jpg",
+  //   },
+  //   {
+  //     loc: "pl",
+  //     name: "Polski",
+  //     flag: "/flags/flag_poland-20.jpg",
+  //   },
+  // ];
+
   const renderMenu = () => {
     return localesList.map((item, index) => {
       // return locales.map((item) => {

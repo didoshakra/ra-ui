@@ -1,6 +1,6 @@
 //Shops.js
-import Layout from "../../components/main/Layout";
-import useTranslation from "../../translations/useTranslation";
+import Layout from "../../../components/main/Layout";
+import useTranslation from "../../../translations/useTranslation";
 
 const About = () => {
   const { t } = useTranslation();

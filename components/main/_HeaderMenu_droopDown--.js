@@ -10,11 +10,9 @@ import {
   faSun,
   faGlobe,
 } from "@fortawesome/free-solid-svg-icons";
-import LocaleSwitcher from "./LocaleSwitcher";
 import useTranslation from "../../translations/useTranslation";
 import { ComponentContext } from "../../context/ComponentContext";
 import HeaderMenuMobile from "./HeaderMenuMobile";
-import myDropdown from "../navigation/myDropdown";
 
 const HeaderMenu = () => {
   const { locale, t } = useTranslation();

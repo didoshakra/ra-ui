@@ -15,32 +15,13 @@ const appMenuDroop = (props) => {
 
   const menu = [
     {
-      a: "ra",
-      link: "/ra",
+      a: "ra_ui",
     },
     {
-      a: "home_hoer",
-      link: "/",
+      a: "mag_stan",
     },
     {
-      a: "home_video",
-      link: "/home_video",
-    },
-    {
-      a: "home_animet",
-      link: "/home_animet",
-    },
-    {
-      a: "home_MUI",
-      link: "/home_MUI",
-    },
-    {
-      a: "home_stan",
-      link: "/home_stan",
-    },
-    {
-      a: t("headerMenu_iconTitleAboutME"),
-      link: "/about",
+      a: "examples",
     },
   ];
 
@@ -56,10 +37,9 @@ const appMenuDroop = (props) => {
           }
           onClick={appSelectToggle}
         >
-          <Link href={`/[lang]${item.link}`} as={`/${locale}${item.link}`}>
-            {/* <a className="HeaderAppMenu__nav-item-a">{item.a}</a> */}
-            <p>{item.a}</p>
-          </Link>
+          {/* <Link href={`/[lang]${item.link}`} as={`/${locale}${item.link}`}> */}
+          <p>{item.a}</p>
+          {/* </Link> */}
         </li>
       );
     });

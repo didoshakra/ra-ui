@@ -1,11 +1,12 @@
 //home_mui.js / Muiv4.5.1
+//Добавлено animat
 import React, { useContext } from "react";
 import Link from "next/link";
 import Head from "next/head";
 
-import Layout from "../../components/main/Layout";
-import useTranslation from "../../translations/useTranslation";
-import { ComponentContext } from "../../context/ComponentContext";
+import Layout from "../../../components/main/Layout";
+import useTranslation from "../../../translations/useTranslation";
+import { ComponentContext } from "../../../context/ComponentContext";
 
 export default function HomePage() {
   const { locale, t } = useTranslation();
@@ -19,7 +20,8 @@ export default function HomePage() {
         <title>{t("header-titleSite")}</title>
         {/* <title>Ra-test</title> */}
       </Head>
-      <div className="root">
+      {/* <div className="root"> */}
+      <div className="cover">
         <div className="hero">
           {/* <Container maxWidth="md" className={className.content}> */}
           <div className="content">
@@ -36,9 +38,19 @@ export default function HomePage() {
         </div>
       </div>
       <style jsx>{`
-        .root {
+        /* .root {
           flex: 1 0 100%;
-          max-height: 480px; //Висота
+          max-height: 480px; //Висота */
+        .cover {
+          position: relative;
+          overflow: hidden; //Обрізає все що виходить за межі елементу
+          //
+          background: transparent url(/photo/Everest.jpg) no-repeat;
+          background-size: cover; //Маштабує зображення.
+          animation-duration: 10s;
+          animation-name: cover;
+          animation-iteration-count: 1; //infinite для нескінченного повтору
+          animation-fill-mode: forwards; //Залишається в кінцевому стані
         }
         .hero {
           padding-top: 44px;
@@ -66,7 +78,7 @@ export default function HomePage() {
           }
         }
         .content h1 {
-          font-size: 20;
+          font-size: 50;
           font-family: ${theme.fontFamily.serif};
           font-weight: 900; /*normal/lighter/100/900/.. Грубина шрифта */
           font-style: italic;
@@ -74,7 +86,11 @@ export default function HomePage() {
           white-space: nowrap; /*Об'єднує послідовності прогалин в один пробіл, як значення normal, але не переносить рядки (обертання тексту) у тексті.*/
           letter-spacing: 0.7rem; /*Контролює відстань між текстовими символами, в доповненні до будь-якого відстані атрибута kerning. */
           text-indent: 0.7rem; /*Визначає розмір відступу (порожнього місця) перед рядком в текстовому блоці. */
-          font-style: italic;
+          animation-duration: 3s;
+          animation-name: welcom;
+          animation-iteration-count: 2; //infinite для нескінченного повтору
+          animation-direction: alternate; //Анімація туда і назад
+          color: #0000ff;
         }
         /*.breakpoints.only("xs")-sm: 600px */
         @media (max-width: 600px) {
@@ -104,7 +120,25 @@ export default function HomePage() {
             height: 120px;
           }
         }
-
+        @keyframes cover {
+          from {
+            transform: scale(1.2);
+          }
+          to {
+            transform: scale(1);
+          }
+        }
+        @keyframes welcom {
+          from {
+            transform: scale(1);
+            color: #0000ff;
+          }
+          to {
+            transform: scale(2);
+            color: #ffcccc;
+          }
+        }
+        ////////////////////////////////////////////
         button {
           margintop: 4px;
         }

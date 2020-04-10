@@ -1,5 +1,5 @@
 //AppMenu.js//Іконка+випадаюче меню
-//Не використовую (використовую AppMenuIcon+AppMenuDroop)
+//!!!Не використовую (використовую AppMenuIcon+AppMenuDroop)
 
 import React, { useContext, useRef, useEffect } from "react";
 import Link from "next/link";
