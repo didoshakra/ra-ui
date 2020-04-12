@@ -25,7 +25,7 @@ const HeaderMenu = () => {
 
   const menu = [
     {
-      a: "home_hoer",
+      a: "home_hover",
       link: "/",
     },
     {
