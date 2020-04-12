@@ -25,28 +25,20 @@ const HeaderMenu = () => {
 
   const menu = [
     {
-      a: "home_stan",
-      link: "/mag_stan/home_stan",
+      a: "home_hoer",
+      link: "/",
     },
     {
-      // a: t("headerMenu_iconTitleAboutME"),
-      a: "shop",
-      link: "/mag_stan/about",
+      a: "home_video",
+      link: "/ra_ui/home_video",
     },
     {
-      // a: t("headerMenu_iconTitleAboutME"),
-      a: "about",
-      link: "/mag_stan/about",
+      a: "home_animet",
+      link: "/ra_ui/home_animet",
     },
     {
-      // a: t("headerMenu_iconTitleAboutME"),
-      a: "blog",
-      link: "/mag_stan/about",
-    },
-    {
-      // a: t("headerMenu_iconTitleAboutME"),
-      a: "contact",
-      link: "/mag_stan/about",
+      a: "home_MUI",
+      link: "/ra_ui/home_MUI",
     },
   ];
 

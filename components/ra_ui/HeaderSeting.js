@@ -4,7 +4,7 @@
 import { useContext } from "react";
 import { ComponentContext } from "../../context/ComponentContext";
 import HeaderSetingDroop from "./HeaderSetingDroop";
-import AppMenuIcon from "./AppMenuIcon";
+import AppMenuIcon from "../main/AppMenuIcon";
 // import AppMenu from "./AppMenu";
 import ThemeSwitcher from "../main/ThemeSwitcher";
 import LocaleSwitcherIcon from "../main/LocaleSwitcherIcon";
@@ -28,12 +28,10 @@ const HeaderSeting = () => {
         <LocaleSwitcherIcon />
         {/* <LocaleSwitcher /> */}
       </div>
-
       {/* Випадаюче меню Seting(мобільне) */}
       <div className="headerSeting__mobile">
         <HeaderSetingDroop />
       </div>
-
       <style jsx>
         {`
           .headerSeting {

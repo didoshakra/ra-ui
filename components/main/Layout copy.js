@@ -1,25 +1,30 @@
-//https://reacttricks.com/learn-react-by-building-websites-with-next
-//Layout.js
-// динамічнИЙ імпорт <Header /> і <Footer /> для вибраного APP
+//https://reacttricks.com/learn-react-by-building-websites-with-next/
+//До динамічного імпорту <Header />
 
-import React, { useContext } from "react";
+import { useContext } from "react";
 import Head from "next/head";
-import dynamic from "next/dynamic"; //https://web.dev/code-splitting-with-dynamic-imports-in-nextjs/
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; //fontawesome
-// import Header from "./Header";
+// import {
+//   faTimes,
+//   faCoffee,
+//   faThumbsUp,
+//   faBars,
+//   faUser
+// } from "@fortawesome/free-solid-svg-icons";
+// import { faTwitter, faFacebook } from "@fortawesome/free-brands-svg-icons";
+// // import { faCoffee } from "@fortawesome/free-regular-svg-icons";
+
+import Header from "./Header";
 import Footer from "./Footer";
 import { ComponentContext } from "../../context/ComponentContext";
 import useTranslation from "../../translations/useTranslation";
-
-// const Hader = dynamic(import("./Header"));//Тут теж працює
+//import FontAwecomIcons from "../ui/FontAwecomIcons";
 
 const Layout = ({ children, title, description }) => {
   const { t } = useTranslation();
   const { state } = useContext(ComponentContext);
-  const { theme, app } = state;
-  // const Hader = dynamic(import("../mag_stan/Header"));
-
-  const Hader = dynamic(import(`../${app}/Header`)); //Динамічний import //https://web.dev/code-splitting-with-dynamic-imports-in-nextjs/
+  const theme = state.theme;
+  // console.log("*** /Layout.js/theme=", theme);
 
   return (
     // <div className="site-wrapper">
@@ -34,8 +39,7 @@ const Layout = ({ children, title, description }) => {
         {/* <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> */}
       </Head>
-
-      <Hader />
+      <Header />
 
       <div className="loyout__content-wrapper">
         {/* <FontAwecomIcons /> */}

@@ -10,7 +10,7 @@ var scrolUP = false;
 
 const Header = () => {
   const { state } = useContext(ComponentContext);
-  const { theme } = state;
+  const { theme, app } = state;
   const [headerOpen, setHeaderOpen] = React.useState(true); //*** щоб ховалась/появлялась Head при скролі
   // const drawerOnClick = () => {
   //   setDrawerOpen(!drawerOpen);

@@ -12,7 +12,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { ComponentContext } from "../../context/ComponentContext";
 import useTranslation from "../../translations/useTranslation";
-import AppMenuDroop from "./AppMenuDroop";
+import AppMenuDroop from "../main/AppMenuDroop";
 import LocaleSwitcherDroop from "../main/LocaleSwitcherDroop";
 
 const HeaderSetingDroop = () => {
