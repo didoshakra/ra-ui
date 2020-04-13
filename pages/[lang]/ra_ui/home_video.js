@@ -1,5 +1,5 @@
 //Home.js//VIDEO/https://sitehere.ru/kak-sdelat-video-fonom-sajta-videostoki
-import Layout from "../../../components/main/Layout";
+import Layout from "../../../components/all/Layout";
 import useTranslation from "../../../translations/useTranslation";
 
 const Home = () => {

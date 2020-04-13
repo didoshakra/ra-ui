@@ -4,7 +4,7 @@ import React, { useContext } from "react";
 import Link from "next/link";
 import Head from "next/head";
 
-import Layout from "../../../components/main/Layout";
+import Layout from "../../../components/all/Layout";
 import useTranslation from "../../../translations/useTranslation";
 import { ComponentContext } from "../../../context/ComponentContext";
 

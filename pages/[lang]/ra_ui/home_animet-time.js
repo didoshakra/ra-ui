@@ -1,7 +1,7 @@
 //Homepage/home_animet-time/
 import { useContext } from "react";
 import Link from "next/link";
-import Layout from "../../../components/main/Layout";
+import Layout from "../../../components/all/Layout";
 import useTranslation from "../../../translations/useTranslation";
 import { ComponentContext } from "../../../context/ComponentContext";
 

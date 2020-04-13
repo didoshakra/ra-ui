@@ -4,10 +4,10 @@
 import { useContext } from "react";
 import { ComponentContext } from "../../context/ComponentContext";
 import HeaderSetingDroop from "./HeaderSetingDroop";
-import AppMenuIcon from "./AppMenuIcon";
+import AppMenuIcon from "../all/AppMenuIcon";
 // import AppMenu from "./AppMenu";
-import ThemeSwitcher from "../main/ThemeSwitcher";
-import LocaleSwitcherIcon from "../main/LocaleSwitcherIcon";
+import ThemeSwitcher from "../all/ThemeSwitcher";
+import LocaleSwitcherIcon from "../all/LocaleSwitcherIcon";
 // import LocaleSwitcher from "./LocaleSwitcher";
 
 const HeaderSeting = () => {

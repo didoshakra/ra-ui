@@ -2,7 +2,7 @@
 //
 import { useContext } from "react";
 import Link from "next/link";
-import Layout from "../../../components/main/Layout";
+import Layout from "../../../components/all/Layout";
 import Gallery from "../../../components/mag_stan/Gallery";
 // import theme from "../../styles/theme";
 import useTranslation from "../../../translations/useTranslation";

@@ -1,5 +1,5 @@
 //Shops.js
-import Layout from "../../../components/main/Layout";
+import Layout from "../../../components/all/Layout";
 import useTranslation from "../../../translations/useTranslation";
 
 const About = () => {
