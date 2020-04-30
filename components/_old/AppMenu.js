@@ -80,8 +80,8 @@ const AppMenu = () => {
     // const i = e.currentTarget.dataset.index;
     const newApp = menu[e.currentTarget.dataset.index].a;
     // setApp(newApp);
-    console.log("AppMenu.js/appSelectToggle/newApp=", newApp);
-    dispatch({ type: "APP", payload: newApp }); //Змінюємо state.theme
+    // console.log("AppMenu.js/appSelectToggle/newApp=", newApp);
+    // dispatch({ type: "APP", payload: newApp }); //Змінюємо state.theme
   };
 
   const renderMenu = () => {

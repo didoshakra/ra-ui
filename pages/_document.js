@@ -17,6 +17,19 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+          {/* 20080425-добавлені шрифти //Amatic SC,Poppins,Lora-https://fonts.googleapis.com/ з шаблону */}
+          <link
+            href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap"
+            rel="stylesheet"
+          />
           {/* Для відео */}
           <link
             href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,600,600i"

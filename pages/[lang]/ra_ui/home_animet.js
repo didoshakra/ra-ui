@@ -1,4 +1,5 @@
 //Homepage/animation/https://developer.mozilla.org/uk/docs/Web/CSS/CSS_Animations/%D0%92%D0%B8%D0%BA%D0%BE%D1%80%D0%B8%D1%81%D1%82%D0%B0%D0%BD%D0%BD%D1%8F_CSS_%D0%B0%D0%BD%D1%96%D0%BC%D0%B0%D1%86%D1%96%D0%B9
+
 import { useContext } from "react";
 import Link from "next/link";
 import Layout from "../../../components/all/Layout";

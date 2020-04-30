@@ -14,19 +14,19 @@ import {
   faBars,
   faUser,
   faGripHorizontal,
-  faTh
+  faTh,
 } from "@fortawesome/free-solid-svg-icons";
 //fab-
 import {
   faApple,
   faTwitter,
-  faFacebook
+  faFacebook,
 } from "@fortawesome/free-brands-svg-icons";
 // import { faCoffee } from "@fortawesome/free-regular-svg-icons";
 
 const FontAwecomIcons = () => {
   return (
-    <div className="font-awecom-icons">
+    <section className="font-awecom-icons">
       {/* <div> */}
       {/* free-solid-svg-icons */}
       <p>
@@ -34,19 +34,24 @@ const FontAwecomIcons = () => {
         *solid*/faList
       </p>
       <p>
-        <FontAwesomeIcon icon={faChevronRight} />faChevronRight
+        <FontAwesomeIcon icon={faChevronRight} />
+        faChevronRight
       </p>
       <p>
-        <FontAwesomeIcon icon={faChevronLeft} />faChevronLeft
+        <FontAwesomeIcon icon={faChevronLeft} />
+        faChevronLeft
       </p>
       <p>
-        <FontAwesomeIcon icon={faCog} />faCog
+        <FontAwesomeIcon icon={faCog} />
+        faCog
       </p>
       <p>
-        <FontAwesomeIcon icon={faSun} />faSun
+        <FontAwesomeIcon icon={faSun} />
+        faSun
       </p>
       <p>
-        <FontAwesomeIcon icon={faGlobe} />faGlobe
+        <FontAwesomeIcon icon={faGlobe} />
+        faGlobe
       </p>
       {/* <p>
         <FontAwesomeIcon icon={faBuromobelexperte} />
@@ -89,8 +94,8 @@ const FontAwecomIcons = () => {
         //Статичні стилі
         .font-awecom-icons {
           display: flex;
-         //flex-wrap: wrap;
-         flex-flow: row wrap; //В рядок + переносити */
+          //flex-wrap: wrap;
+          flex-flow: row wrap; //В рядок + переносити */
           text-align: center;
           max-width: 1000%;
           // margin-top: 10px;
@@ -103,7 +108,7 @@ const FontAwecomIcons = () => {
           // padding: 20px 30px;
         }
       `}</style>
-    </div>
+    </section>
   );
 };
 export default FontAwecomIcons;

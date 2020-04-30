@@ -1,4 +1,4 @@
-//HeaderMenuDroop.js //https://coursehunter.net/course/reactjs-s-nulya-do-profi
+//MobileMenuDroop.js //https://coursehunter.net/course/reactjs-s-nulya-do-profi
 //Виїжджаюче меню зправа по гамбургеру
 import React, { useContext, useRef, useEffect } from "react";
 import Link from "next/link";
@@ -7,9 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import useTranslation from "../../translations/useTranslation";
 import { ComponentContext } from "../../context/ComponentContext";
-import Index from "../../pages/index";
 
-const HeaderMenuDroop = (props) => {
+const MobileMenuDroop = (props) => {
   // const { menu } = props;
   const { state } = useContext(ComponentContext);
   const theme = state.theme;
@@ -44,10 +43,10 @@ const HeaderMenuDroop = (props) => {
   const renderMenu = () => {
     return props.menu.map((item, index) => {
       return (
-        <li className="headerMenuDroop__dropdown__item" key={index}>
+        <li className="mobileMenuDroop__dropdown__item" key={index}>
           <Link href={`/[lang]${item.link}`} as={`/${locale}${item.link}`}>
             {/* <p className="g-nav__item-a">{item.a}</p> */}
-            <p>{item.a}</p>
+            <a>{item.a}</a>
           </Link>
         </li>
       );
@@ -56,21 +55,21 @@ const HeaderMenuDroop = (props) => {
 
   return (
     //  Мобільна навігація
-    <div className="headerMenuDroop">
-      <a className="headerMenuDroop__icon">
+    <div className="mobileMenuDroop">
+      <a className="mobileMenuDroop__icon">
         <FontAwesomeIcon
           icon={faChevronRight}
           onClick={() => props.mobileMenuToggle(false)}
         />
       </a>
-      <div className="headerMenuDroop__title">{t("mobileNav_title")}</div>
+      <div className="mobileMenuDroop__title">{t("mobileNav_title")}</div>
       {/* <ul ref={wrapperRef}>{props.renderMenu()}</ul> */}
-      <ul className="headerMenuDroop__dropdown" ref={wrapperRef}>
+      <ul className="mobileMenuDroop__dropdown" ref={wrapperRef}>
         {renderMenu()}
       </ul>
 
       <style jsx global>{`
-        .headerMenuDroop__dropdown__item {
+        .mobileMenuDroop__dropdown__item {
           margin: 0;
           padding: 0; //Щоб зробити заокруглення
           padding: 5px 10px; //Щоб зробити заокруглення
@@ -83,7 +82,7 @@ const HeaderMenuDroop = (props) => {
           background: ${theme.colors.headBackground};
         }
 
-        .headerMenuDroop__dropdown__item:hover {
+        .mobileMenuDroop__dropdown__item:hover {
           color: ${theme.colors.headTextHover};
           background: ${theme.colors.headTextBackgroundHover};
           cursor: pointer;
@@ -91,7 +90,7 @@ const HeaderMenuDroop = (props) => {
       `}</style>
 
       <style jsx>{`
-        .headerMenuDroop {
+        .mobileMenuDroop {
           z-index: 9;
           /*position: absolute;*//*на мобілках видно мені коли переміститись вправо*стрілка)*/
           position: fixed;
@@ -114,7 +113,7 @@ const HeaderMenuDroop = (props) => {
           };*/
           transition: transform 0.4s ease-in;
         }
-        .headerMenuDroop__icon {
+        .mobileMenuDroop__icon {
           margin: 0;
           margin-left: 10px; //Відступ від кожного елемента зліва
           display: flex;
@@ -130,13 +129,13 @@ const HeaderMenuDroop = (props) => {
           width: 36px;
           height: 36px;
         }
-        .headerMenuDroop__icon:hover {
+        .mobileMenuDroop__icon:hover {
           //color: #f6d142;
           color: ${theme.colors.headIconHover};
           background: ${theme.colors.headIconBackgroundHover};
           cursor: pointer;
         }
-        .headerMenuDroop__title {
+        .mobileMenuDroop__title {
           font-size: 28px;
           font-weight: 800;
           //margin-bottom: 30px;
@@ -144,19 +143,19 @@ const HeaderMenuDroop = (props) => {
           margin: 30px 10px;
           color: #f6d142;
         }
-        .headerMenuDroop__dropdown{
+        .mobileMenuDroop__dropdown{
           padding:  0;//треба
           margin:0;//треба
         }
          //При зменшенні екрану якщо не виключена кнопка щоб не показувало-не обовязково*/
         /*@media (min-width: 959px) {
-          .headerMenuDroop {
+          .mobileMenuDroop {
               display: none; // Не показує мобільне меню на екранах>1199px
           }
         }*/
         //Для iphone 5
         @media (max-width: 600px) {
-          .headerMenuDroop {
+          .mobileMenuDroop {
             width: 320px;
             right: -320px;
         }
@@ -165,4 +164,4 @@ const HeaderMenuDroop = (props) => {
   );
 };
 
-export default HeaderMenuDroop;
+export default MobileMenuDroop;

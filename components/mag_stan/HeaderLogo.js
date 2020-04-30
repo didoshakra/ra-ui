@@ -5,29 +5,31 @@ import { useContext } from "react";
 import useTranslation from "../../translations/useTranslation";
 import { ComponentContext } from "../../context/ComponentContext";
 import Drawer from "./Drawer";
+import { App } from "next/app";
 
 const HeaderLogo = () => {
   const { state } = useContext(ComponentContext);
-  const theme = state.theme;
+  const { theme, App } = state;
   const { locale, t } = useTranslation();
 
   return (
     <div className="headerLogo">
-      {/* <HeaderDrawer /> */}
       <Drawer />
-      <div className="headerLogo__icon">
-        <Link href="/[lang]" as={`/${locale}`}>
+      {/* <div className="headerLogo__icon"> */}
+      <Link href="/[lang]" as={`/${locale}`}>
+        <a className="headerLogo__icon">
           <img
             title={t("logo_logoTitle")}
-            src="/icons/StanLogo-80.jpg"
+            src="/icons/SunRa48.png"
             alert="logo"
           />
-        </Link>
-      </div>
+        </a>
+      </Link>
+      {/* </div> */}
       <Link href="/[lang]" as={`/${locale}`}>
         <a title={t("logo_logoTitle")} className="headerLogo__text">
-          mag_stan
           {/* {t("logo_siteName")} */}
+          mag_stan
         </a>
       </Link>
       {/* Саме ліве виїздне меню */}

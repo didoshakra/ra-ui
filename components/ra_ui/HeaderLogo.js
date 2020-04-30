@@ -15,18 +15,21 @@ const HeaderLogo = () => {
     <div className="headerLogo">
       {/* <HeaderDrawer /> */}
       <Drawer />
-      <div className="headerLogo__icon">
-        <Link href="/[lang]" as={`/${locale}`}>
+      {/* <div className="headerLogo__icon"> */}
+      <Link href="/[lang]" as={`/${locale}`}>
+        <a className="headerLogo__icon">
           <img
             title={t("logo_logoTitle")}
             src="/icons/SunRa48.png"
             alert="logo"
           />
-        </Link>
-      </div>
+        </a>
+      </Link>
+      {/* </div> */}
       <Link href="/[lang]" as={`/${locale}`}>
         <a title={t("logo_logoTitle")} className="headerLogo__text">
-          {t("logo_siteName")}
+          {/* {t("logo_siteName")} */}
+          ra_ui
         </a>
       </Link>
       {/* Саме ліве виїздне меню */}

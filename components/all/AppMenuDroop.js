@@ -11,7 +11,7 @@ const appMenuDroop = (props) => {
   const { state, dispatch } = useContext(ComponentContext);
   const { theme, app } = state;
 
-  // console.log("appMenuDroop/props.appMenuOpen=", props.appMenuOpen);
+  // console.log("appMenuDroop/props.appMenuOpen=", props.appMenuOpen);f
 
   const menu = [
     {
@@ -19,6 +19,12 @@ const appMenuDroop = (props) => {
     },
     {
       a: "mag_stan",
+    },
+    {
+      a: "mag",
+    },
+    {
+      a: "examples",
     },
   ];
 
