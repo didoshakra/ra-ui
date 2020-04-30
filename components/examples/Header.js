@@ -76,7 +76,7 @@ const Header = () => {
     {
       // a: t("headerMenu_iconTitleAboutME"),
       a: "Grid",
-      link: "/examples/grid/Grid",
+      link: "/examples/grid",
     },
     {
       // a: t("headerMenu_iconTitleAboutME"),
@@ -85,7 +85,7 @@ const Header = () => {
     },
     {
       a: "FlexBox",
-      link: "/examples/flexbox/FlexBox",
+      link: "/examples/flexbox",
     },
   ];
 

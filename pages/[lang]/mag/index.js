@@ -45,15 +45,15 @@ const Index = () => {
             {/* <p> */}
 
             <Link
-              href={`/[lang]/examples/flexbox/FlexBox`}
-              as={`/${locale}/examples/flexbox/FlexBox`}
+              href={`/[lang]/examples/flexbox`}
+              as={`/${locale}/examples/flexbox`}
             >
               <a
                 className="button"
                 // onClick={buttonClick1}
               >
                 FlexBox/Докладніше
-              </a>{" "}
+              </a>
             </Link>
             {/* </p> */}
           </div>
