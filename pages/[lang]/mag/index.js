@@ -14,13 +14,6 @@ const Index = () => {
   const { state } = useContext(ComponentContext);
   const theme = state.theme;
 
-  // const buttonClick1 = () => {
-  // console.log("buttonClick1");
-  // };
-  // const buttonClick2 = () => {
-  //   console.log("buttonClick2");
-  // };
-
   return (
     // <AppFrame classes={{ drawer: className.drawer }}>
     <Layout>
