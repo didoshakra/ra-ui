@@ -70,6 +70,7 @@ const Index = () => {
               Докладніше
             </a>
             {/* </p> */}
+            <div></div>
           </div>
         </div>
       </section>
@@ -85,22 +86,22 @@ const Index = () => {
           z-index: 10;
         }
         .image1 {
-          background: 100% transparent url(/vegefoods/images/bg_2.jpg) no-repeat;
-          animation-delay: 5s; //Затримка анімації для 2-го слайду
+                    background: 100% transparent url(/vegefoods/images/bg_2.jpg) no-repeat;
+                    animation-delay: 5s; //Затримка анімації для 2-го слайду
           z-index: 10;
         }
         .slider-item {
           position: absolute; //Щоб не бачити цей <div> !!! Інакше 1-й слайд буде відкириватись за 1-м
           //position: relative; //1-й слайд буде відкириватись за 1-м
           //0,0,0,0-розтягує position: absolute; на весь батьківський блок не залежно від контенту
-          top: 0;
+          //top: 0;
           bottom: 0;
           left: 0;
           right: 0;
-          align-items:center;
+                align-items:center;
           justify-content:center;
           height: 650px; //ш
-          background-size: cover; //ш-Маштабує зображення.
+                  background-size: cover; //ш-Маштабує зображення.
           background-repeat: no-repeat; //-ш
           background-position: center center; //ш
           //z-index: 0;
