@@ -24,7 +24,7 @@ const Services = () => {
           {/* servises__media */}
           <div className="servises__media">
             <div className="servises__media__icon bg-color-1">
-              <div className="servises__media__icon1 ">
+              <div className="servises__media__icon__circle ">
                 <IconFreeShipingBant
                   width="50"
                   height="50"
@@ -42,7 +42,7 @@ const Services = () => {
           {/* servises__media */}
           <div className="servises__media">
             <div className="servises__media__icon bg-color-2">
-              <div className="servises__media__icon1">
+              <div className="servises__media__icon__circle">
                 {/* <IconVegetable width="50" height="50" color="#fff" color1="black" /> */}
                 <IconVegetable
                   width="50"
@@ -61,7 +61,7 @@ const Services = () => {
           {/* servises__media */}
           <div className="servises__media">
             <div className="servises__media__icon bg-color-3">
-              <div className="servises__media__icon1">
+              <div className="servises__media__icon__circle">
                 <IconSuperiorQuality
                   width="60"
                   height="60"
@@ -82,7 +82,7 @@ const Services = () => {
           {/* servises__media */}
           <div className="servises__media">
             <div className="servises__media__icon bg-color-4">
-              <div className="servises__media__icon1">
+              <div className="servises__media__icon__circle">
                 <IconSupport
                   width="60"
                   height="60"
@@ -166,7 +166,7 @@ const Services = () => {
           min-height: 100px;
           border-radius: 50%;
         }
-        .servises__media__icon1 {
+        .servises__media__icon__circle {
           display: flex;
           padding: 2px;
           justify-content: center; //X-горизонтально
