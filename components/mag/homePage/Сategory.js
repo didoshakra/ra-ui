@@ -20,15 +20,14 @@ const Сategory = () => {
     // <section className="ftco-section">
     <section className="category__section">
       <div className="container">
-        3333333333333333333
-        {/* <div className="grid">
+        <div className="grid">
           <div>1-1 cat-Fruits</div>
           <div>1-2 h2-Vegetable</div>
           <div>1-3 cat-Juices</div>
           <div>2-1 cat-Vegetables</div>
           <div>2-2 h2-Vegetable </div>
           <div>2-3 cat-Drued</div>
-        </div> */}
+        </div>
       </div>
       <style jsx>{`
         .category__section {
@@ -45,11 +44,23 @@ const Сategory = () => {
 
         .grid {
           display: grid;
-          grid-template-rows: repeat(2, 1fr) 0.5fr;
+          grid-template-rows: repeat(1fr);
           grid-template-columns: 150px 2fr;
           grid-gap: 2vw; //між грід елементами//1% Відносно ширини вікна перегляду
           border: 1px solid black;
           margin: 10px;
+        }
+        body {
+          display: grid;
+          grid-template-areas:
+            "cat-Fruits h2-Vegetable cat-Juices"
+            "cat-Vegetables article ads"
+            "footer footer footer";
+          grid-template-rows: 80px 1fr 70px;
+          grid-template-columns: 20% 1fr 15%;
+          grid-gap: 10px;
+          height: 100vh;
+          margin: 0;
         }
         .grid > div {
           font-size: 3vw; //Відносно 1% ширини вікна перегляду
