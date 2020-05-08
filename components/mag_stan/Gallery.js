@@ -27,11 +27,12 @@ const Gallery = ({ images }) => {
           max-width: 1240px;
           margin: 0 auto;
         }
-        .gallery .image {
+        //.gallery .image {
+        .image {
           padding: 20px;
           //margin: 5px;
           width: calc((100% - 40px) / 3); //Щирина при 3-х колонках
-          margin: 0 0 20px;
+          margin: 0 20px;
           border-radius: 15px;
           //background: rgb(223, 222, 222);
           //box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
@@ -41,15 +42,18 @@ const Gallery = ({ images }) => {
         }
         //iPad
         @media (max-width: 960px) {
-          .gallery .image {
+          //.gallery .image {
+          .image {
             width: calc((100% - 40px) / 2); //Щирина при 2-х колонках
             //width: 49%;
+            //margin: 0 0 20px;
             padding: 10px 20px;
           }
         }
         //Mobi
         @media (max-width: 600px) {
-          .gallery .image {
+          //.gallery .image {
+          .image {
             width: auto;
             padding: 10px 20px;
           }

@@ -6,10 +6,8 @@ import Head from "next/head";
 import Layout from "../../../components/all/Layout";
 import useTranslation from "../../../translations/useTranslation";
 import { ComponentContext } from "../../../context/ComponentContext";
-import Servises from "../../../components/mag/homePage/Services";
-import Сategory from "../../../components/mag/homePage/Сategory";
 
-const HomePage = () => {
+const Index = () => {
   // export default function HomePage() {
   const disabled = false;
   const { locale, t } = useTranslation();
@@ -76,10 +74,6 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      {/* Servises  */}
-      <Servises />
-      {/* Сategory  */}
-      <Сategory />
 
       <style jsx>{`
         .home-slider {
@@ -92,10 +86,9 @@ const HomePage = () => {
           z-index: 10;
         }
         .image1 {
-          background: 100% transparent url(/vegefoods/images/bg_2.jpg) no-repeat;
-          animation-delay: 5s; //Затримка анімації для 2-го слайду
+                    background: 100% transparent url(/vegefoods/images/bg_2.jpg) no-repeat;
+                    animation-delay: 5s; //Затримка анімації для 2-го слайду
           z-index: 10;
-           
         }
         .slider-item {
           position: absolute; //Щоб не бачити цей <div> !!! Інакше 1-й слайд буде відкириватись за 1-м
@@ -135,12 +128,12 @@ const HomePage = () => {
             opacity: 0;
           }
         from {
-            //transform: scale(1.05);
+            transform: scale(1.05);
           z-index:1  //Для видимості button
 
           }
           to {
-            //transform: scale(1);
+            transform: scale(1);
             z-index:0 //Для видимості button
           }
         }
@@ -159,7 +152,6 @@ const HomePage = () => {
 
         .slider-text {
           //position: absolute;//З аbsolute не працює центрування
-          padding: 0 15px;
           display: flex;
           align-items: center; //Y-вертикально
           justify-content: center; //X-горизонтально
@@ -182,7 +174,7 @@ const HomePage = () => {
           font-size: 8vw;
           color: white;
           line-height: 1.3;
-          font-weight: 200;
+          font-weight: 100;
           font-family: ${theme.fontFamily.mimicHand};
           //font-family: ${
             theme.fontFamily.notoSans
@@ -231,4 +223,4 @@ const HomePage = () => {
     </Layout>
   );
 };
-export default HomePage;
+export default Index;

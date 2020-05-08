@@ -87,6 +87,10 @@ const Header = () => {
       a: "FlexBox",
       link: "/examples/flexbox",
     },
+    {
+      a: "FlexCentre",
+      link: "/examples/flexbox/flex_center",
+    },
   ];
 
   return (

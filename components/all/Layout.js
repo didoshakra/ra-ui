@@ -59,7 +59,14 @@ const Layout = ({ children, title, description }) => {
           font-weight: 400;
           text-rendering: optimizeLegibility;
         }
-
+        a {
+          color: #007bff;
+          //text-decoration: none;
+        }
+        a:hover {
+          color: #6610f2;
+          text-decoration: none;
+        }
         h1,
         h2,
         h3 {

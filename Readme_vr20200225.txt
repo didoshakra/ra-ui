@@ -1,0 +1,199 @@
+//vr20200208_next-stylejsx-b
+  20020208/Проба зробити проект з 0 на дазі style-lsx Next.js
+  використаємо приклад: Дізнайтеся, як реагувати, створюючи веб-сайти з Next.js
+  https://reacttricks.com/learn-react-by-building-websites-with-next/
+=======================================================
+  база-layout-component/Next.js examples
+  yarn create next-app --example layout-component vr_layout-component-app
+===========================================================
+//vr202002012_next-stylejsx-theme-langag
+  /20200212/-підключив зміну тем але вручну буду пробуватти зміну тем і зміну мрви через contextAPI
+  /20200213/-підключив зміну тем через ComponentContext.js
+    Зробив 3-и теми /можна робити скільки хочеш тем
+Буду робити візитку магазину
+=====================================================================
+//vr202002013_next-stylejsx-theme-langag_magstan
+  /20200214/- зробив основні сторінки магазину з акціями
+    - навчився зжимати зображення з допомогою програми Riot
+
+  //Пробую карту Mapbox на react-map-gl -умовно безкоштовна карта
+      //Map.js //Використання Mapbox з Next.js (Замість Карт Google)
+      //https://leerob.io/blog/using-mapbox-with-next-js
+      yarn add react-map-gl
+    !!! Не пішло бо не реєстрував ключ
+
+  /20200214/
+    //Пробую карту на react-google-maps //https://demos.creative-tim.com/nextjs-material-kit-pro/documentation/google-maps
+      yarn add react-google-maps
+      !!! re-google-map.js--Працює + скрол на маштабування включив параметром options={{ gestureHandling: "greedy" }}
+
+    //Пробую карту на google-maps-react
+          //https://levelup.gitconnected.com/googl-map-react-beginners-guide-85bb1a94b04a
+          //https://www.digitalocean.com/community/tutorials/how-to-integrate-the-google-maps-api-into-react-applications
+        yarn add google-maps-react
+      !!! /google-maps.js - Працює + скрол на маштабування теж працює
+      === //Кращою бібліотекою вважають react-google-maps ніж google-maps-react //https://stackoverflow.com/questions/55468502/difference-between-google-map-react-and-react-google-maps
+
+    //Пробую карту на google-map-react //https://levelup.gitconnected.com/reactjs-google-maps-with-custom-marker-ece0c7d184c4
+            https://npmcompare.com/compare/google-map-react,react-google-maps
+       yarn add google-map-react
+        !!! google-map-react - кращий за google-map-react  //https://www.npmtrends.com/google-map-react-vs-google-maps-vs-google-maps-react
+      і не гірша за react-google-maps???
+      !!! google-map.js/Працює але самому потрібно створювати маркери.Може це й краще!!!
+      !!! можнна вставляти готові маркерки, але не зміг заставити працювати onClock на маркері
+
+ /20200216/
+      /Пробую карту на react-google-maps але з compoze //https://tomchentw.github.io/react-google-maps/#introduction
+      Пищуть що відтворює всі ф-ції google-maps-api //Якщо ви виявите деякі обмеження, це може бути пов’язано тільки з самим з API API Google Maps v3,
+        Запустив react-google-map.js
+        //У прикладіах  треба <MapWith...></MapWith...> обгортпти(добавляти самому)
+        //export default function GoogleMaps() {
+        //  return (
+        //  <MapWith...></MapWith...>
+        //)
+  Далі завтра!!!
+  /20200216/
+    react-google-maps з compoze це то саме що react-google-maps без compoze
+    ========
+    Є два варіанти які колись буду копати:
+    1. react-google-map -він старий(2year), але в нього спрацьовує onClick
+    2. google-map
+    Поки зупиняюсь на eact-google-map
+=======================================
+  /20200219/ - попідчищав меню подобавляв title буду розгортати
+    Копіюю в папку /deploing/magstan
+===========================================================================
+  ///eploing/magstan
+  /20200220/ - створив репозиторій на github
+    !!!/deploing/magstan- розмістився на heroku через github !!! https://magstan.herokuapp.com/uk
+          https://stackoverflow.com/questions/55479551/deploy-next-js-in-heroku
+          https://github.com/mars/heroku-nextjs
+          !!! треба слідкувати за назвою проекта /Тільки букви і цифри і мінус(-)/починається з букви
+          1	package.json /добавити
+        "scripts": {
+          "dev": "next",
+          "build": "next build",
+          "start": "next start -p $PORT"	//Змінити рядок
+        },
+        "engines": {	//добавити секцію
+          "node": "10"
+        },
+    !!! Розгорнувся проект magstan на Now  https://magstan.now.sh/uk
+  /20200221/ - бавлюся з SEO
+      //https://webformyself.com/react-i-seo-sozdanie-na-next-js-spa-optimizirovannyx-dlya-google/
+      //https://github.com/garmeeh/next-seo#default-seo-configuration
+      приклад NextSEO-//d:\__react\--next\__next-org_examples\nextjs-canary\next.js-canary\examples\with-next-seo\
+          next-seo.config.js з прикладу NextSEO
+            За допомогою користувацького _app.js з прикладу next-seo ви можете встановити SEO за замовчуванням
+              * що стосується кожної сторінки. Повна інформація про те, як працює за   замовчуванням
+              * можна знайти тут: https://github.com/garmeeh/next-seo#default-seo-configuration
+            * /
+        yarn add next-seo
+      !!!Приклад з плагіном next-seo не працює, напевно устарів yarn remout next-seo
+        Копаєм SEO Далі
+  /20200222/ - бавлюся з SEO
+      Добився SEO 92 з допомогою Litehouse(маяк). Виконував всі інструкції. Запускав на локальному сайті через інструменти розробника (Audits).
+      Cтворив файл rorots.txt. Не знаю як створити файл sitemap.xml
+      SEO видає ще якісь помилки звязані з styles. Не можу визначити які.
+    Хочу трохи переробити шапку головного мені-добавити іконки.
+    зробив копію
+    ============================================================
+  /20200223/ - Переробляю Heade
+      Пробую добавити Layout іконки(гамбургер) з FontAwesome з уроку:
+      React JS. С Нуля до Профессионала. Полный курс
+      https://coursehunter.net/course/react-js-s-nulya-do-professionala-polnyy-kurs
+      ----------
+      /@fortawesome/react-fontawesome   (20/11/12/)
+      		https://www.npmjs.com/package/@fortawesome/react-fontawesome#nextjs
+        	npm i --save @fortawesome/fontawesome-svg-core  @fortawesome/free-solid-svg-icons 	@fortawesome/react-fontawesome @fortawesome/free-brands-svg-icons
+        npm install --save-dev @zeit/next-css
+        next.config.js
+         yarn add @fortawesome/react-fontawesome @fortawesome/free-regular-svg-icons @fortawesome/free-regular-svg-icons @fortawesome/fontawesome-svg-core  @fortawesome/free-solid-svg-icons
+        ...
+===================================================================================
+//vr20200225-raui-magstan
+      - для проби адаптивної верстки, нових компонентів, UI     (UserInterfais)-кнопок,і т.д.
+      - попробував ліве бокове меню з гамбургером //https://coursehunter.net/course/reactjs-s-nulya-do-profi
+        navigation/Drawer.js- саме меню
+        navigation/DrawerBootton.js - кнопка гамбургер для лівого меню дравер
+        UI/Backdrop.js-//Компонент для кліку в любому місці екрану, для закриття Drower
+        !!! Працює
+  //20200226 - переробив stanmag шапку головного меню:
+      -замінив меню селекторів мови і теми на кнопки
+      -при зменшенні екрану щезає рядок меню і появляється кнопка-гамбргер зправа
+        Menu.js --> HeaderMenu.js -змінив код і назву
+        LocaleSwitcher.js і ThemeSwitcher.js - змінив щоб міняти іх на іконки ?????
+        navigation/MobileNav.js- добавив-саме праве меню навігації на малих екранах
+        Header.js -змінив
+        HeaderMenu.js-добавив
+        Для використання в HeaderMenu.js іконок FontAwesome добавав:
+        yarn add @fortawesome/react-fontawesome @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons
+
+      -Logo.js - змінив css (відступи і ценрування)
+
+      !!!-Замінив іконки з FontAwesome на прості pnp. Маяк жалівся на повільну загрузку сайту ізза використання чужих загрузок. Дав 99 по продуктивності!!!
+      - HeaderMenu.js -  змінив на іконки pnp
+        !!! Треба вилучити
+          yarn remove @fortawesome/react-fontawesome @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons
+    !!! іконки pmp i svg не міняють колір. Вертаюсь до іконок з FontAwesome
+        yarn add @fortawesome/react-fontawesome @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons
+        - HeaderMenu.js -  змінив на іконки FontAwesome
+
+  //20200229 - доробив description до сторінок
+      Доробив плавний вихід бокового  меню - Я відкривав MobileNav.js при умові
+      {mobileMenuOpen ? <MobileNav mobileMenuOpen={mobileMenuOpen} /> : ""}  тобто воно відкривалось зразу а умова по якій повинно плавно відкриваєтись закладена в самій  MobileNav.js
+      Треба спочатку відкривати саме меню з умовою його прихованості по css а умову потрібно закладувати в самн css
+      transform: ${props.mobileMenuOpen ? "translateX(-100%)" : "translateX(0px)"};
+    !!!на мобілках видно мені коли переміститись вправо*стрілка)*/
+       ========================================
+  //20200229   якщо в MobileNav.js <style jsx>{`.mobile-nav {
+    /*position: absolute;*//*на мобілках видно мені коли переміститись вправо*стрілка)*/
+    /треба position: fixed
+    -------------------------------------------
+  //202000302 -
+    переробив меню select щоб випадало під іконкою і клацання поза   елементом, щоб закривати меню
+    Переробив ThemeSwitcher.js,LocaleSwitcher.js,MobileNav.js/
+    //*** Для клацання поза елементом Решение с React ^ 16.8 с использованием хуков
+    //https://overcoder.net/q/3769/%D0%BE%D0%B1%D0%BD%D0%B0%D1%80%D1%83%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5-%D1%89%D0%B5%D0%BB%D1%87%D0%BA%D0%B0-%D0%B7%D0%B0-%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D0%B0%D0%BC%D0%B8-%D0%BA%D0%BE%D0%BC%D0%BF%D0%BE%D0%BD%D0%B5%D0%BD%D1%82%D0%B0-react
+    !!!- використовую Hook addEventListener() and removeEventListener()
+    --------------------------------------------------------------------------------
+    Header.js- зафіксував header (добавив зовнішній фіксований контейнер
+                <div className="header-fixed">)
+    Layout.js - змістив .content-wrapper {
+                margin-top: 60px; /*Щоб контент не заїжджав під шапку*/
+    MobileNav.js- відступ зверх top: 50px;
+    =======================================================
+  //20200303
+      -MobileNav.js- добавив стрілку і забрав відступ зверх top: 50px;
+      -Зробив щоб ховалась/появлялась Head при скролі:
+        Header.js Додав:
+            const [headerOpen, setHeaderOpen] = React.useState(true);
+            useEffect(() => {...
+            слухача подій: document.addEventListener("scroll", mouseMove); //Для скролу
+            і код у ф-цію і css з /Скрытие навигационной полосы при прокрутке вниз
+            https://html5css.ru/howto/howto_js_navbar_hide_scroll.php
+            .header-fixed {
+              top: ${headerOpen ? "0" : "-60px"};
+              transition: top 0.4s ease-in;
+            нові обробники подій:Hook addEventListener() and removeEventListener() //https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_element_addeventlistener_remove
+            //Скрытие навигационной полосы при прокрутке вниз
+            https://html5css.ru/howto/howto_js_navbar_hide_scroll.php
+
+  //20200303-
+     ThemeSwitcher.js,LocaleSwitcher.js,MobileNav.js-добавив щоб всі меню ховались і при скролі, а не тільки при кліку поза ними
+
+  //20200306-
+      переробив щоб був тільки один селект і тільки 2- теми(іконка тем повинна мінятись):
+      HeaderMenu.js - змінв правий гамбургер на список
+                    - забрав ThemeSwitcher.js
+                    - змінив themeMenuToggle = () => {
+      Змінив теми:
+                  theme.js -поміняв теми і добавив bacgraund для меню(правого списку)
+                  Logo.js, MobileNav.js, Header.js
+      shops.js    -Збільшується тільки картинка
+=====================================================================
+//20200311
+  -theme.js-поміняв шрифти(зробив 5-типів)
+  -MobileNav.js,HeaderMenu.js,Logo.js-поміняв шрифти
+  -Homepage(index.js)-поміняв у htro / flex-direction: column;
+==================================================
