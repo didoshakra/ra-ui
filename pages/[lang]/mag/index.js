@@ -27,52 +27,56 @@ const HomePage = () => {
       {/* <section className="hero"> */}
       {/* слайдер *** owl-carousel=text-align: center; */}
       <section className="home-slider">
-        {/* елемент слайдеру */}
-        <div className="slider-item image1">
-          {/* overlay/перекривати-Робить тінь */}
-          <div className="overlay"></div>
-          <div className="slider-text">
-            <h1>Ми пропонуємо свіжі овочі та фрукти</h1>
-            <h2 className="subheading">
-              Ми постачаємо органічні овочі та фрукти
-            </h2>
+        <div className="container">
+          {/* елемент слайдеру */}
+          <div className="slider-item image1">
+            {/* overlay/перекривати-Робить тінь */}
+            <div className="overlay"></div>
+            <div className="slider-text">
+              <h1>Ми пропонуємо свіжі овочі та фрукти</h1>
+              <h2 className="subheading">
+                Ми постачаємо органічні овочі та фрукти
+              </h2>
 
-            {/* <p> */}
+              {/* <p> */}
 
-            <Link
-              href={`/[lang]/examples/flexbox`}
-              as={`/${locale}/examples/flexbox`}
-            >
-              <a
-                className="button"
-                // onClick={buttonClick1}
+              <Link
+                href={`/[lang]/examples/flexbox`}
+                as={`/${locale}/examples/flexbox`}
               >
-                FlexBox/Докладніше
-              </a>
-            </Link>
-            {/* </p> */}
+                <a
+                  className="button"
+                  // onClick={buttonClick1}
+                >
+                  FlexBox/Докладніше
+                </a>
+              </Link>
+              {/* </p> */}
+            </div>
           </div>
         </div>
-        {/* елемент слайдеру */}
-        <div className="slider-item image2">
-          {/* overlay/перекривати-Робить тінь */}
-          <div className="overlay"></div>
-          <div className="slider-text">
-            <h1>100% свіжа та органічна їжа</h1>
-            <h2 className="subheading">
-              Ми постачаємо органічні овочі та фрукти
-            </h2>
-            {/* <p> */}
-            {/* <a href="#" className="button" onClick={buttonClick2}> */}
-            <a
-              href="/examples/grid/Grid"
-              className="button"
-              // onClick={buttonClick2}
-            >
-              Докладніше
-            </a>
-            {/* </p> */}
-            <div></div>
+        <div className="container">
+          {/* елемент слайдеру */}
+          <div className="slider-item image2">
+            {/* overlay/перекривати-Робить тінь */}
+            <div className="overlay"></div>
+            <div className="slider-text">
+              <h1>100% свіжа та органічна їжа</h1>
+              <h2 className="subheading">
+                Ми постачаємо органічні овочі та фрукти
+              </h2>
+              {/* <p> */}
+              {/* <a href="#" className="button" onClick={buttonClick2}> */}
+              <a
+                href="/examples/grid/Grid"
+                className="button"
+                // onClick={buttonClick2}
+              >
+                Докладніше
+              </a>
+              {/* </p> */}
+              <div></div>
+            </div>
           </div>
         </div>
       </section>
@@ -87,6 +91,13 @@ const HomePage = () => {
           height: 650px;
           //z-index: -9;
         }
+        .container {
+          width: 100%;
+          padding-right: 15px;
+          padding-left: 15px;
+          margin-right: auto;
+          margin-left: auto;
+        }
         .image2 {
           background: 100% transparent url(/vegefoods/images/bg_1.jpg) no-repeat;
           z-index: 10;
@@ -95,7 +106,7 @@ const HomePage = () => {
           background: 100% transparent url(/vegefoods/images/bg_2.jpg) no-repeat;
           animation-delay: 5s; //Затримка анімації для 2-го слайду
           z-index: 10;
-           
+
         }
         .slider-item {
           position: absolute; //Щоб не бачити цей <div> !!! Інакше 1-й слайд буде відкириватись за 1-м
@@ -179,7 +190,8 @@ const HomePage = () => {
           color: white;
         }
         .slider-text h1 {
-          font-size: 8vw;
+          font-size: 40px
+          //font-size: 8vw;
           color: white;
           line-height: 1.3;
           font-weight: 200;
@@ -225,6 +237,27 @@ const HomePage = () => {
           border: 1px solid #fff; /* Параметры границы */
           //border: 1px solid rgba(42,66,10,1); /* Параметры границы */
           cursor: ${disabled ? "not-allowed" : "pointer"};
+        }
+
+        @media (min-width: 768px) {
+          .container {
+            max-width: 720px;
+          }
+        }
+        @media (min-width: 992px) {
+          .container {
+            max-width: 960px;
+          }
+          .slider-text h1 {
+          //font-size: 40px
+          font-size: 8vw;
+          color: white;
+          }
+        }
+        @media (min-width: 1200px) {
+          .container {
+            max-width: 1140px;
+          }
         }
 
       `}</style>

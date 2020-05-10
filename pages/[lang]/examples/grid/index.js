@@ -64,10 +64,11 @@ const Grid = () => {
       <section>
         *** GridSiteTemplate***
         <body className="body">
+          <footer className="pageFooter">Footer</footer>
           <header className="pageHeader">Header</header>
+          <div className="siteAds">Ads</div>
           <article className="mainArticle">Article</article>
           <nav className="mainNav">Nav</nav>
-          <div className="siteAds">Ads</div>
           <footer className="pageFooter">Footer</footer>
         </body>
       </section>
@@ -276,7 +277,7 @@ const Grid = () => {
           grid-column: 2;
         }
         //GridSiteTemplate
-        body {
+        .body {
           display: grid;
           grid-template-areas:
             "header header header"

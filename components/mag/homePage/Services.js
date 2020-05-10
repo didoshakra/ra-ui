@@ -212,16 +212,17 @@ const Services = () => {
           color: #000000;
         }
         /*@media (min-width: 576px) {
+          //мобілки
           .container {
             max-width: 540px;
           }
         }*/
 
         @media (min-width: 768px) {
+          //планшети
           .container {
             max-width: 720px;
           }
-
           .servises__media {
             width: calc((100%) / 2);
             margin: 0 0 24px;
@@ -229,6 +230,7 @@ const Services = () => {
           }
         }
         @media (min-width: 992px) {
+          //нетбуки деякі планшети
           .container {
             max-width: 960px;
           }
@@ -237,11 +239,12 @@ const Services = () => {
             margin: 0 5px;
           }
         }
-        @media (min-width: 1200px) {
+        /*@media (min-width: 1200px) {
+          //ПК
           .container {
             max-width: 1140px;
           }
-        }
+        }*/
       `}</style>
     </section>
   );

@@ -20,14 +20,26 @@ const Сategory = () => {
     // <section className="ftco-section">
     <section className="category__section">
       <div className="container">
-        <div className="grid">
-          <div>1-1 cat-Fruits</div>
-          <div>1-2 h2-Vegetable</div>
-          <div>1-3 cat-Juices</div>
-          <div>2-1 cat-Vegetables</div>
-          <div>2-2 h2-Vegetable </div>
-          <div>2-3 cat-Drued</div>
-        </div>
+        <body className="grid">
+          <div className="grid__fruits">fruits</div>
+          <div className="grid__tittle">
+            {/* //class="category-wrap-2 ftco-animate img align-self-stretch d-flex" */}
+            <div className="category-wrap">
+              {/* <div className="text-center">
+                <h2>Vegetables</h2>
+                <p>Protect the health of every home</p>
+                <p>
+                  <a href="#" class="btn btn-primary">
+                    Shop now
+                  </a>
+                </p>
+              </div> */}
+            </div>
+          </div>
+          <div className="grid__juices">juices</div>
+          <div className="grid__vegetables">vegetables</div>
+          <div className="grid__drued">drued</div>
+        </body>
       </div>
       <style jsx>{`
         .category__section {
@@ -42,31 +54,102 @@ const Сategory = () => {
           margin-left: auto;
         }
 
+        //GridSiteTemplate
         .grid {
           display: grid;
-          grid-template-rows: repeat(1fr);
-          grid-template-columns: 150px 2fr;
-          grid-gap: 2vw; //між грід елементами//1% Відносно ширини вікна перегляду
-          border: 1px solid black;
-          margin: 10px;
-        }
-        body {
-          display: grid;
           grid-template-areas:
-            "cat-Fruits h2-Vegetable cat-Juices"
-            "cat-Vegetables article ads"
-            "footer footer footer";
-          grid-template-rows: 80px 1fr 70px;
-          grid-template-columns: 20% 1fr 15%;
-          grid-gap: 10px;
+            "tittle"
+            "tittle"
+            "fruits"
+            "juices"
+            "vegetables"
+            "drued";
+          grid-template-rows: 100px  repeat(4,1fr); //Рядки
+          grid-template-columns: 1fr; //Колонки
+          //grid-gap: 10px;
           height: 100vh;
           margin: 0;
+          border: 1px solid black;
         }
-        .grid > div {
+        .grid__fruits,
+        .grid__juices,
+        .grid__vegetables,
+        .grid__drued {
+          padding: 20px;
+          //background: gold;
           font-size: 3vw; //Відносно 1% ширини вікна перегляду
-          padding: 0.5em; //Відносно розміру шрифту елемента (0ю5em означає в 2 рази менше розміру поточного шрифту)
-          background: gold;
-          text-align: center; //вирівнювання по Х
+          background: rgba(75, 173, 226, 1);
+          //text-align: center; //вирівнювання по Х
+        }
+        .grid__tittle {
+          padding: 20px;
+          //background: gold;
+          //background: 100%  url(/vegefoods/images/bg_1.jpg) no-repeat;
+          background: 100%  url(/vegefoods/images/category.jpg) no-repeat;
+          //background-image: url(/vegefoods/images/category.jpg);
+          font-size: 3vw; //Відносно 1% ширини вікна перегляду
+          //background: rgba(161, 226, 75, 1);
+          //text-align: center; //вирівнювання по Х
+        }
+        .grid__fruits {
+          grid-area: fruits;
+        }
+        .grid__tittle {
+          grid-area: tittle;
+        }
+        .grid__juices {
+          grid-area: juices;
+        }
+        .grid__vegetables {
+          grid-area: vegetables;
+        }
+        .grid__drued {
+          grid-area: drued;
+        }
+        .category-wrap {
+           //width: 100%;
+           display: flex;
+           width: 300px;
+           //align-self: stretch;//окремий элемент растягиваются на весь рядок
+           //page-break-inside: avoid;//img//Забороняє розрив сторінки всередині елемента
+           //background-image: url(/vegefoods/images/category.jpg);
+           background:  url(/vegefoods/images/category.jpg) 100% 100% no-repeat;;
+           //background-size: cover;//Пропорційно одна сторона
+           background-size: 300px;//
+           //background-size: contain;//Все в блоці
+            text-align: center;
+        }
+        .category-wrap  h2 {
+          color: #82ae46;
+          font-family: "Lora", Georgia, serif;
+          font-style: italic;
+          font-size: 24px;
+         }
+        @media (min-width: 768px) {
+          .container {
+            max-width: 720px;
+          }
+          .grid {
+
+            grid-template-areas:
+              "fruits tittle juices"
+              "vegetables tittle drued";
+            grid-template-rows: repeat(2,1fr); //Рядки
+            grid-template-columns: repeat(3,1fr); //Колонки
+            align-items: center; 
+            justify-items: center;
+             
+          }
+        }
+        @media (min-width: 992px) {
+          .container {
+            max-width: 960px;
+          }
+        }
+        @media (min-width: 1200px) {
+          .container {
+            max-width: 1140px;
+          }
         }
       `}</style>
     </section>
