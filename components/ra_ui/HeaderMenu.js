@@ -1,4 +1,5 @@
-//HeaderMenu.js //Після розділення на HeaderMenu+HeaderSeting
+//HeaderMenu.js/ra-ui //Після розділення на HeaderMenu+HeaderSeting
+//first-mobile
 //Горизонтальне меню що згортається в іконку яка викликає
 //HeaderMenuDroop-випадаюче меню
 
@@ -56,23 +57,25 @@ const HeaderMenu = (props) => {
       `}</style>
 
       <style jsx>{`
+        //first-mobile
         .headerMenu {
-          display: flex;
-          margin: 0;
-          padding: 0;
-          height: 64px;
-          align-items: center; /* Вирівнювання елементів по перетину осі(y) центр*/
+          display: none;
         }
-        .headerMenu__menu {
-          margin: 0;
-          padding: 0;
-          display: flex;
-          justify-content: flex-end; /* Вирівнювання елементів по головній осі(x) вправо */
-          align-items: center; /* Вирівнювання елементів по перетину осі(y) центр*/
-        }
-        @media (max-width: 960px) {
+
+        @media (min-width: 960px) {
           .headerMenu {
-            display: none; /*не показує */
+            display: flex;
+            margin: 0;
+            padding: 0;
+            height: 64px;
+            align-items: center; // Вирівнювання елементів по перетину осі(y) центр
+          }
+          .headerMenu__menu {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-end; // Вирівнювання елементів по головній осі(x) вправо
+            align-items: center; // Вирівнювання елементів по перетину осі(y) центр
           }
         }
       `}</style>

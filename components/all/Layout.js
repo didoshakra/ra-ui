@@ -5,14 +5,12 @@
 import React, { useContext } from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic"; //https://web.dev/code-splitting-with-dynamic-imports-in-nextjs/
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; //fontawesome
 // import Header from "./mag_stan/Header";
-import HeaderTape from "../mag/HeaderTape";
+import HeaderTape from "../mag/HeaderTape"; //Верхня стрічка меню
 // import Head0 from "../mag/Head0";
 // import Footer from "./main/Footer";
 import { ComponentContext } from "../../context/ComponentContext";
 import useTranslation from "../../translations/useTranslation";
-
 // const Header = dynamic(import("./Header"));//Тут теж працює
 
 const Layout = ({ children, title, description }) => {
@@ -36,15 +34,10 @@ const Layout = ({ children, title, description }) => {
         {/* <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> */}
       </Head>
-
-      {/* <Head0 /> */}
-      <HeaderTape />
+      {/* <HeaderTape /> */}
       <Header />
-      <div className="loyout__content-wrapper">
-        {/* <FontAwecomIcons /> */}
-        {children}
-      </div>
-      <Footer />
+      <div className="loyout-content">{children}</div>
+      {/* <Footer /> */}
       <style jsx global>{`
         //global Next.js
         *,
@@ -52,12 +45,25 @@ const Layout = ({ children, title, description }) => {
         *::after {
           box-sizing: border-box;
         }
+        html,
+        body,
+        #__next {
+          height: 100%;
+          width: 100%;
+        }
         body {
           margin: 0;
+          padding: 0;
+          //overflow-x: hidden;//Обрізає лишнє
           font-size: 20px;
           line-height: 1.7;
           font-weight: 400;
           text-rendering: optimizeLegibility;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+            "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+            "Helvetica Neue", sans-serif;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
         }
         a {
           color: #007bff;
@@ -69,8 +75,11 @@ const Layout = ({ children, title, description }) => {
         }
         h1,
         h2,
-        h3 {
-          margin: 40px 0 30px;
+        h3,
+        h4,
+        h5,
+        h6 {
+          margin: 0;
         }
 
         h1 {
@@ -91,29 +100,21 @@ const Layout = ({ children, title, description }) => {
           max-width: 100%;
         }
       `}</style>
-      <style jsx global>{`
-        //Для динамічних стилів окремо
-        body {
-          background: ${theme.colors.background};
-          color: ${theme.colors.text};
-          font-family: ${theme.fontFamily.sansSerif};
-        }
-      `}</style>
       <style jsx>{`
         /* Layout */
         site-wrapper {
-          width: 100%;
           display: block;
+          width: 100%;
           padding: 0;
           margin: 0;
         }
-        .loyout__content-wrapper {
+        .loyout-content {
           position: relative;
           top: 0px;
-          //margin-top: 64px; /*Щоб контент не заїжджав під шапку*/
-          min-height: 600px;
-          text-align: center;
-          padding: 0px;
+          width: 100%;
+          padding: 0;
+          margin: 0;
+          //min-height: 600px;
         }
       `}</style>
     </div>

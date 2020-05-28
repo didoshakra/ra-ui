@@ -1,4 +1,5 @@
 //HeaderLogo.js
+//first-mobile //960/600
 
 import Link from "next/link";
 import { useContext } from "react";
@@ -13,9 +14,7 @@ const HeaderLogo = () => {
 
   return (
     <div className="headerLogo">
-      {/* <HeaderDrawer /> */}
       <Drawer />
-      {/* <div className="headerLogo__icon"> */}
       <Link href="/[lang]" as={`/${locale}`}>
         <a className="headerLogo__icon">
           <img
@@ -25,7 +24,6 @@ const HeaderLogo = () => {
           />
         </a>
       </Link>
-      {/* </div> */}
       <Link href="/[lang]" as={`/${locale}`}>
         <a title={t("logo_logoTitle")} className="headerLogo__text">
           {/* {t("logo_siteName")} */}
@@ -35,6 +33,7 @@ const HeaderLogo = () => {
       {/* Саме ліве виїздне меню */}
       {/* <Drawer drawerOpen={drawerOpen} drawerOnClick={drawerOnClick} /> */}
       <style jsx>{`
+        //first-mobile
         .headerLogo {
           margin: 0;
           padding: 0;
@@ -43,15 +42,8 @@ const HeaderLogo = () => {
           // max-width: 400px;
           align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
         }
-
         .headerLogo__text {
-          padding: 0px 10px;
-          //margin-left: 10px; //Відступ від кожного елемента зліва
-          font-weight: 600;
-          font-family: ${theme.fontFamily.sansSerif};
-          text-decoration: none;
-          color: ${theme.colors.headText};
-          background: ${theme.colors.headBackground};
+          display: none;
         }
         .headerLogo__icon {
           //margin-left: 10px; //Відступ від кожного елемента зліва
@@ -77,10 +69,16 @@ const HeaderLogo = () => {
           width: 35px;
           height: 35px;
         }
-        @media (max-width: 600px) {
-          /*mobile<600px*/
+        @media (min-width: 600px) {
           .headerLogo__text {
-            display: none;
+            display: inline; //по замовчуванню
+            padding: 0px 10px;
+            //margin-left: 10px; //Відступ від кожного елемента зліва
+            font-weight: 600;
+            font-family: ${theme.fontFamily.sansSerif};
+            text-decoration: none;
+            color: ${theme.colors.headText};
+            background: ${theme.colors.headBackground};
           }
         }
       `}</style>

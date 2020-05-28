@@ -1,4 +1,4 @@
-//HeaderLogo.js
+//HeaderLogo.js/mag
 
 import Link from "next/link";
 import { useContext } from "react";
@@ -34,6 +34,7 @@ const HeaderLogo = () => {
       {/* Саме ліве виїздне меню */}
       {/* <Drawer drawerOpen={drawerOpen} drawerOnClick={drawerOnClick} /> */}
       <style jsx>{`
+        //first-mobile
         .headerLogo {
           margin: 0;
           padding: 0;
@@ -41,16 +42,6 @@ const HeaderLogo = () => {
           //justify-content: flex-start; /* Вирівнювання елементів по головній осі(x) ввліво-по замовчуванню */
           // max-width: 400px;
           align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
-        }
-
-        .headerLogo__text {
-          padding: 0px 10px;
-          //margin-left: 10px; //Відступ від кожного елемента зліва
-          font-weight: 600;
-          font-family: ${theme.fontFamily.sansSerif};
-          text-decoration: none;
-          color: ${theme.colors.headText};
-          background: ${theme.colors.headBackground};
         }
         .headerLogo__icon {
           //margin-left: 10px; //Відступ від кожного елемента зліва
@@ -76,10 +67,19 @@ const HeaderLogo = () => {
           width: 35px;
           height: 35px;
         }
-        @media (max-width: 600px) {
-          /*mobile<600px*/
+        .headerLogo__text {
+          display: none;
+        }
+        @media (min-width: 600px) {
           .headerLogo__text {
-            display: none;
+            display: inline; //по замовчуванню
+            padding: 0px 10px;
+            //margin-left: 10px; //Відступ від кожного елемента зліва
+            font-weight: 600;
+            font-family: ${theme.fontFamily.sansSerif};
+            text-decoration: none;
+            color: ${theme.colors.headText};
+            background: ${theme.colors.headBackground};
           }
         }
       `}</style>

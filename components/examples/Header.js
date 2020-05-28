@@ -75,14 +75,20 @@ const Header = () => {
   const menu = [
     {
       // a: t("headerMenu_iconTitleAboutME"),
-      a: "Grid",
-      link: "/examples/grid",
-    },
-    {
-      // a: t("headerMenu_iconTitleAboutME"),
       a: "ui",
       link: "/examples/ui",
     },
+    {
+      // a: t("headerMenu_iconTitleAboutME"),
+      a: "mobileFirst",
+      link: "/examples/ui/mobile_first",
+    },
+    {
+      // a: t("headerMenu_iconTitleAboutME"),
+      a: "Grid",
+      link: "/examples/grid",
+    },
+
     {
       a: "FlexBox",
       link: "/examples/flexbox",

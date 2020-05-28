@@ -1,4 +1,5 @@
 //HeaderSeting
+//first-mobile
 //Зміна мови і теми+ App меню
 
 import { useContext } from "react";
@@ -34,29 +35,28 @@ const HeaderSeting = () => {
       </div>
       <style jsx>
         {`
+          //first-mobile
           .headerSeting {
-            /*padding: 10px; /*Поля*/
+            //padding: 10px;
             height: 64px;
             display: flex;
-            justify-content: space-between; /*по-X Вирівнювання вліво-вправо*/
-            align-items: center; /* по Y */
+            justify-content: space-between; //по-X Вирівнювання вліво-вправо
+            align-items: center; // по Y
             background: ${theme.colors.headBackground};
           }
           .headerSeting_larg {
+            display: none;
+          }
+          .headerSeting__mobile {
             display: flex;
           }
-          /* --- Mobile navigation icon -- */
-          .headerSeting__mobile {
-            display: none;
-            //z-index: 19;
-          }
-          @media (max-width: 960px) {
-            /*iPad<960px*/
+
+          @media (min-width: 960px) {
             .headerSeting_larg {
-              display: none; /*не показує */
+              display: flex;
             }
             .headerSeting__mobile {
-              display: flex;
+              display: none;
             }
           }
         `}

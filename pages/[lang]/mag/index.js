@@ -8,10 +8,12 @@ import useTranslation from "../../../translations/useTranslation";
 import { ComponentContext } from "../../../context/ComponentContext";
 import Servises from "../../../components/mag/homePage/Services";
 import Сategory from "../../../components/mag/homePage/Сategory";
+import Products from "../../../components/mag/homePage/Products";
+// import Сategory from "./category";
 
 const HomePage = () => {
   // export default function HomePage() {
-  const disabled = false;
+  const disabled = false; //Для buton
   const { locale, t } = useTranslation();
   const { state } = useContext(ComponentContext);
   const theme = state.theme;
@@ -23,80 +25,72 @@ const HomePage = () => {
         {/* <title>{t("header-titleSite")}</title> */}
         <title>mag1</title>
       </Head>
-      {/* Домашня стор/ hero-???*/}
-      {/* <section className="hero"> */}
-      {/* слайдер *** owl-carousel=text-align: center; */}
-      <section className="home-slider">
-        <div className="container">
-          {/* елемент слайдеру */}
-          <div className="slider-item image1">
-            {/* overlay/перекривати-Робить тінь */}
-            <div className="overlay"></div>
-            <div className="slider-text">
-              <h1>Ми пропонуємо свіжі овочі та фрукти</h1>
-              <h2 className="subheading">
-                Ми постачаємо органічні овочі та фрукти
-              </h2>
-
-              {/* <p> */}
-
-              <Link
-                href={`/[lang]/examples/flexbox`}
-                as={`/${locale}/examples/flexbox`}
+      <section className="home-slider-section">
+        {/* елемент слайдеру */}
+        <div className="slider-item image1">
+          {/* overlay/перекривати-Робить тінь */}
+          <div className="overlay"></div>
+          <div className="slider-text">
+            <h1>Ми пропонуємо свіжі овочі та фрукти</h1>
+            <h2 className="subheading">
+              Ми постачаємо органічні овочі та фрукти
+            </h2>
+            <Link
+              //ніби посилання на Докладніше
+              href={`/[lang]/examples/flexbox`}
+              as={`/${locale}/examples/flexbox`}
+            >
+              <a
+                className="button"
+                // onClick={buttonClick1}
               >
-                <a
-                  className="button"
-                  // onClick={buttonClick1}
-                >
-                  FlexBox/Докладніше
-                </a>
-              </Link>
-              {/* </p> */}
-            </div>
+                Докладніше/flexbox
+              </a>
+            </Link>
           </div>
         </div>
-        <div className="container">
-          {/* елемент слайдеру */}
-          <div className="slider-item image2">
-            {/* overlay/перекривати-Робить тінь */}
-            <div className="overlay"></div>
-            <div className="slider-text">
-              <h1>100% свіжа та органічна їжа</h1>
-              <h2 className="subheading">
-                Ми постачаємо органічні овочі та фрукти
-              </h2>
-              {/* <p> */}
-              {/* <a href="#" className="button" onClick={buttonClick2}> */}
-              <a
-                href="/examples/grid/Grid"
-                className="button"
-                // onClick={buttonClick2}
-              >
-                Докладніше
-              </a>
-              {/* </p> */}
-              <div></div>
-            </div>
+        {/* елемент слайдеру */}
+        <div className="slider-item image2">
+          {/* overlay/перекривати-Робить тінь */}
+          <div className="overlay"></div>
+          <div className="slider-text">
+            <h1>100% свіжа та органічна їжа</h1>
+            <h2 className="subheading">
+              Ми постачаємо органічні овочі та фрукти
+            </h2>
+            {/* <a href="#" className="button" onClick={buttonClick2}> */}
+            <a
+              href={`/[lang]/examples/grid`}
+              as={`/${locale}/examples/grid`}
+              className="button"
+              // onClick={buttonClick2}
+            >
+              Докладніше/grid
+            </a>
+            <div></div>
           </div>
         </div>
       </section>
-      {/* Servises  */}
+      {/*--Servises  */}
       <Servises />
-      {/* Сategory  */}
+      {/*--Сategory */}
       <Сategory />
-
+      {/*--Products  */}
+      <Products />
       <style jsx>{`
-        .home-slider {
+      .home-slider-section {
           position: relative;
           height: 650px;
-          //z-index: -9;
         }
-        .container {
-          width: 100%;
-          padding-right: 15px;
-          padding-left: 15px;
-          margin-right: auto;
-          margin-left: auto;
+        .slider-text h1 {
+          font-size: 40px;
+          color: white;
+        }
+        @media (min-width: 960px) {
+          .slider-text h1 {
+            font-size: 8vw;
+          color: white;
+          }
         }
         .image2 {
           background: 100% transparent url(/vegefoods/images/bg_1.jpg) no-repeat;
@@ -106,7 +100,6 @@ const HomePage = () => {
           background: 100% transparent url(/vegefoods/images/bg_2.jpg) no-repeat;
           animation-delay: 5s; //Затримка анімації для 2-го слайду
           z-index: 10;
-
         }
         .slider-item {
           position: absolute; //Щоб не бачити цей <div> !!! Інакше 1-й слайд буде відкириватись за 1-м
@@ -116,16 +109,13 @@ const HomePage = () => {
           bottom: 0;
           left: 0;
           right: 0;
-                align-items:center;
+          align-items:center;
           justify-content:center;
-          height: 650px; //ш
-                  background-size: cover; //ш-Маштабує зображення.
-          background-repeat: no-repeat; //-ш
-          background-position: center center; //ш
-          //z-index: 0;
-          //
+          height: 650px;
+          background-size: cover; //Маштабує зображення.
+          background-repeat: no-repeat;
+          background-position: center center;
           animation-name: coverSlide; //ім'я секції анімації
-          //animation-fill-mode: forwards; //rЗалишається в кінцевому стані*/
           animation-timing-function: linear; //рівномірна зміна
           animation-iteration-count: infinite; //к-сть повторів/rinfinite нескінченно
           animation-duration: 5s; //протяжність анімації
@@ -176,7 +166,6 @@ const HomePage = () => {
           justify-content: center; //X-горизонтально
           flex-direction: column; //в стовбець
           text-align: center;
-          //
           height: 650px;//Треба
         }
 
@@ -199,17 +188,13 @@ const HomePage = () => {
           //font-family: ${
             theme.fontFamily.notoSans
           };//!!! не працює/Локальний шрифт
-          /*font-family: Noto Sans;//Працює!!! Загрузка локального шрифта через <style jsx global> Loyout.js*/
-          //@include media-breakpoint-down(sm) {font-size: 40px;color: $pri; }
+          //font-family: Noto Sans;//Працює!!! Загрузка локального шрифта через <style jsx global> Loyout.js
         }
 
         .slider-text p {
           color: rgba(0, 0, 0, 0.8);
           font-weight: 400;
         }
-
-
-
         .button {
           display: fllex-line; //щоб не переносилась і ширина по контексту
           position: relative;
@@ -219,47 +204,23 @@ const HomePage = () => {
           //width: "";
           height: "40зч";
           color: #fff;
-          border: 2px solid #82ae46; /* Параметры границы */
+          border: 2px solid #82ae46;
           border-radius: 20px;
           //font-family: "Poppins,Geneva, Arial, sans-serif";
           //font-family: ${theme.fontFamily.sansSerif};
-          font-size: 16px;
+           font-size: 16px;
           //font-weight: "";
           //opacity: 1;
-          //list-style-type: none; /**Отменяет маркеры для списка. */
+          //list-style-type: none;
           text-decoration: none;
           //z-index: 100;
         }
-
-
         .button:hover {
           background-color:rgba(132,177,71,.3);
-          border: 1px solid #fff; /* Параметры границы */
-          //border: 1px solid rgba(42,66,10,1); /* Параметры границы */
-          cursor: ${disabled ? "not-allowed" : "pointer"};
+          border: 1px solid #fff;
+          //border: 1px solid rgba(42,66,10,1);
+          // cursor: ${disabled ? "not-allowed" : "pointer"};
         }
-
-        @media (min-width: 768px) {
-          .container {
-            max-width: 720px;
-          }
-        }
-        @media (min-width: 992px) {
-          .container {
-            max-width: 960px;
-          }
-          .slider-text h1 {
-          //font-size: 40px
-          font-size: 8vw;
-          color: white;
-          }
-        }
-        @media (min-width: 1200px) {
-          .container {
-            max-width: 1140px;
-          }
-        }
-
       `}</style>
     </Layout>
   );

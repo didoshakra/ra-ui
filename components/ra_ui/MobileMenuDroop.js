@@ -92,18 +92,18 @@ const MobileMenuDroop = (props) => {
       <style jsx>{`
         .mobileMenuDroop {
           z-index: 9;
-          /*position: absolute;*//*на мобілках видно мені коли переміститись вправо*стрілка)*/
+          //position: absolute;*//*на мобілках видно мені коли переміститись вправо*стрілка)
           position: fixed;
           top: 0px;
-          /*display:  ${props.mobileMenuOpen ? "block" : "none"};*/
-          /* height: 100%; */
+          //display:  ${props.mobileMenuOpen ? "block" : "none"};
+          // height: 100%;
           min-height: 200px;
-          width: 350px;
-          right: -350px;
+          width: 320px;
+          right: -320px;
           padding: 10px 0 10px 0;
           border-radius: 5px;
           //border-radius: 50px 0 0 50px;
-          list-style-type: none; /**Отменяет маркеры для списка. */
+          list-style-type: none; //маркери для списку
           background:${theme.colors.headMenuBackground};
           transform: ${
             props.mobileMenuOpen ? "translateX(-100%)" : "translateX(0px)"
@@ -117,15 +117,15 @@ const MobileMenuDroop = (props) => {
           margin: 0;
           margin-left: 10px; //Відступ від кожного елемента зліва
           display: flex;
-          align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
-          justify-content: center; /* Вирівнювання елементів по головній осі(x) вправо */
+          align-items: center; //Вирівнювання елементів по перетину осі(y) центр
+          justify-content: center; // Вирівнювання елементів по головній осі(x) вправо
           color: ${theme.colors.headIcon};
           background: ${theme.colors.headBackground};
-          //border: 2px solid ${theme.colors.headIcon}; /* Параметры границы */
+          //border: 2px solid ${theme.colors.headIcon}; // Параметры границы
           border: ${theme.colors.headIconBorderWidht}
             ${theme.colors.headIconBorderStyle} ${
         theme.colors.headIcon
-      }; /* Параметры границы */border-radius: 36px; /* Радіус*/
+      }; // Параметры границы */border-radius: 36px;
           width: 36px;
           height: 36px;
         }
@@ -154,11 +154,11 @@ const MobileMenuDroop = (props) => {
           }
         }*/
         //Для iphone 5
-        @media (max-width: 600px) {
+        /*@media (max-width: 600px) {
           .mobileMenuDroop {
             width: 320px;
             right: -320px;
-        }
+        }*/
       `}</style>
     </div>
   );

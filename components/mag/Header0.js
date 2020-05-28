@@ -1,4 +1,4 @@
-//Header.js
+//Header.js/mag
 //20200416-добавляю 2-а діва (для верхньої стрічки-HeaderTape і нажнього випадаючого на весь екран MobileMenu)
 import { useContext, useEffect } from "react";
 
@@ -6,8 +6,7 @@ import HeaderLogo from "./HeaderLogo";
 import { ComponentContext } from "../../context/ComponentContext";
 import HeaderMenu from "./HeaderMenu";
 import HeaderSeting from "../all/HeaderSeting";
-// import HeaderSeting from "./HeaderSeting";
-import HeaderTape from "./HeaderTape";
+// import HeaderTape from "./HeaderTape";
 import MobileMenuIcon from "./MobileMenuIcon";
 import MobileMenuDroop from "./MobileMenuDroop";
 
@@ -80,11 +79,6 @@ const Header = () => {
     },
     {
       // a: t("headerMenu_iconTitleAboutME"),
-      a: "newSection",
-      link: "/mag/new_section",
-    },
-    {
-      // a: t("headerMenu_iconTitleAboutME"),
       a: "shop",
       link: "/mag/shop",
     },
@@ -108,7 +102,7 @@ const Header = () => {
   return (
     <div className="header">
       {/* <div className="header_tape_wraper"> */}
-      <HeaderTape />
+      {/* <HeaderTape /> */}
       <div className="header__wrapper">
         <HeaderLogo />
         <div className="header__wrapper__menu">
@@ -133,50 +127,38 @@ const Header = () => {
       />
       {/* </div> */}
       <style jsx>{`
+      //first-mobile
+      .header {
+          position: relative;
+            top: 0;
+            transition: top 0s ease-in;
+            width: 100%;
+          //background: ${theme.colors.headBackground};
+        }
+
+        .header__wrapper {
+          height: ${heightHeader};
+          display: flex;
+          justify-content: space-between; //по-X
+          align-items: center; //по Y
+          background: ${theme.colors.headBackground};
+        }
+        .header__wrapper-menu {
+          display: flex;
+          justify-content: space-end; //по-X Вирівнювання вправо
+          align-items: center; // по Y
+        }
+
+        @media (min-width: 960px) {
+        //Для  щоб плавно сховати шапку
         .header {
-          /* Для того щоб плавно сховати шапку*/
           margin: 0;
           padding: 0;
           position: fixed;
           top: ${headerTop};
           height: ${heightHeader};
-          width: 100%;
           transition: top 0.4s ease-in;
           z-index: 100;
-          //background: ${theme.colors.headBackground};
-        }
-        /*.header_mobile-menu_wraper {
-          position: relative;
-          top: 0px;
-          display: ${mobileMenuOpen ? "block" : "none"};
-          //width: 100%;
-          margin: 0;
-          padding: 0;
-        }*/
-
-        .header__wrapper {
-          height: ${heightHeader};
-          display: flex;
-          justify-content: space-between; /*по-X Вирівнювання вліво-вправо*/
-          align-items: center; /* по Y */
-          //background: ${theme.colors.headBackground};
-          background: ${theme.colors.headBackground};
-        }
-        .header__wrapper__menu {
-          display: flex;
-          justify-content: space-end; /*по-X Вирівнювання вправо*/
-          align-items: center; /* по Y */
-        }
-
-        @media (max-width: 960px) {
-          .header {
-            position: relative;
-            top: 0;
-            transition: top 0s ease-in;
-          }
-          .header__wrapper {
-            color: ${theme.colors.headIcon};
-            background: ${theme.colors.headMobileBackground};
           }
         }
       `}</style>

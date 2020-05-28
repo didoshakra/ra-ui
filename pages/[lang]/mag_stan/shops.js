@@ -131,7 +131,6 @@ const Shops = () => {
         .card__item img:hover {
           transform: scale(1.1);
           transition: transform 0.4s ease-in;
-          // transform: scale(0.5); // пропорциональное уменьшение элемента наполовину
           cursor: pointer; //рука
         }
         img {
