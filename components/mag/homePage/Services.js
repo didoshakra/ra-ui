@@ -11,11 +11,6 @@ import IconSupport from "../../ui/icons/IconSupport";
 import IconSuperiorQuality from "../../ui/icons/IconSuperiorQuality";
 
 const Services = () => {
-  // export default function HomePage() {
-  // const { t } = useTranslation();
-  // const { state } = useContext(ComponentContext);
-  // const theme = state.theme;
-
   return (
     <section className="servises__section">
       {/* Елемент з іконкою */}

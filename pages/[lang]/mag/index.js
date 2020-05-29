@@ -9,7 +9,7 @@ import { ComponentContext } from "../../../context/ComponentContext";
 import Servises from "../../../components/mag/homePage/Services";
 import Сategory from "../../../components/mag/homePage/Сategory";
 import Products from "../../../components/mag/homePage/Products";
-// import Сategory from "./category";
+import BestPrice from "../../../components/mag/homePage/BestPrice";
 
 const HomePage = () => {
   // export default function HomePage() {
@@ -77,6 +77,8 @@ const HomePage = () => {
       <Сategory />
       {/*--Products  */}
       <Products />
+      {/* BestPrice  */}
+      <BestPrice />
       <style jsx>{`
       .home-slider-section {
           position: relative;
