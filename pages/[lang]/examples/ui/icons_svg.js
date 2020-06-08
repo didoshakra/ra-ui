@@ -1,4 +1,5 @@
-//index.js
+//iconsSVG.js
+//SVG-icons
 
 import { useContext } from "react";
 import Link from "next/link";
@@ -16,7 +17,7 @@ import IconCat from "../../../../components/ui/icons/IconCat";
 import IconGoogle from "../../../../components/ui/icons/IconGoogle";
 import IconHightQuality from "../../../../components/ui/icons/IconHightQuality";
 
-const index = () => {
+const iconsSVG = () => {
   const { state } = useContext(ComponentContext);
   const theme = state.theme;
   const disabled = false;
@@ -136,9 +137,6 @@ const index = () => {
   width: 256px;
   background-size: 256px 256px;
 }
-//
-
-
         .button {
           display: fllex-line; //щоб не переносилась і ширина по контексту
           position: relative;
@@ -148,7 +146,7 @@ const index = () => {
           //width: "";
           height: "40зч";
           color: #fff;
-          border: 2px solid #82ae46; /* Параметры границы */
+          border: 2px solid #82ae46;
           border-radius: 20px;
           //font-family: "Poppins,Geneva, Arial, sans-serif";
           //font-family: ${theme.fontFamily.sansSerif};
@@ -160,7 +158,7 @@ const index = () => {
         .button:hover {
                   background-color:#83ae465b;
                 color:#82ae46;
-          border: 2px solid #82ae46; /* Параметры границы */
+          border: 2px solid #82ae46; /
           cursor: ${disabled ? "not-allowed" : "pointer"};
         }
       `}</style>
@@ -168,4 +166,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default iconsSVG;

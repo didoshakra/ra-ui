@@ -43,6 +43,10 @@ export default class MyDocument extends Document {
             content="initial-scale=1.0, width=device-width"
           />
           <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+          {/* Для owl.carousel  Load jQuery(1.7+)*/}
+          <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+          {/* Customized Style */}
+          <link rel="stylesheet" href="owl-carousel/owl.theme.css" />
         </Head>
         <body>
           <Main />

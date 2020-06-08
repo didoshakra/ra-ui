@@ -3,11 +3,31 @@ import React from "react";
 import App, { Container } from "next/app";
 // import Layout from "../components/Layout";
 import { ThemeProvider } from "../context/ComponentContext";
-
+//@fortawesome
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css"; // Import the CSS
 config.autoAddCss = false; // Скажіть шрифту Awesome пропустити додавання CSS автоматично, оскільки він імпортується вище
+//mag-Vegefoods
 import "../components/mag/homePage/Сategory_css.css";
+
+//+++(plagin)slick-carousel //https://github.com/akiran/react-slick
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+//https://www.npmjs.com/package/react-carousel-slider
+// import "react-carousel-slider/lib/CarouselSlider.css"; // requires a loader
+//+++(react app)Carousel_reactCarouselSlider.js //https://codepen.io/ryasan86/pen/QXwEbM
+import "../components/ui/Carousel/Carousel_reactCarouselSlider.scss";
+//*****Carousel_reactAwesome.js https://www.npmjs.com/package/react-awesome-slider
+//Основне використання з чистим CSS
+import "react-awesome-slider/dist/styles.css"; //основна
+// import "react-awesome-slider/dist/custom-animations/cube-animation.css"; //Кубик рецепт анімації
+// import "react-awesome-slider/dist/custom-animations/fall-animation.css"; //fall/падати
+// import "react-awesome-slider/dist/custom-animations/open-animation.css"; //Накладання
+// import "react-awesome-slider/dist/custom-animations/fold-out-animation.css";
+// import "react-awesome-slider/dist/custom-animations/scale-out-animation.css"; //scale-out(маштабування)
+//**Кінець***Carousel_reactAwesome.js https://www.npmjs.com/package/react-awesome-slider
+import "../components/ui/carousel/carousel_lyd/main.css";
+
 class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
@@ -30,6 +50,7 @@ class MyApp extends App {
           html {
             height: 100%;
             width: 100%;
+            //font-size: 20px; //-по замовч/Визначає 1rem для всього сайту
           }
           body {
             margin: 0;
@@ -37,10 +58,6 @@ class MyApp extends App {
             //overflow: hidden;//Обрізає лишнє
             text-rendering: optimizeLegibility;
             font-family: "Poppins", Arial, sans-serif;
-            /*font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-              "Helvetica Neue", Arial, "Noto Sans", sans-serif,
-              "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-              "Noto Color Emoji";*/
             font-size: 15px;
             line-height: 1.8;
             font-weight: 400;
@@ -74,11 +91,6 @@ class MyApp extends App {
           p {
             margin: 0;
             padding: 0;
-            //display: block;
-            //margin-block-start: 1em;
-            //margin-block-end: 1em;
-            //margin-inline-start: 0px;
-            //margin-inline-end: 0px;
           }
 
           a {
@@ -91,6 +103,8 @@ class MyApp extends App {
           }
           img {
             max-width: 100%;
+            margin: 0;
+            padding: 0;
           }
           @font-face {
             /* font-family: 'Roboto', sans-serif; */

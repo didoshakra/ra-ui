@@ -23,7 +23,7 @@ const HomePage = () => {
     <Layout>
       <Head>
         {/* <title>{t("header-titleSite")}</title> */}
-        <title>mag1</title>
+        <title>Vegefoods</title>
       </Head>
       <section className="home-slider-section">
         {/* елемент слайдеру */}

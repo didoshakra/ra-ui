@@ -74,12 +74,36 @@ const Header = () => {
 
   const menu = [
     {
-      // a: t("headerMenu_iconTitleAboutME"),
-      a: "ui",
-      link: "/examples/ui",
+      a: "new_com",
+      link: "/examples/ui/new_component",
+    },
+    {
+      a: "AntSlid",
+      link: "/examples/carousel/ant_slider",
+    },
+    {
+      a: "ItSlid",
+      link: "/examples/carousel/itshef_slider",
+    },
+    {
+      a: "AweSlid",
+      link: "/examples/carousel/awesome_slider",
+    },
+    {
+      a: "ReaSlid",
+      link: "/examples/carousel/react_carousel_slider",
+    },
+    {
+      a: "SlickCarou",
+      link: "/examples/carousel/carousel_slick",
     },
     {
       // a: t("headerMenu_iconTitleAboutME"),
+      a: "icons_svg",
+      link: "/examples/ui/icons_svg",
+    },
+
+    {
       a: "mobileFirst",
       link: "/examples/ui/mobile_first",
     },

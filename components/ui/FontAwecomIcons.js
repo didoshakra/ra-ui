@@ -5,7 +5,7 @@ import {
   faList,
   faChevronRight,
   faChevronLeft,
-  faCog,
+  faCog, 
   faSun,
   faGlobe,
   faTimes,
