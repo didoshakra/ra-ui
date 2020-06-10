@@ -1,11 +1,9 @@
 //new_component.js
 
-import NewComponent from "../../../../components/ui/Carousel/CarouselRa";
-// import NewComponent from "../../../../components/ui/Carousel/carousel_lyd/CarouselLYD";
+import CarouselRa from "../../../../components/ui/Carousel/CarouselRa";
 
 export default () => (
   <React.Fragment>
-    <NewComponent />
-    {/* <Carousel_reactAwesome.js /> */}
+    <CarouselRa />
   </React.Fragment>
 );

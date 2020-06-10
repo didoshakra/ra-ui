@@ -67,20 +67,22 @@ const CarouselRa = () => {
   //
   const elemAll = listSlides.length; //Глоловний масив
   // var visiElement = Math.min(parVisibleElements, elemAll); // Кількість відображуваних елементів в
+  const [visiElement, setVisiElement] = React.useState(
+    Math.min(parVisibleElements, elemAll)
+  );
   const listSlides1 = listSlides.concat(
     //робочий масив
     listSlides.slice(0, visiElement)
   );
-  const [visiElement, setVisiElement] = React.useState(
-    Math.min(parVisibleElements, elemAll)
-  );
+
+  const [widthScreen, setWidthScreen] = React.useState(600);
   const [actElement, setActElement] = React.useState(0);
   // const [actElement, setActElement] = React.useState(0);
   const [transitionCss, setTransitionCss] = React.useState(
     `transform ${parSpeed}s ease`
   );
 
-  console.log("CarouselRa.js/visiElement", visiElement);
+  // console.log("CarouselRa.js/visiElement", visiElement);
 
   const renderList = () => {
     var urlz = "";
@@ -128,7 +130,7 @@ const CarouselRa = () => {
     }
     setTransitionCss(newTransitionCss);
     setActElement(newActElement);
-    console.log("arrowRisht/actElemen=" + actElement);
+    // console.log("arrowRisht/actElemen=" + actElement);
   };
 
   const arrowLeft = () => {
@@ -140,7 +142,7 @@ const CarouselRa = () => {
     }
     setTransitionCss(newTransitionCss);
     setActElement(newActElement);
-    console.log("arrowLeft/actElemen=" + actElement);
+    // console.log("arrowLeft/actElemen=" + actElement);
   };
 
   const onDots = (e) => {
@@ -150,25 +152,34 @@ const CarouselRa = () => {
     renderDots(); //Пересвітка ативності Dots
   };
 
-  React.useEffect(() => {
-    const widthScreen = screen.width; // ширина екрану
-    // const heightScreen = document.body.clientHeight; // высота екрану
-    const widthBrauser = screen.height; // высота Браузера
-    // const heightBrauser = document.body.clientHeight; // высота Браузера
-    // const widthId = document.getElementById("block").style.width;
-    // const heightId = document.getElementById("block").style.height;
-
+  //https://qna.habr.com/q/703981
+  const updateDimensions = () => {
+    setWidthScreen(window.innerWidth); //Заппамятовуємо ширину екрану
     if (widthScreen < 600) {
       setVisiElement(1);
     } else {
       setVisiElement(Math.min(parVisibleElements, elemAll));
     }
     console.log(
-      "CarouselRa.js/useEffect/widthScreen=",
-      widthScreen + "/widthBrauser=",
-      widthBrauser + "visiElement =" + visiElement
-    ); /////////////
-    // console.log("React.useEffect");
+      "useEffect/updateDimensions/visiElement=",
+      visiElement + "/widthScreen=",
+      widthScreen
+    );
+  };
+
+  React.useEffect(() => {
+    document.addEventListener("resize", updateDimensions);
+    document.removeEventListener("resize", updateDimensions);
+    window.addEventListener("resize", updateDimensions);
+    window.removeEventListener("resize", updateDimensions);
+    //
+    const widthScreen = screen.width; // ширина екрану
+    // const heightScreen = document.body.clientHeight; // высота екрану
+    // const widthBrauser = screen.height; // высота Браузера
+    // const heightBrauser = document.body.clientHeight; // высота Браузера
+    // const widthId = document.getElementById("block").style.width;
+    // const heightId = document.getElementById("block").style.height;
+
     if (parAuto) {
       setTimeout(() => {
         arrowRisht();
