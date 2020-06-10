@@ -4,7 +4,6 @@ const Timer = () => {
   const calculateTimeLeft = () => {
     const difference = +new Date("2021-01-01") - +new Date();
     let timeLeft = {};
-
     if (difference > 0) {
       timeLeft = {
         days: Math.floor(difference / (1000 * 60 * 60 * 24)),
@@ -19,12 +18,6 @@ const Timer = () => {
 
   const [timeLeft, setTimeLeft] = React.useState(calculateTimeLeft());
 
-  React.useEffect(() => {
-    setTimeout(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
-  });
-
   const timerComponents = [];
 
   Object.keys(timeLeft).forEach((interval) => {
@@ -37,6 +30,12 @@ const Timer = () => {
         {timeLeft[interval]} {interval}{" "}
       </span>
     );
+  });
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
   });
 
   return (
