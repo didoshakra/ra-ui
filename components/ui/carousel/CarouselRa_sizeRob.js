@@ -2,56 +2,88 @@
 
 const listSlides = [
   {
-    src: "/minishop/images/gallery-1.jpg",
+    // src: "/minishop/images/gallery-1.jpg",
+    src: "http://pvbk.spb.ru/inc/carousel/imgs/img0.jpg",
     p: "Опис 1",
   },
   {
-    src: "/minishop/images/gallery-2.jpg",
+    src: "http://pvbk.spb.ru/inc/carousel/imgs/img1.jpg",
+    // src: "/minishop/images/gallery-2.jpg",
     p: "Опис 2",
   },
   {
-    src: "/minishop/images/gallery-3.jpg",
+    src: "http://pvbk.spb.ru/inc/carousel/imgs/img2.jpg",
+    // src: "/minishop/images/gallery-3.jpg",
     p: "Опис 3",
   },
   {
-    src: "/minishop/images/gallery-4.jpg",
+    src: "http://pvbk.spb.ru/inc/carousel/imgs/img3.jpg",
+    // src: "/minishop/images/gallery-4.jpg",
     p: "Опис 4",
   },
   {
-    src: "/minishop/images/gallery-5.jpg",
+    src: "http://pvbk.spb.ru/inc/carousel/imgs/img4.jpg",
+    // src: "/minishop/images/gallery-5.jpg",
     p: "Опис 5",
   },
   {
-    src: "/minishop/images/gallery-6.jpg",
+    src: "http://pvbk.spb.ru/inc/carousel/imgs/img5.jpg",
+    // src: "/minishop/images/gallery-6.jpg",
     p: "Опис 6",
   },
+  {
+    src: "http://pvbk.spb.ru/inc/carousel/imgs/img6.jpg",
+    // src: "/minishop/images/gallery-6.jpg",
+    p: "Опис 7",
+  },
+  {
+    src: "http://pvbk.spb.ru/inc/carousel/imgs/img7.jpg",
+    // src: "/minishop/images/gallery-6.jpg",
+    p: "Опис 8",
+  },
+  {
+    src: "http://pvbk.spb.ru/inc/carousel/imgs/img8.jpg",
+    // src: "/minishop/images/gallery-6.jpg",
+    p: "Опис 9",
+  },
+  {
+    src: "http://pvbk.spb.ru/inc/carousel/imgs/img9.jpg",
+    // src: "/minishop/images/gallery-6.jpg",
+    p: "Опис 10",
+  },
 ];
-const visibleElements = 5; // Кількість відображуваних елементів в каруселі
-// const parLoop = true; // Нескінченне зациклення каруселі
-// const parAuto = true; // Автоматична прокрутка
-// const parInterval = 5000; // Інтервал між прокруткою елементів (мс)
-// const parSpeed = 750; // Швидкість анімації (мс)
+const parVisibleElements = 4; // Кількість відображуваних елементів в каруселі
+const parAuto = false; // Автоматична прокрутка
+const parHeight = "270px"; // Висота зображення
+const parInterval = 5000; // Інтервал між прокруткою елементів (мс)
+const parSpeed = 0.75; // Швидкість анімації (с)
 // const parTouch = true; // Прокрутка дотиком
 // const parArrows = true; // Прокрутка стрілками
-// const parDots = true; // Індикаторні
+const parDots = true; // Індикаторні
+//////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 
 const CarouselRa = () => {
-  const quantVisibleElements = visibleElements; // Кількість відображуваних елементів в
-  const [actElement, setActElement] = React.useState(quantVisibleElements);
-  const [transitionCss, setTransitionCss] = React.useState(
-    "transform 0.5s ease"
+  //
+  const elemAll = listSlides.length; //Глоловний масив
+  // var visiElement = Math.min(parVisibleElements, elemAll); // Кількість відображуваних елементів в
+  const [visiElement, setVisiElement] = React.useState(
+    Math.min(parVisibleElements, elemAll)
+  );
+  //робочий масив(збільшений на visiElement)
+  const listSlides1 = listSlides.concat(
+    listSlides.slice(0, visiElement) //масив даних
   );
 
-  const listBegin = listSlides.slice(-quantVisibleElements);
-  const listSlides1 = listBegin.concat(
-    listSlides.concat(listSlides.slice(0, quantVisibleElements))
+  const [widthScreen, setWidthScreen] = React.useState(window.innerWidth); //розмір екрану
+  // const [widthScreen, setWidthScreen] = React.useState(600);
+  const [actElement, setActElement] = React.useState(0);
+  // const [actElement, setActElement] = React.useState(0);
+  const [transitionCss, setTransitionCss] = React.useState(
+    `transform ${parSpeed}s ease`
   );
-  const elemAll = listSlides.length;
-  console.log(
-    "listSlides1.length=",
-    listSlides1.length + "/actElemen=" + actElement + "/quantVisibleElements",
-    quantVisibleElements
-  );
+
+  // console.log("CarouselRa.js/visiElement", visiElement);
 
   const renderList = () => {
     var urlz = "";
@@ -70,6 +102,7 @@ const CarouselRa = () => {
       );
     });
   };
+
   const renderDots = () => {
     return listSlides.map((item, index) => {
       return (
@@ -78,7 +111,8 @@ const CarouselRa = () => {
           className="ant-dot"
           style={{
             backgroundColor:
-              index == actElement - quantVisibleElements ? "#556" : "#BBB",
+              index == actElement ? "rgba(219,50,17,1)" : "rgba(219,50,17,0.2)",
+            // backgroundColor: index == actElement ? "#556" : "#BBB",
             cursor: index == 0 ? "default" : "pointer",
           }}
           onClick={onDots}
@@ -86,36 +120,67 @@ const CarouselRa = () => {
       );
     });
   };
+
   const arrowRisht = () => {
     let newActElement = actElement + 1;
-    let newTransitionCss = "transform 0.5s ease";
+    let newTransitionCss = `transform ${parSpeed}s ease`;
+    // actEl>=elemAll-> actEl=0
     if (actElement >= elemAll) {
       newTransitionCss = "none";
       newActElement = 0;
     }
     setTransitionCss(newTransitionCss);
     setActElement(newActElement);
-    console.log("arrowRisht/actElemen=" + actElement);
+    // console.log("arrowRisht/actElemen=" + actElement);
   };
 
   const arrowLeft = () => {
     let newActElement = actElement - 1;
-    let newTransitionCss = "transform 0.5s ease";
+    let newTransitionCss = `transform ${parSpeed}s ease`;
     if (actElement <= 0) {
       newTransitionCss = "none";
       newActElement = elemAll;
     }
     setTransitionCss(newTransitionCss);
     setActElement(newActElement);
-    console.log("arrowLeft/actElemen=" + actElement);
+    // console.log("arrowLeft/actElemen=" + actElement);
   };
 
   const onDots = (e) => {
     const i = e.currentTarget.dataset.index;
-    let newActElement = Number(i) + quantVisibleElements;
+    let newActElement = Number(i);
     setActElement(newActElement);
-    renderDots();
+    renderDots(); //Пересвітка ативності Dots
   };
+
+  //https://qna.habr.com/q/703981
+  const updateDimensions = () => {
+    setWidthScreen(window.innerWidth); //Заппамятовуємо ширину екрану
+    if (window.innerWidth < 600) {
+      setVisiElement(1);
+    } else {
+      setVisiElement(Math.min(parVisibleElements, elemAll));
+    }
+    console.log(
+      "useEffect/updateDimensions/visiElement=",
+      visiElement + "/widthScreen=",
+      widthScreen
+    );
+  };
+
+  React.useEffect(() => {
+    // Прив’яуєм прослуховувач події
+    window.addEventListener("resize", updateDimensions);
+    return () => {
+      // Від’єднайте слухача події під час очищення
+      window.removeEventListener("resize", updateDimensions);
+    };
+    if (parAuto) {
+      setTimeout(() => {
+        arrowRisht();
+      }, parInterval);
+    }
+  }, []);
 
   return (
     // console.log("param.elemVisible",param.elemVisible)
@@ -124,10 +189,13 @@ const CarouselRa = () => {
       <div className="ant-carousel">
         <div className="ant-carousel-hider">
           <ul className="ant-carousel-list">{renderList()}</ul>
+          <div className="ant-carousel-dots">{parDots ? renderDots() : ""}</div>
         </div>
         <div className="ant-carousel-arrow-left" onClick={arrowLeft}></div>
         <div className="ant-carousel-arrow-right" onClick={arrowRisht}></div>
-        <div className="ant-carousel-dots">{renderDots()}</div>
+        <div div className="ant-carousel-dots">
+          {parDots ? renderDots() : ""}
+        </div>
 
         <style jsx global>{`
           .ant-carousel-list {
@@ -137,9 +205,9 @@ const CarouselRa = () => {
             list-style-type: none;
             display: flex;
             justify-content: flex-start;
-            border: 1px solid #82ae46;
+            //border: 1px solid #82ae46;
             transform: translateX(
-              calc(100% / ${quantVisibleElements}* ${actElement}*-1)
+              calc(100% / ${visiElement}* ${actElement}*-1)
             );
             transition: ${transitionCss};
           }
@@ -151,10 +219,11 @@ const CarouselRa = () => {
             //justify-content:center;
             align-items: center;
             flex: 0 0 auto;
-            height: 270px;
-            width: calc(100% / ${quantVisibleElements});
+            //height: 270px;
+            height: ${parHeight};
+            width: calc(100% / ${visiElement});
             text-align: center;
-            border: 1px solid #6e46ae;
+            //border: 1px solid #6e46ae;
           }
           .ant-carousel-element_p {
             color: red;
@@ -163,13 +232,17 @@ const CarouselRa = () => {
           }
           .ant-dot {
             width: 10px;
+            width: 10px;
+            height: 10px;
             height: 10px;
             margin: 5px 7px;
+            //margin: 5px calc(100%/${visiElement});
             padding: 0;
             display: inline-block;
-            background-color: #bbb;
+            //background-color: #bbb;
+            background-color: rgba(219, 50, 17, 1) bb;
             border-radius: 5px;
-            //border: 1px solid red;
+            border: 1px solid red;
             cursor: pointer;
           }
         `}</style>
@@ -237,20 +310,13 @@ const CarouselRa = () => {
             color: red;
           }
 
-          .ant-carousel-arrow-left:hover {
-            opacity: 1;
-          }
-
-          .ant-carousel-arrow-right:hover {
-            opacity: 1;
-          }
-
           .ant-carousel-dots {
             width: 100%;
             height: auto;
             position: absolute;
             left: 0;
-            bottom: -30px;
+            bottom: -10px;
+            //bottom: 5px;
             z-index: 30;
             text-align: center;
           }

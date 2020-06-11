@@ -62,7 +62,7 @@ const Header = () => {
   }
 
   useEffect(() => {
-    // Прив’яжіть прослуховувач події
+    // Прив’яуєм прослуховувач події
     document.addEventListener("scroll", mouseMove); //Для скролу
     // document.addEventListener("mousemove", mouseMove);//для переміщення мишки (координати)
     return () => {

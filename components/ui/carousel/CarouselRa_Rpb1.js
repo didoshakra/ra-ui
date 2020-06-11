@@ -52,39 +52,40 @@ const listSlides = [
     p: "Опис 10",
   },
 ];
-const parVisibleElements = 8; // Кількість відображуваних елементів в каруселі
+const parVisibleElements = 4; // Кількість відображуваних елементів в каруселі
 const parAuto = false; // Автоматична прокрутка
 const parHeight = "270px"; // Висота зображення
 const parInterval = 5000; // Інтервал між прокруткою елементів (мс)
 const parSpeed = 0.75; // Швидкість анімації (с)
 // const parTouch = true; // Прокрутка дотиком
 var parArrows = true; // Показувати стрілки прокрутки
+// const parArrows = false; // Показувати стрілки прокрутки
 var parDots = true; // Індикаторні
+// const parDots = false; // Індикаторні
+//////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
 
 const CarouselRa = () => {
   //
-  const elemAll = listSlides.length; //Масив слайдів(даних)
   //Визначення ширини вікна браузера //https://dev.to/3sanket3/usewindowsize-react-hook-to-handle-responsiveness-in-javascript-3dcl
   const isWindowClient = typeof window === "object";
   const [windowSize, setWindowSize] = React.useState(
     isWindowClient ? window.innerWidth : undefined
   );
-  //Змінні з параметрів
-  const [parametrs, setParametrs] = React.useState({
-    visiElement: windowSize < 600 ? 1 : Math.min(parVisibleElements, elemAll),
-    parArrows: windowSize < 600 ? false : parArrows,
-    parDots: windowSize < 600 ? false : parDots,
-  });
+  const elemAll = listSlides.length; //Глоловний масив
+  //кількість видимих слайдів в залежності від розміру вікна
+  const [visiElement, setVisiElement] = React.useState(
+    windowSize < 600 ? 1 : Math.min(parVisibleElements, elemAll)
+  );
   //робочий масив(збільшений на visiElement)
   const listSlides1 = listSlides.concat(
-    listSlides.slice(0, parametrs.visiElement) //масив даних
+    listSlides.slice(0, visiElement) //масив даних
   );
-  //***Робочі змінні
-  const [workVares, setWorkVares] = React.useState({
-    actElement: 0,
-    transitionCss: `transform ${parSpeed} sease`,
-  });
+  const [actElement, setActElement] = React.useState(0);
+  //Величина змішення елементів
+  const [transitionCss, setTransitionCss] = React.useState(
+    `transform ${parSpeed} sease`
+  );
 
   // console.log("CarouselRa.js/visiElement", visiElement);
 
@@ -114,9 +115,7 @@ const CarouselRa = () => {
           className="ant-dot"
           style={{
             backgroundColor:
-              index == workVares.actElement
-                ? "rgba(219,50,17,1)"
-                : "rgba(219,50,17,0.2)",
+              index == actElement ? "rgba(219,50,17,1)" : "rgba(219,50,17,0.2)",
             // backgroundColor: index == actElement ? "#556" : "#BBB",
             cursor: index == 0 ? "default" : "pointer",
           }}
@@ -127,37 +126,34 @@ const CarouselRa = () => {
   };
 
   const arrowRisht = () => {
-    let newActElement = workVares.actElement + 1;
+    let newActElement = actElement + 1;
     let newTransitionCss = `transform ${parSpeed}s ease`;
-    if (workVares.actElement >= elemAll) {
+    // actEl>=elemAll-> actEl=0
+    if (actElement >= elemAll) {
       newTransitionCss = "none";
       newActElement = 0;
     }
-    setWorkVares({
-      actElement: newActElement,
-      transitionCss: newTransitionCss,
-    });
+    setTransitionCss(newTransitionCss);
+    setActElement(newActElement);
     // console.log("arrowRisht/actElemen=" + actElement);
   };
 
   const arrowLeft = () => {
-    let newActElement = workVares.actElement - 1;
+    let newActElement = actElement - 1;
     let newTransitionCss = `transform ${parSpeed}s ease`;
-    if (workVares.actElement <= 0) {
+    if (actElement <= 0) {
       newTransitionCss = "none";
       newActElement = elemAll;
     }
-    setWorkVares({
-      actElement: newActElement,
-      transitionCss: newTransitionCss,
-    });
+    setTransitionCss(newTransitionCss);
+    setActElement(newActElement);
     // console.log("arrowLeft/actElemen=" + actElement);
   };
 
   const onDots = (e) => {
     const i = e.currentTarget.dataset.index;
     let newActElement = Number(i);
-    setWorkVares({ actElement: newActElement });
+    setActElement(newActElement);
     renderDots(); //Пересвітка ативності Dots
   };
 
@@ -167,13 +163,9 @@ const CarouselRa = () => {
       setWindowSize(window.innerWidth); //👈
       // Зміна кількості видимих слайдів в залежності від розміру вікна
       if (window.innerWidth < 600) {
-        setParametrs({ visiElement: 1, parArrows: false, parDots: false });
+        setVisiElement(1);
       } else {
-        setParametrs({
-          visiElement: Math.min(parVisibleElements, elemAll),
-          parArrows: parArrows,
-          parDots: parDots,
-        });
+        setVisiElement(Math.min(parVisibleElements, elemAll));
       }
     }
     if (isWindowClient) {
@@ -203,7 +195,7 @@ const CarouselRa = () => {
           {/* <div className="ant-carousel-dots">{parDots ? renderDots() : ""}</div> */}
         </div>
         <div div className="ant-carousel-dots">
-          {parametrs.parDots ? renderDots() : ""}
+          {parDots ? renderDots() : ""}
         </div>
 
         <style jsx global>{`
@@ -216,9 +208,9 @@ const CarouselRa = () => {
             justify-content: flex-start;
             //border: 1px solid #82ae46;
             transform: translateX(
-              calc(100% / ${parametrs.visiElement}* ${workVares.actElement}*-1)
+              calc(100% / ${visiElement}* ${actElement}*-1)
             );
-            transition: ${workVares.transitionCss};
+            transition: ${transitionCss};
           }
           .ant-carousel-element {
             position: relative;
@@ -230,7 +222,7 @@ const CarouselRa = () => {
             flex: 0 0 auto;
             //height: 270px;
             height: ${parHeight};
-            width: calc(100% / ${parametrs.visiElement});
+            width: calc(100% / ${visiElement});
             text-align: center;
             //border: 1px solid #6e46ae;
           }
@@ -245,6 +237,7 @@ const CarouselRa = () => {
             height: 10px;
             height: 10px;
             margin: 1vw 1vw;
+            //margin: 5px calc(100%/${visiElement});
             padding: 0;
             display: inline-block;
             //background-color: #bbb;
@@ -296,7 +289,7 @@ const CarouselRa = () => {
             cursor: pointer;
             display: flex;
             align-items: center;
-            opacity: ${parametrs.parArrows ? "0.4" : "0"};
+            opacity: ${parArrows ? "0.4" : "0"};
             z-index: 32;
           }
 
