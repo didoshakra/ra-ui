@@ -52,7 +52,7 @@ const listSlides = [
     p: "Опис 10",
   },
 ];
-const parVisibleElements = 8; // Кількість відображуваних елементів в каруселі
+const parVisibleElements = 3; // Кількість відображуваних елементів в каруселі
 const parAuto = false; // Автоматична прокрутка
 const parHeight = "270px"; // Висота зображення
 const parInterval = 5000; // Інтервал між прокруткою елементів (мс)
@@ -82,11 +82,10 @@ const CarouselRa = () => {
   );
   //***Робочі змінні
   const [workVares, setWorkVares] = React.useState({
+    first: true, //(UseEffect) Щоб при вході не перекидало на 1 позицію
     actElement: 0,
     transitionCss: `transform ${parSpeed} sease`,
   });
-
-  // console.log("CarouselRa.js/visiElement", visiElement);
 
   const renderList = () => {
     var urlz = "";
@@ -108,13 +107,15 @@ const CarouselRa = () => {
 
   const renderDots = () => {
     return listSlides.map((item, index) => {
+      // console.log("renderDots/workVares.actElement=", workVares.actElement);
       return (
         <span
           data-index={index} //data-ХХ->Для передачі даних в e.currentTarget.dataset.XX
           className="ant-dot"
           style={{
             backgroundColor:
-              index == workVares.actElement
+              index == workVares.actElement ||
+              (index == 0 && workVares.actElement == elemAll)
                 ? "rgba(219,50,17,1)"
                 : "rgba(219,50,17,0.2)",
             // backgroundColor: index == actElement ? "#556" : "#BBB",
@@ -127,37 +128,41 @@ const CarouselRa = () => {
   };
 
   const arrowRisht = () => {
-    let newActElement = workVares.actElement + 1;
-    let newTransitionCss = `transform ${parSpeed}s ease`;
     if (workVares.actElement >= elemAll) {
-      newTransitionCss = "none";
-      newActElement = 0;
+      setWorkVares({
+        first: false,
+        actElement: 0,
+        transitionCss: "none",
+      });
+    } else {
+      setWorkVares({
+        first: false,
+        actElement: workVares.actElement + 1,
+        transitionCss: `transform ${parSpeed} sease`,
+      });
     }
-    setWorkVares({
-      actElement: newActElement,
-      transitionCss: newTransitionCss,
-    });
-    // console.log("arrowRisht/actElemen=" + actElement);
+    // renderDots(); //Пересвітка ативності Dots
   };
-
   const arrowLeft = () => {
-    let newActElement = workVares.actElement - 1;
-    let newTransitionCss = `transform ${parSpeed}s ease`;
     if (workVares.actElement <= 0) {
-      newTransitionCss = "none";
-      newActElement = elemAll;
+      setWorkVares({
+        first: true,
+        actElement: elemAll - 1,
+        transitionCss: "none",
+      });
+    } else {
+      setWorkVares({
+        first: true,
+        actElement: workVares.actElement - 1,
+        transitionCss: `transform ${parSpeed} sease`,
+      });
     }
-    setWorkVares({
-      actElement: newActElement,
-      transitionCss: newTransitionCss,
-    });
-    // console.log("arrowLeft/actElemen=" + actElement);
   };
 
   const onDots = (e) => {
     const i = e.currentTarget.dataset.index;
     let newActElement = Number(i);
-    setWorkVares({ actElement: newActElement });
+    setWorkVares({ first: true, actElement: newActElement });
     renderDots(); //Пересвітка ативності Dots
   };
 
@@ -190,6 +195,34 @@ const CarouselRa = () => {
       }, parInterval);
     }
   }, [isWindowClient, setWindowSize]);
+  //////////////////////////////////////////
+  React.useEffect(() => {
+    // console.log(
+    //   "useEffect-1/workVares.actElement=" +
+    //     workVares.actElement +
+    //     "/transitionCss=",
+    //   workVares.transitionCss
+    // );
+    if (workVares.actElement == 0 && !workVares.first) {
+      // console.log(
+      //   "useEffect-11/workVares.actElement=" +
+      //     workVares.actElement +
+      //     "/transitionCss=",
+      //   workVares.transitionCss
+      // );
+      setWorkVares({
+        first: true,
+        actElement: workVares.actElement + 1,
+        transitionCss: `transform ${parSpeed} sease`,
+      });
+    }
+    // if (workVares.actElement < 1 && !workVares.first) {
+    //   setWorkVares({
+    //     actElement: workVares.actElement - 1,
+    //     transitionCss: `transform ${parSpeed} sease`,
+    //   });
+    // }
+  }, [workVares]);
 
   return (
     // console.log("param.elemVisible",param.elemVisible)
