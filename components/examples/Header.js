@@ -79,7 +79,7 @@ const Header = () => {
     },
     {
       a: "CarouselRa",
-      link: "/examples/carousel/CarouselRa",
+      link: "/examples/carousel/carousel_ra",
     },
     {
       a: "ItSlid",
