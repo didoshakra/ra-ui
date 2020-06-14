@@ -52,35 +52,35 @@ const listSlides = [
     p: "Опис 10",
   },
 ];
-const parVisibleElements = 3; // Кількість відображуваних елементів в каруселі
+//****************************************************************************** */
+const parVisibleElements = 5; // Кількість відображуваних елементів в каруселі
+// const parAuto = true; // Автоматична прокрутка
 const parAuto = false; // Автоматична прокрутка
 const parHeight = "270px"; // Висота зображення
-const parInterval = 5000; // Інтервал між прокруткою елементів (мс)
+const parInterval = 3000; // Інтервал між прокруткою елементів (мс)
 const parSpeed = 0.75; // Швидкість анімації (с)
 // const parTouch = true; // Прокрутка дотиком
 var parArrows = true; // Показувати стрілки прокрутки
 var parDots = true; // Індикаторні
-///////////////////////////////////////////////////////////////////////////
 
+//******************************************************************************* */
 const CarouselRa = () => {
-  //
-  const elemAll = listSlides.length; //Масив слайдів(даних)
   //Визначення ширини вікна браузера //https://dev.to/3sanket3/usewindowsize-react-hook-to-handle-responsiveness-in-javascript-3dcl
   const isWindowClient = typeof window === "object";
   const [windowSize, setWindowSize] = React.useState(
     isWindowClient ? window.innerWidth : undefined
   );
-  //Змінні з параметрів
+  const elemAll = listSlides.length; //Величина масиву слайдів(даних)
+  //*Змінні з параметрів
   const [parametrs, setParametrs] = React.useState({
     visiElement: windowSize < 600 ? 1 : Math.min(parVisibleElements, elemAll),
-    parArrows: windowSize < 600 ? false : parArrows,
     parDots: windowSize < 600 ? false : parDots,
   });
-  //робочий масив(збільшений на visiElement)
+  //*робочий масив(збільшений на visiElement)
   const listSlides1 = listSlides.concat(
     listSlides.slice(0, parametrs.visiElement) //масив даних
   );
-  //***Робочі змінні
+  //*робочі змінні
   const [workVares, setWorkVares] = React.useState({
     first: true, //(UseEffect) Щоб при вході не перекидало на 1 позицію
     actElement: 0,
@@ -141,7 +141,6 @@ const CarouselRa = () => {
         transitionCss: `transform ${parSpeed} sease`,
       });
     }
-    // renderDots(); //Пересвітка ативності Dots
   };
   const arrowLeft = () => {
     if (workVares.actElement <= 0) {
@@ -172,11 +171,10 @@ const CarouselRa = () => {
       setWindowSize(window.innerWidth); //👈
       // Зміна кількості видимих слайдів в залежності від розміру вікна
       if (window.innerWidth < 600) {
-        setParametrs({ visiElement: 1, parArrows: false, parDots: false });
+        setParametrs({ visiElement: 1, parDots: false });
       } else {
         setParametrs({
           visiElement: Math.min(parVisibleElements, elemAll),
-          parArrows: parArrows,
           parDots: parDots,
         });
       }
@@ -188,41 +186,28 @@ const CarouselRa = () => {
       //Розреєстрація слухача розміру вікна
       return () => window.removeEventListener("resize", setSize);
     }
-    //Запуск таймера прокрцтки слайдів
+  }, [isWindowClient, setWindowSize]);
+
+  React.useEffect(() => {
+    //Запуск таймера автоматичної прокрутки слайдів
     if (parAuto) {
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         arrowRisht();
       }, parInterval);
+      return () => clearTimeout(timer); //Для того щоб таймер не запускався при кожному arrowRisht
     }
-  }, [isWindowClient, setWindowSize]);
-  //////////////////////////////////////////
+  }, [arrowRisht]);
+
   React.useEffect(() => {
-    // console.log(
-    //   "useEffect-1/workVares.actElement=" +
-    //     workVares.actElement +
-    //     "/transitionCss=",
-    //   workVares.transitionCss
-    // );
-    if (workVares.actElement == 0 && !workVares.first) {
-      // console.log(
-      //   "useEffect-11/workVares.actElement=" +
-      //     workVares.actElement +
-      //     "/transitionCss=",
-      //   workVares.transitionCss
-      // );
+    //Для зациклювання прокрутки вправо
+    if (workVares.actElement == 0 && !workVares.first && !parAuto) {
       setWorkVares({
         first: true,
         actElement: workVares.actElement + 1,
         transitionCss: `transform ${parSpeed} sease`,
       });
     }
-    // if (workVares.actElement < 1 && !workVares.first) {
-    //   setWorkVares({
-    //     actElement: workVares.actElement - 1,
-    //     transitionCss: `transform ${parSpeed} sease`,
-    //   });
-    // }
-  }, [workVares]);
+  }, [workVares.actElement]);
 
   return (
     // console.log("param.elemVisible",param.elemVisible)
@@ -329,8 +314,8 @@ const CarouselRa = () => {
             cursor: pointer;
             display: flex;
             align-items: center;
-            opacity: ${parametrs.parArrows ? "0.4" : "0"};
-            z-index: 32;
+            opacity: ${parArrows ? "0.4" : "0"};
+            z-index: 10;
           }
 
           .ant-carousel-arrow-left {
@@ -354,7 +339,7 @@ const CarouselRa = () => {
             left: 0;
             //bottom: -10px;
             //bottom: 5px;
-            z-index: 30;
+            z-index: 10;
             text-align: center;
           }
         `}</style>

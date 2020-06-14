@@ -78,8 +78,8 @@ const Header = () => {
       link: "/examples/ui/new_component",
     },
     {
-      a: "AntSlid",
-      link: "/examples/carousel/ant_slider",
+      a: "CarouselRa",
+      link: "/examples/carousel/CarouselRa",
     },
     {
       a: "ItSlid",
@@ -98,7 +98,6 @@ const Header = () => {
       link: "/examples/carousel/carousel_slick",
     },
     {
-      // a: t("headerMenu_iconTitleAboutME"),
       a: "icons_svg",
       link: "/examples/ui/icons_svg",
     },
@@ -108,7 +107,6 @@ const Header = () => {
       link: "/examples/ui/mobile_first",
     },
     {
-      // a: t("headerMenu_iconTitleAboutME"),
       a: "Grid",
       link: "/examples/grid",
     },

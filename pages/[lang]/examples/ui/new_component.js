@@ -1,9 +1,9 @@
 //new_component.js
 
-import CarouselRa from "../../../../components/ui/Carousel/CarouselRa";
+import SetTimeOut from "../../../../components/ui/Carousel/SetTimeOut";
 
 export default () => (
   <React.Fragment>
-    <CarouselRa />
+    <SetTimeOut />
   </React.Fragment>
 );
