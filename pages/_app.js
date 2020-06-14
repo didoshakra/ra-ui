@@ -16,7 +16,7 @@ import "slick-carousel/slick/slick-theme.css";
 //https://www.npmjs.com/package/react-carousel-slider
 // import "react-carousel-slider/lib/CarouselSlider.css"; // requires a loader
 //+++(react app)Carousel_reactCarouselSlider.js //https://codepen.io/ryasan86/pen/QXwEbM
-import "../components/ui/Carousel/Carousel_reactCarouselSlider.scss";
+import "../components/ui/carousel/Carousel_reactCarouselSlider.scss";
 //*****Carousel_reactAwesome.js https://www.npmjs.com/package/react-awesome-slider
 //Основне використання з чистим CSS
 import "react-awesome-slider/dist/styles.css"; //основна
