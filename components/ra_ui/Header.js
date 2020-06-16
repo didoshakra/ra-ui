@@ -122,6 +122,7 @@ const Header = () => {
             top: 0;
             transition: top 0s ease-in;
             width: 100%;
+            z-index: 10;
           //background: ${theme.colors.headBackground};
         }
 
@@ -139,7 +140,7 @@ const Header = () => {
         }
 
         @media (min-width: 960px) {
-        //Для  щоб плавно сховати шапку
+        //Щоб плавно сховати шапку
         .header {
           margin: 0;
           padding: 0;
@@ -147,7 +148,6 @@ const Header = () => {
           top: ${headerTop};
           height: ${heightHeader};
           transition: top 0.4s ease-in;
-          z-index: 100;
           }
         }
       `}</style>

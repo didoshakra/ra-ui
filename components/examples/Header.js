@@ -127,7 +127,7 @@ const Header = () => {
       {/* <HeaderTape /> */}
       <div className="header__wrapper">
         <HeaderLogo />
-        <div className="header__wrapper__menu">
+        <div className="header__wrapper-menu">
           {/* Навігація */}
           <HeaderMenu menu={menu} />
           {/* іконка мобільного меню/faList/ */}
@@ -139,61 +139,46 @@ const Header = () => {
           <HeaderSeting />
         </div>
       </div>
-      {/* </div> */}
-      {/* <div className="header_mobile-menu_wraper"> */}
       {/* Список мобильного меню */}
       <MobileMenuDroop
         menu={menu}
         mobileMenuOpen={mobileMenuOpen}
         mobileMenuToggle={mobileMenuToggle}
       />
-      {/* </div> */}
       <style jsx>{`
+        //first-mobile
         .header {
-          /* Для того щоб плавно сховати шапку*/
-          margin: 0;
-          padding: 0;
-          position: fixed;//Відносно Wind //Інші не бачать.як absolute
-          position: relative;//Інші бачать.як absolute
-          top: ${headerTop};
-          height: ${heightHeader};
-          width: 100%;
-          transition: top 0.4s ease-in;
-          z-index: 100;
+          position: relative;
+            top: 0;
+            transition: top 0s ease-in;
+            width: 100%;
+            z-index: 10;
           //background: ${theme.colors.headBackground};
         }
-        /*.header_mobile-menu_wraper {
-          position: relative;
-          top: 0px;
-          display: ${mobileMenuOpen ? "block" : "none"};
-          //width: 100%;
-          margin: 0;
-          padding: 0;
-        }*/
 
         .header__wrapper {
           height: ${heightHeader};
           display: flex;
-          justify-content: space-between; /*по-X Вирівнювання вліво-вправо*/
-          align-items: center; /* по Y */
-          //background: ${theme.colors.headBackground};
+          justify-content: space-between; //по-X
+          align-items: center; //по Y
           background: ${theme.colors.headBackground};
         }
-        .header__wrapper__menu {
+        .header__wrapper-menu {
           display: flex;
-          justify-content: space-end; /*по-X Вирівнювання вправо*/
-          align-items: center; /* по Y */
+          justify-content: space-end; //по-X Вирівнювання вправо
+          align-items: center; // по Y
         }
 
-        @media (max-width: 960px) {
-          .header {
-            position: relative;
-            top: 0;
-            transition: top 0s ease-in;
-          }
-          .header__wrapper {
-            color: ${theme.colors.headIcon};
-            background: ${theme.colors.headMobileBackground};
+        @media (min-width: 960px) {
+        //Для  щоб плавно сховати шапку
+        .header {
+          margin: 0;
+          padding: 0;
+          position: fixed;
+          top: ${headerTop};
+          height: ${heightHeader};
+          transition: top 0.4s ease-in;
+          z-index: 100;
           }
         }
       `}</style>

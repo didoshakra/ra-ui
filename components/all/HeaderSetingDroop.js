@@ -26,7 +26,7 @@ const HeaderSetingDroop = () => {
   const wrapperRef = useRef(null); //Для клацання поза обєктом
   useOutsideAlerter(wrapperRef); //Для клацання поза обєктом
   function useOutsideAlerter(ref) {
-    //*** Для клацання поза елементом Решение с React ^ 16.8 с использованием хуков
+    //*** Для клацання поза елементом  React ^ 16.8 хуки
     function handleClickOutside(event) {
       if (ref.current && !ref.current.contains(event.target)) {
         //Якщо поза елементом
@@ -104,8 +104,6 @@ const HeaderSetingDroop = () => {
       <a className="headerSetingDroop__icon" onClick={setingMenuToggle}>
         <FontAwesomeIcon icon={faCog} title={t("headerMenu_iconTitleSeting")} />
       </a>
-      {/* App меню*/}
-      {/* {appMenuOpen ? <HeaderAppMenu /> : ""} */}
       {/* список головного меню */}
       <ul className="headerSetingDroop__dropdown">
         <li
@@ -151,15 +149,13 @@ const HeaderSetingDroop = () => {
           margin: 0;
           margin-right: 5px; //Відступ від кожного елемента зліва
           display: flex;
-          align-items: center; /* Вирівнювання елементів по перетину осі(y) центр */
-          justify-content: center; /* Вирівнювання елементів по головній осі(x) вправо */
+          align-items: center;
+          justify-content: center;
           color: ${theme.colors.headIcon};
           background: ${theme.colors.headBackground};
-          //border: 2px solid ${theme.colors.headIcon}; /* Параметры границы */
+          //border: 2px solid ${theme.colors.headIcon};
           border: ${theme.colors.headIconBorderWidht}
-            ${theme.colors.headIconBorderStyle} ${
-        theme.colors.headIcon
-      }; /* Параметры границы *///border-radius: 45px; /* Радіус*/
+            ${theme.colors.headIconBorderStyle} ${theme.colors.headIcon};
           border-radius: 36px; /* Радіус*/
           width: 36px;
           height: 36px;
@@ -172,36 +168,31 @@ const HeaderSetingDroop = () => {
         .headerSetingDroop__dropdown {
           //плавно проявляється (opacity 0.5s)
           position: absolute;
-          display: block; //+float: leftБлок по ширині контенту
-          float: left; //+display: blockБлок по ширині контентуleft:-110px;//працює лівий край від  лівого краю об'єкту
+          //display: block; //+float: leftБлок по ширині контенту
+          //float: left; //+display: blockБлок по ширині контентуleft:-110px;//працює лівий край від  лівого краю об'єкту
           padding: 0;
           margin: 0;
           width: 150px;
           top: 50px; //+Працює
           //bottom: -20px;
           left: -110px; //+Працює
-          //min-width: 100px;
-          //overflow: auto; //якщо не поміщається
           border-radius: 3px;
           box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
           opacity: ${setingMenuOpen ? "1" : "0"};
-          // z-index: ${setingMenuOpen ? "-1" : "-2"};
-          z-index: -1;
+           z-index: ${setingMenuOpen ? "-1" : "-2"};
+          //z-index: -1;
           transition: z-index 0.5s, opacity 0.5s linear;
           background: ${theme.colors.headMenuBackground};
         }
-      `}</style>
-      <style jsx>{`
         .headerSetingDroop__dropdown__item {
-          display: flex;
-          //position: relative;
+          //display: flex;
           margin: 0;
-          padding: 0; //Щоб зробити заокруглення
-          padding: 5px 10px; //Щоб зробити заокруглення
+          //padding: 0;
+          padding: 5px 10px; //Щоб стало на заокруглення
           font-size: 18px; //Рукавичка
-          font-weight: 100; //грубина
+          font-weight: 100;
           font-family: ${theme.fontFamily.serif};
-          list-style-type: none; /**Отменяет маркеры для списка. */
+          list-style-type: none;
           align-items: center; //Y Вирівнювання
           text-decoration: none;
           color: ${theme.colors.headText};

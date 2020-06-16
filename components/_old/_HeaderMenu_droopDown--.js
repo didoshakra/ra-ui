@@ -173,15 +173,9 @@ const HeaderMenu = () => {
           list-style-type: none; /**Отменяет маркеры для списка. */
           margin: 0;
           padding: 0;
-          display: flex;
+          display: none; /*Временно удаляет элемент из документа */
           justify-content: flex-end; /* Вирівнювання елементів по головній осі(x) вправо */
           align-items: center; /* Вирівнювання елементів по перетину осі(y) центр*/
-        }
-        /* Условие для экранов с шириной от 0 до 1200px */
-        @media (max-width: 1200px) {
-          .nav {
-            display: none; /*Временно удаляет элемент из документа */
-          }
         }
 
         .nav__item {
@@ -203,6 +197,12 @@ const HeaderMenu = () => {
 
         /* Для екранів з шириною  0 до 1200px */
 
+        /* Условие для экранов с шириной от 0 до 1200px */
+        @media (min-width: 1200px) {
+          .nav {
+            display: flex;
+          }
+        }
         @media (max-width: 1200px) {
           .menu-icon {
             display: flex;

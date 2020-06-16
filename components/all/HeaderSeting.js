@@ -35,7 +35,6 @@ const HeaderSeting = () => {
       </div>
       <style jsx>
         {`
-          //first-mobile
           .headerSeting {
             //padding: 10px;
             height: 64px;

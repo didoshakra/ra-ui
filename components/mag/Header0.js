@@ -105,7 +105,7 @@ const Header = () => {
       {/* <HeaderTape /> */}
       <div className="header__wrapper">
         <HeaderLogo />
-        <div className="header__wrapper__menu">
+        <div className="header__wrapper-menu">
           {/* Навігація */}
           <HeaderMenu menu={menu} />
           {/* іконка мобільного меню/faList/ */}

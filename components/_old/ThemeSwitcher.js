@@ -3,7 +3,7 @@ import { ComponentContext } from "../context/ComponentContext";
 // import { themes, themesNames } from "../styles/theme";
 import useTranslation from "../translations/useTranslation";
 
-const ThemeSwitcher = props => {
+const ThemeSwitcher = (props) => {
   const wrapperRef = useRef(null); //Для клацання поза обєктом
   useOutsideAlerter(wrapperRef); //Для клацання поза обєктом
 
@@ -12,14 +12,14 @@ const ThemeSwitcher = props => {
   const themesNames = {
     light: t("theme_Light"),
     dark: t("theme_Dark"),
-    other: t("theme_Other")
+    other: t("theme_Other"),
   };
 
   const { state, dispatch } = useContext(ComponentContext);
   const themeType = state.themeType;
   const theme = state.theme;
 
-  const handleThemeChange = React.useCallback(e => {
+  const handleThemeChange = React.useCallback((e) => {
     // console.log("+++ /ThemeSwitcher.js/e.target.value=", e.target.value);
     dispatch({ type: "THEME", payload: e.target.value }); //Змінюємо state.theme
     props.themeMenuToggle(); //Закриваєм меню
@@ -54,7 +54,7 @@ const ThemeSwitcher = props => {
       onChange={handleThemeChange}
       className="select"
     >
-      {themes.map(item => (
+      {themes.map((item) => (
         <option key={item} value={item}>
           {themesNames[item]}
         </option>
@@ -68,11 +68,11 @@ const ThemeSwitcher = props => {
           position: fixed;
           top: 50px;
           right: 30px;
-          margin: 0 10px; //між блоками
           /* //justify-content: space-center; //Вирівнювання вправо
           // justify-content: space-between; //Вирівнювання вправо
           align-items: center; */
-          font-size: 20px;
+          margin: 0 5px; //між блоками
+          font-size: 16px;
           cursor: pointer; //Рука
         }
         select:focus {
@@ -82,8 +82,8 @@ const ThemeSwitcher = props => {
 
         @media (max-width: 600px) {
           .select {
-            margin: 0 5px; //між блоками
-            font-size: 16px;
+            margin: 0 10px; //між блоками
+            font-size: 20px;
           }
         }
       `}</style>
