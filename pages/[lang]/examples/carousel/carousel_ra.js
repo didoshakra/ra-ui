@@ -90,8 +90,6 @@ const CarouselRa = () => {
   const [touchPosition, setTouchPosition] = React.useState({
     tx0: 0,
     ty0: 0,
-    tx1: 0,
-    ty1: 0,
   });
   touchPosition;
 
@@ -101,13 +99,13 @@ const CarouselRa = () => {
       urlz = `url('${item.src}') center no-repeat`;
       return (
         <li
-          className="ant-carousel-element"
+          className="ra-carousel-element"
           style={{
             background: urlz, //:"url('/minishop/images/gallery-1.jpg')",
             backgroundSize: "cover",
           }}
         >
-          <p className="ant-carousel-element_p">{item.p}</p>
+          <p className="ra-carousel-element_p">{item.p}</p>
         </li>
       );
     });
@@ -119,7 +117,7 @@ const CarouselRa = () => {
       return (
         <span
           data-index={index} //data-ХХ->Для передачі даних в e.currentTarget.dataset.XX
-          className="ant-dot"
+          className="ra-dot"
           style={{
             backgroundColor:
               index == workVares.actElement ||
@@ -218,72 +216,29 @@ const CarouselRa = () => {
   }, [workVares.actElement]);
 
   React.useEffect(() => {
-    // // Прив’яжіть прослуховувач події
-    // document.addEventListener("scroll", mouseMove); //Для скролу
-    // // document.addEventListener("mousemove", mouseMove);//для переміщення мишки (координати)
-    // return () => {
-    //   // Від’єднайте слухача події під час очищення
-    //   document.removeEventListener("scroll", mouseMove);
-    //   // document.removeEventListener("mousemove", mouseMove);
-    // };
-
+ //Рух пальцем по екрані
     //***Перехватуємо події дотиків до екрану
-    //Початок доитку
-    // document.addEventListener("touchstart", function (e) {
-    //   TouchStart(e);
-    // });
     document.addEventListener("touchstart", TouchStart);
-    //Рух пальцем по екрані
-    // document.addEventListener("touchmove", function (e) {
-    //   TouchMove(e);
-    // });
-    //Користувач відпустив екран
-    // document.addEventListener("touchend", function (e) {
-    //   TouchEnd(e, "green");
-    // });
-    // document.addEventListener("touchend", function (e) {
-    //   TouchEnd(e, "green");
-    // });
-    //Кінець  дотику
-    document.addEventListener("touchcancel", TouchEnd);
+    document.addEventListener("touchend", TouchEnd);
     return () => {
-      //   // Відміна Перехватуємо події дотиків до екрану
-      //   document.removeEventListener("scroll", mouseMove);
-      //   // document.removeEventListener("mousemove", mouseMove);
+      // Відміна перехвату подій дотиків до екрану
       document.removeEventListener("touchstart", TouchStart);
       document.removeEventListener("touchcancel", TouchEnd);
     };
-  });
-
   function TouchStart(e) {
-    alert("TouchStart!");
-    var touches = e.changedTouches;
-    // var st = pageYOffset;
-    // var st = evt.pageY;
+    //alert("TouchStart!");
     //Отримуємо поточну позицію торкання
     setTouchPosition({
-      tx0: touches[0].pageX,
-      ty0: touches[0].pageY,
+      tx0: e.touches[0].clientX,
+      // tx0: touches[0].pageX,
     });
   }
 
-  // function TouchMove(e) {
-  //Отримуємо нову позицію
-  // touchPosition = {
-  //   x: e.changedTouches[0].clientX,
-  //   y: e.changedTouches[0].clientY,
-  // };
-  // Draw(touchPosition.x, touchPosition.y, 2); //Рисуем точку текущей позиции
-  // setTouchPosition({
-  // tx1: e.changedTouches[0].clientX,
-  // ty1: e.changedTouches[0].clientY,
-  // });
-  // }
 
   function TouchEnd(e) {
-    // var touches = e.changedTouches
-    if (e.changedTouches[0].pageX !== touchPosition.tx0) {
-      if (e.changedTouches[0].pageX > touchPosition.tx0) {
+    var deltaX=e.changedTouches[0].clientX - touchPosition.tx0;
+    if (deltaX!==0) {
+      if (deltaX>0) {
         arrowRisht();
       } else {
         arrowLeft();
@@ -293,8 +248,6 @@ const CarouselRa = () => {
     setTouchPosition({
       tx0: 0,
       ty0: 0,
-      // tx1: 0,
-      // ty1: 0,
     });
   }
 
@@ -302,19 +255,19 @@ const CarouselRa = () => {
     // console.log("param.elemVisible",param.elemVisible)
     <div>
       <h3>CarouselRa1.js //https://habr.com/ru/post/467079/</h3>
-      <div className="ant-carousel">
-        <div className="ant-carousel-hider">
-          <ul className="ant-carousel-list">{renderList()}</ul>
-          <div className="ant-carousel-arrow-left" onClick={arrowLeft}></div>
-          <div className="ant-carousel-arrow-right" onClick={arrowRisht}></div>
-          {/* <div className="ant-carousel-dots">{parDots ? renderDots() : ""}</div> */}
+      <div className="ra-carousel">
+        <div className="ra-carousel-hider">
+          <ul id="raid" className="ra-carousel-list">{renderList()}</ul>
+          <div className="ra-carousel-arrow-left" onClick={arrowLeft}></div>
+          <div className="ra-carousel-arrow-right" onClick={arrowRisht}></div>
+          {/* <div className="ra-carousel-dots">{parDots ? renderDots() : ""}</div> */}
         </div>
-        <div div className="ant-carousel-dots">
+        <div div className="ra-carousel-dots">
           {parametrs.parDots ? renderDots() : ""}
         </div>
 
         <style jsx global>{`
-          .ant-carousel-list {
+          .ra-carousel-list {
             width: auto;
             margin: 0;
             padding: 0;
@@ -327,7 +280,7 @@ const CarouselRa = () => {
             );
             transition: ${workVares.transitionCss};
           }
-          .ant-carousel-element {
+          .ra-carousel-element {
             position: relative;
             //display: block;
             display: flex;
@@ -341,12 +294,12 @@ const CarouselRa = () => {
             text-align: center;
             //border: 1px solid #6e46ae;
           }
-          .ant-carousel-element_p {
+          .ra-carousel-element_p {
             color: red;
             font-size: 20px;
             font-weight: 800;
           }
-          .ant-dot {
+          .ra-dot {
             width: 10px;
             width: 10px;
             height: 10px;
@@ -362,7 +315,7 @@ const CarouselRa = () => {
           }
         `}</style>
         <style jsx>{`
-          .ant-carousel {
+          .ra-carousel {
             margin: 0;
             padding: 0;
             width: 100%;
@@ -373,19 +326,19 @@ const CarouselRa = () => {
             background-color: white;
           }
           @media screen and (min-width: 600px) {
-            .ant-carousel {
+            .ra-carousel {
               padding: 0 1vw;
             }
           }
 
           @media screen and (min-width: 900px) {
-            .ant-carousel {
+            .ra-carousel {
               padding: 0 1vw;
             }
           }
 
           /* General styles */
-          .ant-carousel-hider {
+          .ra-carousel-hider {
             position: relative;
             width: 100%;
             height: 200px;
@@ -394,8 +347,8 @@ const CarouselRa = () => {
           }
 
           /* Navigation item styles */
-          div.ant-carousel-arrow-left,
-          div.ant-carousel-arrow-right {
+          div.ra-carousel-arrow-left,
+          div.ra-carousel-arrow-right {
             top: 0;
             width: 4vw;
             height: 100%;
@@ -407,21 +360,21 @@ const CarouselRa = () => {
             z-index: 10;
           }
 
-          .ant-carousel-arrow-left {
+          .ra-carousel-arrow-left {
             left: 0;
-            background: url("http://pvbk.spb.ru/inc/carousel/ant-files/ant-arrow-left.png")
+            background: url("http://pvbk.spb.ru/inc/carousel/ra-files/ra-arrow-left.png")
               no-repeat center left;
             //border: 1px solid #2b11bd;
           }
 
-          .ant-carousel-arrow-right {
+          .ra-carousel-arrow-right {
             right: 0;
-            background: url("http://pvbk.spb.ru/inc/carousel/ant-files/ant-arrow-right.png")
+            background: url("http://pvbk.spb.ru/inc/carousel/ra-files/ra-arrow-right.png")
               no-repeat center right;
             //border: 1px solid #2b11bd;
           }
 
-          .ant-carousel-dots {
+          .ra-carousel-dots {
             width: 100%;
             height: auto;
             position: absolute;
