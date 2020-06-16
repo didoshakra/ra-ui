@@ -241,9 +241,9 @@ const CarouselRa = () => {
     // document.addEventListener("touchend", function (e) {
     //   TouchEnd(e, "green");
     // });
-    document.addEventListener("touchend", function (e) {
-      TouchEnd(e, "green");
-    });
+    // document.addEventListener("touchend", function (e) {
+    //   TouchEnd(e, "green");
+    // });
     //Кінець  дотику
     document.addEventListener("touchcancel", TouchEnd);
     return () => {
@@ -256,10 +256,14 @@ const CarouselRa = () => {
   });
 
   function TouchStart(e) {
+    alert("TouchStart!");
+    var touches = e.changedTouches;
+    // var st = pageYOffset;
+    // var st = evt.pageY;
     //Отримуємо поточну позицію торкання
     setTouchPosition({
-      tx0: e.changedTouches[0].clientX,
-      ty0: e.changedTouches[0].clientY,
+      tx0: touches[0].pageX,
+      ty0: touches[0].pageY,
     });
   }
 
@@ -277,8 +281,9 @@ const CarouselRa = () => {
   // }
 
   function TouchEnd(e) {
-    if (e.changedTouches[0].clientX !== touchPosition.tx0) {
-      if (e.changedTouches[0].clientX > touchPosition.tx0) {
+    // var touches = e.changedTouches
+    if (e.changedTouches[0].pageX !== touchPosition.tx0) {
+      if (e.changedTouches[0].pageX > touchPosition.tx0) {
         arrowRisht();
       } else {
         arrowLeft();
