@@ -216,7 +216,7 @@ const CarouselRa = () => {
   }, [workVares.actElement]);
 
   React.useEffect(() => {
- //Рух пальцем по екрані
+    //Рух пальцем по екрані
     //***Перехватуємо події дотиків до екрану
     document.addEventListener("touchstart", TouchStart);
     document.addEventListener("touchend", TouchEnd);
@@ -225,6 +225,7 @@ const CarouselRa = () => {
       document.removeEventListener("touchstart", TouchStart);
       document.removeEventListener("touchcancel", TouchEnd);
     };
+  });
 
   function TouchStart(e) {
     alert("TouchStart!");
@@ -237,9 +238,9 @@ const CarouselRa = () => {
   }
 
   function TouchEnd(e) {
-    var deltaX=e.changedTouches[0].clientX - touchPosition.tx0;
-    if (deltaX!==0) {
-      if (deltaX>0) {
+    var deltaX = e.changedTouches[0].clientX - touchPosition.tx0;
+    if (deltaX !== 0) {
+      if (deltaX > 0) {
         arrowRisht();
       } else {
         arrowLeft();
@@ -258,7 +259,9 @@ const CarouselRa = () => {
       <h3>CarouselRa1.js //https://habr.com/ru/post/467079/</h3>
       <div className="ra-carousel">
         <div className="ra-carousel-hider">
-          <ul id="raid" className="ra-carousel-list">{renderList()}</ul>
+          <ul id="raid" className="ra-carousel-list">
+            {renderList()}
+          </ul>
           <div className="ra-carousel-arrow-left" onClick={arrowLeft}></div>
           <div className="ra-carousel-arrow-right" onClick={arrowRisht}></div>
           {/* <div className="ra-carousel-dots">{parDots ? renderDots() : ""}</div> */}
