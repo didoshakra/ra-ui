@@ -225,15 +225,16 @@ const CarouselRa = () => {
       document.removeEventListener("touchstart", TouchStart);
       document.removeEventListener("touchcancel", TouchEnd);
     };
+
   function TouchStart(e) {
     alert("TouchStart!");
     //Отримуємо поточну позицію торкання
+    arrowRisht();
     setTouchPosition({
       tx0: e.touches[0].clientX,
       // tx0: touches[0].pageX,
     });
   }
-
 
   function TouchEnd(e) {
     var deltaX=e.changedTouches[0].clientX - touchPosition.tx0;
