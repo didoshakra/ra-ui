@@ -82,18 +82,10 @@ const CarouselRa = () => {
   );
   //*робочі змінні
   const [workVares, setWorkVares] = React.useState({
-    first: true, //Щоб при вході не перекидало на 1 позицію
+    first: true, //(UseEffect) Щоб при вході не перекидало на 1 позицію
     actElement: 0,
     transitionCss: `transform ${parSpeed} sease`,
   });
-  //*змінні для Точ Екранів (x,y)
-  const [touchPosition, setTouchPosition] = React.useState({
-    tx0: 0,
-    ty0: 0,
-    tx1: 0,
-    ty1: 0,
-  });
-  touchPosition;
 
   const renderList = () => {
     var urlz = "";
@@ -216,74 +208,6 @@ const CarouselRa = () => {
       });
     }
   }, [workVares.actElement]);
-
-  useEffect(() => {
-    // // Прив’яжіть прослуховувач події
-    // document.addEventListener("scroll", mouseMove); //Для скролу
-    // // document.addEventListener("mousemove", mouseMove);//для переміщення мишки (координати)
-    // return () => {
-    //   // Від’єднайте слухача події під час очищення
-    //   document.removeEventListener("scroll", mouseMove);
-    //   // document.removeEventListener("mousemove", mouseMove);
-    // };
-
-    //***Перехватуємо події дотиків до екрану
-    //Початок доитку
-    document.addEventListener("touchstart", function (e) {
-      TouchStart(e);
-    });
-
-    //Рух пальцем по екрані
-    document.addEventListener("touchmove", function (e) {
-      TouchMove(e);
-    });
-    //Користувач відпустив екран
-    document.addEventListener("touchend", function (e) {
-      TouchEnd(e, "green");
-    });
-    //Відміна дотику
-    document.addEventListener("touchcancel", function (e) {
-      TouchEnd(e, "red");
-    });
-  });
-
-  function TouchStart(e) {
-    //Отримуємо поточну позицію торкання
-    setTouchPosition({
-      tx0: e.changedTouches[0].clientX,
-      ty0: e.changedTouches[0].clientY,
-    });
-  }
-
-  // function TouchMove(e) {
-  //Отримуємо нову позицію
-  // touchPosition = {
-  //   x: e.changedTouches[0].clientX,
-  //   y: e.changedTouches[0].clientY,
-  // };
-  // Draw(touchPosition.x, touchPosition.y, 2); //Рисуем точку текущей позиции
-  // setTouchPosition({
-  // tx1: e.changedTouches[0].clientX,
-  // ty1: e.changedTouches[0].clientY,
-  // });
-  // }
-
-  function TouchEnd(e) {
-    if (e.changedTouches[0].clientX !== touchPosition.tx0) {
-      if (e.changedTouches[0].clientX > touchPosition.tx0) {
-        arrowRisht();
-      } else {
-        arrowLeft();
-      }
-    }
-    //Очищаєм позиції
-    setTouchPosition({
-      tx0: 0,
-      ty0: 0,
-      // tx1: 0,
-      // ty1: 0,
-    });
-  }
 
   return (
     // console.log("param.elemVisible",param.elemVisible)
