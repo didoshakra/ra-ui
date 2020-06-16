@@ -217,7 +217,7 @@ const CarouselRa = () => {
     }
   }, [workVares.actElement]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     // // Прив’яжіть прослуховувач події
     // document.addEventListener("scroll", mouseMove); //Для скролу
     // // document.addEventListener("mousemove", mouseMove);//для переміщення мишки (координати)
