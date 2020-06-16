@@ -226,7 +226,7 @@ const CarouselRa = () => {
       document.removeEventListener("touchcancel", TouchEnd);
     };
   function TouchStart(e) {
-    //alert("TouchStart!");
+    alert("TouchStart!");
     //Отримуємо поточну позицію торкання
     setTouchPosition({
       tx0: e.touches[0].clientX,
