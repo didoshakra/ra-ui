@@ -229,22 +229,30 @@ const CarouselRa = () => {
 
     //***Перехватуємо події дотиків до екрану
     //Початок доитку
-    document.addEventListener("touchstart", function (e) {
-      TouchStart(e);
-    });
-
+    // document.addEventListener("touchstart", function (e) {
+    //   TouchStart(e);
+    // });
+    document.addEventListener("touchstart", TouchStart);
     //Рух пальцем по екрані
-    document.addEventListener("touchmove", function (e) {
-      TouchMove(e);
-    });
+    // document.addEventListener("touchmove", function (e) {
+    //   TouchMove(e);
+    // });
     //Користувач відпустив екран
+    // document.addEventListener("touchend", function (e) {
+    //   TouchEnd(e, "green");
+    // });
     document.addEventListener("touchend", function (e) {
       TouchEnd(e, "green");
     });
-    //Відміна дотику
-    document.addEventListener("touchcancel", function (e) {
-      TouchEnd(e, "red");
-    });
+    //Кінець  дотику
+    document.addEventListener("touchcancel", TouchEnd);
+    return () => {
+      //   // Відміна Перехватуємо події дотиків до екрану
+      //   document.removeEventListener("scroll", mouseMove);
+      //   // document.removeEventListener("mousemove", mouseMove);
+      document.removeEventListener("touchstart", TouchStart);
+      document.removeEventListener("touchcancel", TouchEnd);
+    };
   });
 
   function TouchStart(e) {
