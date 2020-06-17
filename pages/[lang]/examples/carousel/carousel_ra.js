@@ -309,7 +309,7 @@ const CarouselRa = () => {
   return (
     // console.log("param.elemVisible",param.elemVisible)
     <div>
-      <h3>CarouselRa1.js //https://habr.com/ru/post/467079/</h3>
+      <h3>CarouselRa.js //https://habr.com/ru/post/467079/</h3>
       <div className="ra-carousel">
         {/* <div className="ra-carousel-hider"  onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}> */}
         <div
