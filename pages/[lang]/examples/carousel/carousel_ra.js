@@ -91,7 +91,11 @@ const CarouselRa = () => {
     tx0: 0,
     ty0: 0,
   });
-  touchPosition;
+  //*змінні для Точ Екранів (x,y)//https://www.linkedin.com/pulse/touch-detection-react-daniel-paschal/
+  const [touchStartLocation, setTouchStartLocation] = React.useState({
+    x: 0,
+    y: 0,
+  });
 
   const renderList = () => {
     var urlz = "";
@@ -228,17 +232,62 @@ const CarouselRa = () => {
   });
 
   function TouchStart(e) {
-    alert("TouchStart!");
-    //Отримуємо поточну позицію торкання
-    arrowRisht();
-    setTouchPosition({
-      tx0: e.touches[0].clientX,
-      // tx0: touches[0].pageX,
-    });
+    // // alert("TouchStart1!", e.touches[0].clientX);
+    // console.log("TouchStarte/changedTouches[0].clientX=", e.touches[0].clientX);
+    // //Отримуємо поточну позицію торкання
+    // // arrowRisht();
+    // setTouchPosition({
+    //   tx0: e.touches[0].clientX,
+    //   // tx0: touches[0].pageX,
+    // });
   }
 
   function TouchEnd(e) {
-    var deltaX = e.changedTouches[0].clientX - touchPosition.tx0;
+    // //alert("TouchEnd!");
+    // console.log(
+    //   "TouchEnd/e.changedTouches[0].clientX=",
+    //   e.changedTouches[0].clientX
+    // );
+    // //arrowLeft();
+    // var deltaX = e.changedTouches[0].clientX - touchPosition.tx0;
+    // if (deltaX !== 0) {
+    //   if (deltaX > 0) {
+    //     arrowRisht();
+    //   } else {
+    //     arrowLeft();
+    //   }
+    // }
+    // //Очищаєм позиції
+    // setTouchPosition({
+    //   tx0: 0,
+    //   ty0: 0,
+    // });
+  }
+
+  //https://www.linkedin.com/pulse/touch-detection-react-daniel-paschal/
+  const handleTouchStart = (e) => {
+    // const firstTouchEvent = e.touches[0];
+    // const location = {
+    //   x: firstTouchEvent.clientX,
+    //   y: firstTouchEvent.clientY,
+    // };
+    console.log(
+      "handleTouchStart/x:",
+      e.touches[0].clientX + " /y:" + e.touches[0].clientY
+    );
+    setTouchStartLocation({
+      x: e.touches[0].clientX,
+      y: e.touches[0].clientY,
+    });
+  };
+  const handleTouchEnd = (e) => {
+    console.log(
+      "handleTouchEnd/x:",
+      e.changedTouches[0].clientX + " /y:" + e.changedTouches[0].clientY
+    );
+    const deltaX = e.changedTouches[0].clientX - touchStartLocation.x;
+    const deltaY = e.changedTouches[0].clientY - touchStartLocation.x;
+    console.log("handleTouchEnd/deltaX:", deltaX + " /deltaY:" + deltaY);
     if (deltaX !== 0) {
       if (deltaX > 0) {
         arrowRisht();
@@ -246,19 +295,19 @@ const CarouselRa = () => {
         arrowLeft();
       }
     }
-    //Очищаєм позиції
-    setTouchPosition({
-      tx0: 0,
-      ty0: 0,
-    });
-  }
+  };
 
   return (
     // console.log("param.elemVisible",param.elemVisible)
     <div>
       <h3>CarouselRa1.js //https://habr.com/ru/post/467079/</h3>
       <div className="ra-carousel">
-        <div className="ra-carousel-hider">
+        {/* <div className="ra-carousel-hider"  onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}> */}
+        <div
+          className="ra-carousel-hider"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
           <ul id="raid" className="ra-carousel-list">
             {renderList()}
           </ul>
