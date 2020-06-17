@@ -432,7 +432,7 @@ const CarouselRa = () => {
             //opacity:1;
             z-index: 100;
           }
-         .ra-carousel-arrow-icon{
+          .ra-carousel-arrow-icon{
             height: 4vw;
           }
           .ra-carousel-arrow-left {
