@@ -38,7 +38,7 @@ const iconsSVG = () => {
           {/* Докладніше */}
           View Details
         </div>
-
+        <FontAwecomIcons />
         <div className="svg-items">
           <Link href="https://stackoverflow.com/questions/55175445/cant-import-svg-into-next-js/55180310">
             <a>

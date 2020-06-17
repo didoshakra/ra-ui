@@ -5,7 +5,7 @@ import {
   faList,
   faChevronRight,
   faChevronLeft,
-  faCog, 
+  faCog,
   faSun,
   faGlobe,
   faTimes,
@@ -97,7 +97,7 @@ const FontAwecomIcons = () => {
           //flex-wrap: wrap;
           flex-flow: row wrap; //В рядок + переносити */
           text-align: center;
-          max-width: 1000%;
+          max-width: 100%;
           // margin-top: 10px;
           // margin: 10px;
           // padding: 20px 30px;

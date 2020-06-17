@@ -1,5 +1,10 @@
 //CarouselRa.js  на основі //CarouselAn.js //https://habr.com/ru/post/467079/
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; //fontawesome
+//fas-
+import {
+  faChevronRight,
+  faChevronLeft,
+} from "@fortawesome/free-solid-svg-icons";
 const listSlides = [
   {
     // src: "/minishop/images/gallery-1.jpg",
@@ -72,8 +77,12 @@ const CarouselRa = () => {
   );
   const elemAll = listSlides.length; //Величина масиву слайдів(даних)
   //*Змінні з параметрів
+  // const [parametrs, setParametrs] = React.useState({
+  //   visiElement: windowSize < 600 ? 1 : Math.min(parVisibleElements, elemAll),
+  //   parDots: windowSize < 600 ? false : parDots,
+  // });
   const [parametrs, setParametrs] = React.useState({
-    visiElement: windowSize < 600 ? 1 : Math.min(parVisibleElements, elemAll),
+    visiElement: windowSize < 600 ? 2 : Math.min(parVisibleElements, elemAll),
     parDots: windowSize < 600 ? false : parDots,
   });
   //*робочий масив(збільшений на visiElement)
@@ -311,8 +320,18 @@ const CarouselRa = () => {
           <ul id="raid" className="ra-carousel-list">
             {renderList()}
           </ul>
-          <div className="ra-carousel-arrow-left" onClick={arrowLeft}></div>
-          <div className="ra-carousel-arrow-right" onClick={arrowRisht}></div>
+          <div className="ra-carousel-arrow-left" onClick={arrowLeft}>
+            <FontAwesomeIcon
+              className="ra-carousel-arrow-icon"
+              icon={faChevronLeft}
+            />
+          </div>
+          <div className="ra-carousel-arrow-right" onClick={arrowRisht}>
+            <FontAwesomeIcon
+              className="ra-carousel-arrow-icon"
+              icon={faChevronRight}
+            />
+          </div>
           {/* <div className="ra-carousel-dots">{parDots ? renderDots() : ""}</div> */}
         </div>
         <div div className="ra-carousel-dots">
@@ -400,8 +419,8 @@ const CarouselRa = () => {
           }
 
           /* Navigation item styles */
-          div.ra-carousel-arrow-left,
-          div.ra-carousel-arrow-right {
+          .ra-carousel-arrow-left,
+          .ra-carousel-arrow-right {
             top: 0;
             width: 4vw;
             height: 100%;
@@ -409,22 +428,25 @@ const CarouselRa = () => {
             cursor: pointer;
             display: flex;
             align-items: center;
-            opacity: ${parArrows ? "0.4" : "0"};
-            z-index: 10;
+            //opacity: ${parArrows ? "0.9" : "0"};
+            //opacity:1;
+            z-index: 100;
           }
-
+         .ra-carousel-arrow-icon{
+            height: 4vw;
+          }
           .ra-carousel-arrow-left {
             left: 0;
             background: url("http://pvbk.spb.ru/inc/carousel/ra-files/ra-arrow-left.png")
               no-repeat center left;
-            //border: 1px solid #2b11bd;
+            border: 1px solid #2b11bd;
           }
 
           .ra-carousel-arrow-right {
             right: 0;
             background: url("http://pvbk.spb.ru/inc/carousel/ra-files/ra-arrow-right.png")
               no-repeat center right;
-            //border: 1px solid #2b11bd;
+            border: 1px solid #2b11bd;
           }
 
           .ra-carousel-dots {
