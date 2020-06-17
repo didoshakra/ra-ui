@@ -58,6 +58,7 @@ const listSlides = [
   },
 ];
 //****************************************************************************** */
+const parVisibleElementsMobi = 2; // Кількість відображуваних елементів в каруселі
 const parVisibleElements = 5; // Кількість відображуваних елементів в каруселі
 // const parAuto = true; // Автоматична прокрутка
 const parAuto = false; // Автоматична прокрутка
@@ -77,29 +78,26 @@ const CarouselRa = () => {
   );
   const elemAll = listSlides.length; //Величина масиву слайдів(даних)
   //*Змінні з параметрів
-  // const [parametrs, setParametrs] = React.useState({
-  //   visiElement: windowSize < 600 ? 1 : Math.min(parVisibleElements, elemAll),
-  //   parDots: windowSize < 600 ? false : parDots,
-  // });
   const [parametrs, setParametrs] = React.useState({
-    visiElement: windowSize < 600 ? 2 : Math.min(parVisibleElements, elemAll),
+    visiElement:
+      windowSize < 600
+        ? parVisibleElementsMobi
+        : Math.min(parVisibleElements, elemAll),
     parDots: windowSize < 600 ? false : parDots,
   });
+
   //*робочий масив(збільшений на visiElement)
   const listSlides1 = listSlides.concat(
     listSlides.slice(0, parametrs.visiElement) //масив даних
   );
+
   //*робочі змінні
   const [workVares, setWorkVares] = React.useState({
     first: true, //Щоб при вході не перекидало на 1 позицію
     actElement: 0,
     transitionCss: `transform ${parSpeed} sease`,
   });
-  //*змінні для Точ Екранів (x,y)
-  const [touchPosition, setTouchPosition] = React.useState({
-    tx0: 0,
-    ty0: 0,
-  });
+
   //*змінні для Точ Екранів (x,y)//https://www.linkedin.com/pulse/touch-detection-react-daniel-paschal/
   const [touchStartLocation, setTouchStartLocation] = React.useState({
     x: 0,
@@ -231,55 +229,17 @@ const CarouselRa = () => {
   React.useEffect(() => {
     //Рух пальцем по екрані
     //***Перехватуємо події дотиків до екрану
-    document.addEventListener("touchstart", TouchStart);
-    document.addEventListener("touchend", TouchEnd);
+    document.addEventListener("touchstart", handleTouchStart);
+    document.addEventListener("touchend", handleTouchEnd);
     return () => {
       // Відміна перехвату подій дотиків до екрану
-      document.removeEventListener("touchstart", TouchStart);
-      document.removeEventListener("touchcancel", TouchEnd);
+      document.removeEventListener("touchstart", handleTouchStart);
+      document.removeEventListener("touchcancel", handleTouchEnd);
     };
   });
 
-  function TouchStart(e) {
-    // // alert("TouchStart1!", e.touches[0].clientX);
-    // console.log("TouchStarte/changedTouches[0].clientX=", e.touches[0].clientX);
-    // //Отримуємо поточну позицію торкання
-    // // arrowRisht();
-    // setTouchPosition({
-    //   tx0: e.touches[0].clientX,
-    //   // tx0: touches[0].pageX,
-    // });
-  }
-
-  function TouchEnd(e) {
-    // //alert("TouchEnd!");
-    // console.log(
-    //   "TouchEnd/e.changedTouches[0].clientX=",
-    //   e.changedTouches[0].clientX
-    // );
-    // //arrowLeft();
-    // var deltaX = e.changedTouches[0].clientX - touchPosition.tx0;
-    // if (deltaX !== 0) {
-    //   if (deltaX > 0) {
-    //     arrowRisht();
-    //   } else {
-    //     arrowLeft();
-    //   }
-    // }
-    // //Очищаєм позиції
-    // setTouchPosition({
-    //   tx0: 0,
-    //   ty0: 0,
-    // });
-  }
-
   //https://www.linkedin.com/pulse/touch-detection-react-daniel-paschal/
   const handleTouchStart = (e) => {
-    // const firstTouchEvent = e.touches[0];
-    // const location = {
-    //   x: firstTouchEvent.clientX,
-    //   y: firstTouchEvent.clientY,
-    // };
     console.log(
       "handleTouchStart/x:",
       e.touches[0].clientX + " /y:" + e.touches[0].clientY
@@ -311,12 +271,12 @@ const CarouselRa = () => {
     <div>
       <h3>CarouselRa.js //https://habr.com/ru/post/467079/</h3>
       <div className="ra-carousel">
-        {/* <div className="ra-carousel-hider"  onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}> */}
-        <div
+        <div className="ra-carousel-hider">
+          {/* <div
           className="ra-carousel-hider"
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
-        >
+        > */}
           <ul id="raid" className="ra-carousel-list">
             {renderList()}
           </ul>
