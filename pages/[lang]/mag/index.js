@@ -10,6 +10,7 @@ import Servises from "../../../components/mag/homePage/Services";
 import Сategory from "../../../components/mag/homePage/Сategory";
 import Products from "../../../components/mag/homePage/Products";
 import BestPrice from "../../../components/mag/homePage/BestPrice";
+import Testimony from "../../../components/mag/homePage/Testimony";
 
 const HomePage = () => {
   // export default function HomePage() {
@@ -71,7 +72,7 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      {/*--Servises  */}
+      {/*--Servises */}
       <Servises />
       {/*--Сategory */}
       <Сategory />
@@ -79,6 +80,8 @@ const HomePage = () => {
       <Products />
       {/* BestPrice  */}
       <BestPrice />
+      {/*--Testimony */}
+      <Testimony />
       <style jsx>{`
       .home-slider-section {
           position: relative;

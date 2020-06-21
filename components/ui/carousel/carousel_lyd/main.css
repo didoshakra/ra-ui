@@ -1,19 +1,19 @@
 /* @import url('https://fonts.googleapis.com/css?family=Anton|Open+Sans'); */
 
 .heading {
-  color: #67E596 !important;
-  font-family: 'Anton', sans-serif;
+  color: #67e596 !important;
+  font-family: "Anton", sans-serif;
   font-size: 2em;
   letter-spacing: 3px;
   text-transform: uppercase;
   margin-bottom: 0;
 }
 
-p {
+/* p {
   font-family: 'Open Sans', 'Sans-Serif';
   color: #707070;
   font-size: 102%;
-}
+} */
 
 .slide {
   display: none;
@@ -49,9 +49,9 @@ p {
 .button {
   border-radius: 30px;
   border: none;
-  background: linear-gradient(to left top, #F81FA4, #FD46D8);
-  color: #FFFFFF;
-  font-family: 'Open Sans', 'Sans-Serif';
+  background: linear-gradient(to left top, #f81fa4, #fd46d8);
+  color: #ffffff;
+  font-family: "Open Sans", "Sans-Serif";
   font-weight: bold;
   font-size: 105%;
   text-transform: uppercase;
@@ -60,11 +60,11 @@ p {
 
 .secondButton {
   border-radius: 30px;
-  border-color: #FF00A5;
+  border-color: #ff00a5;
   background-color: Transparent;
   border-style: solid;
-  color: #FF00A5;
-  font-family: 'Open Sans', 'Sans-Serif';
+  color: #ff00a5;
+  font-family: "Open Sans", "Sans-Serif";
   font-weight: bold;
   font-size: 105%;
   text-transform: uppercase;
@@ -74,7 +74,7 @@ p {
 
 button:hover {
   text-decoration: none;
-  background-color: #FD39B8;
+  background-color: #fd39b8;
 }
 
 button:focus {
@@ -84,8 +84,8 @@ button:focus {
 .secondButton:hover {
   text-decoration: none;
   background-color: Transparent;
-  border-color: #FD39B8;
-  color: #FD39B8;
+  border-color: #fd39b8;
+  color: #fd39b8;
 }
 
 .slider-text {
@@ -95,7 +95,7 @@ button:focus {
 .mainSlide {
   font-size: 3em;
   letter-spacing: 3px;
-  font-family: 'Anton', sans-serif;
+  font-family: "Anton", sans-serif;
 }
 
 .fa {

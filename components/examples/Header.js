@@ -78,10 +78,6 @@ const Header = () => {
       link: "/examples/ui/new_component",
     },
     {
-      a: "CarouselRa",
-      link: "/examples/carousel/carousel_ra",
-    },
-    {
       a: "ItSlid",
       link: "/examples/carousel/itshef_slider",
     },

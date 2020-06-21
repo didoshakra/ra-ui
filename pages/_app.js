@@ -19,7 +19,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "../components/ui/carousel/Carousel_reactCarouselSlider.scss";
 //*****Carousel_reactAwesome.js https://www.npmjs.com/package/react-awesome-slider
 //Основне використання з чистим CSS
-import "react-awesome-slider/dist/styles.css"; //основна
+// import "react-awesome-slider/dist/styles.css"; //основна
 // import "react-awesome-slider/dist/custom-animations/cube-animation.css"; //Кубик рецепт анімації
 // import "react-awesome-slider/dist/custom-animations/fall-animation.css"; //fall/падати
 // import "react-awesome-slider/dist/custom-animations/open-animation.css"; //Накладання
