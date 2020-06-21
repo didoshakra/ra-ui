@@ -1,4 +1,4 @@
-//Services.js / Muiv4.5.1
+//Services.js
 //Добавлено animat
 import React, { useContext } from "react";
 // import useTranslation from "../../../translations/useTranslation";
@@ -82,8 +82,8 @@ const Services = () => {
 
       <style jsx>{`
         .servises-section {
-          padding: 90px 2vw;
-          //position: relative;
+          padding: 6rem 2vw; //rem-шрифт кореневого
+          position: relative;
           display: flex;
           flex-direction: row; //В рядок
           flex-wrap: wrap;

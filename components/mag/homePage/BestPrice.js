@@ -27,7 +27,7 @@ const BestPrice = () => {
   });
 
   return (
-    <section className="best-price__section">
+    <section className="best-price-section">
       <div className="best-price__context">
         <span className="best-price__subheading">Best Price For You</span>
         <h2 className="best-price__dial">Deal of the day</h2>
@@ -61,9 +61,9 @@ const BestPrice = () => {
         </div>
       </div>
       <style jsx>{`
-        .best-price__section {
-          padding: 90px 2vw;
-          //position: relative;
+        .best-price-section {
+          padding: 6rem 2vw; //rem-шрифт кореневого
+          position: relative;
           display: flex;
           justify-content: flex-end;
           height: 650px;

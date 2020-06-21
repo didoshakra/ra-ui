@@ -81,7 +81,7 @@ const Products = () => {
 
   return (
     <section className="products-section">
-      <div className="gallery">
+      <div className="products-gallery">
         {/* {products.map((item, index) => { */}
         {products.map((item) => {
           return (
@@ -158,10 +158,11 @@ const Products = () => {
       </div>
       <style jsx>{`
         .products-section {
-          padding: 20px 2vw;
+          padding: 6rem 2vw; //rem-шрифт кореневого
+          position: relative;
           //border: 2px solid #82ae46;
         }
-        .gallery {
+        .products-gallery {
           display: flex;
           flex: 0 1 auto;
           flex-wrap: wrap;
@@ -236,13 +237,6 @@ const Products = () => {
           border: 1px solid #fff; /* Параметры границы */
           background: #82ae46;
         }
-        /* .products__img-wrap {
-          padding: 2vw 0;
-          width: 100%;
-          height: 100%;
-          border-style: solid;
-          overflow: hidden;
-        } */
         .products__img {
           padding: 2vw 0;
           width: 100%;
