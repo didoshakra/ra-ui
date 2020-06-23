@@ -58,7 +58,7 @@ const CarouselRa = () => {
 
   const elemAll = listSlides.length; // Кількість всього елементів в каруселі
   const renderList = () => {
-    console.log("renderList/elemAll", elemAll);
+    // console.log("renderList/elemAll", elemAll);
     return listSlides.map((item, index) => {
       let urlz = "";
       urlz = `url('${item.src}') center no-repeat`;
@@ -75,11 +75,11 @@ const CarouselRa = () => {
           displayStyle = "block";
         }
       }
-      console.log(
-        "displayStyle=",
-        displayStyle + "/index=" + index + "/actElement=",
-        actElement
-      );
+      // console.log(
+      //   "displayStyle=",
+      //   displayStyle + "/index=" + index + "/actElement=",
+      //   actElement
+      // );
       return (
         <li
           className="ant-carousel-element"
@@ -99,10 +99,10 @@ const CarouselRa = () => {
       newActEl = 0;
     }
     setActElement(newActEl);
-    console.log(
-      "CarouselAn.js/arrowRisht/actElement=",
-      actElement + "/elemAll=" + elemAll
-    );
+    // console.log(
+    //   "CarouselAn.js/arrowRisht/actElement=",
+    //   actElement + "/elemAll=" + elemAll
+    // );
   };
 
   const arrowLeft = () => {
@@ -111,10 +111,10 @@ const CarouselRa = () => {
       newActEl = elemAll;
     }
     setActElement(newActEl);
-    console.log(
-      "CarouselAn.js/arrowLeft/actElement=",
-      actElement + "/elemAll=" + elemAll
-    );
+    // console.log(
+    //   "CarouselAn.js/arrowLeft/actElement=",
+    //   actElement + "/elemAll=" + elemAll
+    // );
   };
 
   return (

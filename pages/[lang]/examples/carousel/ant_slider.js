@@ -71,22 +71,22 @@ const AntSlider = () => {
   const arrowRisht = () => {
     let ttranslateX = translateX + elementWidth;
     setTranslateX(ttranslateX);
-    console.log(
-      "1-arrowRisht/translateX=",
-      translateX + ttranslateX + "/ttranslateX=",
-      translateX
-    );
+    // console.log(
+    //   "1-arrowRisht/translateX=",
+    //   translateX + ttranslateX + "/ttranslateX=",
+    //   translateX
+    // );
     translateXPx = `${ttranslateX}px`;
   };
 
   const arrowLeft = () => {
     let ttranslateX = translateX - elementWidth;
     setTranslateX(ttranslateX);
-    console.log(
-      "1-arrowLeft/translateX=",
-      translateX + ttranslateX + "/ttranslateX=",
-      translateX
-    );
+    // console.log(
+    //   "1-arrowLeft/translateX=",
+    //   translateX + ttranslateX + "/ttranslateX=",
+    //   translateX
+    // );
     translateXPx = `${ttranslateX}px`;
   };
   return (

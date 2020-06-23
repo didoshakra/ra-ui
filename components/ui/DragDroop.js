@@ -13,48 +13,48 @@ const DragDroop = () => {
   });
   // Перетягування мишкою  https://habr.com/ru/post/463463/
   const handleDragStart = (e) => {
-    console.log(
-      "handleDraghStart/dragDelta.deltaXpx:",
-      dragDelta.deltaXpx + " /dragDelta.deltaYpx:" + dragDelta.deltaYpx
-    );
-    console.log(
-      "handleDraghStart/dragPozocion.startX:",
-      dragPozocion.startX + " /dragPozocion.startY:" + dragPozocion.startY
-    );
-    console.log("handleDraghStart/x:", e.pageX + " /y:" + e.pageY);
-    setDragPozocion({
-      startX: e.pageX,
-      startY: e.pageY,
-    });
+    // console.log(
+    //   "handleDraghStart/dragDelta.deltaXpx:",
+    //   dragDelta.deltaXpx + " /dragDelta.deltaYpx:" + dragDelta.deltaYpx
+    // );
+    // console.log(
+    //   "handleDraghStart/dragPozocion.startX:",
+    //   dragPozocion.startX + " /dragPozocion.startY:" + dragPozocion.startY
+    // );
+    // console.log("handleDraghStart/x:", e.pageX + " /y:" + e.pageY);
+    // setDragPozocion({
+    //   startX: e.pageX,
+    //   startY: e.pageY,
+    // });
   };
   const handleDragEnd = (e) => {
-    console.log(
-      "handleDraghEnd-1/dragPozocion.startX:",
-      dragPozocion.startX + " /dragPozocion.startY:" + dragPozocion.startY
-    );
-    console.log(
-      "handleDraghEnd-1/dragDelta.deltaXpx:",
-      dragDelta.deltaXpx + " /dragDelta.deltaYpx:" + dragDelta.deltaYpx
-    );
-    console.log("handleDragEnd/x:", e.pageX + " /y:" + e.pageY);
+    // console.log(
+    //   "handleDraghEnd-1/dragPozocion.startX:",
+    //   dragPozocion.startX + " /dragPozocion.startY:" + dragPozocion.startY
+    // );
+    // console.log(
+    //   "handleDraghEnd-1/dragDelta.deltaXpx:",
+    //   dragDelta.deltaXpx + " /dragDelta.deltaYpx:" + dragDelta.deltaYpx
+    // );
+    // console.log("handleDragEnd/x:", e.pageX + " /y:" + e.pageY);
     // d1.style.marginLeft = startX + event.pageX-startCursorX; //позиція елемента + позиція курсора - позиція курсоа на початку перетягуванн
     let newDeltaX = dragPozocion.startX + e.pageX;
     let newDeltaXpx = `${newDeltaX}px`;
     let newDeltaY = dragPozocion.startY + e.pageY;
     let newDeltaYpx = `${newDeltaY}px`;
-    console.log(
-      "handleDragEnd-2/newDeltaXpx=",
-      newDeltaXpx + "/newDeltaYpx=" + newDeltaYpx
-    );
+    // console.log(
+    //   "handleDragEnd-2/newDeltaXpx=",
+    //   newDeltaXpx + "/newDeltaYpx=" + newDeltaYpx
+    // );
 
     setDragDelta({
       deltaXpx: newDeltaXpx,
       deltaYpx: newDeltaYpx,
     });
-    console.log(
-      "handleDragEnd/dragDelta.deltaXpx=",
-      dragDelta.deltaXpx + "/dragDelta.deltaYpx=" + dragDelta.deltaYpx
-    );
+    // console.log(
+    //   "handleDragEnd/dragDelta.deltaXpx=",
+    //   dragDelta.deltaXpx + "/dragDelta.deltaYpx=" + dragDelta.deltaYpx
+    // );
   };
   return (
     <div className="header">
