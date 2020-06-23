@@ -1,7 +1,7 @@
 // IconUmbrella.js /Іконка umbrella(Парасолька)
 
 export default function IconCat(props) {
-  const color = props.color || "#000";
+  const colorFill = props.colorFill || "#000";
   const width = props.width || "128";
   const height = props.height || "128";
 
@@ -13,7 +13,7 @@ export default function IconCat(props) {
       viewBox="0 0 400 380"
     >
       <path
-        fill={color}
+        fill={colorFill}
         fillOpacity="1"
         fillRule="evenodd"
         stroke="none"

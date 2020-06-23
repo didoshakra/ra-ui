@@ -79,6 +79,7 @@ class MyApp extends App {
           h6 {
             margin: 0;
             line-height: 1.5;
+            font-weight: 400;
           }
           h1 {
             font-size: 42px;
@@ -105,6 +106,7 @@ class MyApp extends App {
             max-width: 100%;
             margin: 0;
             padding: 0;
+            vertical-align: middle;
           }
           @font-face {
             /* font-family: 'Roboto', sans-serif; */

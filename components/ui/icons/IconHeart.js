@@ -2,7 +2,7 @@
 
 export default function IconHeart(props) {
   const colorFill = props.colorFill || "none";
-  const colorStroke = props.colorStroke || "white";
+  const colorStroke = props.colorStroke || "red";
   const width = props.width || "64";
   const height = props.height || "64";
 
