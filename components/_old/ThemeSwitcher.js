@@ -79,22 +79,14 @@ const ThemeSwitcher = (props) => {
           min-width: 150px;
           width: auto;
         }
-
-        @media (max-width: 600px) {
-          .select {
-            margin: 0 10px; //між блоками
-            font-size: 20px;
-          }
+        .select {
+          color: ${theme.colors.text};
+          font-family: ${theme.fontFamily.sansSerif};
+          background: ${theme.colors.background1};
+          margin: 0 10px; //між блоками
+          font-size: 20px;
         }
       `}</style>
-      <style jsx>
-        {`
-      .select {
-        color: ${theme.colors.text};
-        font-family: ${theme.fontFamily.sansSerif};
-        background: ${theme.colors.background1};
-        `}
-      </style>
     </select>
   );
 };

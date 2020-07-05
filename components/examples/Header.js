@@ -78,16 +78,12 @@ const Header = () => {
       link: "/examples/ui/new_component",
     },
     {
-      a: "ItSlid",
-      link: "/examples/carousel/itshef_slider",
+      a: "fonts_css.js",
+      link: "/fonts/fonts_css",
     },
     {
-      a: "AweSlid",
-      link: "/examples/carousel/awesome_slider",
-    },
-    {
-      a: "ReaSlid",
-      link: "/examples/carousel/react_carousel_slider",
+      a: "font.js",
+      link: "/fonts/fonts",
     },
     {
       a: "SlickCarou",

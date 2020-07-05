@@ -1,12 +1,8 @@
 //CarouselRa.js  на основі //CarouselAn.js //https://habr.com/ru/post/467079/
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; //fontawesome
-import {
-  faQuoteLeft,
-  faChevronRight,
-  faChevronLeft,
-} from "@fortawesome/free-solid-svg-icons";
+//!!! Не доробив можливість в списку слайдів закидати роготі теги параграфів???
 import IconArrowRight from "../icons/IconArrowRight";
 import IconArrowLeft from "../icons/IconArrowLeft";
+import IconQuoteLeft from "../icons/IconQuoteLeft";
 
 const listSlides = [
   {
@@ -148,7 +144,13 @@ const CarouselRa = (props) => {
             >
               <span className="testimony-item__guote">
                 <i className="testimony-item__guote-icon">
-                  <FontAwesomeIcon icon={faQuoteLeft} />
+                  <IconQuoteLeft
+                    width={"15"}
+                    height={"15"}
+                    colorFill={" #82ae46"}
+                  />
+
+                  {/* <FontAwesomeIcon icon={faQuoteLeft} /> */}
                 </i>
               </span>
             </div>
@@ -429,6 +431,8 @@ const CarouselRa = (props) => {
           right: 0;
           width: 40px;
           height: 40px;
+          justify-content: center;
+          align-items: center;
           background: #fff;
         }
 

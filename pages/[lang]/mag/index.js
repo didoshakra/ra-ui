@@ -96,16 +96,7 @@ const HomePage = () => {
           position: relative;
           height: 650px;
         }
-        .slider-text h1 {
-          font-size: 40px;
-          color: white;
-        }
-        @media (min-width: 960px) {
-          .slider-text h1 {
-            font-size: 8vw;
-          color: white;
-          }
-        }
+
         .image2 {
           background: 100% transparent url(/vegefoods/images/bg_1.jpg) no-repeat;
           z-index: 10;
@@ -204,7 +195,12 @@ const HomePage = () => {
           };//!!! не працює/Локальний шрифт
           //font-family: Noto Sans;//Працює!!! Загрузка локального шрифта через <style jsx global> Loyout.js
         }
-
+        @media (min-width: 960px) {
+          .slider-text h1 {
+            font-size: 8vw;
+          color: white;
+          }
+        }
         .slider-text p {
           color: rgba(0, 0, 0, 0.8);
           font-weight: 400;

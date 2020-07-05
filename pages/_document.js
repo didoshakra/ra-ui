@@ -18,16 +18,24 @@ export default class MyDocument extends Document {
         <Head>
           <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
           {/* 20080425-добавлені шрифти //Amatic SC,Poppins,Lora-https://fonts.googleapis.com/ з шаблону */}
+          {/* font-family: 'Poppins', sans-serif; //звичайні без засічок*/}
           <link
             href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap"
             rel="stylesheet"
           />
+          {/* font-family: 'Amatic SC', cursive; //імітують почерк*/}
           <link
-            href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap"
             rel="stylesheet"
           />
+          {/* font-family: 'Tangerine', cursive; //імітують почерк*/}
           <link
-            href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Tangerine&display=swap"
+            rel="stylesheet"
+          />
+          {/* font-family: 'Lora', serif //звичайні з засічками */}
+          <link
+            href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap"
             rel="stylesheet"
           />
           {/* Для відео */}

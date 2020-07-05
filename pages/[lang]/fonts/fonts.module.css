@@ -1,0 +1,56 @@
+/* index.css */
+.div {
+  text-align: center;
+  color: forestgreen;
+}
+
+.one {
+  font-size: 22px;
+  /* //font-family: "Roboto-Regular", sans-serif; */
+  font-family: "Roboto-Regular";
+}
+
+.two {
+  font-size: 22px;
+  /* //font-family: "Roboto-Medium", sans-serif; */
+  font-family: "Roboto-Medium";
+}
+
+.three {
+  font-size: 22px;
+  /* font-family: "Roboto Condensed-Bold", sans-serif; */
+  font-family: "Roboto Condensed-Bold";
+}
+
+.four {
+  font-size: 22px;
+  /* font-family: "Roboto Condensed-Regular", sans-serif; */
+  font-family: "Roboto Condensed-Regular";
+}
+
+.five {
+  font-size: 22px;
+  /* font-family: "Dosis", sans-serif; */
+  font-family: "Dosis";
+}
+
+.six {
+  font-size: 22px;
+  /* font-family: "Dosis-Medium", sans-serif; */
+  font-family: "Dosis-Medium";
+}
+
+.external__one {
+  font-size: 22px;
+  font-family: "Amatic SC", cursive;
+}
+
+.external__two {
+  font-size: 22px;
+  font-family: "Poppins", sans-serif;
+}
+
+.external__three {
+  font-size: 32px;
+  font-family: "Tangerine", cursive;
+}

@@ -8,30 +8,10 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css"; // Import the CSS
 config.autoAddCss = false; // Скажіть шрифту Awesome пропустити додавання CSS автоматично, оскільки він імпортується вище
 //mag-Vegefoods
-import "../components/mag/homePage/Сategory_css.css";
-
-//+++(plagin)slick-carousel //https://github.com/akiran/react-slick
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-//https://www.npmjs.com/package/react-carousel-slider
-// import "react-carousel-slider/lib/CarouselSlider.css"; // requires a loader
-//+++(react app)Carousel_reactCarouselSlider.js //https://codepen.io/ryasan86/pen/QXwEbM
-import "../components/ui/carousel/Carousel_reactCarouselSlider.scss";
-//*****Carousel_reactAwesome.js https://www.npmjs.com/package/react-awesome-slider
-//Основне використання з чистим CSS
-// import "react-awesome-slider/dist/styles.css"; //основна
-// import "react-awesome-slider/dist/custom-animations/cube-animation.css"; //Кубик рецепт анімації
-// import "react-awesome-slider/dist/custom-animations/fall-animation.css"; //fall/падати
-// import "react-awesome-slider/dist/custom-animations/open-animation.css"; //Накладання
-// import "react-awesome-slider/dist/custom-animations/fold-out-animation.css";
-// import "react-awesome-slider/dist/custom-animations/scale-out-animation.css"; //scale-out(маштабування)
-//**Кінець***Carousel_reactAwesome.js https://www.npmjs.com/package/react-awesome-slider
-import "../components/ui/carousel/carousel_lyd/main.css";
-
+//import "../components/mag/homePage/Сategory_css.css";
 class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
-
     return (
       // <LocaleProvider>
       <ThemeProvider>
@@ -108,19 +88,24 @@ class MyApp extends App {
             padding: 0;
             vertical-align: middle;
           }
+          //sans-serif===
           @font-face {
-            /* font-family: 'Roboto', sans-serif; */
+            font-family: "Poppins-Regular";
+            src: url("/fonts/Poppins-Regular.woff2") format("woff2"),
+              url("/fonts/Poppins-Regular.woff") format("woff");
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap; //
+          }
+          @font-face {
             font-family: "Roboto-Regular";
-            //Грузити тільки 1 варіант шрифта
-            /* src: url("/fonts/Roboto-Regular.woff2") format("woff2"),
-              url("/fonts/Roboto-Regular.woff") format("woff"); */
-            src: url("/fonts/Roboto-Regular.woff2");
+            src: url("/fonts/Roboto-Regular.woff2"),
+              url("/fonts/Roboto-Regular.woff") format("woff");
             font-weight: 400;
             font-style: normal;
             font-display: swap;
           }
           @font-face {
-            /* font-family: 'Roboto', sans-serif; */
             font-family: "Roboto-Medium";
             src: url("/fonts/Roboto-Medium.woff2") format("woff2"),
               url("/fonts/Roboto-Medium.woff") format("woff");
@@ -129,8 +114,7 @@ class MyApp extends App {
             font-display: swap;
           }
           @font-face {
-            /* font-family: 'Roboto Condensed', sans-serif; */
-            font-family: "Roboto Condensed-Bold";
+            font-family: "RobotoCondensed-Bold";
             src: url("/fonts/RobotoCondensed-Bold.woff2") format("woff2"),
               url("/fonts/RobotoCondensed-Bold.woff") format("woff");
             font-weight: 700;
@@ -138,8 +122,7 @@ class MyApp extends App {
             font-display: swap;
           }
           @font-face {
-            /* font-family: 'Roboto Condensed', sans-serif; */
-            font-family: "Roboto Condensed-Regular";
+            font-family: "RobotoCondensed-Regular";
             src: url("/fonts/RobotoCondensed-Regular.woff2") format("woff2"),
               url("/fonts/RobotoCondensed-Regular.woff") format("woff");
             font-weight: 400;
@@ -147,8 +130,7 @@ class MyApp extends App {
             font-display: swap;
           }
           @font-face {
-            /* font-family: 'Dosis', sans-serif; */
-            font-family: "Dosis";
+            font-family: "Dosis-Light";
             src: url("/fonts/Dosis-Light.woff2") format("woff2"),
               url("/fonts/Dosis-Light.woff") format("woff");
             font-weight: 300;
@@ -156,13 +138,57 @@ class MyApp extends App {
             font-display: swap;
           }
           @font-face {
-            /* font-family: 'Dosis', sans-serif; */
             font-family: "Dosis-Medium";
             src: url("/fonts/Dosis-Medium.woff2") format("woff2"),
               url("/fonts/Dosis-Medium.woff") format("woff");
             font-weight: 500;
             font-style: normal;
-            font-display: swap;
+            font-display: swap; //
+          }
+
+          // serif - звичайні шрифти з засічками
+          @font-face {
+            font-family: "Lora-Regular";
+            src: url("/public/fonts/Lora-Regular.woff2") format("woff2"),
+              url("/fonts/Lora-Regular.woff") format("woff");
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap; //
+          }
+          // cursive" - шрифти, що імітують почерк
+          @font-face {
+            font-family: "AmaticSC-Regular";
+            src: url("/fonts/AmaticSC-Regular.woff2") format("woff2"),
+              url("/fonts/AmaticSC-Regular.woff") format("woff");
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap; //
+          }
+          @font-face {
+            font-family: "Tangerine-Regular";
+            src: url("/fonts/Tangerine-Regular.woff2") format("woff2"),
+              url("/fonts/Tangerine-Regular.woff") format("woff");
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap; //
+          }
+          // monospace - Всі гліфи мають однакову фіксовану ширину
+          @font-face {
+            font-family: "MajorMonoDisplay-Regular";
+            src: url("/fonts/MajorMonoDisplay-Regular.woff2") format("woff2"),
+              url("/fonts/MajorMonoDisplay-Regular") format("woff");
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap; //
+          }
+          // fantasy - декоративні шрифти, для назв
+          @font-face {
+            font-family: "Trattatello";
+            src: url("/fonts/Trattatello.woff2") format("woff2"),
+              url("/fonts/Trattatello") format("woff");
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap; //
           }
         `}</style>
       </ThemeProvider>

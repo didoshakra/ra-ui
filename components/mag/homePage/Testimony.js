@@ -68,7 +68,7 @@ const Testimony = () => {
         <CarouselRa
           ListSlides={listSlides}
           Height="350px"
-          VisibleElements="3  "
+          VisibleElements="3"
           Dots={true}
           DotsMobi={true}
         />

@@ -13,15 +13,15 @@ export default function useTranslation() {
   const { locale, app } = state;
   // console.log("000/ useTranslation.js/locale=", locale);
 
-  //****Визначення файлу перекладу ************/
-  const req = require.context("./translation_app", false, /.*\.js$/);
+  //****Визначення файлу перекладу *********************************************/
+  const req = require.context("./translation_app", false, /.*\.js$/); //папка файлу перекладу
   // console.log("useTranslation.js/req=", req);
   // const appt = "./ra_ui.js";
-  const appt = `./${app}.js`;
+  const appt = `./${app}.js`; //змінна що визначає файл перекладу
   // console.log("useTranslation.js/ appt1=", appt);
-  const translations = mapTranslations(req, appt).default;
+  const translations = mapTranslations(req, appt).default; //конкретний файл перекладу
   // console.log("useTranslation.js/trans=", translations);
-  //**************** */
+  //************************************************************************* */
   function t(key) {
     // const locale = "uk";
     // console.log("000/ useTranslation.js/key=", key);

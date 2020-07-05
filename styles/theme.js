@@ -1,4 +1,4 @@
-//theme.js*/
+//theme.js
 //20080425-добавлені шрифти //Amatic SC,Poppins,Lora-https://fonts.googleapis.com/ з шаблону
 
 export const themes = ["light", "dark", "other"];
@@ -13,12 +13,11 @@ export const themesNames = {
 
 export const themeDark = {
   fontFamily: {
-    //fontTertiary: "Amatic SC, cursive", //третинний
-    sansSerif: "Poppins,Geneva, Arial, sans-serif", //звичайні шрифти без засічок
-    serif: "Lora, Georgia,Blogger Sans,Times, Times New Roman, serif", //звичайні шрифти з засічками
-    fixedWidth: "Courier New,Andale Mono, monospace", //Всі гліфи мають однакову фіксовану ширину
-    mimicHand: "Amatic SC, Comic Sans MS, Comic Sans, cursive", //шрифти, що імітують почерк
-    decorative: "Trattatello,Luminari, fantasy", //декоративні шрифти, для назв
+    sansSerif: "Poppins-Regular,Arial,sans-serif", //звичайні шрифти без засічок
+    serif: "Lora-Regular,Georgia, serif", //звичайні шрифти з засічками
+    cursive: "AmaticSC-Regular, cursive", //шрифти, що імітують почерк
+    monospace: "MajorMonoDisplay-Regular, monospace", //Всі гліфи мають однакову фіксовану ширину
+    fantasy: "Trattatello,fantasy", //декоративні шрифти, для назв
   },
   colors: {
     // link: "#1eaaf1",
@@ -84,23 +83,15 @@ export const themeDark = {
 };
 
 export const themeLith = {
-  //Amatic SC,Poppins,Lora-https://fonts.googleapis.com/
   fontFamily: {
-    //notoSans: "Noto Sans", ////Локальний шрифт не працює(без засічок)
-    sansSerif: "Poppins,Geneva, Arial, sans-serif", //звичайні шрифти без засічок
-    serif: "Lora, Georgia,Blogger Sans,Times, Times New Roman, serif", //звичайні шрифти з засічками
-    fixedWidth: "Courier New,Andale Mono, monospace", //Всі гліфи мають однакову фіксовану ширину
-    mimicHand: "Amatic SC, Comic Sans MS, Comic Sans, cursive", //шрифти, що імітують почерк
-    //mimicHand: "Snell Roundhand,Brush Script MT, Brush Script Std, cursive", //шрифти, що імітують почерк
-    decorative: "Trattatello,Luminari, fantasy", //декоративні шрифти, для назв
+    sansSerif: "Poppins-Regular,Arial,sans-serif", //звичайні шрифти без засічок
+    serif: "Lora-Regular,Georgia, serif", //звичайні шрифти з засічками
+    cursive: "AmaticSC-Regular, cursive", //шрифти, що імітують почерк
+    monospace: "MajorMonoDisplay-Regular, monospace", //Всі гліфи мають однакову фіксовану ширину
+    fantasy: "Trattatello,fantasy", //декоративні шрифти, для назв
   },
-  colors: {
-    //   link: "#1eaaf1",
-    //   linkHover: "#0d8ecf",
-    //   border: "#ddd",
-    //   warning: "#fff3cd",
-    //   success: "#d4edda",
 
+  colors: {
     text: "#060214",
     background: "rgba(220,234,244,1)",
     // background: "rgb(223, 222, 222)", //Основа

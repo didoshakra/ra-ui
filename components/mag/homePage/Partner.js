@@ -93,7 +93,7 @@ const Partner = () => {
           //flex: 0 1 auto;
           height: 100%;
           width: 100%;
-          border: 1px solid rgb(150, 17, 212);
+          //border: 1px solid rgb(150, 17, 212);
         }
         .img-fluid {
           max-width: 100%;
